@@ -1,0 +1,15 @@
+/**app.wxss**/
+
+// 标签选择器没有样式隔离，可以代替 * 选择器
+
+// 采用边框盒模型
+page,
+view {
+  box-sizing: border-box;
+}
+
+// 每个页面都为 tab-bar 留出76px
+page {
+  height: 100vh;
+  padding-bottom: 76px;
+}

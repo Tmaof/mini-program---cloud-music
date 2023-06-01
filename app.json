@@ -1,0 +1,28 @@
+{
+  "resolveAlias": {
+    "@/*": "/*"
+  },
+  "pages": [
+    "pages/TB-home/home",
+    "pages/TB-video/video",
+    "pages/TB-personal-center/personal-center"
+  ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/TB-home/home"
+      },
+      {
+        "pagePath": "pages/TB-video/video"
+      },
+      {
+        "pagePath": "pages/TB-personal-center/personal-center"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTitleText": "云音乐"
+  },
+  "sitemapLocation": "sitemap.json"
+}
