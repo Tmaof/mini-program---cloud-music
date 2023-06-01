@@ -1,4 +1,5 @@
 import Message from 'tdesign-miniprogram/message/index';
+import config from '@/config/config'
 
 /**
  * 封装 wx.request
@@ -7,11 +8,12 @@ class Request {
   defaultOptions = {
     method: "GET",
     data: null,
-    timeout: 20000
+    timeout: 20000,
+    baseUrl: ''
   }
 
   constructor(options) {
-    this.defaultOptions = options
+    Object.assign(this.defaultOptions, options)
   }
 
 
@@ -77,5 +79,8 @@ class Request {
   }
 
 }
-const REQ = new Request()
+const REQ = new Request({
+  baseUrl: config.baseUrl
+})
+
 export default REQ.request.bind(REQ)
