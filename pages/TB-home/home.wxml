@@ -1,2 +1,55 @@
-<!--pages/TB-home/home.wxml-->
-<text>pages/TB-home/home.wxml</text>
+<scroll-view scroll-top="500" show-scrollbar="false" enhanced scroll-y class="home-contianer ">
+  <view class="tab-bar-page">
+    <!-- 轮播图 -->
+    <view class="swiper">
+      <t-swiper height="290rpx" autoplay="{{autoplay}}" list="{{bannerImgUrlList}}" bind:click="onTap">
+      </t-swiper>
+    </view>
+    <!-- 快捷菜单 -->
+    <view class="shortcut-menu">
+      <view class="item">
+        <view class="item-icon iconfont icon-tuijian">
+        </view>
+        <text>每日推荐</text>
+      </view>
+
+      <view class="item">
+        <view class="item-icon iconfont icon-gedan">
+        </view>
+        <text>歌单</text>
+      </view>
+      <view class="item">
+        <view class="iconfont item-icon icon-paixingbang">
+        </view>
+        <text>排行榜</text>
+      </view>
+      <view class="item">
+        <view class="iconfont item-icon icon-diantai">
+        </view>
+        <text>电台</text>
+      </view>
+    </view>
+    <!-- 推荐歌单 -->
+    <home-item-card title="推荐歌单">
+      <scroll-view show-scrollbar="false" enhanced class="recommended-songs" scroll-x="true" enable-flex="true">
+        <view class="recommended-songs-item" wx:for="{{recommendedPlaylists}}" wx:key="id">
+          <view class="cover">
+            <image src="{{item.picUrl}}" mode="aspectFill" />
+          </view>
+          <text>{{item.name}}</text>
+        </view>
+      </scroll-view>
+    </home-item-card>
+
+    <!-- 排行榜 -->
+    <home-item-card title="排行榜">
+
+      <swiper next-margin="20" class="rankling-list">
+        <swiper-item wx:for="{{theList}}" wx:key="id">
+          <rank-list-card title="{{item.name}}" describe="" list="{{item.tracks}}"></rank-list-card>
+        </swiper-item>
+      </swiper>
+
+    </home-item-card>
+  </view>
+</scroll-view>

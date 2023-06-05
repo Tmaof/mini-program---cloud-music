@@ -1,1 +1,120 @@
-/* pages/TB-personal-center/personal-center.wxss */
+.my-center-container {
+  // 用户信息卡片
+  .user-info {
+    position: relative;
+    height: 350rpx;
+    // background: chartreuse;
+    &::before {
+      content: "";
+      display: block;
+      height: 1px;
+    }
+
+    // 背景图
+    .user-bg {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 90%;
+      // background: gold;
+
+      .bg {
+        width: 100%;
+        height: 100%;
+        border-radius: var(--b-r-size);
+      }
+    }
+
+    // 信息卡片
+    .info-card {
+      position: relative;
+      z-index: 9;
+      top: 40%;
+      min-height: 60%;
+
+      // 头像
+      .avatar {
+        position: absolute;
+        z-index: 999;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .login-text,
+      .user-name {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-top: 10px;
+        text-align: center;
+        line-height: 150rpx;
+        font-size: large;
+        font-weight: bold;
+        word-spacing: 2px;
+        letter-spacing: 2px;
+      }
+    }
+
+    // 返回过渡效果
+    .info-card-trans {
+      transition: top 0.3s linear;
+    }
+  }
+
+  // 音乐app卡片
+  .music-app {
+    margin-top: 30px;
+    .app-item {
+      padding: 10px;
+      // background: gold;
+    }
+    .icon {
+      color: var(--themeColor);
+    }
+    .text {
+      text-align: center;
+      font-size: small;
+      color: gray;
+    }
+  }
+
+  // 我喜欢的音乐
+  .mylove {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200rpx;
+    margin-top: 20px;
+    // background: gold;
+
+    .cover {
+      width: 150rpx;
+      height: 150rpx;
+      border-radius: var(--b-r-size);
+    }
+
+    .info {
+      flex: 1 1;
+      margin-left: 20px;
+      .title {
+        font-weight: bold;
+      }
+      .num {
+        font-size: small;
+        color: var(--grey);
+      }
+    }
+
+    .btn-love {
+      padding: 5px;
+      font-size: small;
+      letter-spacing: 1px;
+      color: rgb(85, 83, 83);
+      border-radius: 5px;
+      box-shadow: 0 0 var(--shadowLen-mini) var(--shadowColor);
+      // background: gold;
+    }
+  }
+}

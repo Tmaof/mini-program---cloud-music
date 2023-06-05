@@ -2,8 +2,35 @@
   "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "projectname": "%E4%BA%91%E9%9F%B3%E4%B9%90(JS%E7%89%88)",
   "setting": {
-    "compileHotReLoad": false,
-    "urlCheck": false
+    "compileHotReLoad": true,
+    "urlCheck": true
   },
-  "libVersion": "2.32.0"
+  "libVersion": "2.32.0",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "个人中心",
+          "pathName": "pages/TB-personal-center/personal-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "登录页",
+          "pathName": "/packages/package-sys/pages/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "最近播放",
+          "pathName": "packages/package-musicApp/pages/recent-play/recent-play",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

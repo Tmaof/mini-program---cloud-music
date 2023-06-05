@@ -1,18 +1,65 @@
-// pages/TB-home/home.js
-Page({
+import {
+  injectAppStore
+}
+from '@/behaviors/injectAppStore'
+import {
+  getBannerList,
+  getRecommendedPlaylists,
+  getTheList
+} from '@/api/home/home'
 
+Page({
+  behaviors: [injectAppStore],
   /**
    * 页面的初始数据
    */
   data: {
-
+    bannerList: [], //轮播图
+    bannerImgUrlList: [], //轮播图封面url
+    recommendedPlaylists: [], //推荐歌单
+    theList: [] //排行榜
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  async onLoad(options) {
 
+    this._getBanner()
+    this._getRecommendedPlaylists()
+    this._getTheList()
+
+  },
+
+  /**
+   * 获取轮播图数据
+   */
+  async _getBanner() {
+    const res = await getBannerList()
+    this.setData({
+      bannerList: res.banners,
+      bannerImgUrlList: res.banners.map((item) => item.pic)
+    })
+  },
+
+  /**
+   * 获取推荐歌曲
+   */
+  async _getRecommendedPlaylists() {
+    const res = await getRecommendedPlaylists();
+    this.setData({
+      recommendedPlaylists: res.result
+    })
+  },
+
+  /**
+   * 获取排行榜
+   */
+  async _getTheList() {
+    const res = await getTheList()
+    this.setData({
+      theList: res
+    })
   },
 
   /**
@@ -26,7 +73,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setTabBarIndexValue(0)
   },
 
   /**

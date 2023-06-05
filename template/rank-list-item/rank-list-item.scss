@@ -1,0 +1,45 @@
+.rank-list-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  // background: rgb(161, 73, 73);
+  .cover {
+    width: 120rpx;
+    height: 120rpx;
+    .image {
+      width: 100%;
+      height: 100%;
+      border-radius: 10rpx;
+    }
+  }
+
+  .rank {
+    display: flex;
+    justify-content: center;
+    width: 15%;
+  }
+
+  .info {
+    flex: 1 1;
+
+    .name {
+      font-weight: bold;
+    }
+    .author {
+      font-size: small;
+      color: gray;
+    }
+  }
+
+  .tag {
+    font-size: xx-small;
+    font-weight: bold;
+    .hot {
+      color: red;
+    }
+    .new {
+      color: green;
+    }
+  }
+}

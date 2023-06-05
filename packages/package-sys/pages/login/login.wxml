@@ -1,0 +1,38 @@
+<view class="login-container">
+  <!-- 消息 -->
+  <t-message id="t-message" />
+  <!-- 背景图 -->
+  <view class="bg">
+    <image src="/packages/package-sys/assets/img/login-bg1.jpg" mode="aspectFill" />
+  </view>
+  <!-- 登录按钮 -->
+  <view class="btn-container">
+    <t-button bindtap="onClickTouristLogin" theme="primary" class="btn-login" size="large" shape="round">一键登录(游客)</t-button>
+    <t-button bindtap="onClickQrLoginBtn" theme="primary" class="btn-login" size="large" shape="round">扫码登录</t-button>
+  </view>
+  <!-- 二维码弹出层 -->
+  <t-popup visible="{{popupVisible}}" class="popup" bind:visible-change="onVisibleChange" placement="top">
+    <view class="popup-content">
+      <view class="scan-demo">
+        <image src="/packages/package-sys/assets/img/login-scan-demo.png" mode="aspectFit" />
+      </view>
+      <view class="qr">
+        <view class="tips">
+          使用 <text class="bold">网易云音乐APP</text> 扫码登录
+        </view>
+        <view class="qrimg-container">
+          <image src="{{qrImg}}" mode="aspectFit" />
+          <view class="refresh" style="display: {{isRefreshQr?'':'none'}};">
+            <t-button bindtap="onClickQrLoginBtn" size="small">刷新</t-button>
+          </view>
+        </view>
+        <view class="status">
+          <!-- 二维码不存在或已过期 -->
+          {{qrLoginStatusTip||'等待扫码'}}
+        </view>
+
+      </view>
+    </view>
+  </t-popup>
+
+</view>

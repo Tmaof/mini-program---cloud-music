@@ -1,6 +1,10 @@
-// pages/TB-video/video.js
-Page({
+import {
+  injectAppStore
+}
+from '@/behaviors/injectAppStore'
 
+Page({
+  behaviors: [injectAppStore],
   /**
    * 页面的初始数据
    */
@@ -26,7 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setTabBarIndexValue(1)
   },
 
   /**

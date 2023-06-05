@@ -1,0 +1,18 @@
+<!-- 引入模板 -->
+<import src="/template/rank-list-item/rank-list-item" />
+
+<view class="rank-list-card-container">
+  <view class="header">
+    <view class="title">
+      <text class="text">{{title}}</text>
+      <view class="icon iconfont icon-youjiantou">
+      </view>
+    </view>
+    <view class="describe">
+      <text>{{describe}}</text>
+    </view>
+  </view>
+  <scroll-view show-scrollbar="false" enhanced class="body" scroll-y>
+    <template is="rank-list-item" wx:for="{{list}}" wx:key="id" data="{{...item,index}}"></template>
+  </scroll-view>
+</view>

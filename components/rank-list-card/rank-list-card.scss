@@ -1,0 +1,39 @@
+// 引入模板样式
+@import "../../template/rank-list-item/rank-list-item.scss";
+
+.rank-list-card-container {
+  height: 500rpx;
+  padding: 10px;
+  margin: 5px;
+  background: white;
+  border-radius: 10rpx;
+  box-shadow: 0 0 5px rgba(36, 36, 36, 0.11);
+  .header {
+    display: flex;
+    justify-content: space-between;
+    // background: greenyellow;
+    .title {
+      display: flex;
+      justify-content: left;
+      .text {
+        font-size: medium;
+        font-weight: bold;
+      }
+      .icon {
+        width: 16px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    .describe {
+      font-size: small;
+      color: rgb(139, 139, 139);
+    }
+  }
+
+  .body {
+    height: 400rpx;
+    margin-top: 10px;
+    // background: gold;
+  }
+}

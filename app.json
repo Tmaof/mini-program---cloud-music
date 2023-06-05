@@ -5,7 +5,17 @@
   "pages": [
     "pages/TB-home/home",
     "pages/TB-video/video",
-    "pages/TB-personal-center/personal-center"
+    "pages/TB-personal-center/personal-center",
+    "packages/package-musicApp/pages/recent-play/recent-play"
+  ],
+  "subPackages": [
+    {
+      "root": "packages/package-sys",
+      "name": "sys",
+      "pages": [
+        "pages/login/login"
+      ]
+    }
   ],
   "tabBar": {
     "custom": true,
@@ -21,8 +31,18 @@
       }
     ]
   },
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-message": "tdesign-miniprogram/message/message",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
+  },
   "window": {
-    "navigationBarTitleText": "云音乐"
+    "navigationBarTitleText": "云音乐",
+    "backgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
 }

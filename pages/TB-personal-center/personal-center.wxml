@@ -1,2 +1,66 @@
-<!--pages/TB-personal-center/personal-center.wxml-->
-<text>pages/TB-personal-center/personal-center.wxml</text>
+<view class="my-center-container tab-bar-page">
+  <!-- 消息提示 -->
+  <t-message id="t-message" />
+  
+  <!-- 用户信息 -->
+  <view class="user-info">
+    <!-- 背景图 -->
+    <view class="user-bg">
+      <image class="bg" src="{{userInfo.backgroundUrl}}" mode="aspectFill" />
+    </view>
+
+    <!-- 信息 -->
+    <view class="info-card my-card {{infoCardTs?'info-card-trans':''}}" style="top:{{infoCardTop}}%" bindtouchstart="onTouchStart" bindtouchmove="onTouchmove" bindtouchend="onTouchEnd">
+      <!-- 头像 -->
+      <view class="avatar">
+        <t-avatar class="avatar-ta" icon="user" image="{{userInfo.avatarUrl||undefined}}" size="large" />
+      </view>
+      <!-- 用户名 -->
+      <view wx:if="{{isUserLogin}}" class="user-name">
+        {{userInfo.nickname||userInfo.userName}}
+      </view>
+      <!-- 跳转登录页 -->
+      <navigator wx:else hover-class="none" class="login-text" url="/packages/package-sys/pages/login/login">
+        立即登录
+      </navigator>
+    </view>
+  </view>
+
+  <!-- 音乐app -->
+  <view class="music-app my-card">
+    <t-row>
+      <t-col span="6" class="app-item" wx:for="{{4}}" wx:key="index">
+        <view class="icon icon-diantai iconfont">
+        </view>
+        <view class="text">
+          最近播放
+        </view>
+      </t-col>
+    </t-row>
+    <t-row>
+      <t-col wx:if="{{isUserLogin}}" span="6" class="app-item" bindtap="onLogout">
+        <view class="icon icon-tuichudenglu iconfont">
+        </view>
+        <view class="text">
+          退出登录
+        </view>
+      </t-col>
+    </t-row>
+  </view>
+
+  <!-- 我喜欢的音乐 -->
+  <view class="mylove my-card">
+    <image class="cover" src="/assets/img/test.gif" mode="" />
+    <view class="info">
+      <view class="title">
+        我喜欢的音乐
+      </view>
+      <view class="num">
+        10首
+      </view>
+    </view>
+    <view class="btn-love">
+      <text>心动模式</text>
+    </view>
+  </view>
+</view>

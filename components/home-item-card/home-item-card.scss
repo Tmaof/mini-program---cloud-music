@@ -1,0 +1,39 @@
+.home-item-card-container {
+  // height: 300rpx;
+  margin-top: 10px;
+  // background: chartreuse;
+  border-bottom: 1px solid ghostwhite;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80rpx;
+    // background: chocolate;
+
+    .left {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      // background: lemonchiffon;
+      font-size: medium;
+      font-weight: bold;
+      .icon {
+        width: 20px;
+        font-size: 32rpx;
+      }
+    }
+
+    .right {
+      .icon {
+        width: 40px;
+        // background: lightcyan;
+        font-size: 40rpx;
+      }
+    }
+  }
+
+  .body {
+    // height: 220rpx;
+    // background: gold;
+  }
+}

@@ -1,1 +1,67 @@
-/* pages/TB-home/home.wxss */
+.home-contianer {
+  // 轮播图
+  .swiper {
+  }
+
+  // 快捷菜单
+  .shortcut-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    margin-top: 10px;
+    background: #ffffff;
+    border-radius: 70px;
+    box-shadow: 5px 5px 5px #d1d1d133;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .item-icon {
+        width: 80rpx;
+        height: 80rpx;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #f1f0f0, #fbfbfb);
+        // box-shadow: 20px 20px 60px #c8c8c8, -20px -20px 60px #ffffff;
+      }
+      text {
+        font-size: small;
+        color: gray;
+      }
+    }
+  }
+  // 推荐歌单
+  .recommended-songs {
+    white-space: nowrap;
+    .recommended-songs-item {
+      display: inline-block;
+      width: 230rpx;
+      padding-right: 10px;
+      // background: lightcyan;
+
+      .cover {
+        height: 200rpx;
+        image {
+          width: 100%;
+          height: 100%;
+          border-radius: 10rpx;
+        }
+      }
+      text {
+        display: block;
+        padding: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: small;
+      }
+    }
+  }
+  // 排行榜
+  .rankling-list {
+    height: 500rpx;
+    // background: hotpink;
+  }
+}

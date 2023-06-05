@@ -1,7 +1,22 @@
 {
+  "name": "cloud-music-miniprogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "dependencies": {
+    "dayjs": "^1.11.7",
     "mobx-miniprogram": "^4.13.2",
-    "mobx-miniprogram-bindings": "^2.1.5",
-    "tdesign-miniprogram": "^1.1.8"
-  }
+    "tdesign-miniprogram": "^1.1.8",
+    "mobx-miniprogram-bindings": "^2.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/tmaofu/mini-program---cloud-music.git"
+  },
+  "author": "maofu",
+  "license": "ISC"
 }

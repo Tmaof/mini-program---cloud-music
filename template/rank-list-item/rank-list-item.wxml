@@ -1,0 +1,37 @@
+<template name="rank-list-item">
+  <view class="rank-list-item-container">
+    <view class="cover">
+      <image class="image" src="{{al.picUrl}}" mode="aspectFill" />
+    </view>
+    <view class="rank">
+      <view>
+        {{index}}
+      </view>
+    </view>
+    <view class="info">
+      <view class="name">
+        {{al.name}}
+      </view>
+      <view class="author">
+        {{module.getAuthorName(ar)}}
+      </view>
+    </view>
+    <view class="tag">
+      <text class="hot">热门</text>
+      <text class="new">新晋</text>
+    </view>
+  </view>
+  <wxs module="module">
+  // 将多个作者名进行拼接
+    function getAuthorName(list) {
+      var strlist = []
+      for (i = 0; i < list.length; i++) {
+        strlist.push(list[i].name)
+      }
+      return strlist.join('/')
+    }
+    module.exports = {
+      getAuthorName: getAuthorName
+    }
+  </wxs>
+</template>

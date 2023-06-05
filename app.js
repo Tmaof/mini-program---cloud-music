@@ -1,10 +1,14 @@
-App({
+import {
+  userStore
+} from '@/store/user/user'
 
+App({
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function () {
-
+    // 获取用户信息
+    userStore.updateUserInfo()
   },
 
   /**

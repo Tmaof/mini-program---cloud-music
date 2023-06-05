@@ -1,0 +1,18 @@
+<view class="home-item-card-container">
+  <view class="header">
+    <view class="left">
+      <text>{{title}}</text>
+      <view class="icon iconfont icon-youjiantou">
+
+      </view>
+    </view>
+    <view class="right">
+      <view class="icon icon-androidgengduo iconfont">
+
+      </view>
+    </view>
+  </view>
+  <view class="body">
+    <slot></slot>
+  </view>
+</view>
