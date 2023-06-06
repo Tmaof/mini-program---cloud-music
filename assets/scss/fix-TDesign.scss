@@ -1,0 +1,6 @@
+// 清除tabs底部下划线
+.t-tabs__scroll::after {
+  display: none !important;
+}
+
+

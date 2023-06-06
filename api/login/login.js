@@ -1,4 +1,6 @@
-import request from '@/utils/request'
+import {
+  request
+} from '@/utils/request'
 
 const globalData = {
   key: ''
@@ -12,9 +14,7 @@ export async function getLoginQr() {
   // 调用此接口可生成一个 key
   const res = await request({
     url: '/login/qr/key',
-    data: {
-      timestamp: Date.now()
-    }
+    method: 'post'
   })
 
   globalData.key = res.data.unikey
@@ -27,8 +27,8 @@ export async function getLoginQr() {
     data: {
       key: res.data.unikey,
       qrimg: 'true',
-      timestamp: Date.now()
-    }
+    },
+    method: 'POST'
   })
   return data.qrimg
 }
@@ -55,9 +55,9 @@ export async function isLogin() {
     url: '/login/qr/check',
     data: {
       key: globalData.key,
-      timestamp: Date.now(),
       noCookie: 'true'
-    }
+    },
+    method: 'POST'
   })
 
   res.isLogin = res.code == 803 ? true : false
@@ -69,7 +69,8 @@ export async function isLogin() {
  */
 export function touristLanding() {
   return request({
-    url: '/register/anonimous'
+    url: '/register/anonimous',
+    method:'POST'
   })
 }
 
@@ -79,6 +80,7 @@ export function touristLanding() {
  */
 export function logout() {
   return request({
-    url: '/logout'
+    url: '/logout',
+    method:'POST'
   })
 }

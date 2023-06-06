@@ -1,7 +1,7 @@
 <view class="my-center-container tab-bar-page">
   <!-- 消息提示 -->
   <t-message id="t-message" />
-  
+
   <!-- 用户信息 -->
   <view class="user-info">
     <!-- 背景图 -->
@@ -29,15 +29,45 @@
   <!-- 音乐app -->
   <view class="music-app my-card">
     <t-row>
-      <t-col span="6" class="app-item" wx:for="{{4}}" wx:key="index">
-        <view class="icon icon-diantai iconfont">
-        </view>
-        <view class="text">
-          最近播放
-        </view>
+      <t-col span="6" class="app-item">
+        <navigator hover-class="none" url="/packages/package-musicApp/pages/recent-play/recent-play">
+          <view class="icon icon-diantai iconfont">
+          </view>
+          <view class="text">
+            最近播放
+          </view>
+        </navigator>
+      </t-col>
+      <t-col span="6" class="app-item">
+        <navigator hover-class="none" url="/packages/package-musicApp/pages/my-collection/my-collection">
+          <view class="icon icon-diantai iconfont">
+          </view>
+          <view class="text">
+            我的收藏
+          </view>
+        </navigator>
+      </t-col>
+      <t-col span="6" class="app-item">
+        <navigator hover-class="none" url="/packages/package-musicApp/pages/mylike-video/mylike-video">
+          <view class="icon icon-diantai iconfont">
+          </view>
+          <view class="text">
+            我的点赞
+          </view>
+        </navigator>
+      </t-col>
+      <t-col span="6" class="app-item">
+        <navigator hover-class="none" url="/packages/package-musicApp/pages/recent-play/recent-play">
+          <view class="icon icon-diantai iconfont">
+          </view>
+          <view class="text">
+            编辑资料
+          </view>
+        </navigator>
       </t-col>
     </t-row>
     <t-row>
+      <!-- 退出登录 -->
       <t-col wx:if="{{isUserLogin}}" span="6" class="app-item" bindtap="onLogout">
         <view class="icon icon-tuichudenglu iconfont">
         </view>

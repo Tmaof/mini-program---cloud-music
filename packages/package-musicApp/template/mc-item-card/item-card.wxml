@@ -1,0 +1,27 @@
+<template name="mc-item-card">
+  <navigator url="{{url}}" data-params="{{params}}">
+    <view class="mc-item-card-container">
+      <!-- 封面 -->
+      <view class="left-cover">
+        <image class="image" src="{{cover||'/assets/img/test.gif'}}" style="width: {{w||'120rpx'}};height:{{h||'120rpx'}} ;" mode="aspectFill" />
+        <view class="duration-time">
+          {{duration||'03:07'}}
+        </view>
+      </view>
+      <!-- 右侧信息 -->
+      <view class="right-info" style="max-width: {{infoXaxWidth}};">
+        <view class="name single-line-overflow ">
+          {{name||'因失误成就歌手名场面'}}
+        </view>
+        <view class="bot-info ">
+          <view class="bot-info-l single-line-overflow">
+            {{infoL||'by 油条 Music'}}
+          </view>
+          <view class="bot-info-r">
+            {{infoR||'昨天 19:06'}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>

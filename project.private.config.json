@@ -29,6 +29,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "我的收藏",
+          "pathName": "packages/package-musicApp/pages/my-collection/my-collection",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

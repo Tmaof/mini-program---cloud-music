@@ -1,0 +1,19 @@
+<!-- 引入模板 -->
+<import src="/packages/package-musicApp/template/rp-item-card/item-card"></import>
+<scroll-view class="rp-album-container" scroll-y>
+  <template is="rp-item-card" wx:for="{{albumInfo.list}}" wx:key="resourceId" data="{{...module.getData(item)}}"> </template>
+</scroll-view>
+<wxs module="module">
+  // 引入过滤器
+  var filter = require('../../../../utils/filter-wxs/filter.wxs')
+  module.exports = {
+    getData: function (item) {
+      return {
+        cover: item.data.picUrl,
+        name: item.data.name,
+        infoL: filter.getAuthorName(item.data.artists),
+        infoR: filter.fromNow(item.playTime)
+      }
+    }
+  }
+</wxs>

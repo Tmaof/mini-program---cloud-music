@@ -1,0 +1,50 @@
+<!-- 引入模板 -->
+<import src="/packages/package-musicApp/template/mc-item-card/item-card" />
+
+<view class="mc-video-container">
+  <!-- 按钮-我赞过的视频 -->
+  <navigator hover-class="none" url="/packages/package-musicApp/pages/mylike-video/mylike-video">
+    <view class="look-myLike-video my-card-fade">
+      <view class="icon iconfont icon-tuijian">
+      </view>
+      <view class="title">
+        我赞过的视频
+      </view>
+      <view class="icon-right iconfont icon-youjiantou">
+      </view>
+
+    </view>
+  </navigator>
+
+  <!-- 视频信息 -->
+  <view class="collection-card">
+    <!-- 头 -->
+    <view class="header">
+      收藏的视频 <text class="nums">({{MCmvInfo.data.length||'0'}})</text>
+    </view>
+    <!-- tabs -->
+    <t-tabs theme="tag" class="video-type-tabs" space-evenly="{{false}}" value="0">
+      <t-tab-panel class="mv-content" label="全部" value="0">
+        <template is="mc-item-card" wx:for="{{MCmvInfo.data}}" wx:key="vid" data="{{...module.getData(item)}}"></template>
+      </t-tab-panel>
+    </t-tabs>
+  </view>
+</view>
+
+<wxs module="module">
+  // 引入过滤器
+  var filter = require('../../../../utils/filter-wxs/filter.wxs')
+  module.exports = {
+    getData: function (item) {
+      return {
+        w: '280rpx',
+        infoXaxWidth: '55%',
+        h: '170rpx',
+        cover: item.coverUrl,
+        name: item.title,
+        infoL: filter.getAuthorName(item.creator, 'userName'),
+        infoR: '已收藏'
+      }
+    }
+  }
+</wxs>

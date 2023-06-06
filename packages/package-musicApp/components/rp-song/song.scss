@@ -1,0 +1,102 @@
+.song-container {
+  // padding: var(--page-padding);
+
+  // 头部
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: var(--page-padding);
+    // background: gold;
+
+    .left {
+      flex: 1 1;
+      display: flex;
+      align-items: center;
+      .icon {
+        font-size: var(--font-size);
+        width: 60rpx;
+      }
+
+      .text {
+        margin: 0 5px;
+        font-weight: bold;
+      }
+
+      .nums {
+        font-size: var(--font-size-smaller);
+        color: var(--grey);
+      }
+    }
+
+    .right {
+      // 多选按钮
+      .icon {
+        font-size: var(--font-size);
+        color: var(--black);
+      }
+    }
+  }
+
+  // 歌曲列表
+  .list {
+    white-space: nowrap;
+    height: calc(100vh - 140px);
+
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100rpx;
+      padding: 0 var(--page-padding);
+      // background: hotpink;
+      margin-top: 10px;
+
+      // 左
+      .left {
+        flex: 1 1;
+        width: 70%;
+        height: 100%;
+        // background: blanchedalmond;
+
+        .name {
+          display: flex;
+          align-items: flex-end;
+        }
+
+        .info {
+          font-size: small;
+          color: var(--grey-deep);
+        }
+      }
+      // 右
+      .right {
+        display: flex;
+        align-items: center;
+
+        .video,
+        .more {
+          width: 60rpx;
+          font-size: var(--font-size-small);
+          color: var(--grey);
+        }
+      }
+    }
+
+    // 正在播放的歌曲样式
+    .active-song {
+      // 正在播放歌曲标识图标
+      .active-song-icon {
+        width: var(--font-size);
+        margin: 0 var(--margin);
+        font-size: var(--font-size);
+        color: var(--red);
+      }
+
+      .name {
+        color: var(--red);
+      }
+    }
+  }
+}

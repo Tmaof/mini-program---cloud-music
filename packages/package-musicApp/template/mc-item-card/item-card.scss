@@ -1,0 +1,51 @@
+.mc-item-card-container {
+  display: flex;
+  padding: var(--page-padding);
+  background: var(--white);
+
+  // 封面
+  .left-cover {
+    position: relative;
+    .image {
+      border-radius: var(--b-r-size);
+    }
+    .duration-time {
+      position: absolute;
+      right: 7%;
+      bottom: 10%;
+      font-size: var(--font-size-smaller);
+      color: var(--white);
+    }
+  }
+
+  // 右侧信息
+  .right-info {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 75%;
+    margin-left: var(--margin);
+    padding: var(--padding-small) 0;
+
+    // 名字
+    .name {
+    }
+
+    // 信息
+    .bot-info {
+      display: flex;
+      justify-content: space-between;
+
+      font-size: var(--font-size-smaller);
+      color: var(--grey-deep);
+
+      .bot-info-l {
+        max-width: 78%;
+      }
+
+      .bot-info-r {
+      }
+    }
+  }
+}

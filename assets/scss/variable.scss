@@ -3,9 +3,38 @@ page {
   --shadowLen: 10px;
   --shadowLen-mini: 5px;
   --shadowColor: gainsboro;
+  --shadowColor-fade: rgba(220, 220, 220, 0.514);
   // 主题色
+   --page-bg-color:rgba(226, 223, 223, 0.247);//页面底色
   --themeColor: rgb(43, 148, 247);
   --grey: grey;
+  --grey-deep: rgb(112, 111, 111);
+  --red: rgb(250, 92, 92);
+  --black: rgb(61, 46, 46);
+  --white:white;
   // 边框
   --b-r-size: 10px; //border-radius
+  // 内边距
+  --padding-small: 5px;
+  --padding: 10px;
+  --padding-large: 15px;
+  --padding-larger: 20px;
+  --page-padding-small: 5px;
+  --page-padding: 10px;
+  --page-padding-large: 15px;
+  --page-padding-larger: 20px;
+  // 外边距
+  --margin: 10px;
+  --margin-large: 10px;
+  --card-margin: 10px;
+  --card-margin-large: 15px;
+  --card-margin-larger: 20px;
+  // 字体
+  --font-size-smaller: 24rpx;
+  --font-size-small: 28rpx;
+  --font-size: 32rpx;
+  --font-size-large: 36rpx;
+  --font-size-larger: 40rpx;
+  // 字符间距 letter-spacing
+  --let-spa: 2px;
 }

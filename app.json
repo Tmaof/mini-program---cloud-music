@@ -6,7 +6,9 @@
     "pages/TB-home/home",
     "pages/TB-video/video",
     "pages/TB-personal-center/personal-center",
-    "packages/package-musicApp/pages/recent-play/recent-play"
+    "packages/package-musicApp/pages/recent-play/recent-play",
+    "packages/package-musicApp/pages/my-collection/my-collection",
+    "packages/package-musicApp/pages/mylike-video/mylike-video"
   ],
   "subPackages": [
     {

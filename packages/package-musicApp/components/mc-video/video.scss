@@ -1,0 +1,52 @@
+@import "../../template/mc-item-card/item-card.scss";
+
+.mc-video-container {
+  padding: var(--page-padding);
+  // 我点赞过的视频
+  .look-myLike-video {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // background: gold;
+
+    .icon {
+      width: var(--font-size-larger);
+    }
+
+    .title {
+      letter-spacing: var(--let-spa);
+      font-size: var(--font-size-large);
+    }
+
+    .icon-right {
+      width: var(--font-size-larger);
+      color: var(--black);
+    }
+  }
+
+  // 收藏的视频
+  .collection-card {
+    margin-top: var(--margin);
+
+    .header {
+      font-weight: bold;
+      font-size: var(--font-size-large);
+      .nums {
+        font-size: var(--font-size-smaller);
+        font-weight: normal;
+        color: var(--grey-deep);
+      }
+    }
+
+    .video-type-tabs {
+      // mv
+      .mv-content {
+      }
+    }
+
+    // 调整tabs高度
+    .t-tabs__item-inner--active.t-tabs__item-inner--tag {
+      height: 50rpx !important;
+    }
+  }
+}

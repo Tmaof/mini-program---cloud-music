@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "mc-video":"/packages/package-musicApp/components/mc-video/video"
+  }
+}
