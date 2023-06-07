@@ -20,3 +20,13 @@ export function getMCmylike() {
     method: 'post'
   })
 }
+
+/**
+ * 获取我收藏的视频
+ */
+export function getMCalbum() {
+  return request({
+    url: '/album/sublist',
+    method: 'POST'
+  })
+}
