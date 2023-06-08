@@ -5,14 +5,15 @@ page {
   --shadowColor: gainsboro;
   --shadowColor-fade: rgba(220, 220, 220, 0.514);
   // 主题色
-   --page-bg-color:rgba(226, 223, 223, 0.247);//页面底色
+  --page-bg-color: rgba(226, 223, 223, 0.247); //页面底色
   --themeColor: rgb(43, 148, 247);
   --grey: grey;
   --grey-deep: rgb(112, 111, 111);
   --red: rgb(250, 92, 92);
   --black: rgb(61, 46, 46);
-  --white:white;
+  --white: white;
   // 边框
+  --b-r-size-small: 5px;
   --b-r-size: 10px; //border-radius
   // 内边距
   --padding-small: 5px;
@@ -25,7 +26,8 @@ page {
   --page-padding-larger: 20px;
   // 外边距
   --margin: 10px;
-  --margin-large: 10px;
+  --margin-large: 15px;
+  --margin-larger: 20px;
   --card-margin: 10px;
   --card-margin-large: 15px;
   --card-margin-larger: 20px;
@@ -37,4 +39,5 @@ page {
   --font-size-larger: 40rpx;
   // 字符间距 letter-spacing
   --let-spa: 2px;
+  --let-spa-large: 3px;
 }

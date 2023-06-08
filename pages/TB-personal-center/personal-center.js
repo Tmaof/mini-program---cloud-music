@@ -14,6 +14,9 @@ import {
 import Message from 'tdesign-miniprogram/message/index';
 Page({
   behaviors: [injectAppStore, injectUserStore],
+  options: {
+    styleIsolation:'apply-shared'
+  },
   /**
    * 页面的初始数据
    */
@@ -35,7 +38,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    this.setTabBarIndexValue(2)
   },
 
   /**
@@ -45,7 +48,7 @@ Page({
     // 清除cookie
     manageCookie('set', undefined)
     //清除用户信息
-    this.setUserInfo(null)
+    this.clearUserInfo()
     // 发送请求
     logout()
     // 消息提示
@@ -97,7 +100,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.setTabBarIndexValue(2)
+
   },
 
   /**

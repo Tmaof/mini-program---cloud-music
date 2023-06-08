@@ -1,3 +1,16 @@
+var areaList = require('../../data/area.wxs')
+
+/**
+ * 补0
+ * @param {string} number 
+ * @returns {string}
+ */
+function formatToTwoDigits(number) {
+  if (number >= 0 && number <= 9) {
+    number = '0' + number
+  }
+  return number
+}
 module.exports = {
   /**
    * 将多个作者名进行拼接
@@ -12,6 +25,7 @@ module.exports = {
     }
     return strlist.join('/')
   },
+
   /**
    * 获取相对今天的时间
    * @param timespan 上一次的时间
@@ -64,17 +78,41 @@ module.exports = {
     minute = formatToTwoDigits(minute)
 
     return minute + ':' + second
-  }
-}
+  },
 
-/**
- * 补0
- * @param {string} number 
- * @returns {string}
- */
-function formatToTwoDigits(number) {
-  if (number >= 0 && number <= 9) {
-    number = '0' + number
+  /**
+   * 
+   * @param number 
+   */
+  formatTimeYMD: function (timespan) {
+    if (isNaN(timespan)) {
+      return 
+    }
+    var dateTime = getDate(timespan) // 将传进来的字符串或者毫秒转为标准时间
+    var year = dateTime.getFullYear()
+    var month = dateTime.getMonth() + 1
+    var day = dateTime.getDate()
+    month = formatToTwoDigits(month)
+    day = formatToTwoDigits(day)
+    return '' + year + '-' + month + '-' + day
+  },
+  /**
+   * 根据id获取省份和城市
+   */
+  getProvinceCity: function (pid, cid) {
+    var pro = null
+    for (i = 0; i < areaList.length; i++) {
+      if (areaList[i].id == pid) {
+        pro = areaList[i]
+        break
+      }
+    }
+    if (pro) {
+      var pName = pro.name
+      var cName = pro.cities[cid]
+      // console.log(pro.cities[cid])//不支持
+      return pName
+    }
+    return ''
   }
-  return number
 }

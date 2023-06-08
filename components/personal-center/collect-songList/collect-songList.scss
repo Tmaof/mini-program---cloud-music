@@ -1,0 +1,10 @@
+// 引入模板样式
+@import "../../../template/more-operations-item/more-operations-item.scss";
+
+.collect-songList-container {
+  .empty-tips {
+    text-align: center;
+    font-size: var(--font-size-small);
+    color: var(--grey-deep);
+  }
+}

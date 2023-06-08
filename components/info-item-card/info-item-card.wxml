@@ -1,0 +1,21 @@
+<navigator url="{{props.url}}" data-params="{{props.params}}">
+  <view class="info-item-card-container">
+    <view class="left-cover">
+      <image class="image" src="{{props.cover||'/assets/img/test.gif'}}" style="width: {{props.w||'120rpx'}};height:{{props.h||'120rpx'}} ;" mode="aspectFill" />
+    </view>
+    <view class="right-info">
+      <view class="name single-line-overflow ">
+        {{props.name||'因失误成就歌手名场面'}}
+      </view>
+      <view class="bot-info ">
+        <view class="bot-info-l single-line-overflow">
+          {{props.infoL||'by 油条 Music'}}
+        </view>
+        <view class="bot-info-r">
+          {{props.infoR}}
+          <!-- ||'昨天 19:06' -->
+        </view>
+      </view>
+    </view>
+  </view>
+</navigator>

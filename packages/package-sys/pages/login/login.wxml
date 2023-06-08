@@ -1,9 +1,9 @@
+<!-- 消息 -->
+<t-message id="t-message" />
 <view class="login-container">
-  <!-- 消息 -->
-  <t-message id="t-message" />
   <!-- 背景图 -->
   <view class="bg">
-    <image src="/packages/package-sys/assets/img/login-bg1.jpg" mode="aspectFill" />
+    <image class="image" src="/packages/package-sys/assets/img/login-bg1.jpg" mode="aspectFill" />
   </view>
   <!-- 登录按钮 -->
   <view class="btn-container">
@@ -21,7 +21,7 @@
           使用 <text class="bold">网易云音乐APP</text> 扫码登录
         </view>
         <view class="qrimg-container">
-          <image src="{{qrImg}}" mode="aspectFit" />
+          <image class="image" src="{{qrImg}}" mode="aspectFit" />
           <view class="refresh" style="display: {{isRefreshQr?'':'none'}};">
             <t-button bindtap="onClickQrLoginBtn" size="small">刷新</t-button>
           </view>

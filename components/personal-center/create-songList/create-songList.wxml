@@ -1,0 +1,14 @@
+<!-- 引入模板 -->
+<import src="/template/more-operations-item/more-operations-item"></import>
+<view class="create-songList-container">
+  <home-item-card title="创建歌单" titleStyle="small" showUnderline="{{false}}" popuptitle="我创建的歌单(0)">
+    <!-- 默认插槽 -->
+    <view class="add-icon icon-Add iconfont ">
+      
+    </view>
+    <!-- 点击更多的弹出层 -->
+    <view slot='popup-body' class="create-songList-popup-more">
+      <template is="more-operations-item" data="{{...addSongListData}}"></template>
+    </view>
+  </home-item-card>
+</view>

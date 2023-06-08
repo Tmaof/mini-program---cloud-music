@@ -10,8 +10,8 @@ export const injectUserStore = Behavior({
     attached() {
       this.storeBindings = createStoreBindings(this, {
         store: userStore,
-        fields: ['userInfo','isUserLogin'],
-        actions: ['setUserInfo', 'updateUserInfo']
+        fields: ['userInfo', 'isUserLogin', 'collectSongList', 'userLikeSongLIst'],
+        actions: ['setUserInfo', 'updateUserInfo', 'clearUserInfo']
       })
     },
     detached() {

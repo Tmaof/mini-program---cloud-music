@@ -4,11 +4,6 @@
     position: relative;
     height: 350rpx;
     // background: chartreuse;
-    &::before {
-      content: "";
-      display: block;
-      height: 1px;
-    }
 
     // 背景图
     .user-bg {
@@ -55,6 +50,14 @@
         word-spacing: 2px;
         letter-spacing: 2px;
       }
+
+      // 用户签名
+      .signature {
+        font-family: fantasy;
+        // font-style: italic;
+        text-align: center;
+        font-size: var(--font-size-small);
+      }
     }
 
     // 返回过渡效果
@@ -65,18 +68,21 @@
 
   // 音乐app卡片
   .music-app {
-    margin-top: 30px;
-    .app-item {
-      padding: 10px;
-      // background: gold;
-    }
-    .icon {
-      color: var(--themeColor);
-    }
-    .text {
-      text-align: center;
-      font-size: small;
-      color: gray;
+    margin-top: 40px;
+    .app-row {
+      margin: var(--margin) 0;
+      .app-item {
+        padding: 10px;
+        // background: gold;
+      }
+      .icon {
+        color: var(--themeColor);
+      }
+      .text {
+        text-align: center;
+        font-size: small;
+        color: gray;
+      }
     }
   }
 
@@ -102,6 +108,7 @@
         font-weight: bold;
       }
       .num {
+        margin-top: var(--margin);
         font-size: small;
         color: var(--grey);
       }
@@ -116,5 +123,10 @@
       box-shadow: 0 0 var(--shadowLen-mini) var(--shadowColor);
       // background: gold;
     }
+  }
+
+  // 歌单操作
+  .songList-operate-tabs {
+    margin-top: var(--card-margin-larger);
   }
 }

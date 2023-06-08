@@ -3,6 +3,8 @@
   margin-top: 10px;
   // background: chartreuse;
   border-bottom: 1px solid ghostwhite;
+
+  // 头部
   .header {
     display: flex;
     justify-content: space-between;
@@ -17,9 +19,21 @@
       // background: lemonchiffon;
       font-size: medium;
       font-weight: bold;
-      .icon {
-        width: 20px;
-        font-size: 32rpx;
+
+      // 大标题样式
+      .title-style-large {
+        display: flex;
+        align-items: center;
+        .icon {
+          width: 20px;
+          font-size: 32rpx;
+        }
+      }
+
+      // 小标题样式
+      .title-style-small {
+        font-size: var(--font-size-smaller);
+        color: var(--grey-deep);
       }
     }
 
@@ -32,8 +46,26 @@
     }
   }
 
+  // 身体
   .body {
     // height: 220rpx;
     // background: gold;
+  }
+
+  // 点击更多按钮的弹出层
+  .popup {
+    padding: 0 var(--padding-larger) var(--padding-larger);
+    .header {
+      .title {
+        font-size: var(--font-size-smaller);
+        color: var(--grey-deep);
+      }
+
+      .right-icon {
+      }
+    }
+
+    .body {
+    }
   }
 }

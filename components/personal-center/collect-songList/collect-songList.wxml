@@ -1,0 +1,29 @@
+<!-- 引入模板 -->
+<import src="/template/more-operations-item/more-operations-item"></import>
+
+<view class="collect-songList-container">
+  <home-item-card title="收藏歌单({{collectSongList.length}}个)" titleStyle="small" showUnderline="{{false}}" popuptitle="我收藏的歌单(0)">
+    <!-- 默认插槽 -->
+    <view wx:if="collectSongList.length">
+      <info-item-card wx:for="{{collectSongList}}" wx:key="id" props="{{module.getProps(item)}}"></info-item-card>
+    </view>
+    <view wx:else class="empty-tips">
+      暂无收藏的歌单
+    </view>
+    <!-- 点击更多的弹出层 -->
+    <view slot='popup-body' class="create-songList-popup-more">
+      <template is="more-operations-item" data="{{...manageSongListData}}"></template>
+    </view>
+  </home-item-card>
+</view>
+<wxs module="module">
+  module.exports = {
+    getProps: function (item) {
+      return {
+        cover: item.coverImgUrl,
+        name: item.name,
+        infoL: item.trackCount + '首,' + ' by ' + item.creator.nickname
+      }
+    }
+  }
+</wxs>

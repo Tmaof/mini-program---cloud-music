@@ -2,15 +2,17 @@
   position: relative;
   width: 100vw;
   height: 100vh;
+
   .bg {
     position: absolute;
     width: 100%;
     height: 100%;
-    image {
+    .image {
       width: 100%;
       height: 100%;
     }
   }
+
   .btn-container {
     position: absolute;
     left: 50%;
@@ -19,8 +21,8 @@
 
     .btn-login {
       width: 80vw;
-      margin-top: 10px;
-      letter-spacing: 2px;
+      margin-top: var(--margin);
+      letter-spacing: var(--let-spa);
     }
   }
   // 扫码弹出层
@@ -42,6 +44,7 @@
           height: 90%;
         }
       }
+
       .qr {
         flex: 1 1;
         display: flex;
@@ -54,12 +57,12 @@
           position: relative;
           width: 300rpx;
           height: 300rpx;
-          padding: 5px;
+          padding: var(--padding-small);
           margin: 40rpx 0;
-          border-radius: 5px;
-          box-shadow: 0 0 $shadowLen $shadowColor;
+          border-radius: var(--b-r-size-small);
+          box-shadow: 0 0 var(--shadowLen) var(--shadowColor);
 
-          image {
+          .image {
             width: 100%;
             height: 100%;
           }
@@ -86,7 +89,7 @@
         }
 
         .status {
-          font-size: xx-small;
+          font-size: var(--font-size-smaller);
           font-weight: bold;
           color: rgb(92, 87, 87);
         }

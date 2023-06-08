@@ -20,6 +20,23 @@ class Requester {
     Object.assign(this.defaultOptions, options)
   }
 
+  _getOptions(options) {
+    if (!options.url) return Promise.reject(new Error('未配置url'))
+    if (/^(\/) /.test(options.url)) {
+      options.url = options.url.slice(1)
+    }
+    options.header = options.header || {}
+    options.data = options.data || {}
+    options.formData = options.formData || {}
+    // 调用请求拦截器
+    const newOptions = this.requestIntercept(options) || options
+    const retOptions = {
+      ...this.defaultOptions,
+      ...newOptions,
+    }
+    retOptions.url = this.baseUrl + newOptions.url
+    return retOptions
+  }
 
   /**
    * 封装 wx.request 
@@ -32,20 +49,11 @@ class Requester {
    * }} options 
    */
   request(options) {
-    if (!options.url) return Promise.reject(new Error('未配置url'))
-    if (/^(\/) /.test(options.url)) {
-      options.url = options.url.slice(1)
-    }
-    options.header = options.header || {}
-    options.data = options.data || {}
-    // 调用请求拦截器
-    const newOptions = this.requestIntercept(options) || options
     return new Promise((resolve, reject) => {
       const req = wx.request.bind(this)
+      options = this._getOptions(options)
       req({
-        ...this.defaultOptions,
-        ...newOptions,
-        url: this.baseUrl + newOptions.url,
+        ...options,
         success: (res) => {
           // 调用响应拦截器
           const newRes = this.responseIntercept(res)
@@ -59,6 +67,44 @@ class Requester {
       })
     })
   }
+
+  /**
+   * 上传文件
+   * 
+   * url string  开发者服务器地址
+   * filePath string  要上传文件资源的路径(本地路径)
+   * name string  文件对应的 key， 开发者在服务端可以通过这个 key 获取文件的二进制内容
+   * formData Object (可选) HTTP 请求中其他额外的 form data
+   * @param {{filePath:string,name:string,url:string}} options
+   */
+  uploadFile(options) {
+    return new Promise((resolve, reject) => {
+      options = this._getOptions(options)
+      // console.log(options)
+      delete options.method
+      options.formData = {
+        ...options.formData,
+        ...options.data
+      }
+      delete options.data
+      options.formData.cookie = manageCookie('get') //必须携带cookie
+      // console.log(options, 'options')
+      wx.uploadFile({
+        ...options,
+        success: (res) => {
+          // 调用响应拦截器
+          const newRes = this.responseIntercept(res)
+          resolve(newRes || res)
+        },
+        fail: (err) => {
+          // 调用错误拦截器
+          this.errIntercept(err)
+          reject(err)
+        }
+      })
+    })
+  }
+
   /**
    * 请求拦截器
    * @param {*} options 
@@ -77,6 +123,7 @@ class Requester {
     if (/(post)/i.test(options.method)) {
       options.data.cookie = manageCookie('get')
       const timestamp = 'timestamp=' + Date.now()
+      // const timestamp = 'timestamp=1'
       if (/\?/.test(options.url)) {
         options.url = options.url + `&` + timestamp
       } else {
@@ -92,7 +139,17 @@ class Requester {
    * @param {*} res 
    */
   responseIntercept(res) {
-
+    const {
+      code,
+      message,
+      msg
+    } = res.data
+    if (code && code != 200) {
+      wx.showModal({
+        title: '错误',
+        content: msg || message
+      })
+    }
     return res.data
   }
 
@@ -102,10 +159,9 @@ class Requester {
    */
   errIntercept(error) {
     console.error(error)
-    wx.showToast({
-      title: error.errMsg,
-      icon: 'none',
-      duration: 5000,
+    wx.showModal({
+      title: '错误',
+      content: error.errMsg,
     })
   }
 
@@ -126,4 +182,17 @@ const REQ = new Requester(null, config.baseUrl)
  */
 export const request = function (options) {
   return REQ.request(options)
+}
+
+/**
+ * 上传文件
+ * 
+ * url string  开发者服务器地址
+ * filePath string  要上传文件资源的路径(本地路径)
+ * name string  文件对应的 key， 开发者在服务端可以通过这个 key 获取文件的二进制内容
+ * formData Object (可选) HTTP 请求中其他额外的 form data
+ * @param {{filePath:string,name:string,url:string}} options
+ */
+export const uploadFile = function (options) {
+  return REQ.uploadFile(options)
 }

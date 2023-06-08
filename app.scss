@@ -19,6 +19,7 @@ scroll-view {
   width: auto;
   height: calc(100vh - 86px);
   margin: 10px;
+  overflow: auto;
 }
 
 .iconfont {

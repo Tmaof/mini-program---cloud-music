@@ -5,10 +5,7 @@
   "pages": [
     "pages/TB-home/home",
     "pages/TB-video/video",
-    "pages/TB-personal-center/personal-center",
-    "packages/package-musicApp/pages/recent-play/recent-play",
-    "packages/package-musicApp/pages/my-collection/my-collection",
-    "packages/package-musicApp/pages/mylike-video/mylike-video"
+    "pages/TB-personal-center/personal-center"
   ],
   "subPackages": [
     {
@@ -16,6 +13,16 @@
       "name": "sys",
       "pages": [
         "pages/login/login"
+      ]
+    },
+    {
+      "root": "packages/package-musicApp",
+      "name": "musicApp",
+      "pages": [
+        "pages/recent-play/recent-play",
+        "pages/my-collection/my-collection",
+        "pages/mylike-video/mylike-video",
+        "pages/edit-info/edit-info"
       ]
     }
   ],
@@ -34,11 +41,22 @@
     ]
   },
   "usingComponents": {
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "info-item-card": "./components/info-item-card/info-item-card",
     "t-button": "tdesign-miniprogram/button/button",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-message": "tdesign-miniprogram/message/message",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
-    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "t-upload": "tdesign-miniprogram/upload/upload",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-radio": "tdesign-miniprogram/radio/radio",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar"
   },
   "window": {
     "navigationBarTitleText": "云音乐",

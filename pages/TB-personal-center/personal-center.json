@@ -1,7 +1,9 @@
 {
   "usingComponents": {
-    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+   
     "t-row": "tdesign-miniprogram/row/row",
-    "t-col": "tdesign-miniprogram/col/col"
+    "t-col": "tdesign-miniprogram/col/col",
+    "create-songList": "/components/personal-center/create-songList/create-songList",
+    "collect-songList": "/components/personal-center/collect-songList/collect-songList"
   }
 }

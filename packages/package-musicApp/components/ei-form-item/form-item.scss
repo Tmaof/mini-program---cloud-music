@@ -1,0 +1,20 @@
+.form-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding);
+  background: var(--white);
+  border-bottom: 1px solid var(--shadowColor-fade);
+
+  .title {
+  }
+
+  .operate {
+    flex:1 1;
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    font-style: var(--font-size-small);
+    color: var(--grey-deep);
+  }
+}

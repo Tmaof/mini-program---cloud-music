@@ -1,0 +1,35 @@
+.edit-info-container {
+  padding: var(--padding);
+  // 覆盖TDesign样式
+  .upload {
+    .t-grid-item {
+      width: 100% !important;
+    }
+    .t-upload__wrapper,
+    .t-badge {
+      width: 100rpx !important;
+      height: 100rpx !important;
+    }
+  }
+  // 覆盖TDesign样式
+  .input.t-input--border::after {
+    display: none;
+  }
+
+  // 生日
+  .btn-pickDate {
+  }
+
+  // 签名
+  .textarea {
+    .operate {
+      display: block !important;
+    }
+  }
+
+  // 保存修改
+  .btn-save{
+    display: flex;
+    margin: var(--margin-large);
+  }
+}

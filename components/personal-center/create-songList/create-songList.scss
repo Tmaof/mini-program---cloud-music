@@ -1,0 +1,8 @@
+// 引入模板样式
+@import "../../../template/more-operations-item/more-operations-item.scss";
+
+.create-songList-container {
+  .add-icon {
+    color: var(--grey);
+  }
+}

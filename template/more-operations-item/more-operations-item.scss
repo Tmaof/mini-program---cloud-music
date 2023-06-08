@@ -1,0 +1,18 @@
+.more-operations-item-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50rpx;
+  margin: var(--margin-large) 0;
+  // background: gold;
+
+  .left-icon {
+    width: var(--font-size-larger);
+    font-size: var(--font-size-larger);
+    margin: 0 var(--margin);
+  }
+
+  .right-title {
+    letter-spacing: var(--let-spa);
+  }
+}

@@ -36,6 +36,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "编辑信息",
+          "pathName": "packages/package-musicApp/pages/edit-info/edit-info",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

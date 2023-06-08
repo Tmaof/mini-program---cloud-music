@@ -1,4 +1,4 @@
-<view class="my-center-container tab-bar-page">
+<view class="my-center-container tab-bar-page tab-bar-page">
   <!-- 消息提示 -->
   <t-message id="t-message" />
 
@@ -23,74 +23,95 @@
       <navigator wx:else hover-class="none" class="login-text" url="/packages/package-sys/pages/login/login">
         立即登录
       </navigator>
+      <!-- 用户签名 -->
+      <view class="signature">
+        {{userInfo.signature}}
+      </view>
     </view>
   </view>
 
   <!-- 音乐app -->
   <view class="music-app my-card">
-    <t-row>
-      <t-col span="6" class="app-item">
-        <navigator hover-class="none" url="/packages/package-musicApp/pages/recent-play/recent-play">
-          <view class="icon icon-diantai iconfont">
+    <view class="app-row">
+      <t-row>
+        <t-col span="6" class="app-item">
+          <navigator hover-class="none" url="/packages/package-musicApp/pages/recent-play/recent-play">
+            <view class="icon icon-shipin1 iconfont">
+            </view>
+            <view class="text">
+              最近播放
+            </view>
+          </navigator>
+        </t-col>
+        <t-col span="6" class="app-item">
+          <navigator hover-class="none" url="/packages/package-musicApp/pages/my-collection/my-collection">
+            <view class="icon icon-shoucang iconfont">
+            </view>
+            <view class="text">
+              我的收藏
+            </view>
+          </navigator>
+        </t-col>
+        <t-col span="6" class="app-item">
+          <navigator hover-class="none" url="/packages/package-musicApp/pages/mylike-video/mylike-video">
+            <view class="icon icon-tuijian iconfont">
+            </view>
+            <view class="text">
+              我的点赞
+            </view>
+          </navigator>
+        </t-col>
+        <t-col wx:if="{{isUserLogin}}" span="6" class="app-item">
+          <navigator hover-class="none" url="/packages/package-musicApp/pages/edit-info/edit-info">
+            <view class="icon icon-bianji iconfont">
+            </view>
+            <view class="text">
+              编辑资料
+            </view>
+          </navigator>
+        </t-col>
+      </t-row>
+    </view>
+    <view class="app-row">
+      <t-row>
+        <!-- 退出登录 -->
+        <t-col wx:if="{{isUserLogin}}" span="6" class="app-item" bindtap="onLogout">
+          <view class="icon icon-tuichudenglu iconfont">
           </view>
           <view class="text">
-            最近播放
+            退出登录
           </view>
-        </navigator>
-      </t-col>
-      <t-col span="6" class="app-item">
-        <navigator hover-class="none" url="/packages/package-musicApp/pages/my-collection/my-collection">
-          <view class="icon icon-diantai iconfont">
-          </view>
-          <view class="text">
-            我的收藏
-          </view>
-        </navigator>
-      </t-col>
-      <t-col span="6" class="app-item">
-        <navigator hover-class="none" url="/packages/package-musicApp/pages/mylike-video/mylike-video">
-          <view class="icon icon-diantai iconfont">
-          </view>
-          <view class="text">
-            我的点赞
-          </view>
-        </navigator>
-      </t-col>
-      <t-col span="6" class="app-item">
-        <navigator hover-class="none" url="/packages/package-musicApp/pages/recent-play/recent-play">
-          <view class="icon icon-diantai iconfont">
-          </view>
-          <view class="text">
-            编辑资料
-          </view>
-        </navigator>
-      </t-col>
-    </t-row>
-    <t-row>
-      <!-- 退出登录 -->
-      <t-col wx:if="{{isUserLogin}}" span="6" class="app-item" bindtap="onLogout">
-        <view class="icon icon-tuichudenglu iconfont">
-        </view>
-        <view class="text">
-          退出登录
-        </view>
-      </t-col>
-    </t-row>
+        </t-col>
+      </t-row>
+    </view>
+
   </view>
 
   <!-- 我喜欢的音乐 -->
   <view class="mylove my-card">
-    <image class="cover" src="/assets/img/test.gif" mode="" />
+    <image wx:if="{{userLikeSongLIst.coverImgUrl}}" class="cover" src="{{userLikeSongLIst.coverImgUrl}}" mode="aspectFill" />
     <view class="info">
       <view class="title">
         我喜欢的音乐
       </view>
       <view class="num">
-        10首
+        {{userLikeSongLIst.trackCount||0}} 首
       </view>
     </view>
     <view class="btn-love">
       <text>心动模式</text>
     </view>
+  </view>
+
+  <!-- 歌单操作 -->
+  <view class="songList-operate-tabs my-card">
+    <t-tabs default-value="0">
+      <t-tab-panel label="创建歌单" value="0">
+        <create-songList></create-songList>
+      </t-tab-panel>
+      <t-tab-panel label="收藏歌单" value="1">
+        <collect-songList></collect-songList>
+      </t-tab-panel>
+    </t-tabs>
   </view>
 </view>

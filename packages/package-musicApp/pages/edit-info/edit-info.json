@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "ei-form-item": "/packages/package-musicApp/components/ei-form-item/form-item"
+  }
+}

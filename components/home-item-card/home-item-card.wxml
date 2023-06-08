@@ -1,18 +1,45 @@
-<view class="home-item-card-container">
+<view class="home-item-card-container" style="border-bottom:{{showUnderline?'':'none'}}">
+  <!-- 头部 -->
   <view class="header">
+    <!-- 左侧 -->
     <view class="left">
-      <text>{{title}}</text>
-      <view class="icon iconfont icon-youjiantou">
-
+      <!-- 大标题样式 -->
+      <view wx:if="{{titleStyle=='large'}}" class="title-style-large">
+        <text>{{title}}</text>
+        <view class="icon iconfont icon-youjiantou">
+        </view>
+      </view>
+      <!-- 小标题样式 -->
+      <view wx:else class="title-style-small">
+        <text>{{title}}</text>
       </view>
     </view>
+    <!-- 右侧 -->
     <view class="right">
-      <view class="icon icon-androidgengduo iconfont">
-
+      <view class="icon icon-androidgengduo iconfont" bindtap="onShowPopup">
       </view>
     </view>
   </view>
+  <!-- 身体 -->
   <view class="body">
     <slot></slot>
   </view>
+  <!-- 点击更多按钮的弹出层 -->
+  <t-popup close-on-overlay-click class="popup" bind:visible-change="onVisibleChange" visible="{{popupVisible}}" placement="{{ popupPlacement}}">
+    <view>
+      <view class="header">
+        <view class="title">
+          <!-- 标题文字 -->
+          {{popuptitle||'标题文字'}}
+        </view>
+        <view class="right-icon">
+        </view>
+      </view>
+      <view class="body">
+        <!-- 默认内容 -->
+        <slot name="popup-body"></slot>
+      </view>
+    </view>
+
+  </t-popup>
 </view>

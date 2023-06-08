@@ -1,0 +1,9 @@
+<template name="more-operations-item">
+  <view class="more-operations-item-container">
+    <view class="left-icon iconfont {{iconClass||'icon-androidgengduo'}}">
+    </view>
+    <view class="right-title">
+      {{title||'默认标题'}}
+    </view>
+  </view>
+</template>

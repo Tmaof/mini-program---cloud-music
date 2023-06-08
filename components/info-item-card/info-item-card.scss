@@ -1,0 +1,41 @@
+.info-item-card-container {
+  display: flex;
+  padding: var(--page-padding);
+  // 封面
+  .left-cover {
+    .image {
+      border-radius: var(--b-r-size);
+    }
+  }
+
+  // 右侧信息
+  .right-info {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 75%;
+    margin-left: var(--margin);
+    padding: var(--padding-small) 0;
+
+    // 名字
+    .name {
+    }
+
+    // 信息
+    .bot-info {
+      display: flex;
+      justify-content: space-between;
+
+      font-size: var(--font-size-smaller);
+      color: var(--grey);
+
+      .bot-info-l {
+        max-width: 78%;
+      }
+
+      .bot-info-r {
+      }
+    }
+  }
+}

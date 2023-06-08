@@ -1,0 +1,9 @@
+
+  <view class="form-item my-card-fade">
+    <view class="title">
+      {{title||'默认内容'}}
+    </view>
+    <view class="operate">
+      <slot></slot>
+    </view>
+  </view>

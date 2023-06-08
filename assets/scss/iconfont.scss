@@ -1,11 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4099903 */
-  src: url("//at.alicdn.com/t/c/font_4099903_pv3hjixk6rn.woff2?t=1686051965376")
-      format("woff2"),
-    url("//at.alicdn.com/t/c/font_4099903_pv3hjixk6rn.woff?t=1686051965376")
-      format("woff"),
-    url("//at.alicdn.com/t/c/font_4099903_pv3hjixk6rn.ttf?t=1686051965376")
-      format("truetype");
+  src: url('//at.alicdn.com/t/c/font_4099903_4gwyfj9untx.woff2?t=1686214514551') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4099903_4gwyfj9untx.woff?t=1686214514551') format('woff'),
+       url('//at.alicdn.com/t/c/font_4099903_4gwyfj9untx.ttf?t=1686214514551') format('truetype');
 }
 
 .iconfont {
@@ -16,8 +13,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-dianzan:before {
-  content: "\e651";
+.icon-bianji:before {
+  content: "\e601";
+}
+
+.icon-shoucang:before {
+  content: "\e906";
+}
+
+.icon-Add:before {
+  content: "\e663";
+}
+
+.icon-add:before {
+  content: "\e623";
+}
+
+.icon-menu:before {
+  content: "\e801";
 }
 
 .icon-MV:before {
