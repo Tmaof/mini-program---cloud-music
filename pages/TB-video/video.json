@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "commend-video": "/components/video-center/commend-video/commend-video",
+    "mv-video": "/components/video-center/mv-video/mv-video"
+  }
 }

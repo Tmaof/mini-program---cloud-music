@@ -3,9 +3,9 @@
   "projectname": "%E4%BA%91%E9%9F%B3%E4%B9%90(JS%E7%89%88)",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": true
+    "urlCheck": false
   },
-  "libVersion": "2.32.0",
+  "libVersion": "2.32.3",
   "condition": {
     "miniprogram": {
       "list": [
@@ -40,6 +40,13 @@
         {
           "name": "编辑信息",
           "pathName": "packages/package-musicApp/pages/edit-info/edit-info",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "视频中心",
+          "pathName": "pages/TB-video/video",
           "query": "",
           "launchMode": "default",
           "scene": null

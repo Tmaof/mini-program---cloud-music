@@ -5,11 +5,23 @@ from '@/behaviors/injectAppStore'
 
 Page({
   behaviors: [injectAppStore],
+  options: {
+    styleIsolation: 'shared'
+  },
   /**
    * 页面的初始数据
    */
   data: {
+    TabValue:'commend',
+  },
 
+  /**
+   * 切换tab页
+   */
+  ontabChange(e) {
+    this.setData({
+      TabValue: e.detail.value
+    })
   },
 
   /**
@@ -30,7 +42,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
- 
+
   },
 
   /**
@@ -58,7 +70,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    const select = this.data.TabValue == 'commend' ? '.commend-video' : '.mv-video'
+    const child = this.selectComponent(select)
+    // 下拉加载更多
+    child._loadMore()
   },
 
   /**

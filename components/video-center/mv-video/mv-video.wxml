@@ -1,0 +1,27 @@
+<view class="mv-video-container">
+  <view wx:for="{{mvVideoList}}" wx:key="id" class="mv-video-item-card">
+    <!-- 封面 -->
+    <view class="cover">
+      <image class="img" src="{{item.cover}}" mode="aspectFill" />
+    </view>
+    <!-- 标题 -->
+    <view class="title single-line-overflow">
+      {{item.name}}
+    </view>
+    <!-- 底部 -->
+    <view class="footer">
+      <view class="left">
+        <!-- 头像 -->
+        <image class="profile-photo" src="/assets/img/test.gif" alt="aspectFill" />
+        <!-- 名字 -->
+        <text class="author-name single-line-overflow">{{item.artistName}}</text>
+      </view>
+      <view class="right">
+        <view class="like">
+          290
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

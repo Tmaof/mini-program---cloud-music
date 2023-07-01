@@ -23,7 +23,7 @@ page {
 // 单行文本溢出
 // 注意还需要给元素或者父元素设置宽度
 .single-line-overflow {
-  display: block !important;
+  display:block !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;

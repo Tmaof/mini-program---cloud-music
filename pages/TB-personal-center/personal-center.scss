@@ -36,7 +36,6 @@
         transform: translate(-50%, -50%);
       }
 
-      .login-text,
       .user-name {
         display: block;
         overflow: hidden;
@@ -49,6 +48,23 @@
         font-weight: bold;
         word-spacing: 2px;
         letter-spacing: 2px;
+      }
+
+      .login-text {
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+        text-align: center;
+        line-height: 150rpx;
+        font-size: large;
+        font-weight: bold;
+        word-spacing: 2px;
+        letter-spacing: 2px;
+        .iconfont {
+          width: auto;
+          color: var(--black);
+          font-size: var(--font-size);
+        }
       }
 
       // 用户签名
@@ -128,5 +144,11 @@
   // 歌单操作
   .songList-operate-tabs {
     margin-top: var(--card-margin-larger);
+
+    .no-collect-songList {
+      text-align: center;
+      margin-bottom: var(--margin-large);
+      color: var(--grey);
+    }
   }
 }

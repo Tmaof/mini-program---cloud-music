@@ -1,1 +1,9 @@
-/* pages/TB-video/video.wxss */
+.video-center-container {
+  // 覆盖tabs默认选中样式
+  .t-tabs__item-inner--active {
+    padding: var(--padding-small) var(--padding);
+    border-radius: var(--b-r-size);
+    background: var(--themeColor);
+    color: var(--white);
+  }
+}

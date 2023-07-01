@@ -144,12 +144,12 @@ class Requester {
       message,
       msg
     } = res.data
-    if (code && code != 200) {
-      wx.showModal({
-        title: '错误',
-        content: msg || message
-      })
-    }
+    // if (code && code != 200) {
+    //   wx.showModal({
+    //     title: '错误',
+    //     content: msg || message
+    //   })
+    // }
     return res.data
   }
 

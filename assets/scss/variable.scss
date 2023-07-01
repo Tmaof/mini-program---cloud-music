@@ -5,7 +5,7 @@ page {
   --shadowColor: gainsboro;
   --shadowColor-fade: rgba(220, 220, 220, 0.514);
   // 主题色
-  --page-bg-color: rgba(226, 223, 223, 0.247); //页面底色
+  --page-bg-color: rgba(255, 255, 255, 0.247); //页面底色
   --themeColor: rgb(43, 148, 247);
   --grey: grey;
   --grey-deep: rgb(112, 111, 111);
@@ -25,6 +25,7 @@ page {
   --page-padding-large: 15px;
   --page-padding-larger: 20px;
   // 外边距
+  --margin-small: 5px;
   --margin: 10px;
   --margin-large: 15px;
   --margin-larger: 20px;
@@ -38,6 +39,7 @@ page {
   --font-size-large: 36rpx;
   --font-size-larger: 40rpx;
   // 字符间距 letter-spacing
+  --let-spa-small: 1px;
   --let-spa: 2px;
   --let-spa-large: 3px;
 }
