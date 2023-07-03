@@ -3,11 +3,7 @@
 
 .rank-list-card-container {
   height: 500rpx;
-  padding: 10px;
   margin: 5px;
-  background: white;
-  border-radius: 10rpx;
-  box-shadow: 0 0 5px rgba(36, 36, 36, 0.11);
   .header {
     display: flex;
     justify-content: space-between;
@@ -33,7 +29,8 @@
 
   .body {
     height: 400rpx;
-    margin-top: 10px;
+    margin-top: 10px ;
+    padding-bottom: 10px;
     // background: gold;
   }
 }

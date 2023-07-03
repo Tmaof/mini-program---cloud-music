@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "song-list": "/components/common/song-list/song-list"
+  }
+}

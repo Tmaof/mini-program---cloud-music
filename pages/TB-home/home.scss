@@ -19,11 +19,14 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      .iconfont{
+        font-size: var(--font-size-larger);
+      }
       .item-icon {
         width: 80rpx;
         height: 80rpx;
         border-radius: 50%;
-        background: linear-gradient(145deg, #f1f0f0, #fbfbfb);
+        background: linear-gradient(145deg, #e9e9e9, #ffffff);
         // box-shadow: 20px 20px 60px #c8c8c8, -20px -20px 60px #ffffff;
       }
       text {

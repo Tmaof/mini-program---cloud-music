@@ -1,0 +1,52 @@
+// 播放控制器
+.playback-controll-container {
+  display: flex;
+  align-items: center;
+  margin: 0 40px 5px;
+  padding: 3px 10px;
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--shadowColor);
+
+  // 封面
+  .cover {
+    display: flex;
+    position: relative;
+    align-items: center;
+    .disc {
+      width: 60rpx;
+      height: 60rpx;
+    }
+    .img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      width: 40rpx;
+      height: 40rpx;
+    }
+  }
+  // 歌名
+  .name {
+    flex: 1 1;
+    max-width: 70%;
+    padding: 0 10px;
+    font-size: var(--font-size-small);
+  }
+  // 控制
+  .controll {
+    width: 32rpx;
+    margin-right: 30rpx;
+    color: var(--black);
+    &.iconfont {
+      font-size: var(--font-size-larger);
+    }
+  }
+  // 播放列表
+  .playlist {
+    font-size: 40rpx;
+    width: 40rpx;
+    color: var(--black);
+  }
+}

@@ -5,7 +5,7 @@
 // scss文件
 @import "./assets//scss/index.scss";
 // 清除TDesign的一些样式
-@import './assets/scss/fix-TDesign.scss';
+@import "./assets/scss/fix-TDesign.scss";
 
 // 采用边框盒模型
 page,
@@ -14,10 +14,10 @@ scroll-view {
   box-sizing: border-box;
 }
 
-// tab-bar页面都为 tab-bar 留出 86px
+// tab-bar页面都为 tab-bar 留出 底部空间
 .tab-bar-page {
   width: auto;
-  height: calc(100vh - 86px);
+  height: calc(100vh - 100px);
   margin: 10px;
   overflow: auto;
 }
@@ -26,8 +26,7 @@ scroll-view {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 60rpx;
+  font-size: var(--font-size);
+  width: var(--font-size);
   color: var(--themeColor);
 }

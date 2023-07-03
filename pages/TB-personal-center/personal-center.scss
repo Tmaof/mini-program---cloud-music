@@ -90,14 +90,16 @@
       .app-item {
         padding: 10px;
         // background: gold;
-      }
-      .icon {
-        color: var(--themeColor);
-      }
-      .text {
-        text-align: center;
-        font-size: small;
-        color: gray;
+
+        .iconfont {
+          width: 100%;
+          font-size: var(--font-size-larger);
+        }
+        .text {
+          text-align: center;
+          font-size: small;
+          color: gray;
+        }
       }
     }
   }

@@ -56,7 +56,8 @@
     "t-picker": "tdesign-miniprogram/picker/picker",
     "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
-    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar"
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog"
   },
   "window": {
     "navigationBarTitleText": "云音乐",

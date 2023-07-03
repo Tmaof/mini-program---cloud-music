@@ -1,7 +1,7 @@
 <!-- 引入模板 -->
 <import src="/template/rank-list-item/rank-list-item" />
 
-<view class="rank-list-card-container">
+<view class="rank-list-card-container my-card-fade">
   <view class="header">
     <view class="title">
       <text class="text">{{title}}</text>
@@ -13,6 +13,8 @@
     </view>
   </view>
   <scroll-view show-scrollbar="false" enhanced class="body" scroll-y>
-    <template is="rank-list-item" wx:for="{{list}}" wx:key="id" data="{{...item,index}}"></template>
+    <view wx:for="{{list}}" wx:key="id" bindtap="onPlayMusic" data-songid="{{item.id}}">
+      <template is="rank-list-item"  data="{{...item,index}}"></template>
+    </view>
   </scroll-view>
 </view>

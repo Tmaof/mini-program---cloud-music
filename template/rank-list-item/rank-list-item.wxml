@@ -6,13 +6,13 @@
       <image class="image" src="{{al.picUrl}}" mode="aspectFill" />
     </view>
     <view class="rank">
-      <view>
-        {{index}}
+      <view class="rank-{{index+1}}">
+        {{index+1}}
       </view>
     </view>
     <view class="info">
       <view class="name">
-        {{al.name}}
+        {{name}}
       </view>
       <view class="author">
         {{filter.getAuthorName(ar)}}

@@ -1,5 +1,8 @@
-// components/rank-list-card/rank-list-card.js
+import {
+  injectMusicPlayerStore
+} from '@/behaviors/injectMusicPlayerStore'
 Component({
+  behaviors: [injectMusicPlayerStore],
   options: {
     styleIsolation: 'apply-shared'
   },
@@ -18,6 +21,11 @@ Component({
     list: {
       type: Array,
       value: []
+    },
+    // 歌单ID
+    playlistId: {
+      type: Number,
+      value: 0,
     }
   },
 
@@ -32,6 +40,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    async onPlayMusic(e) {
+      if (!this.data.list) return
+      // 切换歌单
+      await this.changeSongList(null, this.data.list)
+      //播放音乐
+      // console.log(e)
+      this.playTheSong(e.currentTarget.dataset.songid)
+    }
   }
 })

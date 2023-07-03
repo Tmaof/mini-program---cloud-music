@@ -1,4 +1,7 @@
 <view class="tab-bar-container">
+  <!-- 播放控制器 -->
+  <play-controll></play-controll>
+  <!-- TabBar -->
   <t-tab-bar fixed="{{false}}" value="{{tabBarIndexValue}}" bindchange="onChange" shape="round" theme="tag" split="{{false}}">
     <t-tab-bar-item wx:for="{{list}}" wx:key="index" value="{{index}}" icon="{{item.icon}}" ariaLabel="{{item.ariaLabel}}">
       {{item.label}}

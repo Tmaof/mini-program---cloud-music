@@ -1,0 +1,117 @@
+.song-list-container {
+  .t-popup {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  // 轮播图
+  .swiper {
+    height: 60vh;
+    margin-bottom: 80rpx;
+    .swiper-item {
+      display: flex;
+      justify-content: center;
+      // 播放列表卡片
+      .playlist-card {
+        position: relative;
+        width: 90%;
+        padding: var(--padding-large);
+        background: var(--white);
+        border-radius: var(--b-r-size-larger);
+
+        // 标题
+        .title {
+          font-weight: bold;
+
+          .nums {
+            font-weight: normal;
+            font-size: var(--font-size-smaller);
+            color: var(--grey);
+          }
+        }
+        // 操作
+        .operate {
+          display: flex;
+          justify-content: space-between;
+          margin: var(--margin) 0;
+
+          .left {
+            .iconfont {
+              display: inline-block;
+            }
+          }
+          .right {
+          }
+        }
+
+        // 分割线
+        .line {
+          border-top: 1px solid var(--grey-fade);
+        }
+        // 歌曲
+        .song-list {
+          height: 45vh;
+          overflow-y: auto;
+          margin-top: var(--margin);
+          .song-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: var(--padding-larger);
+
+            .left {
+              flex: 1 1;
+              display: flex;
+              align-items: center;
+              max-width: 90%;
+              .active {
+                margin-right: var(--margin);
+                width: var(--font-size-larger);
+                height: 100%;
+                .img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              .other {
+                .icon-vip {
+                  margin-right: var(--margin-small);
+                }
+              }
+              .song-name {
+                flex: 1 1;
+
+                max-width: 75%;
+                color: var(--black);
+
+                .author{
+                  font-size: var(--font-size-smaller);
+                  color: var(--grey);
+                }
+              }
+            }
+
+            .right {
+              margin-right: var(--margin);
+              .delete {
+                color: var(--grey);
+              }
+            }
+          }
+        }
+      }
+
+      .last-playlist {
+        // 歌曲
+        .song-list {
+          .song-item {
+            .left {
+              width: 100%;
+              .song-name {
+                max-width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,6 +18,19 @@
     display: flex;
     justify-content: center;
     width: 15%;
+
+    .rank-1 {
+      color: red;
+      font-weight: bold;
+    }
+    .rank-2 {
+      color: gold;
+      font-weight: bold;
+    }
+    .rank-3 {
+      color: goldenrod;
+      font-weight: bold;
+    }
   }
 
   .info {

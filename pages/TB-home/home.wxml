@@ -43,13 +43,11 @@
 
     <!-- 排行榜 -->
     <home-item-card title="排行榜">
-
       <swiper next-margin="20" class="rankling-list">
         <swiper-item wx:for="{{theList}}" wx:key="id">
-          <rank-list-card title="{{item.name}}" describe="" list="{{item.tracks}}"></rank-list-card>
+          <rank-list-card title="{{item.name}}" describe="" list="{{item.tracks}}" playlistId="{{item.id}}"></rank-list-card>
         </swiper-item>
       </swiper>
-
     </home-item-card>
   </view>
 </scroll-view>

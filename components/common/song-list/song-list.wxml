@@ -1,0 +1,91 @@
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter"/>
+<view class="song-list-container">
+  <t-popup visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <swiper class="swiper" 	current='{{swiperCurrent||0}}' next-margin='50rpx'>
+      <!-- 当前播放 -->
+      <swiper-item class="swiper-item">
+        <view class="playlist-card current-playlist">
+          <!-- 标题 -->
+          <view class="title">当前播放
+            <text class="nums">({{songList.length}})</text>
+          </view>
+          <!-- 操作 -->
+          <view class="operate">
+            <view class="left">
+              <view class="switch-mode" bindtap="onSwitchMode">
+                <view class="random" hidden="{{playbackMode!=playbackModeValues.Random}}">
+                  <view class="icon iconfont icon-suijibofang"></view>
+                  随机播放
+                </view>
+                <view class="loop " hidden="{{playbackMode!=playbackModeValues.Loop}}">
+                  <view class="iconfont icon-danquxunhuan"></view>
+                  单曲循环
+                </view>
+                <view class="sequence" hidden="{{playbackMode!=playbackModeValues.Sequential}}">
+                  <view class="iconfont icon-shunxubofang"></view>
+                  顺序播放
+                </view>
+              </view>
+            </view>
+            <view class="right">
+              <view bindtap="onCleanSongList" class="clean-list iconfont icon-shanchu"></view>
+            </view>
+          </view>
+          <!-- 分割线 -->
+          <view class="line"></view>
+          <!-- 歌曲 -->
+          <view class="song-list">
+            <view class="song-item" wx:for="{{songList}}" wx:key="id">
+              <view class="left" bindtap="onPlayMusic" data-songid="{{item.id}}">
+                <!-- 正在播放图标 -->
+                <view class="active" hidden="{{songInfo.id!=item.id}}">
+                  <image hidden="{{!isPlaying}}" class="img" src="/assets/img/正在播放.gif" mode="aspectFill" />
+                  <image hidden="{{isPlaying}}" class="img" src="/assets/img/播放暂停中.jpg" mode="aspectFill" />
+                </view>
+                <!-- 其他图标 -->
+                <view class="other">
+                  <view wx:if="{{item.fee==1}}" class="iconfont icon-vip"></view>
+                </view>
+                <!-- 歌名 -->
+                <text class="song-name single-line-overflow">{{item.name}}
+                <text class="author">{{filter.getAuthorName(item.ar)}}</text>
+                </text>
+              </view>
+              <view class="right">
+                <view bindtap="onDeleteSong" data-songid="{{item.id}}" class="delete iconfont icon-cancel-1-copy"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+      <!-- 上次播放 -->
+      <swiper-item class="swiper-item">
+        <view class="playlist-card last-playlist">
+          <view class="title">上次播放
+            <text class="nums">({{lastSongList.length}})</text>
+          </view>
+          <!-- 歌曲 -->
+          <view class="song-list">
+            <view class="song-item" wx:for="{{lastSongList}}" wx:key="id"
+            bindtap="onPlayLastMusic" data-songid="{{item.id}}"
+            >
+              <view class="left">
+                <!-- 其他图标 -->
+                <view class="other">
+                  <view wx:if="{{item.fee==1}}" class="iconfont icon-vip"></view>
+                </view>
+                <text class="song-name single-line-overflow">{{item.name}}
+                <text class="author">{{filter.getAuthorName(item.ar)}}</text>
+                </text>
+              </view>
+              <view class="right">
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </t-popup>
+</view>
+<!-- 对话框-清空播放列表 -->
+<t-dialog visible="{{showWarnConfirm}}" content="确定要清空播放列表吗?" confirm-btn="{{ { content: '确定', variant: 'base', theme: 'danger' } }}" cancel-btn="取消" bind:confirm="onConfirmCleanList" bind:cancel="closeDialog" />

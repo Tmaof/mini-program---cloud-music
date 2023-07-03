@@ -2,7 +2,10 @@
 @import "../../../template/more-operations-item/more-operations-item.scss";
 
 .create-songList-container {
+  padding-bottom: var(--padding-large);
   .add-icon {
+        width: 100%;
+    font-size: var(--font-size-larger);
     color: var(--grey);
   }
 }
