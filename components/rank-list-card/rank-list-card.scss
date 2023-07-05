@@ -2,7 +2,7 @@
 @import "../../template/rank-list-item/rank-list-item.scss";
 
 .rank-list-card-container {
-  height: 500rpx;
+  min-height: 500rpx;
   margin: 5px;
   .header {
     display: flex;
@@ -28,7 +28,7 @@
   }
 
   .body {
-    height: 400rpx;
+    height: 800rpx;
     margin-top: 10px ;
     padding-bottom: 10px;
     // background: gold;

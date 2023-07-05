@@ -15,7 +15,7 @@ import Message from 'tdesign-miniprogram/message/index';
 Page({
   behaviors: [injectAppStore, injectUserStore],
   options: {
-    styleIsolation:'apply-shared'
+    styleIsolation:'shared'
   },
   /**
    * 页面的初始数据
