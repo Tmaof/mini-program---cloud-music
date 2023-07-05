@@ -55,10 +55,18 @@ Page({
    * 获取排行榜
    */
   async _getTheList() {
-    const res = await getTheList()
+    // 为了减少首页加载时间,先请求一个榜单的数据
+    const res = await getTheList(0, 2, 30)
     this.setData({
       theList: res
     })
+    // 请求其他榜单数据
+    setTimeout(async() => {
+      const res = await getTheList(2, 10, 30)
+      this.setData({
+        theList: [...this.data.theList, ...res]
+      })
+    }, 1000)
   },
 
   /**
@@ -72,7 +80,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    
+
   },
 
   /**
