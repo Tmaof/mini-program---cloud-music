@@ -139,7 +139,7 @@ Component({
        */
       const info = e.detail
       //  pageTranslateY不需要时设置为空串很重要
-      if (info.elementInfo.top >= 100) {
+      if (info.elementInfo.top >= 70) {
         this.setData({
           popupVisible: false,
           pageTouchMoving: false,

@@ -37,9 +37,12 @@
     flex: 1 1;
 
     .name {
+      max-width: 40vw;
       font-weight: bold;
+      overflow: auto;
     }
     .author {
+      max-width: 40vw;
       font-size: small;
       color: gray;
     }
@@ -48,8 +51,11 @@
   .tag {
     font-size: xx-small;
     font-weight: bold;
-    .hot {
+    .hot-x {
       color: red;
+    }
+    .hot {
+      color: gold;
     }
     .new {
       color: green;

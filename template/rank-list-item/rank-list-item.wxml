@@ -11,16 +11,17 @@
       </view>
     </view>
     <view class="info">
-      <view class="name">
+      <view class="name single-line-overflow">
         {{name}}
       </view>
-      <view class="author">
+      <view class="author single-line-overflow">
         {{filter.getAuthorName(ar)}}
       </view>
     </view>
     <view class="tag">
-      <text class="hot">热门</text>
-      <text class="new">新晋</text>
+      <text class="hot-x" wx:if="{{pop==100}}">霸榜</text>
+      <text class="hot" wx:if="{{pop>=90&&pop<100}}">热门</text>
+      <text class="new" wx:if="{{pop>=70&&pop<90}}">新晋</text>
     </view>
   </view>
 

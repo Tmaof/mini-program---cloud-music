@@ -5,7 +5,11 @@ import {
 import {
   getSongListByPlaylistId
 } from '@/api/home/playlist/playlist'
+import {
+  getAuthorName
+} from '@/utils/filter-js/filter'
 
+import config from '@/config/config'
 
 export const musicPlayerStore = observable({
   songList: [], // 歌曲列表\歌单的歌曲
@@ -25,10 +29,10 @@ export const musicPlayerStore = observable({
   /**
    * 播放器实例
    * https: //developers.weixin.qq.com/miniprogram/dev/api/media/audio/InnerAudioContext.html
+   * 背景播放器
+   * https: //developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/BackgroundAudioManager.html
    */
-  innerAudioContext: wx.createInnerAudioContext({
-    useWebAudioImplement: false
-  }),
+  innerAudioContext: wx.getBackgroundAudioManager(),
 
   /**
    * 添加事件监听
@@ -36,7 +40,7 @@ export const musicPlayerStore = observable({
   addEventListener() {
     //监听音频自然播放至结束的事件
     this.innerAudioContext.onEnded(() => {
-      this.isPlaying = false
+      // this.isPlaying = false
       if (this.playbackMode == this.playbackModeValues.Loop) return
       this.switchSong('down')
     })
@@ -73,10 +77,20 @@ export const musicPlayerStore = observable({
 
     //监听播放进度
     this.innerAudioContext.onTimeUpdate(() => {
-      this.currentTime =  this.innerAudioContext.currentTime
-      this.duration = this.innerAudioContext.duration
-      // console.log(this.currentTime)
-    })
+        this.currentTime = this.innerAudioContext.currentTime
+        this.duration = this.innerAudioContext.duration
+        // console.log(this.currentTime)
+      }),
+
+      // 监听用户在系统音乐播放面板点击下一曲事件（仅iOS）
+      this.innerAudioContext.onNext(() => {
+        this.switchSong('down')
+      }),
+
+      // 监听用户在系统音乐播放面板点击上一曲事件（仅iOS）
+      this.innerAudioContext.onPrev(() => {
+        this.switchSong('up')
+      })
 
     //监听错误
     this.innerAudioContext.onError(() => {
@@ -85,8 +99,13 @@ export const musicPlayerStore = observable({
   },
 
   //当前歌曲在列表中的索引
-  songIndex: action(function (list) {
-    return (list || this.songList).findIndex(item => item.url == this.innerAudioContext.src)
+  getSongIndex: action(function () {
+    if (!this.songList.length) {
+      throw ('当前歌单为空')
+      return
+    }
+    if (!this.songInfo) this.songInfo = this.songList[0]
+    return this.songList.findIndex(item => item.id == this.songInfo.id)
   }),
 
 
@@ -117,24 +136,53 @@ export const musicPlayerStore = observable({
 
   /**
    * 更新当前播放歌曲信息
+   * @param {*} data 
+   * @param {'songid'|'index'|'obj'} mode 传入的data的格式
    */
-  updateSongInfo() {
-    this.songInfo = this.songList[this.songIndex()]
+  updateSongInfo(data, mode) {
+    let songInfo = null
+    if (mode == 'index') {
+      songInfo = this.songList[data]
+    } else if (mode == 'obj') {
+      songInfo = data
+    } else if (mode == 'songid') {
+      songInfo = this.songList.find(item => (item.id == data))
+    }
+    // console.log(songInfo)
+    if (!songInfo) {
+      console.error('更新当前播放歌曲信息失败')
+      return false
+    }
+    this.songInfo = songInfo
+    this.innerAudioContext.src = songInfo.url
+    this.innerAudioContext.title = songInfo.name
+    this.innerAudioContext.epname = songInfo.al.name
+    this.innerAudioContext.singer = getAuthorName(songInfo.ar)
+    this.innerAudioContext.coverImgUrl = songInfo.al.picUrl
+    this.innerAudioContext.webUrl = config.blogUrl
   },
 
   /**
    * 播放歌曲
    */
   startPlay() {
-    //更新当前播放歌曲信息
-    this.updateSongInfo()
+    if (!this.songInfo) return
     //自动跳过vip歌曲
+    if (this.allSongIsVip()) {
+      wx.showToast({
+        title: '当前歌单的歌曲全为VIP歌曲，请切换歌单',
+        icon: 'none'
+      })
+      this.stopPlay()
+      return
+    }
     if (this.songInfo.fee == 1) {
       wx.showToast({
         title: '当前为VIP歌曲，自动切换下一首',
         icon: 'none'
       })
       this.switchSong('down')
+      return
     }
     this.innerAudioContext.play()
   },
@@ -145,18 +193,11 @@ export const musicPlayerStore = observable({
    * @param {} songId 歌曲id(未传入则继续播放暂停的音乐)
    */
   playTheSong: action(function (songId) {
-    if (!this.songList.length) return
     if (songId) {
-      const item = this.songList.find(item => item.id == songId)
-      // console.log(item,'item')
-      if (item) {
-        this.innerAudioContext.src = item.url
-      } else {
-        console.error('在播放列表中,未找到该歌曲')
-      }
-    } else if (!this.innerAudioContext.src) {
-      this.innerAudioContext.src = this.songList[0].url
+      //更新当前播放歌曲信息
+      this.updateSongInfo(songId, 'songid')
     }
+    // 继续播放
     this.startPlay()
   }),
 
@@ -176,19 +217,20 @@ export const musicPlayerStore = observable({
 
   /**
    * 切换上一首/下一首
-   * @param {'up' | 'down' } mode 'up' | 'down'
+   * @param { 'up' | 'down' } mode 'up' | 'down'
    * @param { boolean } forceSwitch 当为单曲循环时是否切换歌曲
    */
-  switchSong: action(function (mode, forceSwitch) {
+  switchSong: action(function (mode, forceSwitch = true) {
     if (!this.songList.length) return
-    if (!this.songInfo) this.songInfo = this.songList[0]
     // console.log(mode)
+    // 当直接传入event对象时
     if (mode.currentTarget) {
       mode = mode.currentTarget.dataset.mode
     }
+    let index = undefined
     // 顺序播放
     if (this.playbackMode == this.playbackModeValues.Sequential || forceSwitch) {
-      let index = this.songIndex()
+      index = this.getSongIndex()
       if (mode == 'up') {
         if (index == 0) index = this.songList.length
         index--
@@ -197,14 +239,17 @@ export const musicPlayerStore = observable({
         if (index == this.songList.length - 1) index = -1
         index++
       }
-      this.innerAudioContext.src = this.songList[index].url
     }
     // 随机播放
-    if (this.playbackMode == this.playbackModeValues.Random) {
-      const index = Math.round(Math.random() * (this.songList.length - 1))
-      this.innerAudioContext.src = this.songList[index].url
+    else if (this.playbackMode == this.playbackModeValues.Random) {
+      index = Math.round(Math.random() * (this.songList.length - 1))
     }
-
+    if (index === undefined || index < 0) {
+      console.error('切换歌曲错误')
+      return
+    }
+    //更新当前播放歌曲信息
+    this.updateSongInfo(index, 'index')
     this.startPlay()
   }),
 
@@ -248,7 +293,15 @@ export const musicPlayerStore = observable({
    */
   changeProgress: action(function (value) {
     this.innerAudioContext.seek(value)
-  })
+  }),
+
+  /**
+   * 判断歌曲列表是否全部是vip歌曲
+   * 
+   */
+  allSongIsVip() {
+    return this.songList.find(item => item.fee != 1) ? false : true
+  }
 })
 
 musicPlayerStore.addEventListener()

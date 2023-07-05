@@ -46,11 +46,11 @@
         </view>
         <!-- 进度条 -->
         <view class="progress-bar">
-          <text class="time">{{filter.formatTime(currentTime*1000)}}</text>
+          <text class="time">{{filter.formatTime((currentTime||0)*1000)}}</text>
           <!-- capsule default-->
-          <t-slider theme='default' class="slider" defaultValue="{{0}}" min='{{0}}' max='{{duration}}' value='{{currentTime}}' bind:change='onChangeProgress' />
+          <t-slider theme='default' class="slider" defaultValue="{{0}}" min='{{0}}' max='{{duration||0}}' value='{{currentTime||0}}' bind:change='onChangeProgress' />
 
-          <text class="time">{{filter.formatTime(duration*1000)}}</text>
+          <text class="time">{{filter.formatTime((duration||0)*1000)}}</text>
         </view>
         <!-- 控制栏 -->
         <view class="control-bar">
