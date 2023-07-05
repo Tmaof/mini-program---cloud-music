@@ -19,6 +19,7 @@ Component({
    */
   data: {
     isShowSongList: false, //是否显示歌曲列表
+    isShowMusicPlayer: false,
   },
 
   /**
@@ -29,6 +30,11 @@ Component({
     onShowSongList() {
       this.setData({
         isShowSongList: true
+      })
+    },
+    onShowMusicPlayer() {
+      this.setData({
+        isShowMusicPlayer: true
       })
     }
   }

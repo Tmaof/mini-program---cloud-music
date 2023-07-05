@@ -1,0 +1,207 @@
+.music-player-container {
+  color: var(--white);
+
+  .t-popup {
+    top: 0;
+    border-top-left-radius: none !important;
+    border-top-right-radius: none !important;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .t-popup__content {
+    position: relative;
+    height: 100%;
+    overflow: hidden; // 对于底片层来说很重要
+  }
+
+  .iconfont {
+    font-size: var(--font-size-larger-x);
+    color: var(--white);
+  }
+
+  // 底片层
+  .negative-layer {
+    position: absolute;
+    z-index: 9999;
+    height: 200%;
+    width: 200%;
+    background-color: var(--black);
+    filter: blur(100rpx);
+    transform: scale(2);
+  }
+
+  // 顶层
+  .music-player-page {
+    position: relative;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-large);
+    // 头部
+    .head {
+      height: 10vh;
+      // background-color: gold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--margin-large);
+      .info {
+        flex: 1 1;
+        max-width: 80vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title {
+          max-width: 80%;
+          font-size: var(--font-size-large);
+        }
+        .author {
+          max-width: 80%;
+          color: var(--grey);
+          font-size: var(--font-size-small);
+        }
+      }
+      .iconfont {
+        width: 50rpx;
+      }
+    }
+    // 唱片
+    .disc {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      height: 60vh;
+      // background-color: goldenrod;
+      .indicator-active {
+        transform: rotate(-5deg) !important;
+      }
+      // 指针原点
+      .indicator-point {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999999;
+        width: 50rpx;
+        height: 50rpx;
+        background-color: whitesmoke;
+        border-radius: 50%;
+        box-shadow: 0 0 var(--shadowLen) var(--shadowColor-fade);
+      }
+      // 指针
+      .indicator {
+        // background-color: greenyellow;
+        position: absolute;
+        z-index: 99999;
+        top: 0;
+        left: 50%;
+        transform: rotate(-0.7rad);
+        transform-origin: 0 0;
+        transition: transform 0.5s linear;
+        width: 100%;
+        height: 100%;
+
+        .img {
+          position: absolute;
+          top: -18rpx;
+          left: -20rpx;
+          height: 250rpx;
+          // background-color: blanchedalmond;
+        }
+      }
+      // 碟片盘
+      .plate {
+        position: relative;
+        width: 530rpx;
+        height: 530rpx;
+        margin-top: 100rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        // background-color: blue;
+
+        .img {
+          width: 100%;
+          height: 100%;
+        }
+
+        // 封面
+        .cover-container {
+          position: absolute;
+          width: 530rpx;
+          height: 530rpx;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); //-265rpx
+          transition: all 0.5s linear;
+          // background-color: blueviolet;
+          .cover {
+            position: fixed;
+            top: 90rpx;
+            left: 90rpx;
+            width: 350rpx;
+            height: 350rpx;
+            border-radius: 50%;
+          }
+        }
+        // 从左边进入
+        .cover-container-left-in {
+          @keyframes left-in {
+            0% {
+              transform: translate(-100vw, -50%);
+            }
+          }
+          animation: left-in 0.5s linear 1;
+        }
+        // 从右边进入
+        .cover-container-right-in {
+          @keyframes right-in {
+            0% {
+              transform: translate(100vw, -50%);
+            }
+          }
+          animation: right-in 0.5s linear 1;
+        }
+      }
+    }
+    // 操作栏
+    .action-bar {
+      flex: 1 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 10vh;
+      // background-color: gray;
+    }
+    // 进度条
+    .progress-bar {
+      flex: 1 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: var(--margin-large) 0;
+      .time {
+        font-size: var(--font-size-smaller);
+      }
+      .slider {
+        flex: 1 1;
+      }
+    }
+    // 控制栏
+    .control-bar {
+      flex: 1 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      min-height: 10vh;
+      // background-color: green;
+
+      .iconfont {
+        font-size: var(--font-size-larger-xx);
+      }
+    }
+  }
+}

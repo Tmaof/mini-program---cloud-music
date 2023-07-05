@@ -40,7 +40,6 @@ page {
 }
 
 //旋转动画
-.rotate-animation {
   @keyframes rotate {
     0% {
       rotate: 0rad;
@@ -49,5 +48,12 @@ page {
       rotate: 360rad;
     }
   }
-  animation: rotate 5s linear infinite;
+.rotate-animation {
+  transform-origin: center;
+  animation: rotate 5s linear infinite both;
+}
+
+.rotate-animation-delay {
+  transform-origin: center;
+  animation: rotate 5s linear 0.5s infinite both;
 }

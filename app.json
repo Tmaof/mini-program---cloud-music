@@ -57,7 +57,11 @@
     "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
-    "t-dialog": "tdesign-miniprogram/dialog/dialog"
+    "t-dialog": "tdesign-miniprogram/dialog/dialog",
+    "t-slider": "tdesign-miniprogram/slider/slider",
+    "song-list": "/components/common/song-list/song-list",
+    "music-player": "/components/common/music-player/music-player",
+    "touch-panel":"/components/common/touch-panel/touch-panel"
   },
   "window": {
     "navigationBarTitleText": "云音乐",

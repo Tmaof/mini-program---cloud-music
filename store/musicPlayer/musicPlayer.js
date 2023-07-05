@@ -20,6 +20,8 @@ export const musicPlayerStore = observable({
   isPlaying: false,
   //当前歌曲信息
   songInfo: null,
+  currentTime: 0, //当前播放进度
+  duration: 0, //总时长
   /**
    * 播放器实例
    * https: //developers.weixin.qq.com/miniprogram/dev/api/media/audio/InnerAudioContext.html
@@ -34,15 +36,14 @@ export const musicPlayerStore = observable({
   addEventListener() {
     //监听音频自然播放至结束的事件
     this.innerAudioContext.onEnded(() => {
-      if (!this.songList.length) return
+      this.isPlaying = false
       if (this.playbackMode == this.playbackModeValues.Loop) return
       this.switchSong('down')
     })
 
     // 监听音频可以播放事件
     this.innerAudioContext.onCanplay(() => {
-      //更新当前播放歌曲信息
-      this.updateSongInfo()
+      this.duration = this.innerAudioContext.duration
     })
 
     //监听播放事件
@@ -57,6 +58,7 @@ export const musicPlayerStore = observable({
         return
       }
       this.isPlaying = true
+
     })
 
     //监听暂停
@@ -67,6 +69,13 @@ export const musicPlayerStore = observable({
     //监听停止
     this.innerAudioContext.onStop(() => {
       this.isPlaying = false
+    })
+
+    //监听播放进度
+    this.innerAudioContext.onTimeUpdate(() => {
+      this.currentTime =  this.innerAudioContext.currentTime
+      this.duration = this.innerAudioContext.duration
+      // console.log(this.currentTime)
     })
 
     //监听错误
@@ -136,6 +145,7 @@ export const musicPlayerStore = observable({
    * @param {} songId 歌曲id(未传入则继续播放暂停的音乐)
    */
   playTheSong: action(function (songId) {
+    if (!this.songList.length) return
     if (songId) {
       const item = this.songList.find(item => item.id == songId)
       // console.log(item,'item')
@@ -170,6 +180,12 @@ export const musicPlayerStore = observable({
    * @param { boolean } forceSwitch 当为单曲循环时是否切换歌曲
    */
   switchSong: action(function (mode, forceSwitch) {
+    if (!this.songList.length) return
+    if (!this.songInfo) this.songInfo = this.songList[0]
+    // console.log(mode)
+    if (mode.currentTarget) {
+      mode = mode.currentTarget.dataset.mode
+    }
     // 顺序播放
     if (this.playbackMode == this.playbackModeValues.Sequential || forceSwitch) {
       let index = this.songIndex()
@@ -212,22 +228,27 @@ export const musicPlayerStore = observable({
       if (this.songList.length <= 1) {
         this.cleanSongList()
       } else {
-        this.switchSong('down',true)
+        this.switchSong('down', true)
       }
     }
-    setTimeout(() => {
-      this.songList = this.songList.filter((item) => item.id != songId)
-    }, 50)
+    this.songList = this.songList.filter((item) => item.id != songId)
   }),
   /**
    * 清空播放列表
    */
   cleanSongList: action(function () {
-    this.songList = []
-    this.songInfo = null
-    this.stopPlay()
-  })
+      this.songList = []
+      this.songInfo = null
+      this.stopPlay()
+    })
 
+    ,
+  /**
+   * 改变播放进度
+   */
+  changeProgress: action(function (value) {
+    this.innerAudioContext.seek(value)
+  })
 })
 
 musicPlayerStore.addEventListener()

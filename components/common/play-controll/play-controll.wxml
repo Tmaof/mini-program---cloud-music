@@ -1,12 +1,14 @@
 <!-- 播放控制器 -->
 <view class="playback-controll-container">
   <!-- 封面 -->
-  <view class="cover {{isPlaying?'rotate-animation':''}}">
+  <view class="cover rotate-animation"
+  style="animation-play-state: {{isPlaying?'running':'paused'}};"
+  >
     <image class="disc" src="/assets/img/唱片盘.png" mode="aspectFill" />
     <image class="img" src="{{songInfo.al.picUrl}}" mode="aspectFill" />
   </view>
   <!-- 歌名 -->
-  <view class="name single-line-overflow">{{songInfo.name||'当前无播放歌曲'}}</view>
+  <view bindtap="onShowMusicPlayer" class="name single-line-overflow">{{songInfo.name||'当前无播放歌曲'}}</view>
   <!-- 控制-播放按钮 -->
   <view wx:if="{{!isPlaying}}" class="controll icon-bofangqi-bofang iconfont" bindtap="playTheSong"></view>
   <!-- 控制-暂停按钮 -->
@@ -16,3 +18,5 @@
 </view>
 <!-- 歌曲列表 -->
 <song-list popupVisible='{{isShowSongList}}'></song-list>
+<!-- 音乐播放器 -->
+<music-player popupVisible='{{isShowMusicPlayer}}'></music-player>

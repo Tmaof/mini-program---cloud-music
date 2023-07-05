@@ -66,7 +66,7 @@ module.exports = {
 
   /**
    * 格式化时间
-   * 例如: 37秒 -> 00:37
+   * 例如: 37*1000秒 -> 00:37
    * @param timespan 
    */
   formatTime: function (timespan) {

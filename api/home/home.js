@@ -30,7 +30,7 @@ export async function getTheList() {
     url: '/toplist',
   })
   // 取前n个榜单
-  list = list.slice(0, 10)
+  list = list.slice(0, 5)
   // 根据id 获取榜单详细数据
   const retList = []
   for (const item of list) {
@@ -45,7 +45,7 @@ export async function getTheList() {
     retList.push({
       id: playlist.id,
       name: playlist.name,
-      tracks: playlist.tracks.slice(0, 10) //取前n个
+      tracks: playlist.tracks.slice(0, 30) //取前n个
     })
   }
   return retList;

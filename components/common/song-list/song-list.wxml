@@ -1,6 +1,6 @@
 <wxs src="/utils/filter-wxs/filter.wxs" module="filter"/>
 <view class="song-list-container">
-  <t-popup visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement="bottom">
+  <t-popup  visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement="bottom">
     <swiper class="swiper" 	current='{{swiperCurrent||0}}' next-margin='50rpx'>
       <!-- 当前播放 -->
       <swiper-item class="swiper-item">
