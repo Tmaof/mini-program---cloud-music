@@ -1,0 +1,27 @@
+.recommended-daily-container {
+  .bg-container {
+    position: relative;
+    .date-container {
+      position: absolute;
+      // background-color: rgba(0, 0, 0, 0.336);
+      padding: var(--padding-small);
+      border-radius: var(--b-r-size);
+      bottom: 60rpx;
+      right: 110rpx;
+      z-index: 99;
+      color: var(--white);
+      .month {
+        font-size: var(--font-size-larger-xx);
+      }
+      .day {
+        font-size: var(--font-size-small);
+      }
+    }
+    .bgimg {
+      width: 100%;
+      height: 400rpx;
+      transform: scale(0.8);
+      border-radius: var(--b-r-size);
+    }
+  }
+}

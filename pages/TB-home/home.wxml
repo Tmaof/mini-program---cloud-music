@@ -8,11 +8,12 @@
     <!-- 快捷菜单 -->
     <view class="shortcut-menu">
       <view class="item">
-        <view class="item-icon iconfont icon-tuijian">
-        </view>
-        <text>每日推荐</text>
+        <navigator url="/packages/package-home-center/pages/recommended-daily/recommended-daily" hover-class="none">
+          <view class="item-icon iconfont icon-tuijian">
+          </view>
+          <text>每日推荐</text>
+        </navigator>
       </view>
-
       <view class="item">
         <view class="item-icon iconfont icon-gedan">
         </view>

@@ -50,6 +50,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "每日推荐歌曲",
+          "pathName": "packages/package-home-center/pages/recommended-daily/recommended-daily",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

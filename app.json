@@ -9,6 +9,13 @@
   ],
   "subPackages": [
     {
+      "root": "packages/package-home-center",
+      "name": "home-center",
+      "pages": [
+        "pages/recommended-daily/recommended-daily"
+      ]
+    },
+    {
       "root": "packages/package-sys",
       "name": "sys",
       "pages": [
@@ -62,7 +69,8 @@
     "song-list": "/components/common/song-list/song-list",
     "music-player": "/components/common/music-player/music-player",
     "touch-panel": "/components/common/touch-panel/touch-panel",
-    "play-controll": "/components/common/play-controll/play-controll"
+    "play-controll": "/components/common/play-controll/play-controll",
+    "song-display-list": "/components/common/song-display-list/song-display-list"
   },
   "window": {
     "navigationBarTitleText": "云音乐",

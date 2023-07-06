@@ -1,0 +1,15 @@
+<view class="recommended-daily-container">
+  <!-- 背景图 -->
+  <view class="bg-container">
+    <!-- 日期 -->
+    <view class="date-container">
+      <text class="month">{{currentDate.month}}</text>
+      <text class="day"> / {{currentDate.day}}</text>
+    </view>
+    <!-- 图片 -->
+    <image class="bgimg" src="https://s2.music.126.net/style/web2/img/recmd_daily.jpg?1284a4e8b4c25e04fe0350279a3b660d" mode="aspectFill" />
+  </view>
+  <!-- 歌曲列表 -->
+  <song-display-list songList="{{dailySongsInfo.dailySongs}}">
+  </song-display-list>
+</view>

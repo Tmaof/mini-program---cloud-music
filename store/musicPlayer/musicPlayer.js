@@ -108,6 +108,18 @@ export const musicPlayerStore = observable({
     return this.songList.findIndex(item => item.id == this.songInfo.id)
   }),
 
+  /**
+   *判断传入的歌单是否和当前歌单相同(包括先后顺序)
+   *@param {[]} newList 
+   */
+  isSameSongList(newList) {
+    if (!this.songList) return true
+    if (this.songList.length != newList.length) return false
+    for (let i = 0; i < newList.length; i++) {
+      if (this.songList[i].id != newList[i].id) return false
+    }
+    return true
+  },
 
   /**
    * 切换播放的歌单
@@ -122,7 +134,7 @@ export const musicPlayerStore = observable({
       } = await getSongListByPlaylistId(playlistId)
       songList = songs
     } else if (list) {
-      if (this.songList == list) return
+      if (this.isSameSongList(list)) return //相同歌单不进行操作
       songList = list
     }
 
@@ -196,6 +208,8 @@ export const musicPlayerStore = observable({
     if (songId) {
       //更新当前播放歌曲信息
       this.updateSongInfo(songId, 'songid')
+    } else if (!this.songInfo && this.songList.length) {
+      this.updateSongInfo(0, 'index')
     }
     // 继续播放
     this.startPlay()

@@ -57,3 +57,20 @@ page {
   transform-origin: center;
   animation: rotate 5s linear 0.5s infinite both;
 }
+
+// 缩放动画
+@keyframes zoom{
+  0%{
+    transform: scale(1) rotate(10deg);
+  }
+  50%{
+     transform: scale(0.5) rotate(0deg);
+  }
+  100%{
+     transform: scale(1) rotate(10deg);
+  }
+}
+
+.zoom-animation{
+  animation: zoom 2s linear infinite;
+}
