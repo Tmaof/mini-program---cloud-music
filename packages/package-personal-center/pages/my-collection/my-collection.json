@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mc-video": "/packages/package-personal-center/components/mc-video/video",
+    "mc-album": "/packages/package-personal-center/components/mc-album/album"
+  }
+}

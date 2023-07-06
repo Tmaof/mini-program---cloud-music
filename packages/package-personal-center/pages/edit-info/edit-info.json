@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "ei-form-item": "/packages/package-personal-center/components/ei-form-item/form-item"
+  }
+}

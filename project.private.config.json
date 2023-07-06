@@ -25,21 +25,21 @@
         },
         {
           "name": "最近播放",
-          "pathName": "packages/package-musicApp/pages/recent-play/recent-play",
+          "pathName": "packages/package-personal-center/pages/recent-play/recent-play",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "我的收藏",
-          "pathName": "packages/package-musicApp/pages/my-collection/my-collection",
+          "pathName": "packages/package-personal-center/pages/my-collection/my-collection",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "编辑信息",
-          "pathName": "packages/package-musicApp/pages/edit-info/edit-info",
+          "pathName": "packages/package-personal-center/pages/edit-info/edit-info",
           "query": "",
           "launchMode": "default",
           "scene": null

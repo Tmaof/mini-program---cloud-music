@@ -4,7 +4,7 @@
     <view class="header">
       <view class="right">
         <view class="profile-photo">
-          <t-avatar size="small" image="/assets/img/test.gif"></t-avatar>
+          <t-avatar size="small" image="/assets/img/唱片盘.png"></t-avatar>
         </view>
         <view class="author-name">
           云听听街彩
@@ -19,7 +19,7 @@
         <view class="duration">
           00:26
         </view>
-        <image class="img" src="/assets/img/test.gif" mode="aspectFill" />
+        <image class="img" src="/assets/img/唱片盘.png" mode="aspectFill" />
       </view>
     </view>
 

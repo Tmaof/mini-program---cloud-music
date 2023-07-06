@@ -16,8 +16,8 @@
       ]
     },
     {
-      "root": "packages/package-musicApp",
-      "name": "musicApp",
+      "root": "packages/package-personal-center",
+      "name": "personal-center",
       "pages": [
         "pages/recent-play/recent-play",
         "pages/my-collection/my-collection",
@@ -42,7 +42,6 @@
   },
   "usingComponents": {
     "t-avatar": "tdesign-miniprogram/avatar/avatar",
-    "info-item-card": "./components/info-item-card/info-item-card",
     "t-button": "tdesign-miniprogram/button/button",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-message": "tdesign-miniprogram/message/message",
@@ -59,9 +58,11 @@
     "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
     "t-dialog": "tdesign-miniprogram/dialog/dialog",
     "t-slider": "tdesign-miniprogram/slider/slider",
+    "info-item-card": "/components/common/info-item-card/info-item-card",
     "song-list": "/components/common/song-list/song-list",
     "music-player": "/components/common/music-player/music-player",
-    "touch-panel":"/components/common/touch-panel/touch-panel"
+    "touch-panel": "/components/common/touch-panel/touch-panel",
+    "play-controll": "/components/common/play-controll/play-controll"
   },
   "window": {
     "navigationBarTitleText": "云音乐",
@@ -69,6 +70,9 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black"
   },
-  "requireBackgroundModes": ["audio"],
+  "requireBackgroundModes": [
+    "audio"
+  ],
+  "lazyCodeLoading": "requiredComponents",
   "sitemapLocation": "sitemap.json"
 }

@@ -12,7 +12,7 @@
     <view class="footer">
       <view class="left">
         <!-- 头像 -->
-        <image class="profile-photo" src="/assets/img/test.gif" alt="aspectFill" />
+        <image class="profile-photo" src="/assets/img/唱片盘.png" alt="aspectFill" />
         <!-- 名字 -->
         <text class="author-name single-line-overflow">{{item.artistName}}</text>
       </view>

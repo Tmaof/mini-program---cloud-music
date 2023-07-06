@@ -1,5 +1,5 @@
 <!-- 引入模板 -->
-<import src="/template/more-operations-item/more-operations-item"></import>
+<import src="/template/personal-center/more-operations-item/more-operations-item"></import>
 
 <view class="collect-songList-container">
   <home-item-card title="收藏歌单({{collectSongList.length}}个)" titleStyle="small" showUnderline="{{false}}" popuptitle="我收藏的歌单(0)">

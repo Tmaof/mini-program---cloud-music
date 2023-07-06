@@ -30,3 +30,22 @@ export function getCity(pid) {
     return []
   }
 }
+
+/**
+ * 根据ID获取地区信息
+ * @param {*} pid 省份ID
+ * @param {*} cid 城市ID
+ * @returns { {province:string,city:string} } ret
+ */
+export function getAreaInfoById(pid, cid) {
+  const ret = {
+    province: '',
+    city:''
+  }
+  const province = areaList.find(item => item.id == pid)
+  if (province) {
+    ret.province = province.name
+    ret.city = province.cities[cid]
+  }
+  return ret
+}

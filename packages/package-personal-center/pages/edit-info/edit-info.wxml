@@ -1,0 +1,48 @@
+<t-message id="t-message" />
+<t-notice-bar visible="{{true}}" marquee="{{true}}" content="除了头像可选外,其他信息都是必填项"></t-notice-bar>
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter" />
+<view class="edit-info-container">
+  <ei-form-item title="头像">
+    <t-upload class="upload" mediaType="{{['image']}}" max="{{1}}" files="{{[]}}" bind:add="handleAvatarAdd">
+      <t-avatar slot="add-content" class="avatar" image="{{avatarFile.url||userInfo.avatarUrl}}" />
+    </t-upload>
+  </ei-form-item>
+  <ei-form-item title="昵称">
+    <t-input maxlength="15" defaultValue="{{userInfo.nickname||''}}" value="{{formData.nickname}}" class="input" align="right" placeholder="{{userInfo.nickname||'请输入昵称'}}" bind:blur="onEditName"></t-input>
+  </ei-form-item>
+  <ei-form-item title="性别">
+    <t-radio-group defaultValue="{{userInfo.gender||0}}" value="{{formData.gender}}" bind:change="onChangeGender" borderless t-class="box">
+      <t-radio block="{{false}}" label="男" value="{{1}}" />
+      <view style="display: inline-block; width: 10px;">
+      </view>
+      <t-radio block="{{false}}" label="女" value="{{2}}" />
+    </t-radio-group>
+  </ei-form-item>
+  <ei-form-item title="生日">
+    <view class="btn-pickDate" bindtap="onShowDatePicker">
+      {{filter.formatTimeYMD(formData.birthday||userInfo.birthday)||'请选择生日'}}
+    </view>
+    <!-- 年月日 -->
+    <t-date-time-picker title="选择日期" visible="{{dateVisible}}" mode="date" value="{{formData.birthday}}" defaultValue="{{ userInfo.birthday||defaultValueTime}}" bindchange="onConfirmDate" format="YYYY-MM-DD" start="{{startTime}}" end="{{endTime}}" />
+  </ei-form-item>
+  <ei-form-item title="地区">
+    <!-- 地区 -->
+    <view btn-area bindtap="onShowAreaPicker">
+      {{filter.getProvinceCity(formData.province||userInfo.province,formData.city||userInfo.city)||'请选择地区'}}
+    </view>
+    <!-- 地区选择 -->
+    <t-picker value="{{areaValue}}" visible="{{areaVisible}}" title="选择地区" cancelBtn="取消" confirmBtn="确认" bindchange="onAreaPickerChange" bindpick="onAreaColumnChange">
+      <t-picker-item options="{{provinces}}"></t-picker-item>
+      <t-picker-item options="{{cities}}"></t-picker-item>
+    </t-picker>
+  </ei-form-item>
+  <ei-form-item class="textarea" title="签名">
+    <t-textarea bind:blur="onChangeSignature" bind:enter="onChangeSignature" placeholder="{{userInfo.signature||'介绍一下自己吧'}}" maxlength="280" disableDefaultPadding="{{true}}" indicator defaultValue="{{userInfo.signature||''}}" value="{{formData.signature}}" />
+  </ei-form-item>
+  <!-- 确定保存 -->
+  <view class="btn-save">
+    <t-button class="my-card-fade" bindtap="onConfirmSave" theme="light" block>
+      保存修改
+    </t-button>
+  </view>
+</view>

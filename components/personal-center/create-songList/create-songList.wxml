@@ -1,5 +1,5 @@
 <!-- 引入模板 -->
-<import src="/template/more-operations-item/more-operations-item"></import>
+<import src="/template/personal-center/more-operations-item/more-operations-item"></import>
 <view class="create-songList-container">
   <home-item-card title="创建歌单" titleStyle="small" showUnderline="{{false}}" popuptitle="我创建的歌单(0)">
     <!-- 默认插槽 -->

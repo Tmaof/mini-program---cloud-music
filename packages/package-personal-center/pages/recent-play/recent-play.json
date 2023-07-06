@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "rp-song": "/packages/package-personal-center/components/rp-song/song",
+    "rp-video": "/packages/package-personal-center/components/rp-video/video",
+    "rp-songList": "/packages/package-personal-center/components/rp-songList/songList",
+    "rp-album": "/packages/package-personal-center/components/rp-album/album"
+  }
+}

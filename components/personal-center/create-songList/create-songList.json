@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "home-item-card": "/components/home-item-card/home-item-card"
+    "home-item-card": "/components/home-center/home-item-card/home-item-card"
   }
 }

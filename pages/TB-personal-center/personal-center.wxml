@@ -23,7 +23,7 @@
       <navigator wx:else hover-class="none" class="login-text" url="/packages/package-sys/pages/login/login">
         立即登录
         <view class="icon-youjiantou iconfont">
-          
+
         </view>
       </navigator>
       <!-- 用户签名 -->
@@ -38,7 +38,7 @@
     <view class="app-row">
       <t-row>
         <t-col span="6" class="app-item">
-          <navigator hover-class="none" url="/packages/package-musicApp/pages/recent-play/recent-play">
+          <navigator hover-class="none" url="/packages/package-personal-center/pages/recent-play/recent-play">
             <view class="icon icon-shipin1 iconfont">
             </view>
             <view class="text">
@@ -47,7 +47,7 @@
           </navigator>
         </t-col>
         <t-col span="6" class="app-item">
-          <navigator hover-class="none" url="/packages/package-musicApp/pages/my-collection/my-collection">
+          <navigator hover-class="none" url="/packages/package-personal-center/pages/my-collection/my-collection">
             <view class="icon icon-shoucang iconfont">
             </view>
             <view class="text">
@@ -56,7 +56,7 @@
           </navigator>
         </t-col>
         <t-col span="6" class="app-item">
-          <navigator hover-class="none" url="/packages/package-musicApp/pages/mylike-video/mylike-video">
+          <navigator hover-class="none" url="/packages/package-personal-center/pages/mylike-video/mylike-video">
             <view class="icon icon-tuijian iconfont">
             </view>
             <view class="text">
@@ -65,7 +65,7 @@
           </navigator>
         </t-col>
         <t-col wx:if="{{isUserLogin && (!isVisitor)}}" span="6" class="app-item">
-          <navigator hover-class="none" url="/packages/package-musicApp/pages/edit-info/edit-info">
+          <navigator hover-class="none" url="/packages/package-personal-center/pages/edit-info/edit-info">
             <view class="icon icon-bianji iconfont">
             </view>
             <view class="text">

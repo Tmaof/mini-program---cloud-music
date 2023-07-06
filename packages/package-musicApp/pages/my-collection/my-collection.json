@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "mc-video": "/packages/package-musicApp/components/mc-video/video",
-    "mc-album": "/packages/package-musicApp/components/mc-album/album"
-  }
-}

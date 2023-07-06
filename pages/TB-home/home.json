@@ -2,7 +2,7 @@
   "usingComponents": {
     "t-swiper": "tdesign-miniprogram/swiper/swiper",
     "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
-    "home-item-card":"/components/home-item-card/home-item-card",
-    "rank-list-card":"/components/rank-list-card/rank-list-card"
+    "home-item-card":"/components/home-center/home-item-card/home-item-card",
+    "rank-list-card":"/components/home-center/rank-list-card/rank-list-card"
   }
 }

@@ -12,10 +12,13 @@ import {
   logout
 } from '@/api/login/login'
 import Message from 'tdesign-miniprogram/message/index';
+import {
+  getAreaInfoById
+} from '@/utils/getArea'
 Page({
   behaviors: [injectAppStore, injectUserStore],
   options: {
-    styleIsolation:'shared'
+    styleIsolation: 'shared'
   },
   /**
    * 页面的初始数据
@@ -24,6 +27,10 @@ Page({
     touche: null, //上一次滑动的信息
     infoCardTop: 40, //信息卡片的top值
     infoCardTs: false, //返回过渡效果
+    areaInfo: {
+      province: '',
+      city: ''
+    }
   },
 
   /**
@@ -39,6 +46,15 @@ Page({
    */
   onReady() {
     this.setTabBarIndexValue(2)
+    if (this.data.userInfo) {
+      const {
+        province,
+        city
+      } = this.data.userInfo
+      this.setData({
+        areaInfo: getAreaInfoById(province, city)
+      })
+    }
   },
 
   /**

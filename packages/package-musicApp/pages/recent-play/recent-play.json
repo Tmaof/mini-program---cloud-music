@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "rp-song": "/packages/package-musicApp/components/rp-song/song",
-    "rp-video": "/packages/package-musicApp/components/rp-video/video",
-    "rp-songList": "/packages/package-musicApp/components/rp-songList/songList",
-    "rp-album": "/packages/package-musicApp/components/rp-album/album"
-  }
-}
