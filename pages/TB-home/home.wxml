@@ -34,10 +34,12 @@
     <home-item-card title="推荐歌单">
       <scroll-view show-scrollbar="false" enhanced class="recommended-songs" scroll-x="true" enable-flex="true">
         <view class="recommended-songs-item" wx:for="{{recommendedPlaylists}}" wx:key="id">
-          <view class="cover">
-            <image src="{{item.picUrl}}" mode="aspectFill" />
-          </view>
-          <text>{{item.name}}</text>
+          <navigator url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}" hover-class="none">
+            <view class="cover">
+              <image src="{{item.picUrl}}" mode="aspectFill" />
+            </view>
+            <text>{{item.name}}</text>
+          </navigator>
         </view>
       </scroll-view>
     </home-item-card>

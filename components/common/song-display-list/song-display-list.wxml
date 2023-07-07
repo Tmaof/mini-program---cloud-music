@@ -32,7 +32,7 @@
         <!-- 封面 -->
         <image hidden="{{songInfo.id == item.id}}" wx:if="{{isShowCover}}" class="cover" src="{{item.al.picUrl}}" mode="aspectFill" />
         <!-- 序号 -->
-        <view wx:if="{{isShowIndex}}" class="index">{{index+1}}</view>
+        <view hidden="{{songInfo.id == item.id}}" wx:if="{{isShowIndex}}" class="index">{{index+1}}</view>
       </view>
       <!-- 中 -->
       <view bindtap="onPlayMusic" data-songid="{{item.id}}" class="center">

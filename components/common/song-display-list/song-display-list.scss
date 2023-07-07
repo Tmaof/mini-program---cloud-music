@@ -79,8 +79,10 @@
           border-radius: var(--b-r-size-small);
         }
         .index {
+          width: 80rpx;
           margin-right: var(--margin);
           color: var(--grey);
+          text-align: center;
         }
       }
       .center {

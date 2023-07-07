@@ -57,6 +57,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "歌单详情",
+          "pathName": "packages/package-home-center/pages/playlist-display/playlist-display",
+          "query": "playlistId=981484303",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

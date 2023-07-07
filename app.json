@@ -12,7 +12,8 @@
       "root": "packages/package-home-center",
       "name": "home-center",
       "pages": [
-        "pages/recommended-daily/recommended-daily"
+        "pages/recommended-daily/recommended-daily",
+        "pages/playlist-display/playlist-display"
       ]
     },
     {

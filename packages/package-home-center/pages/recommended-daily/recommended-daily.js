@@ -1,6 +1,6 @@
 import {
   getDailyRecommendedSongs
-} from '@/packages/package-home-center/api/recommended-daily/recommended-daily'
+} from '@/packages/package-home-center/api/recommended-daily/recommendedDaily'
 import dayjs from 'dayjs'
 
 Page({

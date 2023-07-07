@@ -1,0 +1,125 @@
+.playlist-display-container {
+  position: relative;
+  // background-color: rgba(247, 177, 155, 0.671);
+  // background-color: rgba(155, 206, 247, 0.671);
+  // background-color: rgba(195, 155, 247, 0.671);
+  // background-color: rgba(226, 155, 247, 0.671);
+  // background-color: rgba(239, 155, 247, 0.671);
+  overflow: hidden;
+  // 顶部背景
+  .bg-container {
+    padding: var(--padding-large);
+    padding-bottom: 70rpx;
+    --grey-white: rgba(146, 141, 141, 0.192);
+
+    // 歌单信息
+    .info {
+      // 顶部
+      .top {
+        display: flex;
+        align-items: center;
+        // 封面
+        .cover {
+          margin-right: var(--margin-large);
+          position: relative;
+          // 播放量
+          .nums {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 10rpx;
+            right: 14rpx;
+            font-size: var(--font-size-smaller);
+            color: var(--white);
+            .iconfont {
+              color: var(--white);
+            }
+          }
+          .negative {
+          }
+          .img {
+            width: 210rpx;
+            height: 210rpx;
+            border-radius: var(--b-r-size);
+          }
+        }
+        // 文本信息
+        .right {
+          flex: 1 1;
+          // background-color: burlywood;
+          .name {
+            font-size: var(--font-size-large);
+            color: var(--white);
+            width: 60vw;
+          }
+          // 作者信息
+          .author {
+            display: flex;
+            align-items: center;
+            margin-top: var(--margin);
+            .img {
+              margin-right: var(--margin);
+            }
+            .name {
+              flex: 1 1;
+              font-size: var(--font-size-small);
+              color: var(--grey);
+              width: 60vw;
+            }
+          }
+          // 标签
+          .tags {
+            margin-top: var(--margin);
+            display: flex;
+            flex-wrap: wrap;
+            .tag-item {
+              color: var(--white);
+              margin-right: var(--margin);
+              padding: 6rpx;
+              background-color: var(--grey-white);
+              font-size: var(--font-size-smaller);
+              border-radius: var(--b-r-size-small);
+            }
+          }
+        }
+      }
+      // 底部/描述
+      .bottom {
+        margin: var(--margin);
+        color: var(--grey);
+        font-size: var(--font-size-smaller);
+      }
+    }
+
+    // 歌单动态信息
+    .dynamic {
+      display: flex;
+      justify-content: space-around;
+      color: var(--white);
+      .item-card {
+        background-color: var(--grey-white);
+        width: 25vw;
+        height: 70rpx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--b-r-size-large);
+
+        .iconfont {
+          color: var(--white);
+          font-size: var(--font-size-larger);
+        }
+        .nums {
+          font-size: var(--font-size-small);
+          margin-left: var(--margin);
+        }
+      }
+    }
+  }
+
+  // 歌曲展示列表
+  .song-display-list-container {
+    border-radius: var(--b-r-size) var(--b-r-size) 0 0;
+    background-color: var(--white);
+  }
+}

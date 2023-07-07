@@ -2,6 +2,10 @@ import {
   request
 } from '@/utils/request'
 
+import {
+  getSongListByPlaylistId
+} from '@/api/home/playlist/playlist'
+
 /**
  * 获取轮播图
  */
@@ -17,7 +21,7 @@ export function getRecommendedPlaylists() {
   return request({
     url: '/personalized',
     data: {
-      limit: 6
+      limit: 30
     }
   })
 }
@@ -28,29 +32,24 @@ export function getRecommendedPlaylists() {
  * @param {*} end 最后一个榜单的位置
  * @param {*} itemLimit 每一个榜单的歌曲数
  */
-export async function getTheList(start = 0, end = 1, itemLimit = 30) {
+export async function getTheList(start, end, itemLimit) {
   let {
     list
   } = await request({
     url: '/toplist',
   })
   // 取前n个榜单
-  list = list.slice(start, end)
+  list = list.slice(start || 0, end || list.length)
   // 根据id 获取榜单详细数据
   const retList = []
   for (const item of list) {
     const {
-      playlist
-    } = await request({
-      url: '/playlist/detail',
-      data: {
-        id: item.id
-      }
-    })
+      songs
+    } = await getSongListByPlaylistId(item.id)
     retList.push({
-      id: playlist.id,
-      name: playlist.name,
-      tracks: playlist.tracks.slice(0, itemLimit) //取前n个
+      id: item.id,
+      name: item.name,
+      tracks: songs.slice(0, itemLimit || songs.length) //取前n个
     })
   }
   return retList;
