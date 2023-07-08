@@ -1,0 +1,22 @@
+.playlist-center-container {
+  // 覆盖t-tabs样式
+  .t-tabs__item--evenly {
+    flex: none !important;
+  }
+
+  .top {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--padding);
+    .left {
+      font-weight: bold;
+      font-size: var(--font-size);
+    }
+
+    .right {
+      font-size: var(--font-size-larger-xx);
+      color: var(--grey);
+    }
+  }
+}

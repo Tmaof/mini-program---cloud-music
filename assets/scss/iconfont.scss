@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4099903 */
-  src: url('//at.alicdn.com/t/c/font_4099903_n909e3me7w.woff2?t=1688366940185') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4099903_n909e3me7w.woff?t=1688366940185') format('woff'),
-       url('//at.alicdn.com/t/c/font_4099903_n909e3me7w.ttf?t=1688366940185') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4099903_7drzn8qu6r9.woff2?t=1688817027657') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4099903_7drzn8qu6r9.woff?t=1688817027657') format('woff'),
+       url('//at.alicdn.com/t/c/font_4099903_7drzn8qu6r9.ttf?t=1688817027657') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fenlei:before {
+  content: "\e62f";
 }
 
 .icon-24gf-playCircle:before {

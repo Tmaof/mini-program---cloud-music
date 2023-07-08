@@ -1,0 +1,14 @@
+<view class="playlist-center-container">
+  <view class="top">
+    <view class="left">歌单广场</view>
+    <!-- 全部歌单分类 -->
+    <navigator url="/packages/package-home-center/pages/playlist-tags/playlist-tags" hover-class="none">
+      <view class="right iconfont icon-fenlei"></view>
+    </navigator>
+  </view>
+  <t-tabs defaultValue="{{0}}">
+    <t-tab-panel wx:for="{{topPlaylistTags}}" wx:key="id" label="{{item.name}}" value="{{index}}">
+      <playlist-item-display tagName="{{item.name}}"></playlist-item-display>
+    </t-tab-panel>
+  </t-tabs>
+</view>

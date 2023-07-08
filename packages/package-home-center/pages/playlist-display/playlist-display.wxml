@@ -1,3 +1,4 @@
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter"/>
 <view class="playlist-display-container" style="background: {{bgc}};">
   <!-- 背景 -->
   <view class="bg-container">
@@ -10,7 +11,7 @@
           <!--  播放量 -->
           <view class="nums">
             <view class="iconfont icon-bofangqi-bofang"></view>
-            {{module.getPlaybackVolume(playlistInfo.playCount)}}
+            {{filter.getPlaybackVolume(playlistInfo.playCount)}}
           </view>
           <view class="negative"></view>
           <image class="img" src="{{playlistInfo.coverImgUrl}}" mode="aspectFill" />
@@ -54,20 +55,3 @@
   <!-- 歌曲展示列表 -->
   <song-display-list isShowCover="{{false}}" isShowIndex="{{true}}" class="song-display-list" songList="{{songList}}"></song-display-list>
 </view>
-<wxs module="module">
-  module.exports = {
-    // 获取播放量
-    getPlaybackVolume: function (nums) {
-      if (!nums) return ''
-      if (nums < 10000) {
-        return nums
-      }
-      else if (nums >= 10000 && nums < 100000000) {
-        return Math.round(nums / 10000) + '万'
-      }
-      else if (nums >= 100000000) {
-        return Math.round(nums / 100000000) + '亿'
-      }
-    }
-  }
-</wxs>

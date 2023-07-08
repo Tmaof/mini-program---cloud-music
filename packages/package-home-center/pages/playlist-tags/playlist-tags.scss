@@ -1,0 +1,61 @@
+.playlist-tags-container {
+  background-color: var(--white);
+  .top {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--padding);
+    .left {
+      font-weight: bold;
+      font-size: var(--font-size);
+    }
+  }
+  .tags-card {
+    margin-top: var(--margin);
+    .top {
+      .title {
+        font-size: var(--font-size);
+      }
+    }
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      // background-color: coral;
+      // 标签
+      .tags-item-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25vw;
+        padding: var(--padding);
+
+        .tags-item {
+          flex: 1 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .hot {
+          }
+          .text {
+            flex: 1 1;
+            text-align: center;
+            padding: var(--padding);
+            background-color: rgba(248, 248, 255, 0.527);
+            border-radius: var(--b-r-size-large);
+            font-size: var(--font-size-smaller);
+          }
+        }
+      }
+    }
+  }
+  .popup {
+    .tag-title {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      margin-left: var(--margin);
+      font-weight: bold;
+      font-size: var(--font-size);
+    }
+  }
+}

@@ -86,7 +86,7 @@ module.exports = {
    */
   formatTimeYMD: function (timespan) {
     if (isNaN(timespan)) {
-      return 
+      return
     }
     var dateTime = getDate(timespan) // 将传进来的字符串或者毫秒转为标准时间
     var year = dateTime.getFullYear()
@@ -114,5 +114,16 @@ module.exports = {
       return pName
     }
     return ''
+  },
+  // 获取播放量
+  getPlaybackVolume: function (nums) {
+    if (!nums) return ''
+    if (nums < 10000) {
+      return nums
+    } else if (nums >= 10000 && nums < 100000000) {
+      return Math.round(nums / 10000) + '万'
+    } else if (nums >= 100000000) {
+      return Math.round(nums / 100000000) + '亿'
+    }
   }
 }

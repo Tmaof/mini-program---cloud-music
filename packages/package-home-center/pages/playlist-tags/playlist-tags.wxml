@@ -1,0 +1,28 @@
+<view class="playlist-tags-container">
+  <view class="top">
+    <view class="left">歌单标签</view>
+  </view>
+  <!-- 标签卡片 -->
+  <view class="tags-card" wx:for="{{categories}}" wx:key="id">
+    <view class="top">
+      <view class="title">{{item.name}}</view>
+    </view>
+    <view class="body">
+      <!-- 标签 -->
+      <view class="tags-item-container" wx:for-item='tag' wx:for="{{tagList}}" wx:key="index" wx:if="{{tag.category==item.id}}"
+      bindtap="onClickTag" data-tagname="{{tag.name}}"
+      >
+        <view class="tags-item">
+          <view class="hot"></view>
+          <view class="text">{{tag.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 弹出层 -->
+  <t-popup class="popup" visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement="right" close-btn='{{true}}'>
+    <!-- 标题 -->
+    <view class="tag-title">{{currentTagName}}</view>
+    <playlist-item-display id="playlist-item-display"></playlist-item-display>
+  </t-popup>
+</view>

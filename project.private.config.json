@@ -64,6 +64,20 @@
           "query": "playlistId=981484303",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "歌单中心",
+          "pathName": "packages/package-home-center/pages/playlist-center/playlist-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "歌单分类标签",
+          "pathName": "packages/package-home-center/pages/playlist-tags/playlist-tags",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
