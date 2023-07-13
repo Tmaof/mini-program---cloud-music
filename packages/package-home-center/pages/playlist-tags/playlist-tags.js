@@ -68,8 +68,8 @@ Page({
     const playlistItemDisplayEle = this.selectComponent('#playlist-item-display')
     playlistItemDisplayEle._resetData(tagName)
     this.setData({
-      popupVisible: true,
-      currentTagName: tagName
+      currentTagName: tagName,
+      popupVisible: true
     })
   },
 

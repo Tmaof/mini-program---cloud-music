@@ -48,6 +48,10 @@
       }
     }
   }
+  // 修改默认样式
+  .t-popup{
+    width: 100vw;
+  }
   .popup {
     .tag-title {
       display: flex;

@@ -9,9 +9,7 @@
     </view>
     <view class="body">
       <!-- 标签 -->
-      <view class="tags-item-container" wx:for-item='tag' wx:for="{{tagList}}" wx:key="index" wx:if="{{tag.category==item.id}}"
-      bindtap="onClickTag" data-tagname="{{tag.name}}"
-      >
+      <view class="tags-item-container" wx:for-item='tag' wx:for="{{tagList}}" wx:key="index" wx:if="{{tag.category==item.id}}" bindtap="onClickTag" data-tagname="{{tag.name}}">
         <view class="tags-item">
           <view class="hot"></view>
           <view class="text">{{tag.name}}</view>

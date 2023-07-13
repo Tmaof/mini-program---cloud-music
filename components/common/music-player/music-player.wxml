@@ -26,16 +26,17 @@
             <image class="img" src="/assets/img/唱片机指针.png" mode="heightFix" />
           </view>
           <!-- 碟片盘 -->
-          <touch-panel class="cover-touch-panel" bind:start-touch='onDiscTouchStart' bind:move='onDiscTouchMove' bind:touch='noDiscTouchEnd'>
-            <view class="plate">
-              <!-- 胶片 -->
-              <image style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="img rotate-animation-delay" src="/assets/img/唱片盘.png" mode="aspectFit" />
-              <!-- 封面 -->
-              <view class="cover-container {{(discLeftIn?'cover-container-left-in ':'')}} {{(discRightIn?'cover-container-right-in':'')}}" style="transition: {{discTouchMoving?'none':''}}; transform: translate({{discTranslateX?(discTranslateX*2-265):''}}rpx,-50%);">
+          <view class="plate">
+            <!-- 胶片 -->
+            <image style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="img rotate-animation-delay" src="/assets/img/唱片盘.png" mode="aspectFit" />
+            <!-- 封面 -->
+            <view class="cover-container {{(discLeftIn?'cover-container-left-in ':'')}} {{(discRightIn?'cover-container-right-in':'')}}" style="transition: {{discTouchMoving?'none':''}}; transform: translate({{discTranslateX?(discTranslateX*2-265):''}}rpx,-50%);">
+              <touch-panel class="cover-touch-panel" bind:start-touch='onDiscTouchStart' bind:move='onDiscTouchMove' bind:touch='noDiscTouchEnd'>
                 <image style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="cover rotate-animation-delay" src="{{songInfo.al.picUrl}}" mode="aspectFill" />
-              </view>
+              </touch-panel>
             </view>
-          </touch-panel>
+          </view>
+
         </view>
         <!-- 操作栏 -->
         <view class="action-bar">
