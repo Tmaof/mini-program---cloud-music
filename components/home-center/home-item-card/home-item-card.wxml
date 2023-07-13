@@ -3,16 +3,19 @@
   <view class="header">
     <!-- 左侧 -->
     <view class="left">
-      <!-- 大标题样式 -->
-      <view wx:if="{{titleStyle=='large'}}" class="title-style-large">
-        <text>{{title}}</text>
-        <view class="icon iconfont icon-youjiantou">
+      <navigator url="{{titleUrl}}" hover-class="none">
+        <!-- 大标题样式 -->
+        <view wx:if="{{titleStyle=='large'}}" class="title-style-large">
+          <text>{{title}}</text>
+          <view class="icon iconfont icon-youjiantou">
+          </view>
         </view>
-      </view>
-      <!-- 小标题样式 -->
-      <view wx:else class="title-style-small">
-        <text>{{title}}</text>
-      </view>
+        <!-- 小标题样式 -->
+        <view wx:else class="title-style-small">
+          <text>{{title}}</text>
+        </view>
+      </navigator>
+
     </view>
     <!-- 右侧 -->
     <view class="right">

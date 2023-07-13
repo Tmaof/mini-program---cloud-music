@@ -14,6 +14,10 @@ Component({
       type: String,
       value: '默认内容'
     },
+    titleUrl: {
+      type: String,
+      value:''
+    },
     describe: {
       type: String,
       value: '描述'

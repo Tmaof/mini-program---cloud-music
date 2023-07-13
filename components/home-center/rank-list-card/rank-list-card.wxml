@@ -3,11 +3,13 @@
 
 <view class="rank-list-card-container my-card-fade">
   <view class="header">
-    <view class="title">
-      <text class="text">{{title}}</text>
-      <view class="icon iconfont icon-youjiantou">
-      </view>
-    </view>
+    <navigator hover-class="none" url="{{titleUrl}}">
+        <view class="title">
+          <text class="text">{{title}}</text>
+          <view class="icon iconfont icon-youjiantou">
+          </view>
+        </view>
+    </navigator>
     <view class="describe">
       <text>{{describe}}</text>
     </view>

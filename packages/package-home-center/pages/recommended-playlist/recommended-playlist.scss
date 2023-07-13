@@ -1,0 +1,44 @@
+.recommended-playlist-container {
+  background-color: var(--white);
+
+  .top {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--padding);
+
+    .left {
+      font-weight: bold;
+      font-size: var(--font-size);
+    }
+  }
+
+  .scroll-view {
+    height: calc(100vh - 40px);
+    .recommended-songs-container {
+      display: flex;
+      flex-wrap: wrap;
+      .recommended-songs-item {
+        width: 33.3vw;
+        height: 33.3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        // background: lightcyan;
+
+        .cover {
+          width: 90%;
+          height: 80%;
+          border-radius: var(--b-r-size);
+        }
+
+        text {
+          width: 30vw;
+          padding: var(--padding-small) 0;
+          font-size: small;
+        }
+      }
+    }
+  }
+}

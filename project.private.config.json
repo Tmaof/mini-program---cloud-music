@@ -78,6 +78,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "排行榜",
+          "pathName": "packages/package-home-center/pages/toplist-center/toplist-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "推荐歌曲",
+          "pathName": "packages/package-home-center/pages/recommended-playlist/recommended-playlist",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

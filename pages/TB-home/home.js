@@ -9,6 +9,9 @@ import {
 } from '@/api/home/home'
 
 Page({
+  options: {
+    styleIsolation: 'apply-shared'
+  },
   behaviors: [injectAppStore],
   /**
    * 页面的初始数据
@@ -45,9 +48,9 @@ Page({
    * 获取推荐歌曲
    */
   async _getRecommendedPlaylists() {
-    const res = await getRecommendedPlaylists();
+    const res = await getRecommendedPlaylists(30);
     this.setData({
-      recommendedPlaylists: res.result
+      recommendedPlaylists: res.result || []
     })
   },
 
@@ -61,7 +64,7 @@ Page({
       theList: res
     })
     // 请求其他榜单数据
-    setTimeout(async() => {
+    setTimeout(async () => {
       const res = await getTheList(2, 10, 30)
       this.setData({
         theList: [...this.data.theList, ...res]

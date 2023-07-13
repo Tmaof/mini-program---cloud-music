@@ -17,6 +17,11 @@ Component({
       type: String,
       value: 'large' || 'small'
     },
+    // 点击标题跳转的url
+    titleUrl: {
+      type: String,
+      value:''
+    },
     // 是否显示底部下划线
     showUnderline: {
       type: Boolean,

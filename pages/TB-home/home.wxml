@@ -21,11 +21,13 @@
           <text>歌单</text>
         </view>
       </navigator>
-      <view class="item">
-        <view class="iconfont item-icon icon-paixingbang">
+      <navigator hover-class="none" url="/packages/package-home-center/pages/toplist-center/toplist-center">
+        <view class="item">
+          <view class="iconfont item-icon icon-paixingbang">
+          </view>
+          <text>排行榜</text>
         </view>
-        <text>排行榜</text>
-      </view>
+      </navigator>
       <view class="item">
         <view class="iconfont item-icon icon-diantai">
         </view>
@@ -33,24 +35,24 @@
       </view>
     </view>
     <!-- 推荐歌单 -->
-    <home-item-card title="推荐歌单">
+    <home-item-card title="推荐歌单" titleUrl="/packages/package-home-center/pages/recommended-playlist/recommended-playlist">
       <scroll-view show-scrollbar="false" enhanced class="recommended-songs" scroll-x="true" enable-flex="true">
         <view class="recommended-songs-item" wx:for="{{recommendedPlaylists}}" wx:key="id">
           <navigator url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}" hover-class="none">
             <view class="cover">
               <image src="{{item.picUrl}}" mode="aspectFill" />
             </view>
-            <text>{{item.name}}</text>
+            <text class="single-line-overflow">{{item.name}}</text>
           </navigator>
         </view>
       </scroll-view>
     </home-item-card>
 
     <!-- 排行榜 -->
-    <home-item-card title="排行榜">
+    <home-item-card title="排行榜" titleUrl="/packages/package-home-center/pages/toplist-center/toplist-center">
       <swiper next-margin="20" class="rankling-list">
         <swiper-item wx:for="{{theList}}" wx:key="id">
-          <rank-list-card title="{{item.name}}" describe="" list="{{item.tracks}}" playlistId="{{item.id}}"></rank-list-card>
+          <rank-list-card titleUrl='/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}' title="{{item.name}}" describe="" list="{{item.tracks}}" playlistId="{{item.id}}"></rank-list-card>
         </swiper-item>
       </swiper>
     </home-item-card>

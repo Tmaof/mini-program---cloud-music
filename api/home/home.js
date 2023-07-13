@@ -17,11 +17,11 @@ export function getBannerList() {
 /**
  * 获取推荐歌单
  */
-export function getRecommendedPlaylists() {
+export function getRecommendedPlaylists(limit = 30) {
   return request({
     url: '/personalized',
     data: {
-      limit: 30
+      limit,
     }
   })
 }

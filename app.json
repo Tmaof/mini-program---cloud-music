@@ -15,7 +15,9 @@
         "pages/recommended-daily/recommended-daily",
         "pages/playlist-display/playlist-display",
         "pages/playlist-center/playlist-center",
-        "pages/playlist-tags/playlist-tags"
+        "pages/playlist-tags/playlist-tags",
+        "pages/toplist-center/toplist-center",
+        "pages/recommended-playlist/recommended-playlist"
       ]
     },
     {

@@ -1,0 +1,29 @@
+.toplist-center-container {
+  background-color: var(--white);
+  .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--padding);
+    .left {
+      font-weight: bold;
+      font-size: var(--font-size);
+    }
+  }
+  .playlist-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    .playlist-item {
+      width: 33.3vw;
+      height: 33.3vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .img {
+        width: 80%;
+        height: 80%;
+        border-radius: var(--b-r-size);
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<view class="toplist-center-container">
+  <view class="top">
+    <view class="left">排行榜</view>
+  </view>
+  <view class="playlist-item-container">
+    <navigator hover-class="none" url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}" wx:for="{{toplist}}" wx:key="id">
+      <view class="playlist-item">
+        <image class="img" src="{{item.coverImgUrl}}" mode="aspectFill" />
+      </view>
+    </navigator>
+
+  </view>
+
+</view>
