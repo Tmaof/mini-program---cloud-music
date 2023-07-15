@@ -2,7 +2,7 @@
 <view class="music-player-container">
   <t-popup style="transform: translate(0 ,{{pageTranslateY}}px);transition: {{pageTouchMoving?'none':''}};" z-index='11000' show-overlay='{{false}}' visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement='bottom'>
     <!-- 底片层 -->
-    <image class="negative-layer" src="{{songInfo.al.picUrl}}" mode="aspectFill"></image>
+    <image class="negative-layer" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill"></image>
     <!-- 顶层 -->
     <touch-panel bind:start-touch='onPageTouchStart' bind:move='onPageTouchMove' bind:touch='noPageTouchEnd'>
       <view class="music-player-page">
@@ -12,7 +12,7 @@
           <view class="info ">
             <view class="title single-line-overflow">{{songInfo.name}}
             </view>
-            <text class="author single-line-overflow">{{filter.getAuthorName(songInfo.ar||[])}}</text>
+            <text class="author single-line-overflow">{{filter.getAuthorName(songInfo.ar||songInfo.artists||[])}}</text>
           </view>
           <view class="share iconfont icon-fenxiang"></view>
         </view>
@@ -32,7 +32,7 @@
             <!-- 封面 -->
             <view class="cover-container {{(discLeftIn?'cover-container-left-in ':'')}} {{(discRightIn?'cover-container-right-in':'')}}" style="transition: {{discTouchMoving?'none':''}}; transform: translate({{discTranslateX?(discTranslateX*2-265):''}}rpx,-50%);">
               <touch-panel class="cover-touch-panel" bind:start-touch='onDiscTouchStart' bind:move='onDiscTouchMove' bind:touch='noDiscTouchEnd'>
-                <image style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="cover rotate-animation-delay" src="{{songInfo.al.picUrl}}" mode="aspectFill" />
+                <image style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="cover rotate-animation-delay" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill" />
               </touch-panel>
             </view>
           </view>

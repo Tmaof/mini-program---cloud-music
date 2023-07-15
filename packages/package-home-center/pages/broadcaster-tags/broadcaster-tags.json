@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "broadcaster-item-display":"/packages/package-home-center/components/broadcaster-item-display/broadcaster-item-display"
+  }
+}

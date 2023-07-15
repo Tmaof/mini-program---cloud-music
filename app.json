@@ -17,7 +17,10 @@
         "pages/playlist-center/playlist-center",
         "pages/playlist-tags/playlist-tags",
         "pages/toplist-center/toplist-center",
-        "pages/recommended-playlist/recommended-playlist"
+        "pages/recommended-playlist/recommended-playlist",
+        "pages/broadcaster-center/broadcaster-center",
+        "pages/broadcaster-display/broadcaster-display",
+        "pages/broadcaster-tags/broadcaster-tags"
       ]
     },
     {

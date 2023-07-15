@@ -1,11 +1,9 @@
 <!-- 播放控制器 -->
 <view class="playback-controll-container">
   <!-- 封面 -->
-  <view class="cover rotate-animation"
-  style="animation-play-state: {{isPlaying?'running':'paused'}};"
-  >
+  <view class="cover rotate-animation" style="animation-play-state: {{isPlaying?'running':'paused'}};">
     <image class="disc" src="/assets/img/唱片盘.png" mode="aspectFill" />
-    <image class="img" src="{{songInfo.al.picUrl}}" mode="aspectFill" />
+    <image class="img" src="{{songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill" />
   </view>
   <!-- 歌名 -->
   <view bindtap="onShowMusicPlayer" class="name single-line-overflow">{{songInfo.name||'当前无播放歌曲'}}</view>

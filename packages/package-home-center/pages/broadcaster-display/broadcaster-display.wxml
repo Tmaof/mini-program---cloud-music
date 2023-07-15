@@ -1,0 +1,58 @@
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter" />
+<view class="broadcaster-display-container" style="background: {{bgc}};">
+  <!-- 背景 -->
+  <view class="bg-container">
+    <!-- 电台信息 -->
+    <view class="info">
+      <!-- 顶部 -->
+      <view class="top">
+        <!-- 封面 -->
+        <view class="cover">
+          <!--  播放量 -->
+          <!-- <view class="nums">
+            <view class="iconfont icon-bofangqi-bofang"></view>
+            {{filter.getPlaybackVolume(djInfo.playCount)}}
+          </view> -->
+          <view class="negative"></view>
+          <image class="img" src="{{djInfo.picUrl}}" mode="aspectFill" />
+        </view>
+        <!-- 文本信息 -->
+        <view class="right">
+          <!-- 歌单名 -->
+          <view class="name single-line-overflow ">{{djInfo.name}}</view>
+          <!-- 作者信息 -->
+          <view class="author">
+            <t-avatar class="img" image="{{djInfo.dj.avatarUrl}}" size="small" />
+            <view class="name single-line-overflow ">{{djInfo.dj.nickname}}</view>
+          </view>
+          <!-- 标签 -->
+          <view class="tags">
+            <text class="tag-item">{{djInfo.category}}</text>
+            <text class="tag-item">{{djInfo.secondCategory}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 底部/描述 -->
+      <view class="bottom single-line-overflow ">
+        {{djInfo.desc}}
+      </view>
+    </view>
+    <!-- 动态信息 -->
+    <view class="dynamic">
+      <view class="item-card">
+        <view class="iconfont icon-fenxiang"></view>
+        <text class="nums">{{djInfo.shareCount}}</text>
+      </view>
+      <view class="item-card">
+        <view class="iconfont icon-pinglun"></view>
+        <text class="nums">{{djInfo.commentCount}}</text>
+      </view>
+      <view class="item-card">
+        <view class="iconfont icon-shoucang"></view>
+        <text class="nums">{{djInfo.subCount}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 节目展示列表 -->
+  <program-display-list isShowCover="{{true}}" isShowIndex="{{false}}" class="program-display-list" djId="{{djId}}" programCount="{{djInfo.programCount}}"></program-display-list>
+</view>

@@ -1,0 +1,32 @@
+.broadcaster-item-display-container {
+  .item-card-container {
+    height: 90vh;
+
+    .item-card {
+      display: flex;
+      align-items:center;
+      margin: var(--margin-large);
+
+      .cover {
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: var(--b-r-size);
+        margin-right: var(--margin);
+      }
+
+      .right {
+        width: 55vw;
+        flex: 1 1;
+        .name {
+          font-weight: bold;
+          letter-spacing: var(--let-spa-small);
+        }
+
+        .desc {
+          font-size: var(--font-size-smaller);
+          color: var(--grey);
+        }
+      }
+    }
+  }
+}

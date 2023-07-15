@@ -18,6 +18,7 @@ module.exports = {
    * @param nameKey 
    */
   getAuthorName: function (list, nameKey) {
+    if (!list) return ''
     var strlist = []
     nameKey = nameKey || 'name'
     for (i = 0; i < list.length; i++) {

@@ -29,7 +29,7 @@ export const userStore = observable({
       data: res
     } = await getUserInfo()
 
-    if (res.code == 200 && res.account.userName != '0_m15849353741@163.com') {
+    if (res.code == 200 && (res.account && res.account.userName != '0_m15849353741@163.com')) {
       // if (res.code == 200) {
       this.userInfo = res.profile || res.account
       this.isUserLogin = true

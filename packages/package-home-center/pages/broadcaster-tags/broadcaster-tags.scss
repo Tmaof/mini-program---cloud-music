@@ -1,0 +1,14 @@
+.broadcaster-tags-container {
+  background-color: var(--white);
+  .top {
+    margin: 0 var(--margin);
+
+    .title {
+      font-weight: bold;
+    }
+  }
+  // 覆盖t-tabs样式
+  .t-tabs__item--evenly {
+    flex: none !important;
+  }
+}

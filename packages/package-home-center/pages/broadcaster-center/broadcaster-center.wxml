@@ -1,0 +1,55 @@
+<view class="broadcaster-center-container">
+  <!-- 顶部 -->
+  <view class="top">
+    <view class="left">电台广场</view>
+    <!-- 全部歌单分类 -->
+    <navigator url="/packages/package-home-center/pages/broadcaster-tags/broadcaster-tags" hover-class="none">
+      <view class="right iconfont icon-fenlei"></view>
+    </navigator>
+  </view>
+  <!-- 身体 -->
+  <view class="body">
+    <!-- 今日优选电台 -->
+    <view class="item-card my-card-fade">
+      <view class="title">今日优选</view>
+      <scroll-view class="scroll-x" scroll-x="true">
+        <navigator hover-class="none" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}" wx:for="{{todayPerferedDj}}" wx:key="id" class="today-perfered-item">
+          <view>
+            <image class="img" src="{{item.picUrl}}" mode="aspectFill" />
+            <view class="name single-line-overflow">{{item.name}}</view>
+          </view>
+        </navigator>
+      </scroll-view>
+    </view>
+    <!-- 推荐的电台 -->
+    <view class="item-card my-card-fade">
+      <view class="title">推荐电台</view>
+      <scroll-view class="scroll-x" scroll-x="true">
+        <navigator wx:for="{{recommendDj}}" wx:key="id" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}" hover-class="none" class="recommend-item">
+          <view>
+            <image class="img" src="{{item.picUrl}}" mode="aspectFill" />
+            <view class="name single-line-overflow">{{item.name}}</view>
+          </view>
+        </navigator>
+
+      </scroll-view>
+    </view>
+    <!-- 热门电台 -->
+    <view class="item-card my-card-fade">
+      <view class="title">热门电台</view>
+      <scroll-view class="scroll-view-y" scroll-y bindscrolltolower="_getHotDj">
+        <navigator wx:for="{{hotDj}}" wx:key="id" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}" hover-class="none" class="hot-item">
+          <!-- 封面 -->
+          <image class="cover" src="{{item.picUrl}}" mode="aspectFill" />
+          <view class="right">
+            <view class="author single-line-overflow">{{item.dj.nickname}}</view>
+            <view class="name single-line-overflow">{{item.name}}</view>
+            <view class="tags"><text class="tag-item">{{item.category}}</text></view>
+            <view class="rcmdtext">{{item.rcmdtext||''}}</view>
+          </view>
+        </navigator>
+      </scroll-view>
+    </view>
+  </view>
+
+</view>

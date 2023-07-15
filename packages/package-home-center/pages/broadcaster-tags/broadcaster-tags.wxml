@@ -1,0 +1,10 @@
+<view class="broadcaster-tags-container">
+<view class="top">
+  <view class="title">全部分类</view>
+</view>
+  <t-tabs defaultValue="{{0}}">
+    <t-tab-panel label="{{item.name}}" wx:for="{{cateInfoList}}" wx:key="id"  value="{{index}}">
+      <broadcaster-item-display cateId="{{item.id}}"></broadcaster-item-display>
+    </t-tab-panel>
+  </t-tabs>
+</view>

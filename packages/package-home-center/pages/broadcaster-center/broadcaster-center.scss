@@ -1,0 +1,106 @@
+.broadcaster-center-container {
+  overflow-x: hidden;
+  margin: var(--margin);
+  // 顶部
+  .top {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--padding);
+    .left {
+      font-weight: bold;
+      font-size: var(--font-size);
+    }
+
+    .right {
+      font-size: var(--font-size-larger-xx);
+      color: var(--grey);
+    }
+  }
+  // 身体
+  .body {
+    .item-card {
+      min-height: 376rpx;
+      .title {
+        font-size: var(--font-size);
+        font-weight: bold;
+        padding: var(--padding);
+      }
+      .scroll-x {
+        width: 100%;
+        white-space: nowrap;
+      }
+
+      .scroll-view-y {
+        height: 80vh;
+      }
+
+      // 今日优选
+      // 推荐的电台
+      .today-perfered-item,
+      .recommend-item {
+        display: inline-block;
+        margin: 0 var(--margin);
+        width: 200rpx;
+
+        .img {
+          width: 100%;
+          height: 200rpx;
+          border-radius: var(--b-r-size);
+        }
+
+        .name {
+          width: 100%;
+          text-align: center;
+          font-size: var(--font-size-small);
+        }
+      }
+
+      // 热门电台
+      .hot-item {
+        display: flex;
+        align-items: center;
+        margin: var(--margin);
+
+        .cover {
+          width: 180rpx;
+          height: 150rpx;
+          border-radius: var(--b-r-size);
+          margin-right: var(--margin);
+        }
+
+        .right {
+          max-width: 50vw;
+          flex: 1 1;
+          .author {
+            font-size: var(--font-size-smaller);
+            color: var(--grey);
+          }
+
+          .name {
+            font-weight: bold;
+            font-size: var(--font-size);
+          }
+
+          .tags {
+            .tag-item {
+              font-size: var(--font-size-smaller-xx);
+              color: var(--themeColor);
+              border-radius: var(--b-r-size-small);
+              border: 1px solid var(--themeColor);
+              padding: 2px;
+            }
+          }
+
+          .rcmdtext {
+            margin: var(--margin);
+            font-size: var(--font-size-small);
+            color: var(--grey-deep);
+            word-wrap: break-word;
+            word-break: normal;
+          }
+        }
+      }
+    }
+  }
+}

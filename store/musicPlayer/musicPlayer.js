@@ -168,9 +168,9 @@ export const musicPlayerStore = observable({
     this.songInfo = songInfo
     this.innerAudioContext.src = songInfo.url
     this.innerAudioContext.title = songInfo.name
-    this.innerAudioContext.epname = songInfo.al.name
-    this.innerAudioContext.singer = getAuthorName(songInfo.ar)
-    this.innerAudioContext.coverImgUrl = songInfo.al.picUrl
+    this.innerAudioContext.epname = (songInfo.al || songInfo.album).name
+    this.innerAudioContext.singer = getAuthorName(songInfo.ar || songInfo.artists)
+    this.innerAudioContext.coverImgUrl = songInfo.coverUrl || songInfo.al.picUrl || songInfo.album.picUrl
     this.innerAudioContext.webUrl = config.blogUrl
   },
 

@@ -28,11 +28,13 @@
           <text>排行榜</text>
         </view>
       </navigator>
-      <view class="item">
-        <view class="iconfont item-icon icon-diantai">
+      <navigator url="/packages/package-home-center/pages/broadcaster-center/broadcaster-center" hover-class="none">
+        <view class="item">
+          <view class="iconfont item-icon icon-diantai">
+          </view>
+          <text>电台</text>
         </view>
-        <text>电台</text>
-      </view>
+      </navigator>
     </view>
     <!-- 推荐歌单 -->
     <home-item-card title="推荐歌单" titleUrl="/packages/package-home-center/pages/recommended-playlist/recommended-playlist">

@@ -92,6 +92,27 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "电台中心",
+          "pathName": "packages/package-home-center/pages/broadcaster-center/broadcaster-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "电台详情展示",
+          "pathName": "packages/package-home-center/pages/broadcaster-display/broadcaster-display",
+          "query": "djId=129",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "电台分类标签",
+          "pathName": "packages/package-home-center/pages/broadcaster-tags/broadcaster-tags",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

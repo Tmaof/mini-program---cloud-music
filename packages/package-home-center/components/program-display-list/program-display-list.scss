@@ -1,0 +1,156 @@
+.program-display-list-container {
+  padding-bottom: var(--page-padding);
+  background-color: var(--white);
+
+  // 头部
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: var(--page-padding);
+    // background: gold;
+
+    .left {
+      flex: 1 1;
+      display: flex;
+      align-items: center;
+      .icon {
+        font-size: var(--font-size);
+        width: 60rpx;
+      }
+
+      .text {
+        margin: 0 5px;
+        font-weight: bold;
+      }
+
+      .nums {
+        font-size: var(--font-size-smaller);
+        color: var(--grey);
+      }
+    }
+
+    .right {
+      // 多选按钮
+      .icon {
+        font-size: var(--font-size);
+        color: var(--black);
+      }
+    }
+  }
+
+  // 歌曲列表
+  .list {
+    white-space: nowrap;
+    height: calc(100vh - 160rpx);
+
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 var(--page-padding);
+      // background: hotpink;
+      margin-top: 10px;
+
+      // 左
+      .left {
+        display: flex;
+        align-items: center;
+        // 正在播放歌曲标识图标
+        .playing {
+          width: 120rpx;
+          height: 120rpx;
+          justify-content: center;
+          align-items: center;
+          display: none;
+          margin-right: var(--margin);
+          .icon-yinle {
+            font-size: var(--font-size-larger-xx);
+            width: var(--font-size-larger-x);
+            color: var(--themeColor);
+          }
+        }
+
+        .cover {
+          width: 120rpx;
+          height: 120rpx;
+          margin-right: var(--margin);
+          border-radius: var(--b-r-size-small);
+        }
+        .index {
+          width: 120rpx;
+          margin-right: var(--margin);
+          color: var(--grey);
+          text-align: center;
+        }
+      }
+      .center {
+        flex: 1 1;
+        width: 47vw;
+        height: 100%;
+        // background: blanchedalmond;
+
+        .name {
+          display: flex;
+          align-items: flex-end;
+        }
+
+        .info {
+          display: flex;
+          font-size: var(--font-size-small);
+          color: var(--grey-deep);
+          margin-top: var(--margin-small);
+
+          .reason {
+            font-size: var(--font-size-smaller);
+            background: rgba(255, 192, 203, 0.295);
+            border-radius: var(--b-r-size-smaller-x);
+            padding: 4px;
+            margin-right: var(--margin-small);
+            color: var(--red);
+          }
+
+          // 时间
+          .time{
+            margin-right: var(--margin);
+          }
+
+          .count{
+            display: flex;
+            .iconfont{
+              width: auto;
+              color: var(--grey-deep);
+            }
+              margin-right: var(--margin);
+          }
+        }
+      }
+
+      // 右
+      .right {
+        display: flex;
+        align-items: center;
+
+        .video,
+        .more {
+          width: 60rpx;
+          font-size: var(--font-size-small);
+          color: var(--grey);
+        }
+      }
+    }
+  }
+
+  // 正在播放的歌曲样式
+  .active-song {
+    // 正在播放歌曲标识图标
+    .playing {
+      display: flex !important;
+    }
+
+    .name {
+      color: var(--themeColor);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "program-display-list":"/packages/package-home-center/components/program-display-list/program-display-list"
+  }
+}
