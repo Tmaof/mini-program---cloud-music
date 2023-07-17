@@ -46,13 +46,14 @@ Page({
       playlistInfo: playlist,
       dynamic
     })
-    setTimeout(async () => {
+    const tid = setTimeout(async () => {
       const {
         songs
       } = await getSongListByPlaylistId(this.data.playlistId)
       this.setData({
         songList: songs || [],
       })
+      clearTimeout(tid)
     }, 50);
   },
 

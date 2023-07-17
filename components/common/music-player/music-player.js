@@ -28,8 +28,15 @@ Component({
     discLeftIn: false,
     discRightIn: false,
     isToCenterOk: true, //封面移动到中间再开始播放动画
+    lyricScrollEle: null, //歌词区的scroll-view 实例
+    isShowLyric: false, //是否显示歌词
+    isScrollLyricing: false, //是否正在滚动歌词
   },
-
+  observers: {
+    'currentLyricIndex': function (val) {
+      this._scrollToCurrentLyrics()
+    }
+  },
   /**
    * 组件的方法列表
    */
@@ -71,9 +78,6 @@ Component({
     // 改变播放进度
     onChangeProgress(e) {
       const vlaue = e.detail.value
-      this.setData({
-        currentTime: vlaue
-      })
       this.changeProgress(vlaue)
     },
     onPageTouchStart() {
@@ -153,6 +157,7 @@ Component({
       }
     },
     onDiscTouchStart() {
+      console.log('start')
       this.setData({
         discTouchMoving: true,
         isToCenterOk: false
@@ -181,37 +186,107 @@ Component({
           discTranslateX: isToRight ? 1000 : -1000,
           discTouchMoving: false,
         })
-         // 切换歌曲
-        setTimeout(() => { 
+        // 切换歌曲
+        const tid1 = setTimeout(() => {
           this.switchSong(isToRight ? 'up' : 'down')
+          clearTimeout(tid1)
         }, 200)
         // 从左边移入
-        setTimeout(() => {
+        const tid2 = setTimeout(() => {
           this.setData({
             discLeftIn: isToRight ? true : false,
             discRightIn: isToLeft ? true : false,
             discTranslateX: '',
           })
+          clearTimeout(tid2)
         }, 500);
         // 移入完成,开始播放动画
-        setTimeout(() => {
+        const tid3 = setTimeout(() => {
           this.setData({
             isToCenterOk: true,
             discLeftIn: false,
             discRightIn: false
           })
+          clearTimeout(tid3)
         }, 1000)
       } else {
         this.setData({
           discTranslateX: '',
           discTouchMoving: false
         })
-        setTimeout(() => {
+        const tid = setTimeout(() => {
           this.setData({
             isToCenterOk: true
           })
+          clearTimeout(tid)
         }, 500);
       }
+    },
+    // 显示/隐藏 歌词区
+    async onChangeLyricVisibility(e) {
+      const visibility = e.currentTarget.dataset.visibility
+      if (visibility) {
+        if (!this.data.songInfo) return
+        this.changeIsNeedLyric(true)
+        //更新当前歌曲歌词
+        this.updateCurrentLyric()
+        this.setData({
+          isShowLyric: true,
+        })
+      } else {
+        this.changeIsNeedLyric(false)
+        this.setData({
+          isShowLyric: false
+        })
+      }
+
+    },
+    // 获取歌词区元素
+    _getLyricScrollEle() {
+      this.createSelectorQuery().select('#lyric-scroll').node((res) => {
+        // console.log(res.node) // 节点对应的实例。
+        // https://developers.weixin.qq.com/miniprogram/dev/api/ui/scroll/ScrollViewContext.html
+        // console.log(res,'res')
+        // 不要对#lyric-scroll使用wx:if wx:else
+        const lyricScrollEle = res.node
+        lyricScrollEle.showScrollbar = false //不显示滚动条
+        this.setData({
+          lyricScrollEle
+        })
+      }).exec()
+    },
+    // 滚动到当前歌词的位置
+    _scrollToCurrentLyrics() {
+      //用户滚动歌词时,不进行滚动到当前歌词位置
+      if (this.data.isScrollLyricing) return
+      if (this.data.lyricScrollEle)
+        this.data.lyricScrollEle.scrollIntoView('.lyric-item-active .auxiliary-bar')
+    },
+    onBinddragstart() {
+      this.setData({
+        isScrollLyricing: true
+      })
+    },
+    onBinddragend() {
+      const tid = setTimeout(() => {
+        this.setData({
+          isScrollLyricing: false
+        })
+        clearTimeout(tid)
+      }, 3000);
+    },
+    /**
+     * 点击跳转歌词
+     */
+    onJumpLyric(e) {
+      const time = e.currentTarget.dataset.time
+      this.changeProgress(time)
     }
   },
+
+  lifetimes: {
+    attached() {
+      this._getLyricScrollEle()
+    }
+  }
 })

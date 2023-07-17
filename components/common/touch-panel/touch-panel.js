@@ -88,7 +88,8 @@ Component({
     onTouchStart(e) {
       // console.log('start', e.touches[0])
       this.setData({
-        startTouchObj: e.touches[0]
+        startTouchObj: e.touches[0],
+        lastTouchObj: e.touches[0]
       })
       this.triggerEvent(this.data.startTouchEventName, e.touches[0])
     },

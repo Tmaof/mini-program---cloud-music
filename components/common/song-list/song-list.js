@@ -34,11 +34,12 @@ Component({
       this.setData({
         popupVisible: false
       })
-      setTimeout(() => {
+      const tid = setTimeout(() => {
         // 切换到当前播放页面
         this.setData({
           swiperCurrent: 0
         })
+        clearTimeout(tid)
       }, 300)
     },
     onVisibleChange() {

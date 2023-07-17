@@ -8,7 +8,9 @@ import {
 import {
   getAuthorName
 } from '@/utils/filter-js/filter'
-
+import {
+  getSongLyric
+} from '@/api/common/common'
 import config from '@/config/config'
 
 export const musicPlayerStore = observable({
@@ -26,6 +28,9 @@ export const musicPlayerStore = observable({
   songInfo: null,
   currentTime: 0, //当前播放进度
   duration: 0, //总时长
+  lyricList: [], //当前播放歌曲的歌词列表
+  isNeedLyric: false, //是否需要歌词
+  currentLyricIndex: -1, //当前播放歌词在lyricList的索引
   /**
    * 播放器实例
    * https: //developers.weixin.qq.com/miniprogram/dev/api/media/audio/InnerAudioContext.html
@@ -79,8 +84,10 @@ export const musicPlayerStore = observable({
     this.innerAudioContext.onTimeUpdate(() => {
         this.currentTime = this.innerAudioContext.currentTime
         this.duration = this.innerAudioContext.duration
+        this.updateCurrentLyricIndex(this.innerAudioContext.currentTime)
         // console.log(this.currentTime)
       }),
+
 
       // 监听用户在系统音乐播放面板点击下一曲事件（仅iOS）
       this.innerAudioContext.onNext(() => {
@@ -147,6 +154,60 @@ export const musicPlayerStore = observable({
   }),
 
   /**
+   * 获取歌曲歌词
+   */
+  getLyric: action(async function (songId) {
+    const {
+      lrc
+    } = await getSongLyric(songId)
+
+    const lyric = lrc.lyric //[00:00.000] 作词 : 张国祥\n[00:01.000] 作曲 : 汤小康\n[00:04.050]\n
+
+    let list = lyric.split('\n')
+    list = list.slice(0, list.length - 1)
+    list = list.map(item => {
+      // ''.match(/\[.*]/)[0].split(/(\[|])/)[1] //00:00.000
+      const timeList = item.match(/\d{2}/g)
+      const min = parseInt(timeList[0])
+      const sec = parseInt(timeList[1])
+      const ms = parseInt(timeList[2])
+      const str = item.match(/].*/g)[0]
+      return {
+        time: min * 60 + sec + ms / 100,
+        text: str ? str.split(']')[1] : ''
+      }
+    })
+    return list
+  }),
+
+  /**
+   * 更新当前歌曲歌词
+   */
+  updateCurrentLyric: action(async function () {
+    this.lyricList = await this.getLyric(this.songInfo.id)
+  }),
+
+  changeIsNeedLyric: action(function (isNeedLyric) {
+    this.isNeedLyric = isNeedLyric
+  }),
+
+  /**
+   * 更新当前歌词的索引位置
+   * @param {*} currentTime 
+   */
+  updateCurrentLyricIndex(currentTime) {
+    if (!this.isNeedLyric || !this.lyricList) return
+    const index = this.lyricList.findIndex(item => {
+      // console.log(item.time, currentTime)//3 3.94
+      return Math.round(item.time) == Math.round(currentTime)
+    })
+    // console.log(index,'index')
+    if (index != -1) {
+      this.currentLyricIndex = index
+    }
+  },
+
+  /**
    * 更新当前播放歌曲信息
    * @param {*} data 
    * @param {'songid'|'index'|'obj'} mode 传入的data的格式
@@ -165,6 +226,7 @@ export const musicPlayerStore = observable({
       console.error('更新当前播放歌曲信息失败')
       return false
     }
+
     this.songInfo = songInfo
     this.innerAudioContext.src = songInfo.url
     this.innerAudioContext.title = songInfo.name
@@ -172,6 +234,11 @@ export const musicPlayerStore = observable({
     this.innerAudioContext.singer = getAuthorName(songInfo.ar || songInfo.artists)
     this.innerAudioContext.coverImgUrl = songInfo.coverUrl || songInfo.al.picUrl || songInfo.album.picUrl
     this.innerAudioContext.webUrl = config.blogUrl
+
+    // 更新歌词
+    if (this.isNeedLyric) {
+      this.updateCurrentLyric()
+    }
   },
 
   /**

@@ -119,10 +119,11 @@ Page({
    */
   _stopQuery() {
     clearInterval(this.data.timer)
-    setTimeout(() => {
+    const tid = setTimeout(() => {
       this.setData({
         qrImg: ''
       })
+      clearTimeout(tid)
     }, 500)
   },
 
@@ -186,7 +187,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    clearInterval(this.data.timer)
   },
 
   /**

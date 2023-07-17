@@ -176,6 +176,44 @@
       height: 10vh;
       // background-color: gray;
     }
+
+    // 歌词区
+    .lyric-area {
+      height: 70vh;
+      overflow: auto;
+
+      .lyric-container {
+        text-align: center;
+
+        .lyric-item {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          margin-bottom: var(--margin-large);
+          color: var(--grey-fade);
+
+          .lyric-text {
+            // background-color: wheat;
+          }
+
+          .auxiliary-bar {
+            position: absolute;
+            bottom: 0;
+            width: 1px;
+            height: 25vh;
+            // background-color: yellowgreen;
+          }
+        }
+
+        // 活动的歌词样式
+        .lyric-item-active {
+          transition: transform 0.3s;
+          color: white !important;
+          transform: scale(1.1);
+        }
+      }
+    }
+
     // 进度条
     .progress-bar {
       flex: 1 1;

@@ -64,11 +64,13 @@ Page({
       theList: res
     })
     // 请求其他榜单数据
-    setTimeout(async () => {
+    const tid = setTimeout(async () => {
       const res = await getTheList(2, 10, 30)
       this.setData({
         theList: [...this.data.theList, ...res]
       })
+      clearTimeout(tid)
+      
     }, 1000)
   },
 
