@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "video-play-item": "/packages/package-video-center/components/video-play-item/video-play-item"
+  }
+}

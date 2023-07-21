@@ -1,0 +1,80 @@
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter" />
+<wxs module="module">
+  module.exports = {
+    getBriefDesc: function (desc) {
+      if (!desc) return ''
+      return desc.slice(0, 10) + '...'
+    }
+  }
+</wxs>
+<view class="video-play-item" bindtap="onChangeIsPlayVideo">
+  <!-- 视频 -->
+  <view class="video-container">
+    <view class="iconfont icon-bofangqi-bofang" hidden="{{isPlayVideo}}"></view>
+    <!-- 前1个和后1个video不销毁 -->
+    <video wx:if="{{isPlayVideo||(currentIndex>=playingIndex-1&&currentIndex<=playingIndex+1)}}" id="{{videoInfo.id}}" class="video" src="{{videoUrl}}" object-fit="contain" title="{{videoDetail.name}}" controls="{{isShowVideoControls}}" bindtimeupdate="onTimeUpdate" bindfullscreenchange="onFullScreenChange" show-center-play-btn="{{false}}" show-snapshot-button bindloadedmetadata="onLoadedmetadata" style="height: {{videoHeight}}px;" object-fit="contain"/>
+    <image wx:else src="{{videoDetail.cover}}" mode="aspectFill" class="cover" />
+  </view>
+  <view class="bottom" catchtap="onBlockingEvent">
+    <!-- 视频信息 -->
+    <view class="video-info" hidden="{{isChangeProgressing}}">
+      <!-- 作者 -->
+      <view class="author">
+        <!-- 头像 -->
+        <scroll-view id="profile-photo-scroll-view" class="profile-photo-container" scroll-x enhanced>
+          <image wx:for="{{videoDetail.artists}}" src="{{item.img1v1Url}}" mode="aspectFill" class="profile-photo" wx:key="index" />
+        </scroll-view>
+        <!-- 昵称 -->
+        <view class="name single-line-overflow">{{filter.getAuthorName(videoDetail.artists)}}</view>
+      </view>
+      <!-- 介绍 -->
+      <view class="desc">
+        <view wx:if="{{!videoDetail.desc}}">{{videoDetail.briefDesc||''}}</view>
+        <t-collapse wx:else value="{{activeValues}}" bind:change="handleChange">
+          <t-collapse-panel header="{{videoDetail.briefDesc||module.getBriefDesc(videoDetail.desc)}}" value="{{0}}" expandIcon>
+            {{videoDetail.desc||''}}
+          </t-collapse-panel>
+        </t-collapse>
+      </view>
+      <!-- 发布时间 -->
+      <view class="time">{{videoDetail.publishTime}}</view>
+    </view>
+    <!-- 当前时间/总时间 -->
+    <view class="time-ratio" hidden="{{!isChangeProgressing}}">
+      <text class="current">{{filter.formatTime(currentTime*1000) }}</text>
+      <text class="total"> / {{filter.formatTime(duration*1000)}}</text>
+    </view>
+    <!-- 相关音乐 -->
+    <view class="related-music">
+      <view class="name"></view>
+      <view class="disc"></view>
+    </view>
+    <!-- 进度条 -->
+    <view class="progress">
+      <t-slider default-value="{{0}}" bind:dragstart="onProgressChangeStart" bind:change="onProgressChange" bind:dragend='onProgressChangeEnd' min="{{0}}" max="{{duration}}" value="{{currentTime}}" />
+    </view>
+    <!-- 发表评论 全屏按钮 -->
+    <view class="full-screen-comment">
+      <!-- 发表评论 -->
+      <view class="comment">这么精彩不发条评论吗~
+      </view>
+      <!-- 全屏按钮 -->
+      <view class="full-screen iconfont icon-quanping_o" catchtap="onFullScreen"></view>
+    </view>
+
+  </view>
+  <!-- 动态信息 -->
+  <view catchtap="onBlockingEvent" class="dynamic-info" hidden="{{isChangeProgressing}}">
+    <!-- 点赞 -->
+    <view class="iconfont icon-tuijian">
+      <text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.likedCount)}}</text>
+    </view>
+    <!-- 评论 -->
+    <view class="iconfont icon-pinglun"><text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.commentCount)}}</text></view>
+    <!-- 分享 -->
+    <view class="iconfont icon-fenxiang"><text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.shareCount)}}</text></view>
+    <!-- 收藏 -->
+    <view class="iconfont icon-shoucang"></view>
+  </view>
+
+</view>

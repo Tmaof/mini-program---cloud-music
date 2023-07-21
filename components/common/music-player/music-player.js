@@ -244,10 +244,10 @@ Component({
     // 获取歌词区元素
     _getLyricScrollEle() {
       this.createSelectorQuery().select('#lyric-scroll').node((res) => {
-        // console.log(res.node) // 节点对应的实例。
         // https://developers.weixin.qq.com/miniprogram/dev/api/ui/scroll/ScrollViewContext.html
-        // console.log(res,'res')
+        // console.log(res.node, 'LyricScrollEle') // 节点对应的实例。
         // 不要对#lyric-scroll使用wx:if wx:else
+        if (!res) return
         const lyricScrollEle = res.node
         lyricScrollEle.showScrollbar = false //不显示滚动条
         this.setData({

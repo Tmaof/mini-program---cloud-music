@@ -1,6 +1,6 @@
 <view class="video-center-container tab-bar-page">
   <t-tabs sticky defaultValue="{{TabValue}}" show-bottom-line="{{false}}" bind:change='ontabChange'>
-    <t-tab-panel label="推荐" value="commend" ><commend-video class="commend-video"></commend-video></t-tab-panel>
+    <!-- <t-tab-panel label="推荐" value="commend" ><commend-video class="commend-video"></commend-video></t-tab-panel> -->
     <t-tab-panel label="MV" value="mv" ><mv-video class="mv-video"></mv-video></t-tab-panel>
   </t-tabs>
 </view>

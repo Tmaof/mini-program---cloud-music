@@ -1,0 +1,189 @@
+.video-play-item {
+  position: relative;
+  height: 100vh;
+  background-color: var(--black);
+
+  // 视频
+  .video-container {
+    position: absolute;
+    width: 100vw;
+    height: 450rpx;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -85%);
+
+    .cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .icon-bofangqi-bofang {
+      position: absolute;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      font-size: 160rpx;
+      text-align: center;
+      color: var(--white);
+    }
+    .video {
+      width: 100%;
+      height: 100%;
+
+      .video-content {
+        width: 100vw;
+        height: 100vh;
+      }
+    }
+  }
+
+  // 底部区域
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+
+    // 视频信息
+    .video-info {
+      padding: var(--padding);
+      margin-right: 120rpx;
+
+      // 作者
+      .author {
+        display: flex;
+        align-items: center;
+        width: 75vw;
+        // 头像
+        .profile-photo-container {
+          flex-shrink: 1;
+          margin-right: var(--margin);
+          width: 100rpx;
+          overflow: auto;
+          white-space: nowrap;
+
+          .profile-photo {
+            width: 60rpx;
+            height: 60rpx;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+          }
+        }
+        // 昵称
+        .name {
+          flex: 1 1;
+          color: var(--white);
+        }
+      }
+      // 介绍
+      .desc {
+        margin-top: var(--margin);
+        color: var(--grey);
+        font-size: var(--font-size-small);
+
+        // 覆盖默认样式
+        .t-collapse {
+          .t-collapse-panel,
+          .t-cell {
+            padding-top: 0;
+            padding-bottom: 0;
+            background: rgba($color: #000000, $alpha: 0);
+          }
+          .t-cell__title-text {
+            color: var(--white) !important;
+            font-size: var(--font-size-small);
+          }
+          .t-icon,
+          .t-collapse-panel__content {
+            color: var(--white);
+          }
+          .t-collapse-panel {
+            position: none;
+          }
+          .t-collapse-panel::after {
+            content: none !important;
+          }
+        }
+      }
+      // 发布时间
+      .time {
+        margin-top: var(--margin);
+        font-size: var(--font-size-small);
+        color: var(--grey-deep);
+      }
+    }
+
+    // 当前时间/总时间
+    .time-ratio {
+      text-align: center;
+      font-size: var(--font-size-larger-x);
+      .current {
+        color: var(--white);
+      }
+      .total {
+        color: var(--grey);
+      }
+    }
+
+    // 相关音乐
+    .related-music {
+      .name {
+      }
+      .disc {
+      }
+    }
+
+    // 进度条
+    .progress {
+      margin-top: var(--margin);
+      .t-slider {
+        .t-slider__bar {
+          background-color: var(--grey-deep) !important;
+        }
+        .t-slider__line {
+          background-color: var(--white) !important;
+        }
+      }
+    }
+
+    .full-screen-comment {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--padding);
+      // 发表评论
+      .comment {
+        font-size: var(--font-size-small);
+        background-color: var(--black);
+        color: var(--grey-deep);
+        letter-spacing: var(--let-spa);
+      }
+      // 全屏按钮
+      .full-screen {
+        color: var(--grey);
+        font-size: var(--font-size-larger);
+        margin-right: var(--margin);
+      }
+    }
+  }
+
+  // 动态信息
+  .dynamic-info {
+    position: absolute;
+    right: 0;
+    bottom: 160rpx;
+    // background-color: yellow;
+
+    .iconfont {
+      display: flex;
+      flex-direction: column;
+      width: 120rpx;
+      margin: var(--margin-larger-x) 0;
+      font-size: var(--font-size-larger-xxx);
+      color: var(--white);
+
+      .text {
+        font-size: var(--font-size-small);
+        margin-top: var(--margin-small);
+      }
+    }
+  }
+}

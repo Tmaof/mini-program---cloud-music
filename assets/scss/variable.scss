@@ -11,7 +11,7 @@ page,.tab-bar-container {
   --grey: grey;
   --grey-deep: rgb(112, 111, 111);
   --red: rgb(250, 92, 92);
-  --black: rgb(61, 46, 46);
+  --black: rgb(0, 0, 0);
   --white: white;
   // 边框
   --b-r-size-small: 5px;
@@ -32,6 +32,9 @@ page,.tab-bar-container {
   --margin: 10px;
   --margin-large: 15px;
   --margin-larger: 20px;
+  --margin-larger-x: 25px;
+  --margin-larger-xx: 30px;
+  --margin-larger-xxx: 35px;
   --card-margin: 10px;
   --card-margin-large: 15px;
   --card-margin-larger: 20px;
@@ -45,6 +48,7 @@ page,.tab-bar-container {
   --font-size-larger: 40rpx;
   --font-size-larger-x: 44rpx;
   --font-size-larger-xx: 48rpx;
+  --font-size-larger-xxx: 52rpx;
   // 字符间距 letter-spacing
   --let-spa-small: 1px;
   --let-spa: 2px;

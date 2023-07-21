@@ -113,6 +113,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "视频播放器",
+          "pathName": "packages/package-video-center/pages/video-player/video-player",
+          "query": "isMv=true&id=325221",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

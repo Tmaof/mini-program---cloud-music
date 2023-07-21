@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    TabValue:'commend',
+    TabValue:'mv',
   },
 
   /**

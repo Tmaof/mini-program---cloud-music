@@ -20,6 +20,7 @@ Component({
     mvVideoList: [],
     offset: 0,
     limit: 20,
+    hasMore: true,
   },
   lifetimes: {
     attached() {
@@ -31,12 +32,21 @@ Component({
    */
   methods: {
     async _loadMore() {
+      if (!this.data.hasMore) {
+        wx.showToast({
+          title: '没有更多MV了哟',
+          icon: 'none'
+        })
+        return
+      }
       const {
-        data
+        data,
+        hasMore
       } = await getMvVideoList(this.data.limit, this.data.offset)
 
       this.setData({
-        mvVideoList: [...this.data.mvVideoList, ...data||[]],
+        hasMore,
+        mvVideoList: [...this.data.mvVideoList, ...data || []],
         offset: this.data.offset + this.data.limit
       })
     }
