@@ -1,9 +1,30 @@
 <scroll-view scroll-top="500" show-scrollbar="false" enhanced scroll-y class="home-contianer ">
   <view class="tab-bar-page">
     <!-- 轮播图 -->
-    <view class="swiper">
-      <t-swiper height="290rpx" autoplay="{{autoplay}}" list="{{bannerImgUrlList}}" bind:click="onTap">
-      </t-swiper>
+    <view class="swiper-container">
+      <swiper class="swiper" indicator-dots indicator-active-color="#ffffff" autoplay circular>
+        <swiper-item class="swiper-item" wx:for="{{bannerList}}" wx:key="index">
+          <!-- 类型标签 -->
+          <view class="type-tag">
+            {{item.typeTitle}}
+          </view>
+          <!-- 跳转歌单详情页 -->
+          <navigator hover-class="none" wx:if="{{item.type.playlist}}" url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.targetId}}">
+            <image src="{{item.pic}}" mode="aspectFill" />
+          </navigator>
+          <!-- 跳转音乐播放器页 -->
+          <view wx:if="{{item.type.song}}" bindtap="onPlayMusic" data-song="{{item.song}}">
+            <image src="{{item.pic}}" mode="aspectFill" />
+          </view>
+          <!-- 活动 -->
+          <view wx:if="{{item.type.activity}}">
+            <image src="{{item.pic}}" mode="aspectFill" />
+            <!-- <web-view src="{{item.url}}"></web-view> -->
+          </view>
+          <!-- 其他 -->
+          <image wx:if="{{item.type.other}}" src="{{item.pic}}" mode="aspectFill" />
+        </swiper-item>
+      </swiper>
     </view>
     <!-- 快捷菜单 -->
     <view class="shortcut-menu">

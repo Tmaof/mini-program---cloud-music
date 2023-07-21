@@ -64,6 +64,18 @@
             </view>
           </navigator>
         </t-col>
+        <!-- 退出登录 -->
+        <t-col wx:if="{{isUserLogin}}" span="6" class="app-item" bindtap="onLogout">
+          <view class="icon icon-tuichudenglu iconfont">
+          </view>
+          <view class="text">
+            退出登录
+          </view>
+        </t-col>
+      </t-row>
+    </view>
+    <view class="app-row">
+      <t-row>
         <t-col wx:if="{{isUserLogin && (!isVisitor)}}" span="6" class="app-item">
           <navigator hover-class="none" url="/packages/package-personal-center/pages/edit-info/edit-info">
             <view class="icon icon-bianji iconfont">
@@ -72,18 +84,6 @@
               编辑资料
             </view>
           </navigator>
-        </t-col>
-      </t-row>
-    </view>
-    <view class="app-row">
-      <t-row>
-        <!-- 退出登录 -->
-        <t-col wx:if="{{isUserLogin}}" span="6" class="app-item" bindtap="onLogout">
-          <view class="icon icon-tuichudenglu iconfont">
-          </view>
-          <view class="text">
-            退出登录
-          </view>
         </t-col>
       </t-row>
     </view>

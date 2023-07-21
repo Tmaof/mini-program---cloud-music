@@ -1,6 +1,30 @@
 .home-contianer {
   // 轮播图
-  .swiper {
+  .swiper-container {
+    .swiper {
+
+      .swiper-item {
+        position: relative;
+        
+        image {
+          height: 290rpx;
+          width: 100%;
+          border-radius: var(--b-r-size);
+        }
+
+        .type-tag {
+          position: absolute;
+          font-size: var(--font-size-smaller-x);
+          right: 0;
+          bottom: 0;
+          background-color: var(--white);
+          border-radius: var(--b-r-size);
+          padding: 0 var(--padding-small);
+          margin: var(--margin);
+          letter-spacing: var(--let-spa);
+        }
+      }
+    }
   }
 
   // 快捷菜单

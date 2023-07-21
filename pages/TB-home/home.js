@@ -3,6 +3,9 @@ import {
 }
 from '@/behaviors/injectAppStore'
 import {
+  injectMusicPlayerStore
+} from '@/behaviors/injectMusicPlayerStore'
+import {
   getBannerList,
   getRecommendedPlaylists,
   getTheList
@@ -12,13 +15,12 @@ Page({
   options: {
     styleIsolation: 'apply-shared'
   },
-  behaviors: [injectAppStore],
+  behaviors: [injectAppStore, injectMusicPlayerStore],
   /**
    * 页面的初始数据
    */
   data: {
     bannerList: [], //轮播图
-    bannerImgUrlList: [], //轮播图封面url
     recommendedPlaylists: [], //推荐歌单
     theList: [] //排行榜
   },
@@ -32,15 +34,40 @@ Page({
     this._getTheList()
 
   },
-
+  //判断轮播图类型
+  _getBannerType(banner) {
+    const res = {
+      playlist: false,
+      song: false,
+      activity: false,
+      other: false
+    }
+    const playlistType = ['热碟推荐', '新碟首发', '数字专辑', '歌单']
+    const songType = ['新歌首发', '热歌推荐']
+    const activityType = ['活动']
+    const typeTitle = banner.typeTitle
+    if (playlistType.includes(typeTitle)) {
+      res.playlist = true
+    } else if (songType.includes(typeTitle)) {
+      res.song = true
+    } else if (activityType.includes(typeTitle)) {
+      res.activity = true
+    } else {
+      res.other = true
+    }
+    return res
+  },
   /**
    * 获取轮播图数据
    */
   async _getBanner() {
     const res = await getBannerList()
+    const bannerList = res.banners.map(item => {
+      item.type = this._getBannerType(item)
+      return item
+    })
     this.setData({
-      bannerList: res.banners,
-      bannerImgUrlList: res.banners.map((item) => item.pic)
+      bannerList,
     })
   },
 
@@ -70,15 +97,20 @@ Page({
         theList: [...this.data.theList, ...res]
       })
       clearTimeout(tid)
-      
+
     }, 1000)
   },
-
+  // 播放歌曲
+  onPlayMusic(e) {
+    const song = e.currentTarget.dataset.song
+    this.changeSongList(null, [song])
+    this.playTheSong(song.id)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    this.setTabBarIndexValue(0)
+    this.setTabBarIndexValue()
   },
 
   /**

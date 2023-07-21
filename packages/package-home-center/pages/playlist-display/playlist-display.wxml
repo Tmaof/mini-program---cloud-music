@@ -33,7 +33,7 @@
       </view>
       <!-- 底部/描述 -->
       <view class="bottom single-line-overflow ">
-        {{playlistInfo.description}}
+        {{playlistInfo.description||''}}
       </view>
     </view>
     <!-- 歌单动态信息 -->
