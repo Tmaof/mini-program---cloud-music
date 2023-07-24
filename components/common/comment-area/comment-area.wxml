@@ -1,0 +1,24 @@
+<view class="comment-area-container">
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom" close-on-overlay-click="{{closeOnOverlayClick}}">
+    <!-- 顶部 -->
+    <view class="top">
+      <view class="left">评论区（{{totalCount}}）</view>
+      <view class="right" bindtap="onChangeSortType">
+        <view class="sort-type {{sortType==1?'sort-type-active':''}}" data-type="{{1}}">推荐</view>
+        <view class="sort-type {{sortType==2?'sort-type-active':''}}" data-type=" {{2}}">最热</view>
+        <view class="sort-type {{sortType==3?'sort-type-active':''}}" data-type=" {{3}}">最新</view>
+      </view>
+    </view>
+    <!-- 评论 -->
+    <scroll-view class="comment-scroll-view" scroll-y bindscrolltolower="onLoadMore" style="height: {{scrollViewHeight}}vh;">
+      <comment-item wx:for="{{commentList}}" wx:key="commentId" comment="{{item}}" resourceType="{{type}}" resourceId="{{resourceId}}"></comment-item>
+      <!-- loading -->
+      <my-loading wx:if="{{isLoading}}"></my-loading>
+    </scroll-view>
+    <!-- 评论框 -->
+    <view class="textarea-container">
+      <t-textarea class="textarea" placeholder="写评论..." disableDefaultPadding="{{true}}" autosize="{{autosize}}" show-confirm-bar="{{false}}" maxlength="270" bind:change="onTextAreaChange" value="{{textareaText}}" />
+      <view class="btn {{textareaText?'active-btn':''}}" catchtap="onSendComment">发送</view>
+    </view>
+  </t-popup>
+</view>

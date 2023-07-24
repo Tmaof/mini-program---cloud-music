@@ -1,0 +1,52 @@
+.comment-area-container {
+  // 遮罩层透明
+  .t-overlay {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+  // 顶部
+  .top {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--padding);
+    letter-spacing: var(--let-spa-small);
+
+    .left {
+      font-weight: bold;
+    }
+
+    .right {
+      display: flex;
+      .sort-type {
+        margin-left: var(--margin-larger);
+        color: var(--grey-deep);
+        font-size: var(--font-size-small);
+      }
+
+      .sort-type-active {
+        color: var(--black) !important;
+      }
+    }
+  }
+  // 评论
+  .comment-scroll-view {
+    height: 70vh;
+  }
+  // 评论框
+  .textarea-container {
+    display: flex;
+    align-items: center;
+    margin: var(--margin) 0;
+    .textarea {
+      flex: 1 1;
+    }
+
+    .btn {
+      margin-right: var(--margin);
+      color: var(--grey);
+    }
+
+    .active-btn {
+      color: var(--themeColor);
+    }
+  }
+}

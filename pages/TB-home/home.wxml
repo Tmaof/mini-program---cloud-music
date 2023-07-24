@@ -1,8 +1,8 @@
-<scroll-view scroll-top="500" show-scrollbar="false" enhanced scroll-y class="home-contianer ">
+<scroll-view scroll-y class="home-contianer ">
   <view class="tab-bar-page">
     <!-- 轮播图 -->
     <view class="swiper-container">
-      <swiper class="swiper" indicator-dots indicator-active-color="#ffffff" autoplay circular>
+      <swiper class="swiper" autoplay circular>
         <swiper-item class="swiper-item" wx:for="{{bannerList}}" wx:key="index">
           <!-- 类型标签 -->
           <view class="type-tag">

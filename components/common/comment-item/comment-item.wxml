@@ -1,0 +1,86 @@
+<view class="comment-item-container">
+  <!-- 左侧 -->
+  <view class="left">
+    <image src="{{comment.user.avatarUrl}}" mode="aspectFill" class="head-portrait" />
+  </view>
+  <!-- 右侧 -->
+  <view class="right">
+    <!-- 头部 -->
+    <view class="head" bindtap="onShowTextarea">
+      <view class="head-left">
+        <view class="name">{{comment.user.nickname}}</view>
+        <view class="other-info">
+          <text class="info-item">{{comment.timeStr}}</text>
+          <text class="info-item">{{comment.ipLocation.location}}</text>
+        </view>
+      </view>
+      <view class="head-right">
+        <view class="upvote {{comment.liked?'active-upvote':''}}" catchtap="onLikeComment" data-like="{{comment.liked?false:true}}">
+          <text class="nums">{{comment.likedCount}}</text>
+          <text class="iconfont icon-tuijian"></text>
+        </view>
+      </view>
+    </view>
+    <!-- 评论内容 -->
+    <view class="content" bindtap="onShowTextarea">{{comment.content}}</view>
+    <!-- 被回复的原内容 -->
+    <view class="be-replied" wx:if="{{comment.beReplied.length&&comment.beReplied[0].beRepliedCommentId!=beRepliedCommentId}}">
+      <text class="username">{{comment.beReplied[0].user.nickname}}</text>
+      <text class="content"> ： {{comment.beReplied[0].content||'该评论已删除'}}</text>
+    </view>
+    <!-- 展示楼层评论 -->
+    <view wx:if="{{needFloorComment}}">
+      <!-- 回复数量 -->
+      <view wx:if="{{comment.showFloorComment.showReplyCount}}" class="reply-count" catchtap="onShowFloorComment">
+        {{comment.showFloorComment.replyCount}}条回复 <view class="iconfont icon-youjiantou"></view>
+      </view>
+      <!-- 楼层评论 -->
+      <t-popup class="floor-comment" visible="{{showFloorComment}}" bind:visible-change="onVisibleChange" placement="bottom">
+        <scroll-view class="scroll-view" scroll-y bindscrolltolower="onLoadMore">
+          <!-- 楼主的评论 -->
+          <view class="landlord-comment">
+            <!-- 楼主信息 -->
+            <view class="landlord">
+              <image src="{{comment.user.avatarUrl}}" mode="aspectFill" class="head-portrait" />
+              <view class="info">
+                <view class="name">{{comment.user.nickname}}</view>
+                <view class="other-info">
+                  <text class="info-item">{{comment.timeStr}}</text>
+                  <text class="info-item">{{comment.ipLocation.location}}</text>
+                </view>
+              </view>
+            </view>
+            <!-- 评论 -->
+            <view class="content">
+              {{comment.content}}
+            </view>
+          </view>
+          <!-- 回复 -->
+          <view class="reply">
+            <view class="top">
+              <view class="title">全部回复（{{totalCount}}）</view>
+              <view class="sort">
+                <!-- 升序 -->
+                <view class=" iconfont icon-paixu-shengxu" wx:if="{{!floorCommentShengxu}}" bindtap="onSortFloorComment" data-shengxu="{{true}}"></view>
+                <!-- 降序 -->
+                <view wx:else class=" iconfont icon-caozuo-paixu-jiangxu" bindtap="onSortFloorComment" data-shengxu="{{false}}"></view>
+              </view>
+            </view>
+            <!-- 评论item -->
+            <comment-item wx:for="{{floorCommentShengxu?foolrCommentListShengXu:foolrCommentList}}" wx:key="commentId" comment="{{item}}" resourceId="{{resourceId}}" resourceType="{{resourceType}}" needFloorComment="{{false}}" beRepliedCommentId="{{comment.commentId}}" bind:updateFloorComment="onUpdateFloorComment"></comment-item>
+          </view>
+          <!-- 加载中 -->
+          <my-loading wx:if="{{isLoading}}"></my-loading>
+        </scroll-view>
+      </t-popup>
+    </view>
+  </view>
+  <!-- 回复文本框 -->
+  <t-popup class="textarea-popup" visible="{{isShowTextarea}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view class="textarea-container">
+      <t-textarea wx:if="{{isShowTextarea}}" class="textarea" placeholder="{{'回复'+comment.user.nickname+'：'}}" disableDefaultPadding="{{true}}" autosize="{{autosize}}" autofocus focus show-confirm-bar="{{false}}" maxlength="270" bind:change="onTextAreaChange" />
+      <view wx:if="{{isShowTextarea}}" class="btn {{textareaText?'active-btn':''}}" catchtap="onReplyComment">发送</view>
+    </view>
+  </t-popup>
+
+</view>

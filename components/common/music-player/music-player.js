@@ -31,6 +31,7 @@ Component({
     lyricScrollEle: null, //歌词区的scroll-view 实例
     isShowLyric: false, //是否显示歌词
     isScrollLyricing: false, //是否正在滚动歌词
+    isShowCommentArea: false,
   },
   observers: {
     'currentLyricIndex': function (val) {
@@ -233,6 +234,7 @@ Component({
         this.setData({
           isShowLyric: true,
         })
+        this._scrollToCurrentLyrics()
       } else {
         this.changeIsNeedLyric(false)
         this.setData({
@@ -281,6 +283,14 @@ Component({
     onJumpLyric(e) {
       const time = e.currentTarget.dataset.time
       this.changeProgress(time)
+    },
+    /**
+     * 显示评论区
+     */
+    onShowCommentArea() {
+      this.setData({
+        isShowCommentArea: true
+      })
     }
   },
 

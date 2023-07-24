@@ -9,10 +9,10 @@
 </wxs>
 <view class="video-play-item" bindtap="onChangeIsPlayVideo">
   <!-- 视频 -->
-  <view class="video-container">
+  <view class="video-container" style="top: {{videoStyle.top}};transform: {{videoStyle.transform}};">
     <view class="iconfont icon-bofangqi-bofang" hidden="{{isPlayVideo}}"></view>
     <!-- 前1个和后1个video不销毁 -->
-    <video wx:if="{{isPlayVideo||(currentIndex>=playingIndex-1&&currentIndex<=playingIndex+1)}}" id="{{videoInfo.id}}" class="video" src="{{videoUrl}}" object-fit="contain" title="{{videoDetail.name}}" controls="{{isShowVideoControls}}" bindtimeupdate="onTimeUpdate" bindfullscreenchange="onFullScreenChange" show-center-play-btn="{{false}}" show-snapshot-button bindloadedmetadata="onLoadedmetadata" style="height: {{videoHeight}}px;" object-fit="contain"/>
+    <video wx:if="{{isPlayVideo||(currentIndex>=playingIndex-1&&currentIndex<=playingIndex+1)}}" id="{{videoInfo.id}}" class="video" src="{{videoUrl}}" object-fit="contain" title="{{videoDetail.name}}" controls="{{isShowVideoControls}}" bindtimeupdate="onTimeUpdate" bindfullscreenchange="onFullScreenChange" show-center-play-btn="{{false}}" show-snapshot-button bindloadedmetadata="onLoadedmetadata" style="height: {{videoHeight}}px;" object-fit="contain" />
     <image wx:else src="{{videoDetail.cover}}" mode="aspectFill" class="cover" />
   </view>
   <view class="bottom" catchtap="onBlockingEvent">
@@ -70,11 +70,12 @@
       <text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.likedCount)}}</text>
     </view>
     <!-- 评论 -->
-    <view class="iconfont icon-pinglun"><text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.commentCount)}}</text></view>
+    <view class="iconfont icon-pinglun" catchtap="onShowCommentArea"><text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.commentCount)}}</text></view>
     <!-- 分享 -->
     <view class="iconfont icon-fenxiang"><text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.shareCount)}}</text></view>
     <!-- 收藏 -->
     <view class="iconfont icon-shoucang"></view>
   </view>
-
 </view>
+<!-- 评论区 -->
+<comment-area visible="{{isShowCommentArea}}" type="{{videoInfo.isMv?1:5}}" resourceId="{{videoInfo.id}}" scrollViewHeight="{{50}}" bind:turnOffDisplay='onTurnOffCommentArea'></comment-area>

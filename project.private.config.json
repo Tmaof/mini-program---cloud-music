@@ -120,6 +120,13 @@
           "query": "isMv=true&id=325221",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "评论区",
+          "pathName": "packages/package-common/pages/comment-display/comment-display",
+          "query": "type=2&id=2218171336",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

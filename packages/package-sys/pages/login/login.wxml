@@ -7,7 +7,7 @@
   </view>
   <!-- 登录按钮 -->
   <view class="btn-container">
-    <t-button bindtap="onClickTouristLogin" theme="primary" class="btn-login" size="large" shape="round">一键登录(游客)</t-button>
+    <t-button bindtap="onClickTouristLogin" theme="primary" class="btn-login" size="large" shape="round" hidden="{{isVisitor}}">一键登录(游客)</t-button>
     <t-button bindtap="onClickQrLoginBtn" theme="primary" class="btn-login" size="large" shape="round">扫码登录</t-button>
   </view>
   <!-- 二维码弹出层 -->

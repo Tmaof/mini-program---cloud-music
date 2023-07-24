@@ -17,6 +17,12 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    /**
+     * {
+     * isMv:true,
+     * id:0
+     * }
+     */
     videoInfo: {
       type: Object,
       value: null
@@ -50,6 +56,11 @@ Component({
     duration: 0,
     isChangeProgressing: false, //正在改变进度条
     isShowVideoControls: false, //是否显示视频播放控件
+    isShowCommentArea: false,
+    videoStyle: {
+      top: '',
+      transform: ''
+    }
   },
 
   observers: {
@@ -166,6 +177,21 @@ Component({
     // 阻止事件传递
     onBlockingEvent() {
       return false
+    },
+    // 显示评论区
+    onShowCommentArea() {
+      this.setData({
+        isShowCommentArea: true,
+        'videoStyle.top': '0px',
+        'videoStyle.transform': 'translate(-50%, 0%)',
+      })
+    },
+    //关闭评论区
+    onTurnOffCommentArea() {
+      this.setData({
+        'videoStyle.top': '',
+        'videoStyle.transform': '',
+      })
     }
   },
   lifetimes: {

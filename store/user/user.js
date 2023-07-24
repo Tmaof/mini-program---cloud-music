@@ -11,7 +11,7 @@ import {
 export const userStore = observable({
   userInfo: null, //用户信息
   isUserLogin: false, //当前是否登录
-  isVisitor: true, //是否是游客登陆
+  isVisitor: false, //是否是游客登陆
   collectSongList: [], //用户收藏的歌单
   userLikeSongLIst: null, //用户喜欢的歌单
 
@@ -49,8 +49,22 @@ export const userStore = observable({
     console.log('已经清空用户信息')
     this.userInfo = null
     this.isUserLogin = false
-    this.isVisitor = true
+    this.isVisitor = false
     this.collectSongList = []
     this.userLikeSongLIst = null
+  }),
+  /**
+   * 检查是否非登陆,如果没有登陆则跳转登陆页
+   */
+  checkLogin: action(function (redirect) {
+    if (this.isUserLogin && !this.isVisitor) return true
+    wx.showToast({
+      title: '请使用扫码进行登录',
+      icon: 'none'
+    })
+    wx.navigateTo({
+      url: `/packages/package-sys/pages/login/login?redirect=${redirect}`,
+    })
+    return false
   })
 })

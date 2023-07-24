@@ -45,7 +45,7 @@
             <!-- 喜欢该音乐 -->
             <view class="like iconfont icon-xihuan"></view>
             <!-- 评论 -->
-            <view class="comment iconfont icon-pinglun"></view>
+            <view class="comment iconfont icon-pinglun" catchtap="onShowCommentArea"></view>
           </view>
         </view>
         <!-- 歌词区 -->
@@ -91,3 +91,5 @@
 </view>
 <!-- 歌曲列表 -->
 <song-list popupVisible='{{isShowSongList}}'></song-list>
+<!-- 评论区域 -->
+<comment-area id='comment-area' visible='{{isShowCommentArea}}' type="{{0}}" resourceId="{{songInfo.id}}" existDataNotObtain="{{false}}" resetBeforeFetch="{{true}}"></comment-area>

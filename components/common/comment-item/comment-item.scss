@@ -1,0 +1,179 @@
+.comment-item-container {
+  display: flex;
+  margin: var(--margin) 0;
+  padding: var(--padding);
+  // 遮罩层透明
+  // .t-overlay {
+  //   background-color: rgba($color: #000000, $alpha: 0) !important;
+  // }
+  //头像
+  .head-portrait {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-right: var(--margin);
+  }
+  // 左侧
+  .left {
+  }
+  // 右侧
+  .right {
+    flex: 1 1;
+    padding-bottom: var(--padding);
+    border-bottom: 1px solid var(--grey-fade);
+
+    // 头部
+    .head {
+      display: flex;
+      justify-content: space-between;
+
+      .head-left {
+        flex: 1 1;
+        .name {
+          font-weight: bold;
+        }
+
+        .other-info {
+          font-size: var(--font-size-smaller-x);
+          color: var(--grey-deep);
+          margin-top: var(--margin-small);
+
+          .info-item {
+            margin-right: var(--margin);
+          }
+        }
+      }
+
+      .head-right {
+        .upvote {
+          display: flex;
+
+          .nums {
+            color: var(--grey-deep);
+            font-size: var(--font-size-small);
+            margin-right: var(--margin-small);
+          }
+
+          .iconfont {
+            color: var(--grey-deep);
+            font-size: var(--font-size);
+          }
+        }
+
+        .active-upvote {
+          .nums {
+            color: var(--themeColor) !important;
+          }
+          .iconfont {
+            color: var(--themeColor) !important;
+          }
+        }
+      }
+    }
+
+    // 评论内容
+    .content {
+      margin-top: var(--margin);
+      font-size: var(--font-size);
+    }
+
+    // 被回复的原内容
+    .be-replied {
+      font-size: var(--font-size-small);
+      padding: 0 var(--padding);
+      margin: var(--margin);
+      border-left: 2px solid var(--grey-fade);
+      .username {
+        color: var(--blue);
+      }
+
+      .content {
+        color: var(--grey-deep);
+      }
+    }
+
+    // 回复数量
+    .reply-count {
+      display: flex;
+      font-size: var(--font-size-smaller);
+      color: var(--blue);
+      margin-top: var(--margin);
+    }
+  }
+  // 楼层评论
+  .floor-comment {
+    height: 90vh;
+
+    .scroll-view {
+      height: 90vh;
+      // 楼主的评论
+      .landlord-comment {
+        padding: var(--padding);
+
+        // 楼主信息
+        .landlord {
+          display: flex;
+          .info {
+            .name {
+              font-weight: bold;
+            }
+            .other-info {
+              font-size: var(--font-size-smaller-x);
+              color: var(--grey-deep);
+              margin-top: var(--margin-small);
+
+              .info-item {
+                margin-right: var(--margin);
+              }
+            }
+          }
+        }
+        // 评论
+        .content {
+          margin-top: var(--margin);
+        }
+      }
+
+      // 回复
+      .reply {
+        .top {
+          padding: var(--padding);
+          border-top: 4px solid var(--grey-fade);
+          display: flex;
+          justify-content: space-between;
+
+          .title {
+            font-size: var(--font-size-small);
+            font-weight: bold;
+          }
+
+          .sort {
+            .iconfont {
+              font-size: var(--font-size-larger);
+            }
+          }
+        }
+      }
+    }
+  }
+  // 回复文本框
+  .textarea-popup {
+    .textarea-container {
+      display: flex;
+      align-items: center;
+      margin: var(--margin) 0;
+      .textarea {
+        flex: 1 1;
+      }
+
+      .btn {
+        margin-right: var(--margin);
+        color: var(--grey);
+      }
+
+      .active-btn {
+        color: var(--themeColor);
+      }
+    }
+  }
+}

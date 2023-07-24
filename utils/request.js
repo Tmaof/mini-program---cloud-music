@@ -27,6 +27,12 @@ class Requester {
     }
     options.header = options.header || {}
     options.data = options.data || {}
+    //删除data中为空的字段
+    Object.keys(options.data).forEach(item => {
+      if (options.data[item] == null || options.data[item] == undefined) {
+        delete options.data[item]
+      }
+    })
     options.formData = options.formData || {}
     // 调用请求拦截器
     const newOptions = this.requestIntercept(options) || options

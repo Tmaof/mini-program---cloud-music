@@ -22,7 +22,7 @@ Page({
     qrImg: '', //二维码
     popupVisible: false, //扫码弹出层
     qrLoginStatusTip: '', //扫码状态
-    redirect: '/pages/TB-home/home', //重定向页面路径
+    redirect: '', //重定向页面路径
     isRefreshQr: false, //是否显示刷新二维码按钮
     timer: 0,
   },
@@ -157,9 +157,30 @@ Page({
     //重新获取用户信息
     this.updateUserInfo()
     // 重定向
-    wx.reLaunch({
-      url: this.data.redirect,
-    })
+    const {
+      redirect
+    } = this.data
+    if (redirect) {
+      if (redirect.includes('/pages')) {
+        wx.switchTab({
+          url: redirect,
+        })
+      } else {
+        wx.navigateTo({
+          url: redirect,
+        })
+      }
+    } else {
+      wx.navigateBack({
+        delta: 1,
+        fail() {
+          wx.showToast({
+            title: '回到原页面失败',
+            icon: 'none'
+          })
+        }
+      })
+    }
   },
 
   /**

@@ -2,10 +2,9 @@
   // 轮播图
   .swiper-container {
     .swiper {
-
       .swiper-item {
         position: relative;
-        
+
         image {
           height: 290rpx;
           width: 100%;
@@ -16,7 +15,7 @@
           position: absolute;
           font-size: var(--font-size-smaller-x);
           right: 0;
-          bottom: 0;
+          bottom: 10rpx;
           background-color: var(--white);
           border-radius: var(--b-r-size);
           padding: 0 var(--padding-small);

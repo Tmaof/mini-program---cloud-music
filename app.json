@@ -6,7 +6,8 @@
     "pages/TB-home/home",
     "pages/TB-video/video",
     "pages/TB-personal-center/personal-center",
-    "packages/package-video-center/pages/video-player/video-player"
+    "packages/package-video-center/pages/video-player/video-player",
+    "packages/package-common/pages/comment-display/comment-display"
   ],
   "subPackages": [
     {
@@ -76,12 +77,15 @@
     "t-slider": "tdesign-miniprogram/slider/slider",
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
     "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
+    "t-loading": "tdesign-miniprogram/loading/loading",
     "info-item-card": "/components/common/info-item-card/info-item-card",
     "song-list": "/components/common/song-list/song-list",
     "music-player": "/components/common/music-player/music-player",
     "touch-panel": "/components/common/touch-panel/touch-panel",
     "play-controll": "/components/common/play-controll/play-controll",
-    "song-display-list": "/components/common/song-display-list/song-display-list"
+    "song-display-list": "/components/common/song-display-list/song-display-list",
+    "comment-area": "/components/common/comment-area/comment-area",
+    "my-loading": "/components/common/my-loading/my-loading"
   },
   "window": {
     "navigationBarTitleText": "云音乐",

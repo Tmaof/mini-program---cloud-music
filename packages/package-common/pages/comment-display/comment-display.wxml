@@ -1,0 +1,4 @@
+<view class="comment-display-container">
+  <!-- 评论区 -->
+  <comment-area type="{{type}}" resourceId="{{id}}" scrollViewHeight="{{80}}" closeOnOverlayClick="{{false}}" visible="{{true}}"></comment-area>
+</view>

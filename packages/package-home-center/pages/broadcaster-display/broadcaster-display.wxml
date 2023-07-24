@@ -43,10 +43,10 @@
         <view class="iconfont icon-fenxiang"></view>
         <text class="nums">{{djInfo.shareCount}}</text>
       </view>
-      <view class="item-card">
+      <navigator class="item-card" url="/packages/package-common/pages/comment-display/comment-display?type=7&id={{djInfo.id}}" hover-class="none">
         <view class="iconfont icon-pinglun"></view>
         <text class="nums">{{djInfo.commentCount}}</text>
-      </view>
+      </navigator>
       <view class="item-card">
         <view class="iconfont icon-shoucang"></view>
         <text class="nums">{{djInfo.subCount}}</text>

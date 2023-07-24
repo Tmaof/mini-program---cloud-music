@@ -1,4 +1,4 @@
-<wxs src="/utils/filter-wxs/filter.wxs" module="filter"/>
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter" />
 <view class="playlist-display-container" style="background: {{bgc}};">
   <!-- 背景 -->
   <view class="bg-container">
@@ -42,10 +42,10 @@
         <view class="iconfont icon-fenxiang"></view>
         <text class="nums">{{dynamic.shareCount}}</text>
       </view>
-      <view class="item-card">
+      <navigator hover-class="none" url="/packages/package-common/pages/comment-display/comment-display?type={{2}}&id={{playlistId}}" class="item-card">
         <view class="iconfont icon-pinglun"></view>
         <text class="nums">{{dynamic.commentCount}}</text>
-      </view>
+      </navigator>
       <view class="item-card">
         <view class="iconfont icon-shoucang"></view>
         <text class="nums">{{dynamic.bookedCount}}</text>
