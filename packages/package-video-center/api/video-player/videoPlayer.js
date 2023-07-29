@@ -8,6 +8,7 @@ import {
 export function getMvDetail(mvid) {
   return request({
     url: '/mv/detail',
+    method: 'POST',
     data: {
       mvid
     }
@@ -20,6 +21,7 @@ export function getMvDetail(mvid) {
 export function getMvDynamic(mvid) {
   return request({
     url: '/mv/detail/info',
+    method: 'POST',
     data: {
       mvid
     }
@@ -36,6 +38,22 @@ export function getMvUrl(id) {
     data: {
       id,
       r: 720
+    }
+  })
+}
+
+/**
+ * 收藏mv
+ * @param {*} mvid 
+ * @param {*} t 1 为收藏,其他为取消收藏
+ */
+export function subscribeMv(mvid, t) {
+  return request({
+    url: '/mv/sub',
+    method: 'POST',
+    data: {
+      mvid,
+      t
     }
   })
 }

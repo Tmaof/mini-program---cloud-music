@@ -1,8 +1,21 @@
 import {
   injectMusicPlayerStore
 } from '@/behaviors/injectMusicPlayerStore'
+
+import {
+  likeSong
+} from '@/api/common/common'
+
+import {
+  injectUserStore
+} from '@/behaviors/injectUserStore'
+
+import {
+  injectCheckLogin
+} from '@/behaviors/injectCheckLogin'
+
 Component({
-  behaviors: [injectMusicPlayerStore],
+  behaviors: [injectMusicPlayerStore, injectUserStore, injectCheckLogin],
   options: {
     styleIsolation: 'shared'
   },
@@ -32,10 +45,16 @@ Component({
     isShowLyric: false, //是否显示歌词
     isScrollLyricing: false, //是否正在滚动歌词
     isShowCommentArea: false,
+    likedSongList: [], //用户喜欢的歌曲列表
   },
   observers: {
-    'currentLyricIndex': function (val) {
+    'currentLyricIndex': function () {
       this._scrollToCurrentLyrics()
+    },
+    'userId': function () {
+      // 获取用户喜欢的音乐列表
+      if (this.data.userId)
+        this.getUserLikedSongIdList(this.data.userId)
     }
   },
   /**
@@ -158,7 +177,7 @@ Component({
       }
     },
     onDiscTouchStart() {
-      console.log('start')
+      // console.log('start')
       this.setData({
         discTouchMoving: true,
         isToCenterOk: false
@@ -291,12 +310,41 @@ Component({
       this.setData({
         isShowCommentArea: true
       })
+    },
+    /**
+     * 喜欢/取消喜欢 歌曲
+     */
+    async onLikeSong(e) {
+      if (!this.checkLogin()) return
+      const like = e.currentTarget.dataset.like
+      const {
+        songInfo,
+        userLikedSongIdList
+      } = this.data
+      const {
+        code
+      } = await likeSong(songInfo.id, like)
+      if (code == 200) {
+        this.setSongInfo({
+          ...this.data.songInfo,
+          liked: like
+        })
+
+        let list = null
+        if (like) {
+          list = [...userLikedSongIdList, songInfo.id]
+        } else {
+          list = userLikedSongIdList.filter(id => id != songInfo.id)
+        }
+        this.setUserLikedSongIdList(list)
+      }
     }
   },
 
   lifetimes: {
     attached() {
       this._getLyricScrollEle()
-    }
+    },
+    ready() {}
   }
 })

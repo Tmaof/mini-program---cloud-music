@@ -10,10 +10,11 @@ import {
 
 export const userStore = observable({
   userInfo: null, //用户信息
+  userId: undefined, //用户ID
   isUserLogin: false, //当前是否登录
   isVisitor: false, //是否是游客登陆
-  collectSongList: [], //用户收藏的歌单
-  userLikeSongLIst: null, //用户喜欢的歌单
+  collectedPlaylist: [], //用户收藏的歌单
+  userLikedPlaylist: null, //用户喜欢的歌单
 
   /**
    * 设置用户信息
@@ -26,20 +27,21 @@ export const userStore = observable({
    */
   updateUserInfo: action(async function () {
     const {
-      data: res
+      data
     } = await getUserInfo()
 
-    if (res.code == 200 && (res.account && res.account.userName != '0_m15849353741@163.com')) {
-      // if (res.code == 200) {
-      this.userInfo = res.profile || res.account
+    if (data && data.code == 200) {
+      this.userInfo = data.profile || data.account
+      this.userId = this.userInfo.id || this.userInfo.userId
       this.isUserLogin = true
-      this.isVisitor = res.profile ? false : true;
+      this.isVisitor = data.profile ? false : true;
       // 获取用户收藏的歌单
       const {
         playlist
-      } = await getCollectSongList(this.userInfo.id || this.userInfo.userId)
-      this.collectSongList = playlist.slice(1)
-      this.userLikeSongLIst = playlist[0]
+      } = await getCollectSongList(this.userId)
+      this.collectedPlaylist = playlist.slice(1)
+      this.userLikedPlaylist = playlist[0]
+
     }
   }),
   /**
@@ -50,8 +52,8 @@ export const userStore = observable({
     this.userInfo = null
     this.isUserLogin = false
     this.isVisitor = false
-    this.collectSongList = []
-    this.userLikeSongLIst = null
+    this.collectedPlaylist = []
+    this.userLikedPlaylist = null
   }),
   /**
    * 检查是否非登陆,如果没有登陆则跳转登陆页

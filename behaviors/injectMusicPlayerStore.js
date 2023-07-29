@@ -11,8 +11,8 @@ export const injectMusicPlayerStore = Behavior({
     attached() {
       this.storeBindings = createStoreBindings(this, {
         store: musicPlayerStore,
-        fields: ['songList', 'lastSongList', "playbackModeValues", 'playbackMode', 'innerAudioContext', 'isPlaying', 'songInfo', 'currentTime', 'duration', 'lyricList', 'currentLyricIndex'],
-        actions: ['changeSongList', 'playTheSong', 'pausePlay', 'switchSong', 'switchPlaybackModes', 'deleteSong', 'cleanSongList', 'changeProgress', 'getLyric', 'updateCurrentLyric', 'changeIsNeedLyric']
+        fields: ['songList', 'lastSongList', "playbackModeValues", 'playbackMode', 'innerAudioContext', 'isPlaying', 'songInfo', 'currentTime', 'duration', 'lyricList', 'currentLyricIndex', 'userLikedSongIdList'],
+        actions: ['changeSongList', 'playTheSong', 'pausePlay', 'switchSong', 'switchPlaybackModes', 'deleteSong', 'cleanSongList', 'changeProgress', 'getLyric', 'updateCurrentLyric', 'changeIsNeedLyric', 'getUserLikedSongIdList', 'setUserLikedSongIdList', 'setSongInfo']
       })
     },
     detached() {

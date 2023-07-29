@@ -2,10 +2,10 @@
 <import src="/template/personal-center/more-operations-item/more-operations-item"></import>
 
 <view class="collect-songList-container">
-  <home-item-card title="收藏歌单({{collectSongList.length}}个)" titleStyle="small" showUnderline="{{false}}" popuptitle="我收藏的歌单(0)">
+  <home-item-card title="收藏歌单({{collectedPlaylist.length}}个)" titleStyle="small" showUnderline="{{false}}" popuptitle="我收藏的歌单(0)">
     <!-- 默认插槽 -->
-    <view wx:if="collectSongList.length">
-      <info-item-card wx:for="{{collectSongList}}" wx:key="id" props="{{module.getProps(item)}}"></info-item-card>
+    <view wx:if="collectedPlaylist.length">
+      <info-item-card wx:for="{{collectedPlaylist}}" wx:key="id" props="{{module.getProps(item)}}"></info-item-card>
     </view>
     <view wx:else class="empty-tips">
       暂无收藏的歌单

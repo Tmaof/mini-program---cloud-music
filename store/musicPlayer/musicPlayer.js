@@ -9,9 +9,12 @@ import {
   getAuthorName
 } from '@/utils/filter-js/filter'
 import {
-  getSongLyric
+  getSongLyric,
 } from '@/api/common/common'
 import config from '@/config/config'
+import {
+  getLikeSongList
+} from '@/api/common/common'
 
 export const musicPlayerStore = observable({
   songList: [], // 歌曲列表\歌单的歌曲
@@ -38,6 +41,7 @@ export const musicPlayerStore = observable({
    * https: //developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/BackgroundAudioManager.html
    */
   innerAudioContext: wx.getBackgroundAudioManager(),
+  userLikedSongIdList: [], //用户喜欢的歌曲列表
 
   /**
    * 添加事件监听
@@ -104,6 +108,22 @@ export const musicPlayerStore = observable({
 
     })
   },
+
+  setSongInfo: action(function (songInfo) {
+    this.songInfo = songInfo
+  }),
+
+  setUserLikedSongIdList: action(function (userLikedSongIdList) {
+    this.userLikedSongIdList = userLikedSongIdList
+  }),
+
+  // 获取用户喜欢的音乐列表
+  getUserLikedSongIdList: action(async function (uid) {
+    const {
+      ids
+    } = await getLikeSongList(uid)
+    this.userLikedSongIdList = ids || []
+  }),
 
   //当前歌曲在列表中的索引
   getSongIndex: action(function () {
@@ -226,6 +246,9 @@ export const musicPlayerStore = observable({
       console.error('更新当前播放歌曲信息失败')
       return false
     }
+
+    //添加字段,是否是用户喜欢的歌曲
+    songInfo.liked = this.userLikedSongIdList.includes(songInfo.id) ? true : false
 
     this.songInfo = songInfo
     this.innerAudioContext.src = songInfo.url

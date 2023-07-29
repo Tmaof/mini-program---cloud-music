@@ -114,6 +114,13 @@
           margin-left: var(--margin);
         }
       }
+
+      .active-subscribe {
+        color: var(--themeColor);
+        .iconfont {
+          color: var(--themeColor);
+        }
+      }
     }
   }
 

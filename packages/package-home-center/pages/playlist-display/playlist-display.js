@@ -3,7 +3,8 @@ import {
 } from '@/api/home/playlist/playlist'
 import {
   getPlaylistDetail,
-  getPlaylistDynamic
+  getPlaylistDynamic,
+  subscribePlaylist
 } from '@/packages/package-home-center/api/playlist-display/playlistDisplay'
 
 Page({
@@ -57,6 +58,26 @@ Page({
     }, 50);
   },
 
+  /**
+   * 收藏/取消收藏 歌单
+   * @param {*} e 
+   */
+  async onSubscribePlaylist(e) {
+    const subscribe = e.currentTarget.dataset.subscribe
+    const {
+      playlistId,
+      dynamic
+    } = this.data
+    const {
+      code
+    } = await subscribePlaylist(playlistId, subscribe ? 1 : 2)
+    if (code == 200) {
+      this.setData({
+        'dynamic.subscribed': subscribe,
+        'dynamic.bookedCount': 0 + dynamic.bookedCount + (subscribe ? 1 : -1)
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

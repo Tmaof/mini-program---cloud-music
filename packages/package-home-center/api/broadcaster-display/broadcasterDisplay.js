@@ -9,6 +9,7 @@ import {
 export function getDjDetail(rid) {
   return request({
     url: '/dj/detail',
+    method:'POST',
     data: {
       rid
     }
@@ -21,7 +22,7 @@ export function getDjDetail(rid) {
  * @param {*} offset 
  * @param {*} asc 
  */
-export function getDjProgram(rid,limit, offset, asc = false) {
+export function getDjProgram(rid, limit, offset, asc = false) {
   return request({
     url: '/dj/program',
     data: {
@@ -29,6 +30,22 @@ export function getDjProgram(rid,limit, offset, asc = false) {
       limit,
       offset,
       asc
+    }
+  })
+}
+
+/**
+ * 收藏/取消收藏电台
+ * @param {*} id 电台ID
+ * @param {*} t 1:收藏,0:取消收藏
+ */
+export function subscribeDj(rid, t) {
+  return request({
+    url: '/dj/sub',
+    method: 'POST',
+    data: {
+      rid,
+      t
     }
   })
 }

@@ -1,15 +1,24 @@
 import {
   getMvDetail,
   getMvDynamic,
-  getMvUrl
+  getMvUrl,
+  subscribeMv
 } from '@/packages/package-video-center/api/video-player/videoPlayer'
+
+import {
+  likeResource
+} from '@/api/common/common'
 
 import {
   injectSystemInfo
 } from '@/behaviors/injectSystemInfo'
 
+import {
+  injectCheckLogin
+} from '@/behaviors/injectCheckLogin'
+
 Component({
-  behaviors: [injectSystemInfo],
+  behaviors: [injectSystemInfo, injectCheckLogin],
   options: {
     styleIsolation: 'shared'
   },
@@ -60,7 +69,8 @@ Component({
     videoStyle: {
       top: '',
       transform: ''
-    }
+    },
+    subed: false, //是否用户收藏了该视频
   },
 
   observers: {
@@ -82,11 +92,13 @@ Component({
     _geMvInfo() {
       const id = this.data.videoInfo.id
       getMvDetail(id).then(({
-        data
+        data,
+        subed
       }) => {
         // console.log(data)
         this.setData({
-          videoDetail: data
+          videoDetail: data,
+          subed
         })
       })
       getMvDynamic(id).then(res => {
@@ -192,6 +204,50 @@ Component({
         'videoStyle.top': '',
         'videoStyle.transform': '',
       })
+    },
+    /**
+     * 点赞视频
+     */
+    async onLikeVideo(e) {
+      if (!this.checkLogin()) return
+      const like = e.currentTarget.dataset.like
+      const {
+        videoDetail,
+        videoInfo,
+        videoDynamicInfo
+      } = this.data
+      const {
+        code
+      } = await likeResource(videoDetail.id, videoInfo.isMv ? 1 : 5, like ? 1 : 0)
+      if (code == 200) {
+        this.setData({
+          'videoDynamicInfo.likedCount': videoDynamicInfo.likedCount + (like ? 1 : -1),
+          'videoDynamicInfo.liked': like ? true : false
+        })
+      }
+    },
+    /**
+     * 收藏视频
+     * @param {*} e 
+     */
+    async onSubscribeVideo(e) {
+      const subscribe = e.currentTarget.dataset.subscribe
+      const {
+        videoInfo
+      } = this.data
+      if (videoInfo.isMv) {
+        const {
+          code
+        } = await subscribeMv(videoInfo.id, subscribe ? 1 : 0)
+
+        if (code == 200) {
+          this.setData({
+            subed: subscribe
+          })
+        }
+      } else {
+
+      }
     }
   },
   lifetimes: {

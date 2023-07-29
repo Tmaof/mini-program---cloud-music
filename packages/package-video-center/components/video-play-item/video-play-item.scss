@@ -180,5 +180,9 @@
         margin-top: var(--margin-small);
       }
     }
+
+    .active-color {
+      color: var(--themeColor);
+    }
   }
 }

@@ -1,5 +1,6 @@
 import {
-  getDjDetail
+  getDjDetail,
+  subscribeDj
 } from '@/packages/package-home-center/api/broadcaster-display/broadcasterDisplay'
 
 Page({
@@ -40,7 +41,26 @@ Page({
     })
 
   },
-
+  /**
+   * 收藏/取消收藏 歌单
+   * @param {*} e 
+   */
+  async onSubscribeDj(e) {
+    const subscribe = e.currentTarget.dataset.subscribe
+    const {
+      djId,
+      djInfo
+    } = this.data
+    const {
+      code
+    } = await subscribeDj(djId, subscribe ? 1 : 0)
+    if (code == 200) {
+      this.setData({
+        'djInfo.subed': subscribe,
+        'djInfo.subCount': 0 + djInfo.subCount + (subscribe ? 1 : -1)
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

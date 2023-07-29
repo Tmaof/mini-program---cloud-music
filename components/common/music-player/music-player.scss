@@ -175,6 +175,10 @@
       justify-content: space-around;
       height: 10vh;
       // background-color: gray;
+
+      .active-like {
+        color: var(--themeColor) !important;
+      }
     }
 
     // 歌词区

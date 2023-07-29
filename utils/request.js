@@ -9,7 +9,7 @@ import {
 class Requester {
   defaultOptions = {
     method: "GET",
-    timeout: 20000,
+    timeout: 60000,
   }
   baseUrl = ''
   constructor(options = null, baseUrl = '') {

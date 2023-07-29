@@ -66,7 +66,7 @@
   <!-- 动态信息 -->
   <view catchtap="onBlockingEvent" class="dynamic-info" hidden="{{isChangeProgressing}}">
     <!-- 点赞 -->
-    <view class="iconfont icon-tuijian">
+    <view class="iconfont icon-tuijian {{videoDynamicInfo.liked?'active-color':''}}" catchtap="onLikeVideo" data-like="{{videoDynamicInfo.liked?false:true}}">
       <text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.likedCount)}}</text>
     </view>
     <!-- 评论 -->
@@ -74,7 +74,7 @@
     <!-- 分享 -->
     <view class="iconfont icon-fenxiang"><text class="text">{{filter.getPlaybackVolume(videoDynamicInfo.shareCount)}}</text></view>
     <!-- 收藏 -->
-    <view class="iconfont icon-shoucang"></view>
+    <view class="iconfont icon-shoucang {{subed?'active-color':''}}" bindtap="onSubscribeVideo" data-subscribe="{{subed?false:true}}"></view>
   </view>
 </view>
 <!-- 评论区 -->

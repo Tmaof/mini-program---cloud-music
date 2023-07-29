@@ -46,7 +46,7 @@
         <view class="iconfont icon-pinglun"></view>
         <text class="nums">{{dynamic.commentCount}}</text>
       </navigator>
-      <view class="item-card">
+      <view class="item-card {{dynamic.subscribed?'active-subscribe':''}}" bindtap="onSubscribePlaylist" data-subscribe="{{dynamic.subscribed?false:true}}">
         <view class="iconfont icon-shoucang"></view>
         <text class="nums">{{dynamic.bookedCount}}</text>
       </view>

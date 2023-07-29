@@ -47,7 +47,7 @@
         <view class="iconfont icon-pinglun"></view>
         <text class="nums">{{djInfo.commentCount}}</text>
       </navigator>
-      <view class="item-card">
+      <view class="item-card {{djInfo.subed?'active-subscribe':''}}" bindtap="onSubscribeDj" data-subscribe="{{djInfo.subed?false:true}}">
         <view class="iconfont icon-shoucang"></view>
         <text class="nums">{{djInfo.subCount}}</text>
       </view>

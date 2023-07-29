@@ -43,7 +43,7 @@
           <!-- 操作栏 -->
           <view class="action-bar">
             <!-- 喜欢该音乐 -->
-            <view class="like iconfont icon-xihuan"></view>
+            <view class="like iconfont icon-xihuan {{songInfo.liked?'active-like':''}}" catchtap="onLikeSong" data-like="{{songInfo.liked?false:true}}"></view>
             <!-- 评论 -->
             <view class="comment iconfont icon-pinglun" catchtap="onShowCommentArea"></view>
           </view>
