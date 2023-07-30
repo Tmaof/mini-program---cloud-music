@@ -73,6 +73,8 @@
 
     // 评论内容
     .content {
+      max-width: 75vw;
+      word-wrap: break-word;
       margin-top: var(--margin);
       font-size: var(--font-size);
     }

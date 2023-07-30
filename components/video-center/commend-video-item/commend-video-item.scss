@@ -1,0 +1,81 @@
+.commend-video-item-container {
+  padding: var(--padding);
+  border-radius: var(--b-r-size);
+  box-shadow: 0 0 var(--shadowLen-mini) var(--shadowColor-fade);
+  // 头部
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .author-name {
+        margin-left: var(--margin);
+        font-weight: bold;
+        letter-spacing: var(--let-spa);
+      }
+    }
+  }
+
+  // 中部
+  .body {
+    margin: var(--margin) 0;
+    width: 100%;
+    height: 360rpx;
+
+    // 视频封面
+    .cover {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .duration {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: var(--white);
+      }
+      .img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    // 视频
+    .video {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // 下部
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      font-weight: bold;
+      letter-spacing: var(--let-spa-small);
+    }
+
+    .like {
+      display: flex;
+      align-items: center;
+      color: var(--grey);
+      .iconfont {
+        margin-right: var(--margin-small);
+        color: var(--grey);
+      }
+      .nums {
+        margin-right: var(--margin);
+      }
+    }
+
+    .active-like {
+      color: var(--themeColor);
+      .iconfont {
+        color: var(--themeColor);
+      }
+    }
+  }
+}

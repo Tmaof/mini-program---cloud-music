@@ -1,35 +1,7 @@
 <view class="commend-video-container">
-  <view class="commend-video-item-card">
-    <!-- 头部 -->
-    <view class="header">
-      <view class="right">
-        <view class="profile-photo">
-          <t-avatar size="small" image="/assets/img/唱片盘.png"></t-avatar>
-        </view>
-        <view class="author-name">
-          云听听街彩
-        </view>
-      </view>
-    </view>
-    <!-- 中部 -->
-    <view class="body">
-
-      <!-- 视频封面 -->
-      <view class="cover">
-        <view class="duration">
-          00:26
-        </view>
-        <image class="img" src="/assets/img/唱片盘.png" mode="aspectFill" />
-      </view>
-    </view>
-
-    <!-- 下部 -->
-    <view class="footer">
-      <view class="title">
-        视频标题
-      </view>
-      <view class="like">
-      </view>
-    </view>
-  </view>
+  <scroll-view enhanced class="scroll-view" scroll-y binddragend="onDragend" bindscrolltolower="onScrolltolower">
+    <commend-video-item wx:for="{{commendVideoList}}" wx:key="index" videoInfo="{{item}}" isPlaying="{{index==playingIndex}}"></commend-video-item>
+    <!-- 加载中 -->
+    <my-loading wx:if="{{isLoading}}"></my-loading>
+  </scroll-view>
 </view>

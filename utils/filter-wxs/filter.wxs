@@ -71,6 +71,7 @@ module.exports = {
    * @param timespan 
    */
   formatTime: function (timespan) {
+    if (!timespan) return ''
     var dateTime = getDate(timespan) // 将传进来的字符串或者毫秒转为标准时间
     var hour = dateTime.getHours()
     var minute = dateTime.getMinutes()

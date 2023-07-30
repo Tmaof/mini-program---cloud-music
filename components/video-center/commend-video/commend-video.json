@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "commend-video-item": "/components/video-center/commend-video-item/commend-video-item"
+  }
 }

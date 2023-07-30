@@ -4,6 +4,10 @@ import {
 import {
   injectSystemInfo
 } from '@/behaviors/injectSystemInfo'
+import {
+  getVideoGroup,
+  getVideoByGroupId
+} from '@/api/video-center/commend-video/commendVideo'
 
 Page({
   behaviors: [injectSystemInfo],
@@ -28,6 +32,8 @@ Page({
     timeThreshold: 500, //判断为滑动快速切换的时间阈值
     firstChangeDragThreshold: 70, //快速滑动切换的阈值
     dragThreshold: 300, //滑动切换的阈值
+    videoGroupList: [], //视频分类标签
+    isLoading: false,
   },
 
   /**
@@ -35,19 +41,19 @@ Page({
    */
   onLoad(options) {
     if (options.id) {
+      options.isMv = options.isMv == "true" ? true : false
       this.setData({
         videoInfoList: [options]
       })
     }
-    this._getRandomMv()
+    this.onScrolltolower()
   },
   /**
    * 获取随机MV视频
    */
   async _getRandomMv() {
-    wx.showToast({
-      title: '正在加载中',
-      icon: 'none'
+    this.setData({
+      isLoading: true
     })
     const offset = Math.round(Math.random() * (this.data.mvTotalNum - this.data.videoLimit))
     const {
@@ -62,10 +68,47 @@ Page({
     })
 
     this.setData({
+      isLoading: false,
       mvTotalNum: count || this.data.mvTotalNum,
       videoInfoList: [...this.data.videoInfoList, ...newList]
     })
 
+  },
+  /**
+   * 获取随机视频
+   */
+  async _getRamdomVideo() {
+    this.setData({
+      isLoading: true
+    })
+    let {
+      videoGroupList,
+      videoInfoList
+    } = this.data
+    if (!videoGroupList.length) {
+      const {
+        data
+      } = await getVideoGroup()
+      videoGroupList = data
+      this.setData({
+        videoGroupList: data
+      })
+    }
+
+    const randomId = videoGroupList[Math.round(Math.random() * (videoGroupList.length - 1))].id
+    const {
+      datas
+    } = await getVideoByGroupId(randomId)
+    this.setData({
+      videoInfoList: [...videoInfoList, ...datas.map(item => {
+        return {
+          isMv: item.type == 0,
+          id: item.data.vid
+        }
+      })],
+      videoGroupList: videoGroupList.filter(item => item.id != randomId),
+      isLoading: false
+    })
   },
   /**
    * 获取滚动视图元素
@@ -150,7 +193,21 @@ Page({
   onReady() {
     this._getScrollViewEle()
   },
-
+  /**
+   * 加载更多
+   */
+  onScrolltolower() {
+    if (this.data.isLoading) return
+    wx.showToast({
+      title: '正在加载中',
+      icon: 'none'
+    })
+    if (Math.round(Math.random() * 9) > 4) {
+      this._getRandomMv()
+    } else {
+      this._getRamdomVideo()
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */

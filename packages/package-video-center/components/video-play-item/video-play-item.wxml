@@ -9,7 +9,7 @@
 </wxs>
 <view class="video-play-item" bindtap="onChangeIsPlayVideo">
   <!-- 视频 -->
-  <view class="video-container" style="top: {{videoStyle.top}};transform: {{videoStyle.transform}};">
+  <view class="video-container {{isPortraitScreen?'video-container-portrait-screen':''}}" style="top: {{videoStyle.top}};transform: {{videoStyle.transform}};">
     <view class="iconfont icon-bofangqi-bofang" hidden="{{isPlayVideo}}"></view>
     <!-- 前1个和后1个video不销毁 -->
     <video wx:if="{{isPlayVideo||(currentIndex>=playingIndex-1&&currentIndex<=playingIndex+1)}}" id="{{videoInfo.id}}" class="video" src="{{videoUrl}}" object-fit="contain" title="{{videoDetail.name}}" controls="{{isShowVideoControls}}" bindtimeupdate="onTimeUpdate" bindfullscreenchange="onFullScreenChange" show-center-play-btn="{{false}}" show-snapshot-button bindloadedmetadata="onLoadedmetadata" style="height: {{videoHeight}}px;" object-fit="contain" />
@@ -22,22 +22,27 @@
       <view class="author">
         <!-- 头像 -->
         <scroll-view id="profile-photo-scroll-view" class="profile-photo-container" scroll-x enhanced>
-          <image wx:for="{{videoDetail.artists}}" src="{{item.img1v1Url}}" mode="aspectFill" class="profile-photo" wx:key="index" />
+          <image wx:if="{{videoDetail.artists}}" wx:for="{{videoDetail.artists}}" src="{{item.img1v1Url}}" mode="aspectFill" class="profile-photo" wx:key="index" />
+          <image wx:if="{{videoDetail.creator}}" src="{{videoDetail.creator.avatarUrl}}" mode="aspectFill" class="profile-photo" />
         </scroll-view>
         <!-- 昵称 -->
-        <view class="name single-line-overflow">{{filter.getAuthorName(videoDetail.artists)}}</view>
+        <view wx:if="{{videoDetail.artists}}" class="name single-line-overflow">{{filter.getAuthorName(videoDetail.artists)}}</view>
+        <view wx:if="{{videoDetail.creator}}" class="name single-line-overflow">{{videoDetail.creator.nickname}}</view>
       </view>
       <!-- 介绍 -->
       <view class="desc">
-        <view wx:if="{{!videoDetail.desc}}">{{videoDetail.briefDesc||''}}</view>
+        <view wx:if="{{!videoDetail.desc&&!videoDetail.description}}">{{videoDetail.briefDesc||''}}</view>
         <t-collapse wx:else value="{{activeValues}}" bind:change="handleChange">
-          <t-collapse-panel header="{{videoDetail.briefDesc||module.getBriefDesc(videoDetail.desc)}}" value="{{0}}" expandIcon>
-            {{videoDetail.desc||''}}
+          <t-collapse-panel header="{{videoDetail.briefDesc||module.getBriefDesc(videoDetail.desc||videoDetail.description)}}" value="{{0}}" expandIcon>
+            {{videoDetail.desc||videoDetail.description}}
           </t-collapse-panel>
         </t-collapse>
       </view>
+      <!-- mv标签 -->
+      <text class="iconfont icon-MV" wx:if="{{videoInfo.isMv}}"></text>
       <!-- 发布时间 -->
-      <view class="time">{{videoDetail.publishTime}}</view>
+      <text wx:if="{{videoInfo.isMv}}" class="time">{{videoDetail.publishTime}}</text>
+      <text wx:else class="time">{{filter.formatTimeYMD(videoDetail.publishTime) }}</text>
     </view>
     <!-- 当前时间/总时间 -->
     <view class="time-ratio" hidden="{{!isChangeProgressing}}">

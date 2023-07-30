@@ -2,7 +2,11 @@ import {
   getMvDetail,
   getMvDynamic,
   getMvUrl,
-  subscribeMv
+  subscribeMv,
+  getVideoDetail,
+  getVideoDynamic,
+  getVideoUrl,
+  subscribeVideo
 } from '@/packages/package-video-center/api/video-player/videoPlayer'
 
 import {
@@ -71,6 +75,7 @@ Component({
       transform: ''
     },
     subed: false, //是否用户收藏了该视频
+    isPortraitScreen: false, //是否是竖屏
   },
 
   observers: {
@@ -89,7 +94,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    _geMvInfo() {
+    _getMvInfo() {
       const id = this.data.videoInfo.id
       getMvDetail(id).then(({
         data,
@@ -111,6 +116,25 @@ Component({
       }) => {
         this.setData({
           videoUrl: data.url
+        })
+      })
+    },
+    _getVideoInfo() {
+      const id = this.data.videoInfo.id
+      getVideoDetail(id).then(res => {
+        this.setData({
+          videoDetail: res.data
+        })
+      })
+      getVideoDynamic(id).then(res => {
+        this.setData({
+          videoDynamicInfo: res,
+          subed: res.liked
+        })
+      })
+      getVideoUrl(id).then(res => {
+        this.setData({
+          videoUrl: res.urls[0].url
         })
       })
     },
@@ -181,8 +205,10 @@ Component({
         width,
         height,
       } = e.detail
+
       this.setData({
-        videoHeight: (height / width) * this.data.systemInfo.windowWidth
+        videoHeight: (height / width) * this.data.systemInfo.windowWidth,
+        isPortraitScreen: height > width
       })
 
     },
@@ -218,7 +244,7 @@ Component({
       } = this.data
       const {
         code
-      } = await likeResource(videoDetail.id, videoInfo.isMv ? 1 : 5, like ? 1 : 0)
+      } = await likeResource(videoInfo.id, videoInfo.isMv ? 1 : 5, like ? 1 : 0)
       if (code == 200) {
         this.setData({
           'videoDynamicInfo.likedCount': videoDynamicInfo.likedCount + (like ? 1 : -1),
@@ -235,32 +261,34 @@ Component({
       const {
         videoInfo
       } = this.data
+      let code = 0
       if (videoInfo.isMv) {
-        const {
-          code
-        } = await subscribeMv(videoInfo.id, subscribe ? 1 : 0)
-
-        if (code == 200) {
-          this.setData({
-            subed: subscribe
-          })
-        }
+        const res = await subscribeMv(videoInfo.id, subscribe ? 1 : 0)
+        code = res.code
       } else {
-
+        const res = await subscribeVideo(videoInfo.id, subscribe ? 1 : 0)
+        code = res.code
+      }
+      if (code == 200) {
+        this.setData({
+          subed: subscribe
+        })
       }
     }
   },
   lifetimes: {
     attached() {
       if (this.data.videoInfo.isMv) {
-        this._geMvInfo()
+        this._getMvInfo()
       } else {
-
+        this._getVideoInfo()
       }
       this._getVideoEle()
       // 头像scroll-view隐藏滚动条
       this.createSelectorQuery().select('#profile-photo-scroll-view').node((res) => {
-        res.node.showScrollbar = false
+        if (res) {
+          res.node.showScrollbar = false
+        }
       }).exec()
 
     }

@@ -1,5 +1,5 @@
 <view class="video-player-container">
-  <scroll-view id="video-scroll" scroll-y enhanced binddragstart="onDragStart" binddragend="onDragEnd" bindscrolltolower="_getRandomMv">
+  <scroll-view id="video-scroll" scroll-y enhanced binddragstart="onDragStart" binddragend="onDragEnd" bindscrolltolower="onScrolltolower">
     <video-play-item wx:for="{{videoInfoList}}" wx:key="id" videoInfo="{{item}}" id="{{'video_'+index}}" isPlayVideo="{{playingIndex==index?true:false}}" currentIndex="{{index}}" playingIndex="{{playingIndex}}"></video-play-item>
   </scroll-view>
 </view>

@@ -127,6 +127,20 @@
           "query": "type=2&id=2218171336",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "视频播放器-视频模式",
+          "pathName": "packages/package-video-center/pages/video-player/video-player",
+          "query": "isMv=false&id=C3A045D2E8AB712C735FC0FDC771A7A8",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "视频播放器-竖屏模式",
+          "pathName": "packages/package-video-center/pages/video-player/video-player",
+          "query": "isMv=false&id=FFA2A93C3ED541A0EF2FDEEC0EB3B7C8",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

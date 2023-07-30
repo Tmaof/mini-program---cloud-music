@@ -1,0 +1,38 @@
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter" />
+<view class="commend-video-item-container" bindtap="onToVideoPlayer">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="right">
+      <view class="profile-photo">
+        <t-avatar size="small" image="{{videoInfo.data.creator.avatarUrl}}"></t-avatar>
+      </view>
+      <view class="author-name">
+        {{videoInfo.data.creator.nickname}}
+      </view>
+    </view>
+  </view>
+  <!-- 中部 -->
+  <view class="body">
+    <!-- 视频 -->
+    <video wx:if="{{isPlaying}}" src="{{videoInfo.data.urlInfo.url}}" class="video" autoplay muted show-fullscreen-btn="{{false}}" show-center-play-btn="{{false}}" show-mute-btn loop show-play-btn="{{false}}" show-progress="{{false}}" />
+    <!-- 视频封面 -->
+    <view wx:else class="cover">
+      <view class="duration">
+        {{filter.formatTime(videoInfo.data.durationms)}}
+      </view>
+      <image class="img" src="{{videoInfo.data.coverUrl}}" />
+    </view>
+  </view>
+
+  <!-- 下部 -->
+  <view class="footer">
+    <view class="title ">
+      {{videoInfo.data.title}}
+    </view>
+    <view class="like {{videoInfo.data.praised?'active-like':''}}" catchtap="onLikeVideo" data-like="{{videoInfo.data.praised?false:true}}">
+      <text class="iconfont icon-tuijian">
+      </text>
+      <text class="nums">{{videoInfo.data.praisedCount}}</text>
+    </view>
+  </view>
+</view>

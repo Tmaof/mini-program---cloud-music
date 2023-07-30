@@ -61,3 +61,15 @@ export function getRPdj() {
     method: 'POST',
   })
 }
+
+/**
+ * mlog id 转 视频ID
+ */
+export function mlogIdToVideoId(id) {
+  return request({
+    url: '/mlog/to/video',
+    data: {
+      id
+    }
+  })
+}

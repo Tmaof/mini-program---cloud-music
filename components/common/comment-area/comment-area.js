@@ -20,7 +20,7 @@ Component({
       value: -1
     },
     resourceId: {
-      type: Number,
+      type: [Number, String],
       value: -1
     },
     visible: {
