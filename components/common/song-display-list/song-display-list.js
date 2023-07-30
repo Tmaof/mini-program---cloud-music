@@ -15,14 +15,16 @@ Component({
       type: Array,
       value: []
     },
+    //是否显示封面
     isShowCover: {
       type: Boolean,
       value: true
-    }, //是否显示封面
+    },
+    //是否显示索引
     isShowIndex: {
       type: Boolean,
       value: false
-    }, //是否显示索引
+    },
   },
 
   /**

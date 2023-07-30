@@ -11,7 +11,7 @@
         声音
       </view>
       <view class="nums">
-        ({{programCount}})
+        ({{programCount||programsList.length}})
       </view>
     </view>
     <view class="right">
@@ -41,16 +41,14 @@
           {{item.name}}
         </view>
         <view class="info ">
-          <!-- 推荐原因 -->
-          <!-- <text class="reason" wx:if="{{item.reason}}">{{item.reason}}</text> -->
-          <!-- vip
-          <view wx:if="{{item.fee==1}}" class="iconfont icon-vip" style="display: inline-block;"></view> -->
+
           <!-- 时间 -->
-          <text class="time">{{filter.fromNow(item.createTime)}}</text>
+          <text class="time" wx:if="{{isShowTime}}">{{filter.fromNow(item.createTime)}}</text>
           <!-- 播放量 -->
           <view class="count">
             <text class="iconfont icon-bofangqi-bofang"></text>
-            {{filter.getPlaybackVolume(item.listenerCount)}}</view>
+            {{filter.getPlaybackVolume(item.listenerCount)}}
+          </view>
           <!-- 时长 -->
           <text class="duration">{{filter.formatTime(item.duration)}}</text>
           <!-- 作者 -->

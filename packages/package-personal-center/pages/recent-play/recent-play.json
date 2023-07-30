@@ -3,6 +3,8 @@
     "rp-song": "/packages/package-personal-center/components/rp-song/song",
     "rp-video": "/packages/package-personal-center/components/rp-video/video",
     "rp-songList": "/packages/package-personal-center/components/rp-songList/songList",
-    "rp-album": "/packages/package-personal-center/components/rp-album/album"
+    "rp-album": "/packages/package-personal-center/components/rp-album/album",
+    "rp-voice":"/packages/package-personal-center/components/rp-voice/rp-voice",
+    "rp-dj":"/packages/package-personal-center/components/rp-dj/rp-dj"
   }
 }

@@ -1,6 +1,5 @@
 // packages/package-personal-center/pages/my-collection/my-collection.js
 Page({
-
   /**
    * 页面的初始数据
    */

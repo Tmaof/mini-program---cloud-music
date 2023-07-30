@@ -45,8 +45,13 @@
     }
 
     // 调整tabs高度
-    .t-tabs__item-inner--active.t-tabs__item-inner--tag {
+    .t-tabs__item-inner--tag {
       height: 50rpx !important;
+      background-color: none;
+    }
+
+    .t-sticky {
+      z-index: 0 !important;
     }
   }
 }

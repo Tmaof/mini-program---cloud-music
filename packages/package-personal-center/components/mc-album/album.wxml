@@ -1,6 +1,8 @@
 <import src="/packages/package-personal-center/template/mc-item-card/item-card"></import>
 <view class="mc-album-container">
-  <template is="mc-item-card" wx:for="{{albumInfo.data}}" wx:key="id" data="{{...module.getData(item)}}"></template>
+  <navigator wx:for="{{albumInfo.data}}" wx:key="id">
+    <template is="mc-item-card" data="{{...module.getData(item)}}"></template>
+  </navigator>
 </view>
 <wxs module="module">
   var filter = require('../../../../utils/filter-wxs/filter.wxs')

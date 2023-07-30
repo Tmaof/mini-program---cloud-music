@@ -1,0 +1,3 @@
+<view class="rp-voice-container">
+  <program-display-list propList="{{voiceList}}" isShowTime="{{false}}"></program-display-list>
+</view>

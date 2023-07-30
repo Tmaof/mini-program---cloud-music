@@ -3,7 +3,7 @@ import {
 } from '@/behaviors/injectMusicPlayerStore'
 import {
   getDjProgram
-} from '@/packages/package-home-center/api/broadcaster-display/broadcasterDisplay'
+} from '@/api/common/dj/dj'
 Component({
   behaviors: [injectMusicPlayerStore],
   options: {
@@ -13,10 +13,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    propList: {
+      type: Array,
+      value: []
+    }, //节目列表
     djId: {
       type: String,
       value: ''
-    },
+    }, //电台id,可选值
     programCount: {
       type: Number,
       value: 0
@@ -29,15 +33,29 @@ Component({
       type: Boolean,
       value: false
     }, //是否显示索引
+    isShowTime: {
+      type: Boolean,
+      value: true
+    }, //是否显示创建时间
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    programsList: [], //节目列表
     limit: 30,
     offset: 0,
+    programsList: []
+  },
+
+  observers: {
+    'propList': function (list) {
+      if (list.length) {
+        this.setData({
+          programsList: [...this.data.programsList, ...this._getSongList(list)]
+        })
+      }
+    }
   },
 
   /**
@@ -60,6 +78,7 @@ Component({
      * 获取节目列表
      */
     async _getProgramsList() {
+      if (!this.data.djId) return
       if (this.data.offset > this.data.programCount) {
         wx.showToast({
           title: '没有更多了哟',
@@ -71,23 +90,27 @@ Component({
         programs
       } = await getDjProgram(this.data.djId, this.data.limit, this.data.offset)
 
-      const programsList = programs.map(item => {
+      const songList = this._getSongList(programs)
+
+      this.setData({
+        programsList: [...this.data.programsList, ...songList],
+        offset: this.data.offset + this.data.limit
+      })
+    },
+    _getSongList(programlist) {
+      return programlist.map(item => {
         item.mainSong.createTime = item.createTime
         item.mainSong.listenerCount = item.listenerCount
         item.mainSong.duration = item.duration
         item.mainSong.coverUrl = item.coverUrl
         return item.mainSong
       })
-
-      this.setData({
-        programsList: [...this.data.programsList, ...programsList],
-        offset: this.data.offset + this.data.limit
-      })
     }
   },
 
   // 生命周期
   lifetimes: {
+    attached() {},
     // 可以正确获取到djId
     ready() {
       this._getProgramsList()

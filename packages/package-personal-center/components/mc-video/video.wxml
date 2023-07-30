@@ -12,7 +12,6 @@
       </view>
       <view class="icon-right iconfont icon-youjiantou">
       </view>
-
     </view>
   </navigator>
 
@@ -23,9 +22,24 @@
       收藏的视频 <text class="nums">({{MCmvInfo.data.length||'0'}})</text>
     </view>
     <!-- tabs -->
-    <t-tabs theme="tag" class="video-type-tabs" space-evenly="{{false}}" value="0">
+    <t-tabs theme="tag" class="video-type-tabs" space-evenly="{{false}}" default-value="0">
+      <!-- 全部 -->
       <t-tab-panel class="mv-content" label="全部" value="0">
-        <template is="mc-item-card" wx:for="{{MCmvInfo.data}}" wx:key="vid" data="{{...module.getData(item)}}"></template>
+        <navigator wx:for="{{MCmvInfo.data}}" wx:key="vid" url="/packages/package-video-center/pages/video-player/video-player?isMv={{item.type==0?true:false}}&id={{item.vid}}">
+          <template is="mc-item-card" data="{{...module.getData(item)}}"></template>
+        </navigator>
+      </t-tab-panel>
+      <!-- 视频 -->
+      <t-tab-panel class="mv-content" label="视频" value="1">
+        <navigator wx:if="{{item.type==1}}" wx:for="{{MCmvInfo.data}}" wx:key="vid" url="/packages/package-video-center/pages/video-player/video-player?isMv={{false}}&id={{item.vid}}">
+          <template is="mc-item-card" data="{{...module.getData(item)}}"></template>
+        </navigator>
+      </t-tab-panel>
+      <!-- mv -->
+      <t-tab-panel class="mv-content" label="MV" value="2">
+        <navigator wx:if="{{item.type==0}}" wx:for="{{MCmvInfo.data}}" wx:key="vid" url="/packages/package-video-center/pages/video-player/video-player?isMv={{true}}&id={{item.vid}}">
+          <template is="mc-item-card" data="{{...module.getData(item)}}"></template>
+        </navigator>
       </t-tab-panel>
     </t-tabs>
   </view>
@@ -36,15 +50,23 @@
   var filter = require('../../../../utils/filter-wxs/filter.wxs')
   module.exports = {
     getData: function (item) {
-      return {
+      var ret = {
         w: '280rpx',
         infoXaxWidth: '55%',
         h: '170rpx',
         cover: item.coverUrl,
         name: item.title,
         infoL: filter.getAuthorName(item.creator, 'userName'),
-        infoR: '已收藏'
+        infoR: '已收藏',
+
       }
+      if (item.type == 0) {
+        ret.isMv = true
+      }
+      else {
+        ret.isMv = false
+      }
+      return ret
     }
   }
 </wxs>

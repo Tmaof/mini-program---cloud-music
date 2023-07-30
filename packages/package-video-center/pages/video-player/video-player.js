@@ -34,14 +34,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if (options.isMv && options.id) {
+    if (options.id) {
       this.setData({
         videoInfoList: [options]
       })
     }
     this._getRandomMv()
-
-
   },
   /**
    * 获取随机MV视频
@@ -62,6 +60,7 @@ Page({
         isMv: true
       }
     })
+
     this.setData({
       mvTotalNum: count || this.data.mvTotalNum,
       videoInfoList: [...this.data.videoInfoList, ...newList]

@@ -85,7 +85,8 @@
     "play-controll": "/components/common/play-controll/play-controll",
     "song-display-list": "/components/common/song-display-list/song-display-list",
     "comment-area": "/components/common/comment-area/comment-area",
-    "my-loading": "/components/common/my-loading/my-loading"
+    "my-loading": "/components/common/my-loading/my-loading",
+    "program-display-list": "/components/common/program-display-list/program-display-list"
   },
   "window": {
     "navigationBarTitleText": "云音乐",

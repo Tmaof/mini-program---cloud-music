@@ -30,3 +30,13 @@ export function getMCalbum() {
     method: 'POST'
   })
 }
+
+/**
+ * 获取我收藏的电台
+ */
+export function getMCdj() {
+  return request({
+    url: '/dj/sublist',
+    method: 'POST'
+  })
+}

@@ -41,3 +41,23 @@ export function getRPalbum() {
     method: 'post'
   })
 }
+
+/**
+ * 获取最近播放的声音
+ */
+export function getRPvoice() {
+  return request({
+    url: '/record/recent/voice',
+    method: 'POST',
+  })
+}
+
+/**
+ * 获取最近播放的播客
+ */
+export function getRPdj() {
+  return request({
+    url: '/record/recent/dj',
+    method: 'POST',
+  })
+}

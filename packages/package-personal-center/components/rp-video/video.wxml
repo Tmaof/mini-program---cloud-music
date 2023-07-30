@@ -1,20 +1,29 @@
 <!-- 引入模板 -->
 <import src="/packages/package-personal-center/template/rp-item-card/item-card"></import>
 <scroll-view scroll-y class="rp-video-container">
-  <template is='rp-item-card' wx:for="{{videoInfo.list}}" wx:key="index" data="{{...module.getData(item)}}"></template>
+  <navigator wx:for="{{videoInfo.list}}" wx:key="resourceId" url="/packages/package-video-center/pages/video-player/video-player?isMv={{item.resourceType=='MV'?true:false}}&id={{item.resourceId}}">
+    <template is='rp-item-card' data="{{...module.getData(item)}}"></template>
+  </navigator>
 </scroll-view>
 <wxs module="module">
   // 引入过滤器
   var filter = require('../../../../utils/filter-wxs/filter.wxs')
   module.exports = {
     getData: function (item) {
-      return {
+      var ret = {
         w: '160rpx',
         cover: item.data.coverUrl,
-        name: item.data.title,
-        infoL: filter.formatTime(item.data.duration) + ' by ' + item.data.creator.nickname,
+        name: item.data.title || item.data.name,
         infoR: filter.fromNow(item.playTime)
       }
+      if (item.resourceType == 'MLOG') {
+        ret.infoL = filter.formatTime(item.data.duration) + ' by ' + item.data.creator.nickname
+      }
+      else if (item.resourceType == 'MV') {
+        ret.infoL = filter.formatTime(item.data.duration) + ' by ' + filter.getAuthorName(item.data.artists)
+        ret.isMv = true
+      }
+      return ret
     }
   }
 </wxs>

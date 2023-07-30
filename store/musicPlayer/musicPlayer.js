@@ -252,10 +252,16 @@ export const musicPlayerStore = observable({
 
     this.songInfo = songInfo
     this.innerAudioContext.src = songInfo.url
-    this.innerAudioContext.title = songInfo.name
-    this.innerAudioContext.epname = (songInfo.al || songInfo.album).name
-    this.innerAudioContext.singer = getAuthorName(songInfo.ar || songInfo.artists)
-    this.innerAudioContext.coverImgUrl = songInfo.coverUrl || songInfo.al.picUrl || songInfo.album.picUrl
+    this.innerAudioContext.title = songInfo.name || ''
+    if (songInfo.al || songInfo.album) {
+      this.innerAudioContext.epname = (songInfo.al || songInfo.album).name
+    }
+    if (songInfo.ar || songInfo.artists) {
+      this.innerAudioContext.singer = getAuthorName(songInfo.ar || songInfo.artists)
+    }
+    if (songInfo.coverUrl || songInfo.al || songInfo.album) {
+      this.innerAudioContext.coverImgUrl = songInfo.coverUrl || songInfo.al.picUrl || songInfo.album.picUrl
+    }
     this.innerAudioContext.webUrl = config.blogUrl
 
     // 更新歌词

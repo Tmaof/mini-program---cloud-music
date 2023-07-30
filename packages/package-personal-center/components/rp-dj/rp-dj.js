@@ -1,16 +1,13 @@
 import {
-  getRPsong
+  getRPdj
 } from '@/packages/package-personal-center/api/recent-play/recentPlay'
 
 Component({
-  options: {
-    styleIsolation: 'apply-shared'
-  },
   /**
    * 组件的属性列表
    */
   properties: {
-    songList: []
+
   },
 
   /**
@@ -24,20 +21,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    async _getSongList() {
-      const {
-        data
-      } = await getRPsong()
-      this.setData({
-        songList: data.list.map(item => item.data)
-      })
+    async _getRPdj() {
+      const res = await getRPdj()
+      console.log(res)
     }
   },
-
-  // 生命周期
   lifetimes: {
     attached() {
-      this._getSongList()
+      this._getRPdj()
     }
   }
 })
