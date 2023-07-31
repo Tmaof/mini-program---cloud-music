@@ -59,9 +59,9 @@
       </view>
       <!-- 右侧 -->
       <view class="right">
-        <view wx:if="{{item.mv}}" class="video iconfont icon-shipin">
+        <navigator hover-class="none" url="/packages/package-video-center/pages/video-player/video-player?isMv=true&id={{item.mv}}" wx:if="{{item.mv}}" class="video iconfont icon-shipin">
 
-        </view>
+        </navigator>
         <view class="more iconfont icon-androidgengduo">
 
         </view>
