@@ -47,13 +47,13 @@
           </navigator>
         </t-col>
         <t-col span="6" class="app-item">
-          <navigator hover-class="none" url="/packages/package-personal-center/pages/my-collection/my-collection">
+          <view bindtap="onToMyCollection">
             <view class="icon icon-shoucang iconfont">
             </view>
             <view class="text">
               我的收藏
             </view>
-          </navigator>
+          </view>
         </t-col>
         <t-col span="6" class="app-item">
           <navigator hover-class="none" url="/packages/package-personal-center/pages/mylike-video/mylike-video">
@@ -91,8 +91,8 @@
   </view>
 
   <!-- 我喜欢的音乐 -->
-  <view class="mylove my-card">
-    <image wx:if="{{userLikedPlaylist.coverImgUrl}}" class="cover" src="{{userLikedPlaylist.coverImgUrl}}" mode="aspectFill" />
+  <view class="mylove my-card" bindtap="onToMyLikedPlaylist">
+    <image class="cover" src="{{userLikedPlaylist.coverImgUrl}}" mode="aspectFill" />
     <view class="info">
       <view class="title">
         我喜欢的音乐
@@ -101,7 +101,7 @@
         {{userLikedPlaylist.trackCount||0}} 首
       </view>
     </view>
-    <view class="btn-love">
+    <view class="btn-love" catchtap="onHeartbeatMode">
       <text>心动模式</text>
     </view>
   </view>

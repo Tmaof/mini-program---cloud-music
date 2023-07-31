@@ -11,12 +11,21 @@ import {
 import {
   logout
 } from '@/api/login/login'
+import {
+  getHeartbeatModeList
+} from '@/api/common/common'
 import Message from 'tdesign-miniprogram/message/index';
 import {
   getAreaInfoById
 } from '@/utils/getArea'
+import {
+  injectMusicPlayerStore
+} from '@/behaviors/injectMusicPlayerStore'
+import {
+  injectCheckLogin
+} from '@/behaviors/injectCheckLogin'
 Page({
-  behaviors: [injectAppStore, injectUserStore],
+  behaviors: [injectAppStore, injectUserStore, injectMusicPlayerStore, injectCheckLogin],
   options: {
     styleIsolation: 'shared'
   },
@@ -75,7 +84,61 @@ Page({
       content: '退出成功!',
     });
   },
-
+  /**
+   * 心动模式
+   */
+  async onHeartbeatMode() {
+    const {
+      userLikedPlaylist,
+      songInfo
+    } = this.data
+    if (!userLikedPlaylist || userLikedPlaylist.trackCount == 0) {
+      wx.showToast({
+        title: '"我喜欢的音乐"数量为0',
+        icon: 'none'
+      })
+      return
+    }
+    if (!songInfo) {
+      wx.showToast({
+        title: '当前没有正在播放的歌曲',
+        icon: 'none'
+      })
+      return
+    }
+    Message.info({
+      align: 'center',
+      offset: [20, 32],
+      duration: 4000,
+      icon: 'heart-filled',
+      content: '正在开启心动模式!',
+    });
+    const {
+      data
+    } = await getHeartbeatModeList(songInfo.id, userLikedPlaylist.id)
+    const list = data.map(item => item.songInfo)
+    this.changeSongList(null, list)
+    this.playTheSong(list[0].id)
+  },
+  /**
+   * 跳转我喜欢的音乐
+   */
+  onToMyLikedPlaylist() {
+    //可以使用游客登陆
+    if (!this.checkLogin('', false)) return
+    wx.navigateTo({
+      url: `/packages/package-home-center/pages/playlist-display/playlist-display?playlistId=${this.data.userLikedPlaylist.id}`,
+    })
+  },
+  /**
+   * 跳转我的收藏页
+   */
+  onToMyCollection() {
+    if (!this.checkLogin()) return
+    wx.navigateTo({
+      url: '/packages/package-personal-center/pages/my-collection/my-collection',
+    })
+  },
   /**
    * 下拉显示背景图 - 开始
    */

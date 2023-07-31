@@ -145,6 +145,7 @@ Component({
      * 发送评论
      */
     async onSendComment() {
+      if (!this.checkLogin()) return
       const {
         textareaText,
         resourceId,

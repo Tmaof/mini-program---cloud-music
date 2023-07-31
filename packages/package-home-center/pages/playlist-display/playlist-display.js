@@ -6,8 +6,11 @@ import {
   getPlaylistDynamic,
   subscribePlaylist
 } from '@/packages/package-home-center/api/playlist-display/playlistDisplay'
-
+import {
+  injectCheckLogin
+} from '@/behaviors/injectCheckLogin'
 Page({
+  behaviors: [injectCheckLogin],
   options: {
     styleIsolation: 'shared'
   },
@@ -63,6 +66,7 @@ Page({
    * @param {*} e 
    */
   async onSubscribePlaylist(e) {
+    if (!this.checkLogin()) return
     const subscribe = e.currentTarget.dataset.subscribe
     const {
       playlistId,

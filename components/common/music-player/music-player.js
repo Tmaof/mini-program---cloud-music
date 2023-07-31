@@ -324,7 +324,7 @@ Component({
      * 喜欢/取消喜欢 歌曲
      */
     async onLikeSong(e) {
-      if (!this.checkLogin()) return
+      if (!this.checkLogin('', false)) return
       const like = e.currentTarget.dataset.like
       const {
         songInfo,

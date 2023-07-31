@@ -2,8 +2,12 @@ import {
   getDjDetail,
   subscribeDj
 } from '@/packages/package-home-center/api/broadcaster-display/broadcasterDisplay'
+import {
+  injectCheckLogin
+} from '@/behaviors/injectCheckLogin'
 
 Page({
+  behaviors: [injectCheckLogin],
   options: {
     styleIsolation: 'shared'
   },
@@ -46,6 +50,7 @@ Page({
    * @param {*} e 
    */
   async onSubscribeDj(e) {
+    if (!this.checkLogin()) return
     const subscribe = e.currentTarget.dataset.subscribe
     const {
       djId,

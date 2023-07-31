@@ -57,16 +57,24 @@ export const userStore = observable({
   }),
   /**
    * 检查是否非登陆,如果没有登陆则跳转登陆页
+   * @param {*} strictMode 严格模式,为true代表必须使用非游客登陆,为false代表可以使用游客登陆,也可以使用非游客登录
    */
-  checkLogin: action(function (redirect) {
+  checkLogin: action(function (redirect, strictMode = true) {
+    // 已经满足登录状态要求
     if (this.isUserLogin && !this.isVisitor) return true
+    if (!strictMode && this.isVisitor) return true
+    // 需要进行登录
     wx.showToast({
-      title: '请使用扫码进行登录',
-      icon: 'none'
+      title: strictMode ? '请使用"非游客方式"进行登录' : '请进行登录!',
+      icon: 'none',
+      duration: 2000
     })
-    wx.navigateTo({
-      url: `/packages/package-sys/pages/login/login?redirect=${redirect}`,
-    })
+    const tid = setTimeout(() => {
+      wx.navigateTo({
+        url: `/packages/package-sys/pages/login/login?redirect=${redirect}`,
+      })
+      clearTimeout(tid)
+    }, 2000)
     return false
   })
 })

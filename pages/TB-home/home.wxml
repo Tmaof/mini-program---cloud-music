@@ -32,13 +32,13 @@
     </view>
     <!-- 快捷菜单 -->
     <view class="shortcut-menu">
-      <navigator url="/packages/package-home-center/pages/recommended-daily/recommended-daily" hover-class="none">
+      <view bindtap="onToRecommended">
         <view class="item">
           <view class="item-icon iconfont icon-tuijian">
           </view>
           <text>每日推荐</text>
         </view>
-      </navigator>
+      </view>
       <navigator url="/packages/package-home-center/pages/playlist-center/playlist-center" hover-class="none">
         <view class="item">
           <view class="item-icon iconfont icon-gedan">

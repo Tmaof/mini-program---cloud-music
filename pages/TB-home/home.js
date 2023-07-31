@@ -10,12 +10,14 @@ import {
   getRecommendedPlaylists,
   getTheList
 } from '@/api/home/home'
-
+import {
+  injectCheckLogin
+} from '@/behaviors/injectCheckLogin'
 Page({
   options: {
     styleIsolation: 'apply-shared'
   },
-  behaviors: [injectAppStore, injectMusicPlayerStore],
+  behaviors: [injectAppStore, injectMusicPlayerStore, injectCheckLogin],
   /**
    * 页面的初始数据
    */
@@ -117,6 +119,15 @@ Page({
    */
   onReady() {
     this.setTabBarIndexValue()
+  },
+  /**
+   * 跳转每日推荐
+   */
+  onToRecommended() {
+    if (!this.checkLogin()) return
+    wx.navigateTo({
+      url: '/packages/package-home-center/pages/recommended-daily/recommended-daily',
+    })
   },
 
   /**

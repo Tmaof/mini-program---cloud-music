@@ -56,9 +56,25 @@ export function likeSong(id, like) {
 export function getLikeSongList(uid) {
   return request({
     url: '/likelist',
-    method:'POST',
+    method: 'POST',
     data: {
       uid
+    }
+  })
+}
+
+/**
+ * 获取心动模式歌曲列表
+ * @param {*} id 歌曲ID
+ * @param {*} pid 歌单ID
+ */
+export function getHeartbeatModeList(id, pid) {
+  return request({
+    url: '/playmode/intelligence/list',
+    method: 'POST',
+    data: {
+      id,
+      pid
     }
   })
 }

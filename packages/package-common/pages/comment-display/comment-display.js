@@ -8,7 +8,8 @@ Page({
    */
   data: {
     type: -1,
-    id: -1
+    id: -1,
+    visible: false
   },
 
   /**
@@ -25,7 +26,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    this.setData({
+      visible: true
+    })
   },
 
   /**

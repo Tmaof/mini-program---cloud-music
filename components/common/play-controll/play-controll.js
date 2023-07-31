@@ -33,6 +33,13 @@ Component({
       })
     },
     onShowMusicPlayer() {
+      if (!this.data.songInfo) {
+        wx.showToast({
+          title: '当前没有播放的歌曲!',
+          icon: 'none'
+        })
+        return
+      }
       this.setData({
         isShowMusicPlayer: true
       })

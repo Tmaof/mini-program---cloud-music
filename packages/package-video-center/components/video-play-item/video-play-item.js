@@ -257,6 +257,7 @@ Component({
      * @param {*} e 
      */
     async onSubscribeVideo(e) {
+      if (!this.checkLogin()) return
       const subscribe = e.currentTarget.dataset.subscribe
       const {
         videoInfo

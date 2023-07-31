@@ -21,7 +21,7 @@
           <!-- 歌单名 -->
           <view class="name single-line-overflow ">{{playlistInfo.name}}</view>
           <!-- 作者信息 -->
-          <view class="author">
+          <view class="author" wx:if="{{playlistInfo.creator}}">
             <t-avatar class="img" image="{{playlistInfo.creator.avatarUrl}}" size="small" />
             <view class="name single-line-overflow ">{{playlistInfo.creator.nickname}}</view>
           </view>
