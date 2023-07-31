@@ -42,9 +42,11 @@ Page({
       activity: false,
       other: false
     }
-    const playlistType = ['热碟推荐', '新碟首发', '数字专辑', '歌单']
+    const playlistType = ['热碟推荐', '新碟首发', '歌单']
     const songType = ['新歌首发', '热歌推荐']
-    const activityType = ['活动']
+    const activityType = ['活动', '独家策划', '演出']
+    const mvType = ['MV首发']
+    const albumType = ['数字专辑']
     const typeTitle = banner.typeTitle
     if (playlistType.includes(typeTitle)) {
       res.playlist = true
@@ -52,6 +54,10 @@ Page({
       res.song = true
     } else if (activityType.includes(typeTitle)) {
       res.activity = true
+    } else if (mvType.includes(typeTitle)) {
+      res.mv = true
+    } else if (albumType.includes(typeTitle)) {
+      res.album = true
     } else {
       res.other = true
     }

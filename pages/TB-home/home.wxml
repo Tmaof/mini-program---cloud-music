@@ -21,6 +21,10 @@
             <image src="{{item.pic}}" mode="aspectFill" />
             <!-- <web-view src="{{item.url}}"></web-view> -->
           </view>
+          <!--mv 跳转视频播放器页面 -->
+          <navigator wx:if="{{item.type.mv}}" hover-class="none" url="/packages/package-video-center/pages/video-player/video-player?isMv=true&id={{item.targetId}}">
+            <image src="{{item.pic}}" mode="aspectFill" />
+          </navigator>
           <!-- 其他 -->
           <image wx:if="{{item.type.other}}" src="{{item.pic}}" mode="aspectFill" />
         </swiper-item>
