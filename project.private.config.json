@@ -141,6 +141,13 @@
           "query": "isMv=false&id=FFA2A93C3ED541A0EF2FDEEC0EB3B7C8",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "音乐播放器-电台节目",
+          "pathName": "packages/package-home-center/pages/broadcaster-display/broadcaster-display",
+          "query": "djId=794119441",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -179,13 +179,38 @@
       .active-like {
         color: var(--themeColor) !important;
       }
+
+      .iconfont {
+        font-size: var(--font-size-larger-x);
+        width: var(--font-size-larger-x);
+        height: var(--font-size-larger-x);
+      }
+
+      .like {
+      }
+
+      .comment {
+        position: relative;
+        .nums {
+          position: absolute;
+          font-size: var(--font-size-smaller-x);
+          right: -100%;
+          top: -30%;
+        }
+      }
+
+      .dadiantai {
+        color: var(--themeColor);
+      }
     }
 
     // 歌词区
     .lyric-area {
       height: 70vh;
       overflow: auto;
-
+      .no-lyric-tips {
+        text-align: center;
+      }
       .lyric-container {
         text-align: center;
 

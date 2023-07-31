@@ -43,14 +43,21 @@
           <!-- 操作栏 -->
           <view class="action-bar">
             <!-- 喜欢该音乐 -->
-            <view class="like iconfont icon-xihuan {{songInfo.liked?'active-like':''}}" catchtap="onLikeSong" data-like="{{songInfo.liked?false:true}}"></view>
+            <view wx:if="{{songInfo.djId==0}}" class="like iconfont icon-xihuan {{songInfo.liked?'active-like':''}}" catchtap="onLikeSong" data-like="{{songInfo.liked?false:true}}"></view>
+            <!-- 电台节目标签 -->
+            <navigator wx:else url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{songInfo.djId}}" hover-class="none">
+              <view class="dadiantai iconfont icon-diantaizhibo"></view>
+            </navigator>
             <!-- 评论 -->
-            <view class="comment iconfont icon-pinglun" catchtap="onShowCommentArea"></view>
+            <view class="comment iconfont icon-pinglun" catchtap="onShowCommentArea">
+              <text class="nums">{{filter.getPlaybackVolume(commentCount) }}</text>
+            </view>
           </view>
         </view>
         <!-- 歌词区 -->
         <scroll-view hidden="{{!isShowLyric}}" id='lyric-scroll' enhanced scroll-y class="lyric-area" bindtap="onChangeLyricVisibility" data-visibility="{{false}}" binddragstart="onBinddragstart" binddragend="onBinddragend">
           <view style="height: 40vh;"></view>
+          <view class="no-lyric-tips" hidden="{{lyricList.length!=0}}">暂无歌词</view>
           <view class="lyric-container">
             <view class="lyric-item {{index==currentLyricIndex?'lyric-item-active':''}}" wx:for="{{lyricList}}" wx:key="index">
               <!-- 使歌词可以滚动到中间 -->
@@ -92,4 +99,4 @@
 <!-- 歌曲列表 -->
 <song-list popupVisible='{{isShowSongList}}'></song-list>
 <!-- 评论区域 -->
-<comment-area id='comment-area' visible='{{isShowCommentArea}}' type="{{0}}" resourceId="{{songInfo.id}}" existDataNotObtain="{{false}}" resetBeforeFetch="{{true}}"></comment-area>
+<comment-area id='comment-area' visible='{{isShowCommentArea}}' type="{{songInfo.djId==0?0:4}}" resourceId="{{songInfo.djId==0?songInfo.id:songInfo.programId}}" bind:commentCountChange="onCommentCountChange"></comment-area>

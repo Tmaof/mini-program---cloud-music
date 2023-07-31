@@ -21,7 +21,7 @@ Component({
     },
     resourceId: {
       type: [Number, String],
-      value: -1
+      value: 0
     },
     visible: {
       type: Boolean,
@@ -36,7 +36,7 @@ Component({
       type: Boolean,
       value: true
     },
-    // 获取前清除评论列表
+    // 获取评论前清除评论列表
     resetBeforeFetch: {
       type: Boolean,
       value: false
@@ -45,7 +45,11 @@ Component({
     existDataNotObtain: {
       type: Boolean,
       value: true
-    }
+    },
+    eagerLoad: {
+      type: Boolean,
+      value: false,
+    }, //是否在组件挂载时立即加载评论
 
   },
 
@@ -65,7 +69,8 @@ Component({
     isLoading: false,
     hasMore: true,
     totalCount: 0,
-    turnOffDisplayEventName: 'turnOffDisplay'
+    turnOffDisplayEventName: 'turnOffDisplay',
+    commentCountChangeEventName: 'commentCountChange'
   },
   observers: {
     'visible': function (visible) {
@@ -84,6 +89,9 @@ Component({
           this._getCommentList()
         }
       }
+    },
+    'totalCount': function (totalCount) {
+      this.triggerEvent(this.data.commentCountChangeEventName, totalCount)
     }
   },
   /**
@@ -100,9 +108,6 @@ Component({
      * 获取评论列表
      */
     async _getCommentList() {
-      this.setData({
-        isLoading: true
-      })
       const {
         resourceId,
         type,
@@ -111,6 +116,10 @@ Component({
         sortType,
         commentList
       } = this.data
+      if (!resourceId) return
+      this.setData({
+        isLoading: true
+      })
       let cursor = undefined
       if (sortType == 3 && commentList.length) {
         cursor = commentList[commentList.length - 1].time
@@ -183,12 +192,22 @@ Component({
     onLoadMore() {
       if (this.data.isLoading || !this.data.hasMore) return
       this._getCommentList()
+    },
+    /**
+     * 清空原评论,并获取新评论
+     */
+    _resetAndGetComment() {
+      if (this.data.isLoading) return
+      this._resetComment()
+      this._getCommentList()
     }
   },
 
   lifetimes: {
     ready() {
-      // this._getCommentList()
+      if (this.data.eagerLoad) {
+        this._getCommentList()
+      }
     }
   }
 })

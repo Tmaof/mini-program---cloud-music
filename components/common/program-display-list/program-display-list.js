@@ -20,7 +20,7 @@ Component({
     djId: {
       type: String,
       value: ''
-    }, //电台id,可选值
+    }, //电台id,可选值,如果传入则会根据电台ID获取电台节目
     programCount: {
       type: Number,
       value: 0
@@ -103,6 +103,8 @@ Component({
         item.mainSong.listenerCount = item.listenerCount
         item.mainSong.duration = item.duration
         item.mainSong.coverUrl = item.coverUrl
+        item.mainSong.programId = item.id
+        item.mainSong.djId = item.radio.id
         return item.mainSong
       })
     }

@@ -75,6 +75,7 @@
     .content {
       max-width: 75vw;
       word-wrap: break-word;
+      white-space: pre-wrap;
       margin-top: var(--margin);
       font-size: var(--font-size);
     }

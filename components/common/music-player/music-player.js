@@ -46,6 +46,7 @@ Component({
     isScrollLyricing: false, //是否正在滚动歌词
     isShowCommentArea: false,
     likedSongList: [], //用户喜欢的歌曲列表
+    commentCount: 0, //评论数量
   },
   observers: {
     'currentLyricIndex': function () {
@@ -55,6 +56,14 @@ Component({
       // 获取用户喜欢的音乐列表
       if (this.data.userId)
         this.getUserLikedSongIdList(this.data.userId)
+    },
+    'currentSongId': function (currentSongId) {
+      if (!currentSongId) return
+      const tid = setTimeout(() => {
+        //重新获取评论数据
+        this.selectComponent('#comment-area')._resetAndGetComment()
+        clearTimeout(tid)
+      }, 1000)
     }
   },
   /**
@@ -338,6 +347,11 @@ Component({
         }
         this.setUserLikedSongIdList(list)
       }
+    },
+    onCommentCountChange(e) {
+      this.setData({
+        commentCount: e.detail
+      })
     }
   },
 

@@ -29,6 +29,7 @@ export const musicPlayerStore = observable({
   isPlaying: false,
   //当前歌曲信息
   songInfo: null,
+  currentSongId: 0, //当前播放歌曲的ID
   currentTime: 0, //当前播放进度
   duration: 0, //总时长
   lyricList: [], //当前播放歌曲的歌词列表
@@ -251,6 +252,11 @@ export const musicPlayerStore = observable({
     songInfo.liked = this.userLikedSongIdList.includes(songInfo.id) ? true : false
 
     this.songInfo = songInfo
+    if (songInfo.id != this.currentSongId) {
+      this.currentSongId = songInfo.id
+    }
+
+    //绑定微信播放器数据
     this.innerAudioContext.src = songInfo.url
     this.innerAudioContext.title = songInfo.name || ''
     if (songInfo.al || songInfo.album) {
