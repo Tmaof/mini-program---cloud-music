@@ -4,33 +4,34 @@
 
   <!-- 用户信息 -->
   <view class="user-info">
-    <!-- 背景图 -->
-    <view class="user-bg">
-      <image class="bg" src="{{userInfo.backgroundUrl}}" mode="aspectFill" />
-    </view>
-
-    <!-- 信息 -->
-    <view class="info-card my-card {{infoCardTs?'info-card-trans':''}}" style="top:{{infoCardTop}}%" bindtouchstart="onTouchStart" bindtouchmove="onTouchmove" bindtouchend="onTouchEnd">
-      <!-- 头像 -->
-      <view class="avatar">
-        <t-avatar class="avatar-ta" icon="user" image="{{userInfo.avatarUrl||undefined}}" size="large" />
+    <touch-panel bind:start-touch="onMoveInfoPanelStart" bind:move="onMoveInfoPanel" bind:touch="onMoveInfoPanelEnd">
+      <!-- 背景图 -->
+      <view class="user-bg">
+        <image class="bg" src="{{userInfo.backgroundUrl}}" mode="aspectFill" />
       </view>
-      <!-- 用户名 -->
-      <view wx:if="{{isUserLogin}}" class="user-name">
-        {{userInfo.nickname||'游客'}}
-      </view>
-      <!-- 跳转登录页 -->
-      <navigator wx:else hover-class="none" class="login-text" url="/packages/package-sys/pages/login/login">
-        立即登录
-        <view class="icon-youjiantou iconfont">
-
+      <!-- 信息 -->
+      <view class="info-card my-card {{infoCardTs?'info-card-trans':''}}" style="transform: translate(0,{{ 50 + infoCardTop}}px);">
+        <!-- 头像 -->
+        <view class="avatar">
+          <t-avatar class="avatar-ta" icon="user" image="{{userInfo.avatarUrl||undefined}}" size="large" />
         </view>
-      </navigator>
-      <!-- 用户签名 -->
-      <view class="signature">
-        {{userInfo.signature}}
+        <!-- 用户名 -->
+        <view wx:if="{{isUserLogin}}" class="user-name">
+          {{userInfo.nickname||'游客'}}
+        </view>
+        <!-- 跳转登录页 -->
+        <navigator wx:else hover-class="none" class="login-text" url="/packages/package-sys/pages/login/login">
+          立即登录
+          <view class="icon-youjiantou iconfont">
+
+          </view>
+        </navigator>
+        <!-- 用户签名 -->
+        <view class="signature">
+          {{userInfo.signature}}
+        </view>
       </view>
-    </view>
+    </touch-panel>
   </view>
 
   <!-- 音乐app -->

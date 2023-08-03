@@ -1,8 +1,3 @@
-<view 
-  class="touch-panel-container"
-    bindtouchstart="onTouchStart"
-    bindtouchmove="onTouchMove"
-    bindtouchend="onTouchEnd"
->
-<slot></slot>
+<view class="touch-panel-container" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+  <slot></slot>
 </view>

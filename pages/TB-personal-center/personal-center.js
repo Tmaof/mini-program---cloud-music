@@ -33,7 +33,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    touche: null, //上一次滑动的信息
     infoCardTop: 40, //信息卡片的top值
     infoCardTs: false, //返回过渡效果
     areaInfo: {
@@ -140,9 +139,9 @@ Page({
     })
   },
   /**
-   * 下拉显示背景图 - 开始
+   * 下拉显示背景图 - 开始移动
    */
-  onTouchStart(e) {
+  onMoveInfoPanelStart() {
     this.setData({
       infoCardTs: false
     })
@@ -150,27 +149,24 @@ Page({
   /**
    * 下拉显示背景图 - 移动中
    */
-  onTouchmove(e) {
-    const top = this.data.infoCardTop
-    const curCouche = e.touches[0]
-    if (top >= 75) return
-    if (this.data.touche && (curCouche.clientY - this.data.touche.clientY <= 0)) return
-    this.setData({
-      touche: curCouche
-    })
-    this.setData({
-      infoCardTop: top + 1.5
-    })
+  onMoveInfoPanel(e) {
+    const {
+      down,
+      distanceY
+    } = e.detail
+    if (down) {
+      if (distanceY > 120) return
+      this.setData({
+        infoCardTop: distanceY,
+      })
+    }
   },
   /**
    * 下拉显示背景图 - 结束
    */
-  onTouchEnd(e) {
+  onMoveInfoPanelEnd(e) {
     this.setData({
-      touche: null
-    })
-    this.setData({
-      infoCardTop: 40,
+      infoCardTop: 0,
       infoCardTs: true
     })
   },
