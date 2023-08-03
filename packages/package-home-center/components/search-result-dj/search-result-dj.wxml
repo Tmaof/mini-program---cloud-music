@@ -1,0 +1,23 @@
+<import src="/template/common/info-display-card/info-display-card" />
+<view class="search-result-dj">
+  <scroll-view class="scroll-view" scroll-y>
+    <navigator wx:for="{{djList}}" wx:key="id" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}">
+      <template is="info-display-card" data="{{...module.getData(item)}}" />
+    </navigator>
+    <my-loading wx:if="{{isLoading}}"></my-loading>
+  </scroll-view>
+</view>
+<wxs module="module">
+  // 引入过滤器
+  var filter = require('../../../../utils/filter-wxs/filter.wxs')
+  module.exports = {
+    getData: function (item) {
+      var ret = {
+        cover: item.picUrl,
+        name: item.name,
+        infoL: item.programCount + '个声音 ,  播放' + filter.getPlaybackVolume(item.playCount) + '次 ,  by ' + item.dj.nickname
+      }
+      return ret
+    }
+  }
+</wxs>

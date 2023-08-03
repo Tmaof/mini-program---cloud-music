@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "search-result-song": "/packages/package-home-center/components/search-result-song/search-result-song",
+    "search-result-playlist": "/packages/package-home-center/components/search-result-playlist/search-result-playlist",
+    "search-result-video": "/packages/package-home-center/components/search-result-video/search-result-video",
+    "search-result-dj": "/packages/package-home-center/components/search-result-dj/search-result-dj",
+    "search-result-voice": "/packages/package-home-center/components/search-result-voice/search-result-voice"
+  }
+}

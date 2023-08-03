@@ -54,3 +54,12 @@ export async function getTheList(start, end, itemLimit) {
   }
   return retList;
 }
+
+/**
+ * 获取热搜列表(简略)
+ */
+export function getRefHotSearcheList() {
+  return request({
+    url: '/search/hot',
+  })
+}

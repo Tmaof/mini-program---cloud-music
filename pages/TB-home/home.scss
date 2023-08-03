@@ -1,4 +1,15 @@
 .home-contianer {
+  background-color: var(--white);
+
+  // 头部栏
+  .head-bar {
+    margin-bottom: var(--margin);
+    .t-input {
+      padding: var(--padding-small);
+      background: var(--grey-fade);
+      border-radius: var(--b-r-size-large);
+    }
+  }
   // 轮播图
   .swiper-container {
     .swiper {

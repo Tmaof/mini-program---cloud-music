@@ -22,7 +22,8 @@
         "pages/recommended-playlist/recommended-playlist",
         "pages/broadcaster-center/broadcaster-center",
         "pages/broadcaster-display/broadcaster-display",
-        "pages/broadcaster-tags/broadcaster-tags"
+        "pages/broadcaster-tags/broadcaster-tags",
+        "pages/search-center/search-center"
       ]
     },
     {
@@ -78,6 +79,7 @@
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
     "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
     "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-icon": "tdesign-miniprogram/icon/icon",
     "info-item-card": "/components/common/info-item-card/info-item-card",
     "song-list": "/components/common/song-list/song-list",
     "music-player": "/components/common/music-player/music-player",

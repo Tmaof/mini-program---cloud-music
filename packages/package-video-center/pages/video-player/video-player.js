@@ -8,9 +8,11 @@ import {
   getVideoGroup,
   getVideoByGroupId
 } from '@/api/video-center/commend-video/commendVideo'
-
+import {
+  injectUserStore
+} from "@/behaviors/injectUserStore";
 Page({
-  behaviors: [injectSystemInfo],
+  behaviors: [injectSystemInfo, injectUserStore],
   /**
    * 页面的初始数据
    */
@@ -40,6 +42,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    // 进入视频播放器时,暂停音乐播放
+    wx.getBackgroundAudioManager().pause()
     if (options.id) {
       options.isMv = options.isMv == "true" ? true : false
       this.setData({
@@ -202,11 +206,17 @@ Page({
       title: '正在加载中',
       icon: 'none'
     })
-    if (Math.round(Math.random() * 9) > 4) {
-      this._getRandomMv()
+    if (isUserLogin && !isVisitor) {
+      if (Math.round(Math.random() * 9) > 4) {
+        this._getRandomMv()
+      } else {
+        // 需要非游客登录
+        this._getRamdomVideo()
+      }
     } else {
-      this._getRamdomVideo()
+      this._getRandomMv()
     }
+
   },
   /**
    * 生命周期函数--监听页面显示

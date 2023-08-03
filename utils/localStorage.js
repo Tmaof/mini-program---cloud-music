@@ -3,7 +3,7 @@
  * @param {*} key 
  */
 export function getItem(key) {
- return wx.getStorageSync(key)
+  return wx.getStorageSync(key)
 }
 
 /**

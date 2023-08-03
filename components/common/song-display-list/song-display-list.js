@@ -25,6 +25,10 @@ Component({
       type: Boolean,
       value: false
     },
+    songListHeigth: {
+      type: String,
+      value: ''
+    }, //歌曲列表scroll-view高度
   },
 
   /**
@@ -44,7 +48,7 @@ Component({
       // 播放音乐,先更新当前播放歌曲信息再显示播放器
       this.playTheSong(e.currentTarget.dataset.songid)
       // 显示音乐播放器
-      this.selectComponent('#play-controll').onShowMusicPlayer()
+      this.selectComponent('#play-controll')._showMusicPlayer()
     }
   },
 

@@ -21,7 +21,7 @@
     </view>
   </view>
   <!-- 节目列表 -->
-  <scroll-view scroll-y class="list" bindscrolltolower="_getProgramsList">
+  <scroll-view style="height: {{programsListHeigth}};" scroll-y class="list" bindscrolltolower="onScrolltolower">
     <view class="list-item {{songInfo.id == item.id?'active-song':''}}" wx:for="{{programsList}}" wx:key="id">
       <!-- 左 -->
       <view class="left">
@@ -43,18 +43,17 @@
         <view class="info ">
 
           <!-- 时间 -->
-          <text class="time" wx:if="{{isShowTime}}">{{filter.fromNow(item.createTime)}}</text>
+          <text class="time text" wx:if="{{isShowTime}}">{{filter.fromNow(item.createTime)}}</text>
           <!-- 播放量 -->
-          <view class="count">
+          <view class="count text">
             <text class="iconfont icon-bofangqi-bofang"></text>
             {{filter.getPlaybackVolume(item.listenerCount)}}
           </view>
           <!-- 时长 -->
-          <text class="duration">{{filter.formatTime(item.duration)}}</text>
+          <text class="duration text">{{filter.formatTime(item.duration)}} </text>
           <!-- 作者 -->
-          <!-- {{filter.getAuthorName(item.ar||item.artists)}}
-          <text wx:if="{{item.alia[0]}}">|</text>
-          {{item.alia[0]}} -->
+          <text wx:if="{{isShowAuthor&&(item.artists[0].name)}}" class="text">by {{filter.getAuthorName(item.artists)}}
+          </text>
         </view>
       </view>
       <!-- 右侧 -->
@@ -67,6 +66,7 @@
         </view>
       </view>
     </view>
+    <my-loading wx:if="{{isLoading}}"></my-loading>
   </scroll-view>
   <!-- 播放控制器 -->
   <play-controll id="play-controll"></play-controll>

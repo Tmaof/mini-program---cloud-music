@@ -50,3 +50,16 @@ export function getVideoByGroupId(id) {
     }
   })
 }
+
+/**
+ * 获取mv/视频播放地址
+ * @param {*} id 
+ */
+export function getVideoUrl(id) {
+  return request({
+    url: '/video/url',
+    data: {
+      id,
+    }
+  })
+}

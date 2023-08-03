@@ -1,0 +1,4 @@
+<view class="search-result-song">
+  <my-loading wx:if="{{isLoading}}"></my-loading>
+  <song-display-list hidden="{{isLoading}}" class="song-display-list" songList="{{songList}}" isShowCover="{{false}}" isShowIndex="{{true}}"></song-display-list>
+</view>

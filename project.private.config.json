@@ -148,6 +148,13 @@
           "query": "djId=794119441",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "搜索中心",
+          "pathName": "packages/package-home-center/pages/search-center/search-center",
+          "query": "text=&keyword=",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "search-list": "/packages/package-home-center/components/search-list/search-list",
+    "search-result-tabs": "/packages/package-home-center/components/search-result-tabs/search-result-tabs"
+  }
+}

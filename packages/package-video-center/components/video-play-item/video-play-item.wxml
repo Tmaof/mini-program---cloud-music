@@ -12,7 +12,7 @@
   <view class="video-container {{isPortraitScreen?'video-container-portrait-screen':''}}" style="top: {{videoStyle.top}};transform: {{videoStyle.transform}};">
     <view class="iconfont icon-bofangqi-bofang" hidden="{{isPlayVideo}}"></view>
     <!-- 前1个和后1个video不销毁 -->
-    <video wx:if="{{isPlayVideo||(currentIndex>=playingIndex-1&&currentIndex<=playingIndex+1)}}" id="{{videoInfo.id}}" class="video" src="{{videoUrl}}" object-fit="contain" title="{{videoDetail.name}}" controls="{{isShowVideoControls}}" bindtimeupdate="onTimeUpdate" bindfullscreenchange="onFullScreenChange" show-center-play-btn="{{false}}" show-snapshot-button bindloadedmetadata="onLoadedmetadata" style="height: {{videoHeight}}px;" object-fit="contain" />
+    <video wx:if="{{isPlayVideo||(currentIndex>=playingIndex-1&&currentIndex<=playingIndex+1)}}" id="{{videoInfo.id}}" class="video" src="{{videoUrl}}" show-fullscreen-btn="{{isShowVideoControls}}" show-center-play-btn="{{isShowVideoControls}}" show-play-btn="{{isShowVideoControls}}" show-progress="{{isShowVideoControls}}" object-fit="contain" title="{{videoDetail.name}}" bindtimeupdate="onTimeUpdate" bindfullscreenchange="onFullScreenChange" show-center-play-btn="{{false}}" show-snapshot-button bindloadedmetadata="onLoadedmetadata" style="height: {{videoHeight}}px;" object-fit="contain" />
     <image wx:else src="{{videoDetail.cover}}" mode="aspectFill" class="cover" />
   </view>
   <view class="bottom" catchtap="onBlockingEvent">
@@ -34,7 +34,9 @@
         <view wx:if="{{!videoDetail.desc&&!videoDetail.description}}">{{videoDetail.briefDesc||''}}</view>
         <t-collapse wx:else value="{{activeValues}}" bind:change="handleChange">
           <t-collapse-panel header="{{videoDetail.briefDesc||module.getBriefDesc(videoDetail.desc||videoDetail.description)}}" value="{{0}}" expandIcon>
-            {{videoDetail.desc||videoDetail.description}}
+            <scroll-view scroll-y class="collapse-content">
+              {{videoDetail.desc||videoDetail.description}}
+            </scroll-view>
           </t-collapse-panel>
         </t-collapse>
       </view>

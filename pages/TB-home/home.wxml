@@ -1,5 +1,12 @@
 <scroll-view scroll-y class="home-contianer ">
   <view class="tab-bar-page">
+    <!-- 头部栏 -->
+    <view class="head-bar">
+      <!-- 搜索框 -->
+      <navigator url="/packages/package-home-center/pages/search-center/search-center?text={{searchText.text}}&keyword={{searchText.keyword}}" hover-class="none">
+        <t-input prefixIcon="search" disabled placeholder="{{searchText.text}}" borderless />
+      </navigator>
+    </view>
     <!-- 轮播图 -->
     <view class="swiper-container">
       <swiper class="swiper" autoplay circular>

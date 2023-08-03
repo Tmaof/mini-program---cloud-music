@@ -8,14 +8,16 @@ import {
 import {
   getBannerList,
   getRecommendedPlaylists,
-  getTheList
+  getTheList,
+  getRefHotSearcheList
 } from '@/api/home/home'
 import {
   injectCheckLogin
 } from '@/behaviors/injectCheckLogin'
+
 Page({
   options: {
-    styleIsolation: 'apply-shared'
+    styleIsolation: 'shared'
   },
   behaviors: [injectAppStore, injectMusicPlayerStore, injectCheckLogin],
   /**
@@ -24,7 +26,22 @@ Page({
   data: {
     bannerList: [], //轮播图
     recommendedPlaylists: [], //推荐歌单
-    theList: [] //排行榜
+    theList: [], //排行榜
+    hotSearcheList: [],
+    searchText: {
+      text: '',
+      keyword: ''
+    }, //搜索占位符
+    searchTextTimeId: 0,
+    searchTextPrefixion: [{
+        text: '大家都再搜 ',
+        pos: -1, //前缀
+      },
+      {
+        text: ' 最近很火哟',
+        pos: 1 //后缀
+      }
+    ]
   },
 
   /**
@@ -34,7 +51,7 @@ Page({
     this._getBanner()
     this._getRecommendedPlaylists()
     this._getTheList()
-
+    this._getRefHotSearcheList(this._setSearchText)
   },
   //判断轮播图类型
   _getBannerType(banner) {
@@ -129,7 +146,48 @@ Page({
       url: '/packages/package-home-center/pages/recommended-daily/recommended-daily',
     })
   },
-
+  /**
+   * 获取热搜列表
+   */
+  async _getRefHotSearcheList(callback) {
+    const {
+      result
+    } = await getRefHotSearcheList()
+    this.setData({
+      hotSearcheList: result.hots
+    })
+    if (callback instanceof Function) {
+      callback()
+    }
+  },
+  /**
+   * 定时改变搜索占位符
+   */
+  _setSearchText() {
+    const id = setInterval(() => {
+      const {
+        searchTextPrefixion,
+        hotSearcheList
+      } = this.data
+      const prefixion = searchTextPrefixion[Math.round(Math.random() * (searchTextPrefixion.length - 1))]
+      const hot = hotSearcheList[Math.round(Math.random() * (hotSearcheList.length - 1))]
+      let text = ''
+      if (prefixion.pos == -1) {
+        text = prefixion.text + hot.first
+      } else {
+        text = hot.first + prefixion.text
+      }
+      this.setData({
+        searchText: {
+          text,
+          keyword: hot.text
+        },
+      })
+    }, 6000);
+    this.setData({
+      searchTextTimeId: id
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -148,7 +206,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    clearInterval(this.data.searchTextTimeId)
   },
 
   /**

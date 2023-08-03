@@ -2,9 +2,12 @@ import {
   injectAppStore
 }
 from '@/behaviors/injectAppStore'
+import {
+  injectUserStore
+} from '@/behaviors/injectUserStore'
 
 Page({
-  behaviors: [injectAppStore],
+  behaviors: [injectAppStore, injectUserStore],
   options: {
     styleIsolation: 'shared'
   },
@@ -12,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    TabValue: 'commend',
+    TabValue: 'mv',
   },
 
   /**

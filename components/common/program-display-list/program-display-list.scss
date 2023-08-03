@@ -100,29 +100,29 @@
           display: flex;
           font-size: var(--font-size-small);
           color: var(--grey-deep);
-          margin-top: var(--margin-small);
 
           .reason {
             font-size: var(--font-size-smaller);
             background: rgba(255, 192, 203, 0.295);
             border-radius: var(--b-r-size-smaller-x);
             padding: 4px;
-            margin-right: var(--margin-small);
             color: var(--red);
           }
 
           // 时间
-          .time{
-            margin-right: var(--margin);
+          .time {
           }
 
-          .count{
+          .count {
             display: flex;
-            .iconfont{
+            .iconfont {
               width: auto;
               color: var(--grey-deep);
             }
-              margin-right: var(--margin);
+          }
+
+          .text {
+            margin-right: var(--margin);
           }
         }
       }

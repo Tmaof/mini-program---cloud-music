@@ -40,6 +40,7 @@ Component({
   methods: {
     /**
      * 添加推荐视频
+     * 需要非游客登录
      */
     async _addCommendVideo() {
       this.setData({
@@ -58,6 +59,7 @@ Component({
     },
     /**
      * 获取随机视频
+     * 需要非游客登录
      */
     async _getRamdomVideo() {
       this.setData({
@@ -93,7 +95,7 @@ Component({
       } = e.detail
 
       this.setData({
-        playingIndex: Math.round(scrollTop / 270)
+        playingIndex: Math.round(scrollTop / 280)
       })
     },
     onScrolltolower() {

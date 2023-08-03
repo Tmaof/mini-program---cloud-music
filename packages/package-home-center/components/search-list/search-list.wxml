@@ -1,0 +1,19 @@
+<view class="search-list-container my-card-fade">
+  <!-- 头部 -->
+  <view class="head">
+    <view class="title">{{title}}</view>
+  </view>
+  <!-- 身体 -->
+  <view class="body">
+    <view class="keyword-item" wx:for="{{list}}" wx:key="index"
+    bindtap="onClickKeyword"
+    data-keyword="{{item.searchWord}}"
+    >
+      <text class="index {{(index==0||index==1||index==2)?'hot-index':''}}">{{index+1}}</text>
+      <text class="keyword">{{item.searchWord}}</text>
+      <image wx:if="{{item.iconUrl}}" class="img-icon" src="{{item.iconUrl}}" mode="aspectFit" />
+      <!-- 悬浮遮罩层 -->
+      <view class="hovering-mask-layer"></view>
+    </view>
+  </view>
+</view>

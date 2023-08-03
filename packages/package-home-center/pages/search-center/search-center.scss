@@ -1,0 +1,121 @@
+.search-center-container {
+  background-color: var(--white);
+  position: relative;
+  // 头部栏
+  .head-bar {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    align-items: center;
+    padding: var(--padding) 0;
+    background-color: var(--white);
+    height: 56px;
+
+    .t-input {
+      padding: var(--padding-small);
+      border: 1px solid var(--grey-fade);
+      border-radius: var(--b-r-size-large);
+    }
+    .btn {
+      padding: 0 var(--padding);
+    }
+  }
+  // 搜索榜
+  .search-lists-container {
+    .swiper {
+      min-height: 1800rpx;
+      overflow-y: auto;
+    }
+  }
+  // 搜索历史
+  .search-history {
+    .heaher {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--padding-large);
+      .title {
+        font-weight: bold;
+        font-size: var(--font-size-small);
+      }
+      .iconfont {
+        color: var(--grey);
+      }
+    }
+
+    .tag-item {
+      font-size: var(--font-size-smaller);
+      border-radius: var(--b-r-size);
+      background-color: var(--white);
+      border: 1px solid var(--grey-fade);
+      padding: 0 var(--padding);
+      box-shadow: 0 0 2px var(--grey-fade);
+      margin-right: var(--margin);
+      margin-bottom: var(--margin);
+    }
+
+    .body,
+    .head {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  // 搜索建议 搜索结果展示
+  .scroll-view-top-container {
+    height: calc(100vh - 56px);
+    position: fixed;
+    top: 56px;
+    z-index: 99999;
+    background-color: var(--white);
+
+    //搜索建议
+    .search-suggestion {
+      background-color: var(--white);
+      position: absolute;
+      z-index: 9999;
+      width: 100vw;
+      opacity: 1;
+      transition: opacity 0.5s;
+
+      .keyword-item {
+        display: flex;
+        align-items: center;
+        &:hover {
+          background-color: var(--grey-fade);
+        }
+        .icon {
+          margin: 0 var(--margin);
+        }
+        .keyword {
+          padding: var(--padding-large) 0;
+          border-bottom: 1px solid var(--grey-fade);
+          width: 100%;
+
+          .text-item {
+            margin-right: 1px;
+          }
+          .match-text {
+            color: var(--grey);
+          }
+        }
+      }
+    }
+
+    // 搜索结果展示
+    .search-result {
+      position: absolute;
+      z-index: 999999;
+      width: 100vw;
+      background-color: var(--white);
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+  }
+
+  .hidden-view {
+    opacity: 0 !important;
+    z-index: -999 !important;
+  }
+}

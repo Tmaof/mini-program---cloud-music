@@ -20,7 +20,8 @@ Component({
       value: -1
     },
     resourceId: {
-      type: [Number, String],
+      type: Number,
+      optionalTypes: [Number, String],
       value: 0
     },
     visible: {
@@ -29,6 +30,7 @@ Component({
     },
     // 单位vh
     scrollViewHeight: {
+      type: Number,
       value: ''
     },
     // 点击遮罩层可关闭

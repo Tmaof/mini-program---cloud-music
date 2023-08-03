@@ -1,0 +1,52 @@
+<view class="search-center-container">
+  <!-- 顶部搜索框 -->
+  <view class="head-bar">
+    <text class="btn"></text>
+    <t-input prefixIcon="search" placeholder="{{searchText.text}}" borderless value="{{searchKeyword}}" clearable bind:change="onInputChange" bind:clear="onInputClear" bind:focus="onInputFocus" />
+    <text class="btn" bindtap="onClickSearchBtn">搜索</text>
+  </view>
+  <!-- 搜索历史 搜索榜 -->
+  <view>
+    <!-- 搜索历史 -->
+    <view class="search-history" wx:if="{{historyList.length}}">
+      <view class="heaher">
+        <view class="title">搜索历史</view>
+        <view class="iconfont icon-shanchu" bindtap="onClearSearchHistory"></view>
+      </view>
+      <t-collapse disabled="{{historyList.length<3?true:false}}" value="{{activeCollapseValues}}" bind:change="handleCollapseChange" theme="card" expand-icon="{{historyList.length>=3?true:false}}">
+        <t-collapse-panel value="{{0}}" expandIcon>
+          <!-- 头部插槽 -->
+          <view slot="header" class="head">
+            <view class="tag-item" bindtap="onKeywordChange" data-keyword="{{item}}" wx:for="{{historyList}}" wx:key="index" wx:if="{{index<3}}">{{item}}</view>
+          </view>
+          <!-- body -->
+          <view class="body">
+            <view class="tag-item" bindtap="onKeywordChange" data-keyword="{{item}}" wx:for="{{historyList}}" wx:key="index" wx:if="{{index>=3}}">{{item}}</view>
+          </view>
+        </t-collapse-panel>
+      </t-collapse>
+    </view>
+    <!-- 搜索榜 -->
+    <view class="search-lists-container">
+      <swiper class="swiper">
+        <swiper-item>
+          <search-list title="热搜榜" list="{{hotSearchList}}" bind:keywordChange="onKeywordChange"></search-list>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <!-- 搜索建议 搜索结果展示 -->
+  <scroll-view scroll-y class="scroll-view-top-container {{(!isShowSearchSuggestion&&!isShowSearchResult)?'hidden-view':''}}">
+    <!-- 搜索建议 -->
+    <view class="search-suggestion {{!isShowSearchSuggestion?'hidden-view':''}}">
+      <view class="keyword-item" wx:for="{{searchSuggestion}}" wx:key="index" bindtap="onKeywordChange" data-keyword="{{item.keyword}}">
+        <t-icon class="icon" name="search" size="24" />
+        <view class="keyword">
+          <text class="text-item {{index<searchKeyword.length?'match-text':''}}" wx:for="{{item.list}}" wx:key="index">{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 搜索结果展示 -->
+    <search-result-tabs class="search-result {{!isShowSearchResult?'hidden-view':''}}" keyword="{{searchKeyword}}"></search-result-tabs>
+  </scroll-view>
+</view>

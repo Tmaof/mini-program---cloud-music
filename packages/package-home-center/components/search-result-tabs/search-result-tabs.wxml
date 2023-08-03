@@ -1,0 +1,19 @@
+<view class="search-result-tabs-container">
+  <t-tabs defaultValue="{{tabValue}}" bind:change="onTabChange">
+    <t-tab-panel label="单曲" value="{{componentId.song}}">
+      <search-result-song id="{{componentId.song}}" keyword="{{keyword}}"></search-result-song>
+    </t-tab-panel>
+    <t-tab-panel label="歌单" value="{{componentId.playlist}}">
+      <search-result-playlist id="{{componentId.playlist}}" keyword="{{keyword}}"></search-result-playlist>
+    </t-tab-panel>
+    <t-tab-panel label="视频" value="{{componentId.video}}">
+      <search-result-video id="{{componentId.video}}" keyword="{{keyword}}"></search-result-video>
+    </t-tab-panel>
+    <t-tab-panel label="播客" value="{{componentId.dj}}">
+      <search-result-dj id="{{componentId.dj}}" keyword="{{keyword}}"></search-result-dj>
+    </t-tab-panel>
+    <t-tab-panel label="声音" value="{{componentId.voice}}">
+      <search-result-voice id="{{componentId.voice}}" keyword="{{keyword}}"></search-result-voice>
+    </t-tab-panel>
+  </t-tabs>
+</view>

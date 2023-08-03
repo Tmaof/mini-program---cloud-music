@@ -257,18 +257,22 @@ export const musicPlayerStore = observable({
     }
 
     //绑定微信播放器数据
-    this.innerAudioContext.src = songInfo.url
-    this.innerAudioContext.title = songInfo.name || ''
-    if (songInfo.al || songInfo.album) {
-      this.innerAudioContext.epname = (songInfo.al || songInfo.album).name
+    try {
+      this.innerAudioContext.src = songInfo.url
+      this.innerAudioContext.title = songInfo.name || ''
+      if (songInfo.al || songInfo.album) {
+        this.innerAudioContext.epname = (songInfo.al || songInfo.album).name
+      }
+      if (songInfo.ar || songInfo.artists) {
+        this.innerAudioContext.singer = getAuthorName(songInfo.ar || songInfo.artists)
+      }
+      if (songInfo.coverUrl || songInfo.al || songInfo.album) {
+        this.innerAudioContext.coverImgUrl = songInfo.coverUrl || songInfo.al.picUrl || songInfo.album.picUrl
+      }
+      this.innerAudioContext.webUrl = config.blogUrl
+    } catch (e) {
+      console.error(e)
     }
-    if (songInfo.ar || songInfo.artists) {
-      this.innerAudioContext.singer = getAuthorName(songInfo.ar || songInfo.artists)
-    }
-    if (songInfo.coverUrl || songInfo.al || songInfo.album) {
-      this.innerAudioContext.coverImgUrl = songInfo.coverUrl || songInfo.al.picUrl || songInfo.album.picUrl
-    }
-    this.innerAudioContext.webUrl = config.blogUrl
 
     // 更新歌词
     if (this.isNeedLyric) {
@@ -290,6 +294,7 @@ export const musicPlayerStore = observable({
       this.stopPlay()
       return
     }
+
     if (this.songInfo.fee == 1) {
       wx.showToast({
         title: '当前为VIP歌曲，自动切换下一首',

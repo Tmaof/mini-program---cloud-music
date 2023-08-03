@@ -1,0 +1,4 @@
+<view class="search-result-voice">
+  <my-loading wx:if="{{isLoading}}"></my-loading>
+  <program-display-list wx:else propList="{{voiceList}}" isShowTime="{{false}}" isShowAuthor="{{true}}"></program-display-list>
+</view>

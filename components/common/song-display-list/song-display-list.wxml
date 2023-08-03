@@ -21,7 +21,7 @@
     </view>
   </view>
   <!-- 歌曲列表 -->
-  <scroll-view scroll-y class="list ">
+  <scroll-view style="height: {{songListHeigth}};" scroll-y class="list ">
     <view class="list-item {{songInfo.id == item.id?'active-song':''}}" wx:for="{{songList}}" wx:key="id">
       <!-- 左 -->
       <view class="left">

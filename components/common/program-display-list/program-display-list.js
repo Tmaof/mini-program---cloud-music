@@ -37,6 +37,14 @@ Component({
       type: Boolean,
       value: true
     }, //是否显示创建时间
+    programsListHeigth: {
+      type: String,
+      value: ''
+    }, //节目列表scroll-view高度
+    isShowAuthor: {
+      type: Boolean,
+      value: false,
+    }, //是否显示作者
   },
 
   /**
@@ -45,7 +53,8 @@ Component({
   data: {
     limit: 30,
     offset: 0,
-    programsList: []
+    programsList: [],
+    isLoading: false
   },
 
   observers: {
@@ -72,7 +81,7 @@ Component({
       // 播放音乐,先更新当前播放歌曲信息再显示播放器
       this.playTheSong(e.currentTarget.dataset.songid)
       // 显示音乐播放器
-      this.selectComponent('#play-controll').onShowMusicPlayer()
+      this.selectComponent('#play-controll')._showMusicPlayer()
     },
     /**
      * 获取节目列表
@@ -86,6 +95,9 @@ Component({
         })
         return
       }
+      this.setData({
+        isLoading: true
+      })
       const {
         programs
       } = await getDjProgram(this.data.djId, this.data.limit, this.data.offset)
@@ -94,7 +106,8 @@ Component({
 
       this.setData({
         programsList: [...this.data.programsList, ...songList],
-        offset: this.data.offset + this.data.limit
+        offset: this.data.offset + this.data.limit,
+        isLoading: false
       })
     },
     _getSongList(programlist) {
@@ -107,6 +120,10 @@ Component({
         item.mainSong.djId = item.radio.id
         return item.mainSong
       })
+    },
+    onScrolltolower() {
+      if (this.data.isLoading) return
+      this._getProgramsList()
     }
   },
 

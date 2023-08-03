@@ -43,6 +43,11 @@ Component({
       this.setData({
         isShowMusicPlayer: true
       })
+    },
+    _showMusicPlayer() {
+      this.setData({
+        isShowMusicPlayer: true
+      })
     }
   }
 })

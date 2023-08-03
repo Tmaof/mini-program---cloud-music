@@ -28,7 +28,8 @@ Component({
       value: -1,
     },
     resourceId: {
-      type: [String, Number],
+      type: Number,
+      optionalTypes: [String, Number],
       value: -1,
     },
     needFloorComment: {
@@ -36,7 +37,8 @@ Component({
       value: true
     },
     beRepliedCommentId: {
-      type: [String, Number],
+      type: Number,
+      optionalTypes: [String, Number],
       value: -1,
     }
   },

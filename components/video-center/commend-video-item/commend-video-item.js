@@ -4,6 +4,9 @@ import {
 import {
   injectCheckLogin
 } from '@/behaviors/injectCheckLogin'
+import {
+  getVideoUrl
+} from '@/api/video-center/commend-video/commendVideo'
 Component({
   behaviors: [injectCheckLogin],
   options: {
@@ -61,6 +64,28 @@ Component({
       wx.navigateTo({
         url: `/packages/package-video-center/pages/video-player/video-player?isMv=${isMv}&id=${videoInfo.data.vid}`,
       })
+    },
+    /**
+     * 获取视频url
+     */
+    async _getVideoUrl() {
+      const {
+        videoInfo
+      } = this.data
+      if (videoInfo.data.urlInfo) return
+      const {
+        urls
+      } = await getVideoUrl(videoInfo.data.vid)
+      this.setData({
+        'videoInfo.data.urlInfo': {
+          url: urls[0].url
+        }
+      })
+    }
+  },
+  lifetimes: {
+    attached() {
+      this._getVideoUrl()
     }
   }
 })

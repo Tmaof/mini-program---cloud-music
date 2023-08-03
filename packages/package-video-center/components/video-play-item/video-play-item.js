@@ -292,6 +292,14 @@ Component({
         }
       }).exec()
 
+    },
+    ready() {
+      if (!this.data.videoEle) return
+      if (this.data.isPlayVideo) {
+        this.data.videoEle.play()
+      } else {
+        this.data.videoEle.pause()
+      }
     }
   }
 })
