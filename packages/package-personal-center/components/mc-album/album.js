@@ -17,6 +17,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    isLoading: false,
     albumInfo: {
       count: 0,
       data: []
@@ -28,9 +29,13 @@ Component({
    */
   methods: {
     async _getMCalbum() {
+      this.setData({
+        isLoading: true
+      })
       const res = await getMCalbum()
       this.setData({
-        albumInfo: res
+        albumInfo: res,
+        isLoading: false
       })
     }
   },

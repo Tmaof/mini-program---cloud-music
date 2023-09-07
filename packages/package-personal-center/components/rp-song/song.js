@@ -9,15 +9,14 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {
-    songList: []
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    isLoading: false,
+    songList: []
   },
 
   /**
@@ -25,11 +24,19 @@ Component({
    */
   methods: {
     async _getSongList() {
+      this.setData({
+        isLoading: true
+      })
       const {
         data
       } = await getRPsong()
+      if (data && Array.isArray(data.list)) {
+        this.setData({
+          songList: data.list.map(item => item.data)
+        })
+      }
       this.setData({
-        songList: data.list.map(item => item.data)
+        isLoading: false
       })
     }
   },

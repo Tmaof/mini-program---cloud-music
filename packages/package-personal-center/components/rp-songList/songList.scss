@@ -2,5 +2,5 @@
 @import "../../template/rp-item-card/item-card.scss";
 
 .rp-song-list-container {
-  height: 80vh;
+  height: calc(100vh - 48px);
 }

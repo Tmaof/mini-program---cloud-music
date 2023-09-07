@@ -1,3 +1,4 @@
 <view class="rp-voice-container">
+  <my-loading wx:if="{{isLoading}}"></my-loading>
   <program-display-list propList="{{voiceList}}" isShowTime="{{false}}"></program-display-list>
 </view>

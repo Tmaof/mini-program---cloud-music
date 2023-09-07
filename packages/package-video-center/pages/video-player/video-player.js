@@ -3,7 +3,8 @@ import {
 } from '@/api/video-center/mv-video/mvVideo'
 import {
   injectSystemInfo
-} from '@/behaviors/injectSystemInfo'
+}
+from '@/packages/package-video-center/behaviors/injectSystemInfo'
 import {
   getVideoGroup,
   getVideoByGroupId
@@ -206,7 +207,7 @@ Page({
       title: '正在加载中',
       icon: 'none'
     })
-    if (isUserLogin && !isVisitor) {
+    if (this.data.isUserLogin && !this.data.isVisitor) {
       if (Math.round(Math.random() * 9) > 4) {
         this._getRandomMv()
       } else {

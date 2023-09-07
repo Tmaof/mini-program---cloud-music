@@ -1,19 +1,19 @@
 <view class="recent-play-container">
-  <t-tabs swipeable defaultValue="{{0}}" sticky class="custom-tabs">
-    <t-tab-panel label="歌曲" value="0">
-      <rp-song></rp-song>
+  <t-tabs swipeable defaultValue="song" sticky class="custom-tabs" bind:change="onTabsChange">
+    <t-tab-panel label="歌曲" value="song">
+      <rp-song wx:if="{{showTabs.song}}"></rp-song>
     </t-tab-panel>
-    <t-tab-panel label="视频" value="1">
-      <rp-video></rp-video>
+    <t-tab-panel label="视频" value="video">
+      <rp-video wx:if="{{showTabs.video}}"></rp-video>
     </t-tab-panel>
-    <t-tab-panel label="歌单" value="2">
-      <rp-songList></rp-songList>
+    <t-tab-panel label="歌单" value="playlist">
+      <rp-songList wx:if="{{showTabs.playlist}}"></rp-songList>
     </t-tab-panel>
-    <t-tab-panel label="声音" value="3">
-      <rp-voice></rp-voice>
+    <t-tab-panel label="声音" value="voice">
+      <rp-voice wx:if="{{showTabs.voice}}"></rp-voice>
     </t-tab-panel>
-    <t-tab-panel label="播客" value="4">
-      <rp-dj></rp-dj>
+    <t-tab-panel label="播客" value="dj">
+      <rp-dj wx:if="{{showTabs.dj}}"></rp-dj>
     </t-tab-panel>
     <!-- <t-tab-panel label="专辑" value="5" >
       <rp-album></rp-album>

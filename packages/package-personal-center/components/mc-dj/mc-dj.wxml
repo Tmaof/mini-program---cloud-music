@@ -1,4 +1,5 @@
 <import src="/packages/package-personal-center/template/mc-item-card/item-card"></import>
+<my-loading wx:if="{{isLoading}}"></my-loading>
 <view class="mc-dj-container">
   <navigator wx:for="{{djList}}" wx:key="id" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}"><template is="mc-item-card" data="{{...module.getData(item)}}"></template></navigator>
 </view>

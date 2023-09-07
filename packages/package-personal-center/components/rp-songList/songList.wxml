@@ -1,10 +1,12 @@
 <!-- 引入模板 -->
 <import src="/packages/package-personal-center/template/rp-item-card/item-card"></import>
+<my-loading wx:if="{{isLoading}}"></my-loading>
 <scroll-view class="rp-song-list-container" scroll-y>
   <navigator wx:for="{{songListInfo.list}}" wx:key="resourceId" url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.data.id}}">
     <template is="rp-item-card" data="{{...module.getData(item)}}"> </template>
   </navigator>
 </scroll-view>
+<!-- <play-controll></play-controll> -->
 <wxs module="module">
   // 引入过滤器
   var filter = require('../../../../utils/filter-wxs/filter.wxs')

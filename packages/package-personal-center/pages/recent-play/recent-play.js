@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    showTabs: {
+      song: true,
+      video: false,
+      playlist: false,
+      voice: false,
+      dj: false
+    }
   },
 
   /**
@@ -14,7 +20,12 @@ Page({
   onLoad(options) {
 
   },
-
+  onTabsChange(e) {
+    this.data.showTabs[e.detail.value] = true
+    this.setData({
+      showTabs: this.data.showTabs
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -33,6 +33,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    firstShowSongList: false, //刚开始时不加载播放列表组件,提高加载速度
     isShowSongList: false,
     pageTranslateY: '', //  pageTranslateY不需要时设置为空串很重要
     pageTouchMoving: false,
@@ -78,6 +79,7 @@ Component({
     },
     onShowSongList() {
       this.setData({
+        firstShowSongList: true,
         isShowSongList: true
       })
     },

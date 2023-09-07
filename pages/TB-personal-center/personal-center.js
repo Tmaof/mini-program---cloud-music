@@ -24,6 +24,7 @@ import {
 import {
   injectCheckLogin
 } from '@/behaviors/injectCheckLogin'
+import dayjs from 'dayjs'
 Page({
   behaviors: [injectAppStore, injectUserStore, injectMusicPlayerStore, injectCheckLogin],
   options: {
@@ -38,7 +39,8 @@ Page({
     areaInfo: {
       province: '',
       city: ''
-    }
+    },
+    nowTime: dayjs()
   },
 
   /**

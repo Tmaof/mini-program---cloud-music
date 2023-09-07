@@ -15,7 +15,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    voiceList: []
+    voiceList: [],
+    isLoading: false
   },
 
   /**
@@ -23,11 +24,15 @@ Component({
    */
   methods: {
     async _getRPvoice() {
+      this.setData({
+        isLoading: true
+      })
       const {
         data
       } = await getRPvoice()
       this.setData({
-        voiceList: data.list.map(item => item.data.pubDJProgramData)
+        voiceList: data.list.map(item => item.data.pubDJProgramData),
+        isLoading: false
       })
     }
   },

@@ -42,6 +42,8 @@
         </navigator>
       </t-tab-panel>
     </t-tabs>
+    <!-- 加载中 -->
+    <my-loading wx:if="{{isLoading}}"></my-loading>
   </view>
 </view>
 

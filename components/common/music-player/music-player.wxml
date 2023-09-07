@@ -97,6 +97,6 @@
   </t-popup>
 </view>
 <!-- 歌曲列表 -->
-<song-list popupVisible='{{isShowSongList}}'></song-list>
+<song-list wx:if="{{firstShowSongList}}" popupVisible='{{isShowSongList}}'></song-list>
 <!-- 评论区域 -->
 <comment-area id='comment-area' visible='{{isShowCommentArea}}' type="{{songInfo.djId==0?0:4}}" resourceId="{{songInfo.djId==0?songInfo.id:songInfo.programId}}" bind:commentCountChange="onCommentCountChange"></comment-area>

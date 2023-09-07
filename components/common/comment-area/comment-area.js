@@ -20,7 +20,6 @@ Component({
       value: -1
     },
     resourceId: {
-      type: Number,
       optionalTypes: [Number, String],
       value: 0
     },

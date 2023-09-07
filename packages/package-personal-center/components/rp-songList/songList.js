@@ -9,7 +9,13 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {
+  properties: {},
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    isLoading: false,
     songListInfo: {
       total: 0,
       list: []
@@ -17,23 +23,21 @@ Component({
   },
 
   /**
-   * 组件的初始数据
-   */
-  data: {
-
-  },
-
-  /**
    * 组件的方法列表
    */
   methods: {
     async _getRPplaylist() {
+      this.setData({
+        isLoading: true
+      })
       const {
         data
       } = await getRPplaylist()
-      this.setData({
-        songListInfo: data
-      })
+      if (data)
+        this.setData({
+          songListInfo: data,
+          isLoading: false
+        })
     }
   },
   lifetimes: {

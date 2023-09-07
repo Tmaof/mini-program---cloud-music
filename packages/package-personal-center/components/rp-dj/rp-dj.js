@@ -23,7 +23,6 @@ Component({
   methods: {
     async _getRPdj() {
       const res = await getRPdj()
-      console.log(res)
     }
   },
   lifetimes: {

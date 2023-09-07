@@ -130,7 +130,6 @@ export const musicPlayerStore = observable({
   getSongIndex: action(function () {
     if (!this.songList.length) {
       throw ('当前歌单为空')
-      return
     }
     if (!this.songInfo) this.songInfo = this.songList[0]
     return this.songList.findIndex(item => item.id == this.songInfo.id)
@@ -266,8 +265,12 @@ export const musicPlayerStore = observable({
       if (songInfo.ar || songInfo.artists) {
         this.innerAudioContext.singer = getAuthorName(songInfo.ar || songInfo.artists)
       }
-      if (songInfo.coverUrl || songInfo.al || songInfo.album) {
-        this.innerAudioContext.coverImgUrl = songInfo.coverUrl || songInfo.al.picUrl || songInfo.album.picUrl
+      if (songInfo.coverUrl) {
+        this.innerAudioContext.coverImgUrl = songInfo.coverUrl
+      } else if (songInfo.al) {
+        this.innerAudioContext.coverImgUrl = songInfo.al.picUrl
+      } else if (songInfo.album) {
+        this.innerAudioContext.coverImgUrl = songInfo.album.picUrl
       }
       this.innerAudioContext.webUrl = config.blogUrl
     } catch (e) {

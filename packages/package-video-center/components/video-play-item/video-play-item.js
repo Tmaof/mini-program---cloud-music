@@ -15,7 +15,7 @@ import {
 
 import {
   injectSystemInfo
-} from '@/behaviors/injectSystemInfo'
+} from '@/packages/package-video-center/behaviors/injectSystemInfo'
 
 import {
   injectCheckLogin

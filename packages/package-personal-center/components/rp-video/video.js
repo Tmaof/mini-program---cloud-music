@@ -18,7 +18,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    videoInfo: null
+    videoInfo: null,
+    isLoading: false
   },
 
   /**
@@ -26,6 +27,9 @@ Component({
    */
   methods: {
     async _getRPvideo() {
+      this.setData({
+        isLoading: true
+      })
       const {
         data
       } = await getRPvideo()
@@ -40,7 +44,8 @@ Component({
         }
       }
       this.setData({
-        videoInfo: data
+        videoInfo: data,
+        isLoading: false
       })
     }
   },

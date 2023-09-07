@@ -15,6 +15,6 @@
   <view class="playlist iconfont icon-24gf-playlistMusic" bindtap="onShowSongList"></view>
 </view>
 <!-- 歌曲列表 -->
-<song-list popupVisible='{{isShowSongList}}'></song-list>
+<song-list wx:if="{{firstShowSongList}}" popupVisible='{{isShowSongList}}'></song-list>
 <!-- 音乐播放器 -->
-<music-player popupVisible='{{isShowMusicPlayer}}'></music-player>
+<music-player wx:if="{{firstShowMusicPlayer}}" popupVisible='{{isShowMusicPlayer}}'></music-player>

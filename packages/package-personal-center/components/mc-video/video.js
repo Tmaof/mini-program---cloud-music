@@ -19,6 +19,7 @@ Component({
    */
   data: {
     MCmvInfo: {
+      isLoading: false,
       data: [],
     }, //收藏的视频
   },
@@ -28,9 +29,13 @@ Component({
    */
   methods: {
     async _getMCmv() {
+      this.setData({
+        isLoading: true
+      })
       const data = await getMCmv()
       this.setData({
-        MCmvInfo: data
+        MCmvInfo: data,
+        isLoading: false
       })
     },
 

@@ -18,7 +18,9 @@ Component({
    * 组件的初始数据
    */
   data: {
+    firstShowSongList: false, //刚开始时不加载播放列表组件,提高加载速度
     isShowSongList: false, //是否显示歌曲列表
+    firstShowMusicPlayer: false, //刚开始时不加载音乐播放器组件,提高加载速度
     isShowMusicPlayer: false,
   },
 
@@ -29,6 +31,7 @@ Component({
     // 显示歌曲列表
     onShowSongList() {
       this.setData({
+        firstShowSongList: true,
         isShowSongList: true
       })
     },
@@ -41,11 +44,13 @@ Component({
         return
       }
       this.setData({
+        firstShowMusicPlayer: true,
         isShowMusicPlayer: true
       })
     },
     _showMusicPlayer() {
       this.setData({
+        firstShowMusicPlayer: true,
         isShowMusicPlayer: true
       })
     }

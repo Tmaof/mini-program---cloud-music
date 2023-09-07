@@ -10,7 +10,7 @@ import {
 
 export const userStore = observable({
   userInfo: null, //用户信息
-  userId: undefined, //用户ID
+  userId: null, //用户ID
   isUserLogin: false, //当前是否登录
   isVisitor: false, //是否是游客登陆
   collectedPlaylist: [], //用户收藏的歌单

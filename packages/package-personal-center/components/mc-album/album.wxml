@@ -1,4 +1,5 @@
 <import src="/packages/package-personal-center/template/mc-item-card/item-card"></import>
+<my-loading wx:if="{{isLoading}}"></my-loading>
 <view class="mc-album-container">
   <navigator wx:for="{{albumInfo.data}}" wx:key="id">
     <template is="mc-item-card" data="{{...module.getData(item)}}"></template>

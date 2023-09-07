@@ -5,11 +5,16 @@
   "pages": [
     "pages/TB-home/home",
     "pages/TB-video/video",
-    "pages/TB-personal-center/personal-center",
-    "packages/package-video-center/pages/video-player/video-player",
-    "packages/package-common/pages/comment-display/comment-display"
+    "pages/TB-personal-center/personal-center"
   ],
   "subPackages": [
+    {
+      "root": "packages/package-common",
+      "name": "common",
+      "pages": [
+        "pages/comment-display/comment-display"
+      ]
+    },
     {
       "root": "packages/package-home-center",
       "name": "home-center",
@@ -41,6 +46,13 @@
         "pages/my-collection/my-collection",
         "pages/mylike-video/mylike-video",
         "pages/edit-info/edit-info"
+      ]
+    },
+    {
+      "root": "packages/package-video-center",
+      "name": "video-center",
+      "pages": [
+        "pages/video-player/video-player"
       ]
     }
   ],

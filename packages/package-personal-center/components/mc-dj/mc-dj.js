@@ -14,6 +14,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    isLoading: false,
     djList: []
   },
 
@@ -22,11 +23,15 @@ Component({
    */
   methods: {
     async _getMCdj() {
+      this.setData({
+        isLoading: true
+      })
       const {
         djRadios
       } = await getMCdj()
       this.setData({
-        djList: djRadios
+        djList: djRadios,
+        isLoading: false
       })
     }
   },

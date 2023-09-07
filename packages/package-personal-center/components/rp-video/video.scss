@@ -1,6 +1,6 @@
 // 引入模板样式
 @import "../../template/rp-item-card/item-card.scss";
 
-.rp-video-container{
-  height: 80vh
+.rp-video-container {
+  height: calc(100vh - 48px);
 }
