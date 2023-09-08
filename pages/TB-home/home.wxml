@@ -33,7 +33,7 @@
             <image src="{{item.pic}}" mode="aspectFill" />
           </navigator>
           <!-- 其他 -->
-          <image wx:if="{{item.type.other}}" src="{{item.pic}}" mode="aspectFill" />
+          <image wx:if="{{item.type.other||item.type.album}}" src="{{item.pic}}" mode="aspectFill" />
         </swiper-item>
       </swiper>
     </view>

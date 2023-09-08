@@ -57,7 +57,8 @@ Page({
       activity: false,
       other: false
     }
-    const playlistType = ['热碟推荐', '新碟首发', '歌单']
+    const unknown = ['热碟推荐', '新碟首发', ]
+    const playlistType = [ '歌单']
     const songType = ['新歌首发', '热歌推荐']
     const activityType = ['活动', '独家策划', '演出']
     const mvType = ['MV首发']
