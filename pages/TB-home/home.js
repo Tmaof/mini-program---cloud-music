@@ -1,8 +1,4 @@
 import {
-  injectAppStore
-}
-from '@/behaviors/injectAppStore'
-import {
   injectMusicPlayerStore
 } from '@/behaviors/injectMusicPlayerStore'
 import {
@@ -19,7 +15,7 @@ Page({
   options: {
     styleIsolation: 'shared'
   },
-  behaviors: [injectAppStore, injectMusicPlayerStore, injectCheckLogin],
+  behaviors: [injectMusicPlayerStore, injectCheckLogin],
   /**
    * 页面的初始数据
    */
@@ -134,7 +130,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    this.setTabBarIndexValue()
+
   },
   /**
    * 跳转每日推荐

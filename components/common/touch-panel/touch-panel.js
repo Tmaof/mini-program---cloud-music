@@ -68,21 +68,25 @@ Component({
     getElementInfo() {
       return new Promise((resolve, reject) => {
         const query = this.createSelectorQuery()
-        const element = query.select(this.data.selector).boundingClientRect(function (res) {
-          res.top // 这个组件内 .touch-panel-container 节点的上边界坐标,
-          resolve(res)
-          // console.log(res, 'res')
-          /**
-           bottom: 803.2000122070312
-           dataset: {}
-           height: 603.2000122070312
-           id: ""
-           left: 0
-           right: 375.20001220703125
-           top: 200
-           width: 375.20001220703125
-           */
-        }).exec()
+        const element = query.select(this.data.selector)
+        if (element) {
+          element.boundingClientRect(function (res) {
+            resolve(res)
+            // console.log(res, 'res')
+            /**
+             bottom: 803.2000122070312
+             dataset: {}
+             height: 603.2000122070312
+             id: ""
+             left: 0
+             right: 375.20001220703125
+             top: 200 // 这个组件内 .touch-panel-container 节点的上边界坐标
+             width: 375.20001220703125
+             */
+          }).exec()
+        } else {
+          reject(Error('获取触摸区域元素失败'))
+        }
       })
     },
     onTouchStart(e) {

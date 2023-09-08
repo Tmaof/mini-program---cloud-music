@@ -1,8 +1,4 @@
 import {
-  injectAppStore
-}
-from '@/behaviors/injectAppStore'
-import {
   injectUserStore
 } from '@/behaviors/injectUserStore'
 import {
@@ -26,7 +22,7 @@ import {
 } from '@/behaviors/injectCheckLogin'
 import dayjs from 'dayjs'
 Page({
-  behaviors: [injectAppStore, injectUserStore, injectMusicPlayerStore, injectCheckLogin],
+  behaviors: [injectUserStore, injectMusicPlayerStore, injectCheckLogin],
   options: {
     styleIsolation: 'shared'
   },
@@ -55,7 +51,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    this.setTabBarIndexValue(2)
     if (this.data.userInfo) {
       const {
         province,

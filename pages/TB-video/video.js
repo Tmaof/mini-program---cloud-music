@@ -1,13 +1,9 @@
 import {
-  injectAppStore
-}
-from '@/behaviors/injectAppStore'
-import {
   injectUserStore
 } from '@/behaviors/injectUserStore'
 
 Page({
-  behaviors: [injectAppStore, injectUserStore],
+  behaviors: [injectUserStore],
   options: {
     styleIsolation: 'shared'
   },
@@ -38,7 +34,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    this.setTabBarIndexValue(1)
+
   },
 
   /**
