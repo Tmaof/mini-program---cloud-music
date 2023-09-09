@@ -12,6 +12,7 @@
 <a name="A52jH"></a>
 ## 视频预览
 <a name="A3YU2"></a>
+https://www.bilibili.com/video/BV1dh4y1e7NC
 ### 登录
 [![MP4_20230908_134538VLOG[1].mp4 (34.8MB)](https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*NNs6TKOR3isAAAAAAAAAAABkARQnAQ)]()<a name="ASgsS"></a>
 ### 首页
