@@ -50,9 +50,8 @@ export const musicPlayerStore = observable({
   addEventListener() {
     //监听音频自然播放至结束的事件
     this.innerAudioContext.onEnded(() => {
-      // this.isPlaying = false
-      if (this.playbackMode == this.playbackModeValues.Loop) return
-      this.switchSong('down')
+      //自然播放至结束时，循环模式不切换当前歌曲
+      this.switchSong('down', false)
     })
 
     // 监听音频可以播放事件
@@ -353,7 +352,7 @@ export const musicPlayerStore = observable({
     }
     let index = undefined
     // 顺序播放
-    if (this.playbackMode == this.playbackModeValues.Sequential || forceSwitch) {
+    if (this.playbackMode == this.playbackModeValues.Sequential || (this.playbackMode == this.playbackModeValues.Loop && forceSwitch)) {
       index = this.getSongIndex()
       if (mode == 'up') {
         if (index == 0) index = this.songList.length
@@ -367,6 +366,10 @@ export const musicPlayerStore = observable({
     // 随机播放
     else if (this.playbackMode == this.playbackModeValues.Random) {
       index = Math.round(Math.random() * (this.songList.length - 1))
+    }
+    // 循环播放
+    else if (this.playbackMode == this.playbackModeValues.Loop) {
+      index = this.songList.indexOf(this.songInfo)
     }
     if (index === undefined || index < 0) {
       console.error('切换歌曲错误')
@@ -382,11 +385,6 @@ export const musicPlayerStore = observable({
    * @param {'Sequential' | 'Loop' | 'Random'} mode 
    */
   switchPlaybackModes: action(function (mode) {
-    if (mode == this.playbackModeValues.Loop) {
-      this.innerAudioContext.loop = true
-    } else {
-      this.innerAudioContext.loop = false
-    }
     this.playbackMode = mode
   }),
   /**

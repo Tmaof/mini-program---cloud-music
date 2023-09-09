@@ -32,6 +32,8 @@ Component({
       this.setData({
         songList: result.songs.map(item => {
           item.djId = 0
+          //该数据中没有歌曲封面，临时替代
+          item.coverUrl = item.album.artist.img1v1Url
           return item
         }),
         isLoading: false
