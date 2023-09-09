@@ -1,5 +1,12 @@
 <a name="LqSBS"></a>
+# 在线文档
+
+ [云音乐 (yuque.com)](https://www.yuque.com/maofu-rzqcp/snisqw/sg0u1zd77cn86srz) 
+
+
+
 # 简介
+
 <a name="d9SO5"></a>
 ## 技术栈
 | **技术名** | **功能** | **官网** |
