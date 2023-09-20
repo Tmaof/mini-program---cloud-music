@@ -7,7 +7,23 @@
 
 # 简介
 
-<a name="d9SO5"></a>
+在数字化时代，音乐不再仅仅是一种娱乐方式，它已经成为我们生活中不可或缺的一部分。无论是放松身心、激发创造力，还是与朋友分享喜悦，音乐都有着不可比拟的力量。现在，一个全新的微信小程序项目——“云音乐”为您带来了发现音乐的全新方式。  
+
+
+
+## 主要功能特点
+
+1. **音乐搜索和播放：** 通过云音乐，您可以轻松搜索和播放数百万首歌曲，包括最新的热门单曲和经典老歌。
+2. **个人化推荐：** 云音乐会根据您的听歌习惯和喜好向您推荐新音乐，让您不断发现新的音乐宝藏。
+3. **歌词同步显示：** 想要跟着歌词一起唱？云音乐会将歌词实时同步显示，让您更深入地感受音乐的魅力。
+4. **创建播放列表：** 您可以轻松创建和管理自己的播放列表，根据心情或场合随时切换不同的音乐列表。
+5. **开源项目：** 云音乐是一个开源项目，您可以自由查看和修改其源代码，根据自己的需求进行定制。
+6. **使用开源API接口：**云音乐使用了开源的api接口，可以运行在node.js等服务端中，你可以轻松的部署自己的接口服务器。
+7. **视频播放器：**你可以观看歌曲MV等视频。
+8. 歌单中心，视频中心，电台中心，排行榜，搜索中心，用户收藏，用户观看记录...
+
+
+
 ## 技术栈
 | **技术名** | **功能** | **官网** |
 | --- | --- | --- |
@@ -104,11 +120,119 @@ https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819
 #### 视频播放器
 ![Screenshot_2023-09-06-17-08-59-806_com.tencent.mm.jpg](https://cdn.nlark.com/yuque/0/2023/jpeg/34576819/1693991454962-9f11fa94-f0a5-455d-9c6a-8e7f5a5e1bfe.jpeg#averageHue=%238c7a6c&clientId=u0a64b032-cffd-4&from=paste&height=1560&id=u9a9ea334&originHeight=2340&originWidth=1080&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=336641&status=done&style=none&taskId=u4583db0f-1e1f-4bd7-8d41-971fc2a3a04&title=&width=720)<br />![Screenshot_2023-09-06-17-09-20-629_com.tencent.mm.jpg](https://cdn.nlark.com/yuque/0/2023/jpeg/34576819/1693991459794-12bef0ef-27aa-402a-8ffd-9b0818003f44.jpeg#averageHue=%23d7d6d5&clientId=u0a64b032-cffd-4&from=paste&height=1560&id=ueab707c3&originHeight=2340&originWidth=1080&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=597186&status=done&style=none&taskId=ud21b49e6-9d79-4a6c-b7e4-839809b9b92&title=&width=720)<br />![Screenshot_2023-09-07-15-22-32-622_com.tencent.mm.jpg](https://cdn.nlark.com/yuque/0/2023/jpeg/34576819/1694071437133-2999f988-2f6a-4f8b-a898-1a65fde09cb3.jpeg#averageHue=%231f1f1f&clientId=uaacc5e6e-5bd4-4&from=paste&height=1560&id=u89bf01f4&originHeight=2340&originWidth=1080&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=236689&status=done&style=none&taskId=ua8e4b0c6-175b-4737-be85-5dee980d13e&title=&width=720)<br />![Screenshot_2023-09-07-15-22-26-850_com.tencent.mm.jpg](https://cdn.nlark.com/yuque/0/2023/jpeg/34576819/1694071443511-debf4d48-b6c5-4700-9676-6a038a92fab1.jpeg#averageHue=%232b2929&clientId=uaacc5e6e-5bd4-4&from=paste&height=1560&id=u1c56b8e5&originHeight=2340&originWidth=1080&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=556870&status=done&style=none&taskId=u230bc275-5d5e-4a07-8d04-853f10ec350&title=&width=720)
 <a name="Jdlxf"></a>
+
+----
+
+
+
 # 二次开发
-<a name="JuePR"></a>
+
 ## 克隆运行
 
-<a name="rGHxE"></a>
+### 克隆到本地
+
+例如
+
+```nginx
+git clone https://gitee.com/tmaofu/mini-program---cloud-music.git
+```
+
+
+
+### 安装依赖
+
+进入项目根目录，执行`npm install `安装项目依赖
+
+```nginx
+cd ./mini-program---cloud-music
+npm install 
+```
+
+
+
+### 构建依赖
+
+使用微信开发者工具导入项目
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/34576819/1695199637488-64b1b4a8-0954-4acc-9c9f-7dd94e611886.png)
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/34576819/1695199721899-2992cafb-525c-4783-8018-b625c44b8572.png)
+
+
+
+开始构建npm包，构建成功后关闭微信开发者工具。
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/34576819/1695199960230-60bab1eb-393b-4160-aacd-61586bb74772.png)
+
+
+
+### 部署API接口服务
+
+具体可以参考：
+
+[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=安装)
+
+
+
+安装
+
+```nginx
+ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
+ cd NeteaseCloudMusicApi
+ npm install
+```
+
+运行
+
+```shell
+node app.js
+```
+
+服务器启动默认端口为 3000, 若不想使用 3000 端口 , 可使用以下命令 : Mac/Linux
+
+```shell
+$ PORT=4000 node app.js
+```
+
+windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
+
+```shell
+$ set PORT=4000 && node app.js
+```
+
+
+
+### 配置API接口地址
+
+再次用微信开发者工具打开项目，
+
+编辑`config\config.js`文件中的`baseUrl`为**你的API接口服务的地址**。
+
+```javascript
+export default {
+  baseUrl: 'http://127.0.0.1:3000',
+  cookieKey: 'cookie', //cookie保存本地的key名称
+  blogUrl: 'https://www.yuque.com/maofu-rzqcp',
+  searchHistoryKey: 'searchHistory'
+}
+```
+
+
+
+### 不校验合法域名
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/34576819/1695200433278-265a1034-0334-4220-955f-0ac2786a6868.png)
+
+
+
+### 编译运行
+
+当配置好之后就可以编译运行了
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/34576819/1695200521822-0c0b5f6f-535f-4a25-a60a-75fa47f41983.png)
+
+
+
 ## 项目目录结构说明
 <a name="gNnmX"></a>
 ### 顶层目录
@@ -124,6 +248,7 @@ https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819
 #### behaviors: 存放主包中公用的behaviors
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694071041641-6ad1a5f8-d88e-42cd-a059-988fedcf5f1b.png#averageHue=%23f8f5f0&clientId=uaacc5e6e-5bd4-4&from=paste&height=118&id=u3a021682&originHeight=177&originWidth=326&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=14683&status=done&style=none&taskId=u601b3430-e85a-4e4d-9995-7e064588b76&title=&width=217.33333333333334)<br />      injectAppStore.js: 可以向组件或者页面注入应用的状态，例如tab-bar当前的索引值<br />      injectCheckLogin.js: 注入检查登录相关的函数<br />      injectMusicPlayerStore.js：注入音乐播放器相关的状态<br />      injectUserStore.js：注入用户相关的状态
 <a name="Qsd4y"></a>
+
 #### components: 存放主包中的组件
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694006631964-62ca9b15-3b28-4a79-be11-28dc9034f7aa.png#averageHue=%23faf9f8&clientId=u0a64b032-cffd-4&from=paste&height=113&id=u283e569a&originHeight=169&originWidth=428&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=10739&status=done&style=none&taskId=ub7b0ee59-4898-4dad-9e5d-c3f5763c510&title=&width=285.3333333333333)<br />common: 存放公共组件<br />home-center: 存放首页中会用到的组件<br />personal-center：存放个人中心页会用到的组件<br />video-center: 存放视频中心页会用到的组件
 <a name="vAYrK"></a>
@@ -712,12 +837,11 @@ onShow() {
 },
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1686201605078-6bee6c20-1537-4d31-ade2-4221a00b75e2.png#averageHue=%23f7f6f4&clientId=u8d59efec-503a-4&from=paste&height=834&id=ua7555fc0&originHeight=1042&originWidth=1920&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=263167&status=done&style=none&taskId=uf62713e7-6f65-46bb-a9a0-4cb6b46a4eb&title=&width=1536)
-:::info
-**注意：**<br />目前来看，不可以在onLoad,第一次onShow中通过`this.data.userInfo`来拿到数据；<br />最早可以在onReady中来拿到数据。
-:::
 
+**注意：**<br />目前来看，不可以在onLoad,第一次onShow中通过`this.data.userInfo`来拿到数据；<br />最早可以在onReady中来拿到数据。
 
 <a name="lkXj6"></a>
+
 # 参考
 相关视频参考<br />[尚硅谷微信小程序开发（零基础小程序开发入门到精通）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV12K411A7A2)<br />网易云音乐api接口<br />[https://github.com/Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
