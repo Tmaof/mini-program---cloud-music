@@ -392,8 +392,9 @@ export default {
 |  |  |
 
 <br />
-<a name="Yw7Vd"></a>
+
 ##### packges-home-center: 首页分包，存放了在首页中会进入的页面，要使用的组件，等等资源。
+
 ```
 ├─packages
 │  ├─package-home-center
@@ -418,8 +419,9 @@ export default {
 │  │      ├─recommended-playlist
 │  │      ├─search-center
 │  │      └─toplist-center
+
 ```
-<a name="r37kL"></a>
+
 ###### components
 | **组件名称** | **功能** |
 | --- | --- |
@@ -503,19 +505,11 @@ export default {
 
 <a name="Q9yjv"></a>
 ###### template
-| **模板名称** | **功能** |
-| --- | --- |
-| mc-item-card | 我的收藏-信息展示模板<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054069162-cd89e679-fdc9-47fc-92d6-2f40988e765f.png#averageHue=%23efebe7&clientId=u0a64b032-cffd-4&from=paste&height=304&id=u9c42b960&originHeight=456&originWidth=409&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=97301&status=done&style=none&taskId=uf5d27d6f-4767-4275-abe6-309a658ca5e&title=&width=272.6666666666667)
----
+| **模板名称** |                           **功能**                           |
+| :----------: | :----------------------------------------------------------: |
+| mc-item-card | 我的收藏-信息展示模板<br>![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054069162-cd89e679-fdc9-47fc-92d6-2f40988e765f.png#averageHue=%23efebe7&clientId=u0a64b032-cffd-4&from=paste&height=304&id=u9c42b960&originHeight=456&originWidth=409&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=97301&status=done&style=none&taskId=uf5d27d6f-4767-4275-abe6-309a658ca5e&title=&width=272.6666666666667)<br/>![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054103847-18cb3bc2-86e1-421f-ad31-8e72b802289b.png#averageHue=%23f4f3f2&clientId=u0a64b032-cffd-4&from=paste&height=285&id=u14465c26&originHeight=427&originWidth=407&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=56384&status=done&style=none&taskId=uc4b0c131-13bc-4295-9c21-49e1d437a82&title=&width=271.3333333333333)<br/>![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054133404-0be651be-36c2-43f1-b74d-df4040d623e8.png#averageHue=%23efece8&clientId=u0a64b032-cffd-4&from=paste&height=221&id=u3f466d63&originHeight=332&originWidth=415&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=68723&status=done&style=none&taskId=uf3634588-decb-447d-98d4-e11c2bc3e70&title=&width=276.6666666666667) |
+| rp-item-card | 最近播放-信息展示模板<br>![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694053958188-7d6301ca-8850-40cc-a877-63ab3dda057f.png#averageHue=%23f5f4f1&clientId=u0a64b032-cffd-4&from=paste&height=444&id=ue02bed96&originHeight=666&originWidth=409&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=147832&status=done&style=none&taskId=u97b15d27-7ad6-4379-815b-00eb825ab05&title=&width=272.6666666666667)<br/>![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054004650-c0291530-19b9-49c3-afb8-c5b4340cb1b6.png#averageHue=%23f5f5f4&clientId=u0a64b032-cffd-4&from=paste&height=406&id=u5c9315f7&originHeight=609&originWidth=403&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=102031&status=done&style=none&taskId=u996c813d-346f-41da-9107-894c1d5ce0b&title=&width=268.6666666666667) |
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054103847-18cb3bc2-86e1-421f-ad31-8e72b802289b.png#averageHue=%23f4f3f2&clientId=u0a64b032-cffd-4&from=paste&height=285&id=u14465c26&originHeight=427&originWidth=407&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=56384&status=done&style=none&taskId=uc4b0c131-13bc-4295-9c21-49e1d437a82&title=&width=271.3333333333333)
----
-
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054133404-0be651be-36c2-43f1-b74d-df4040d623e8.png#averageHue=%23efece8&clientId=u0a64b032-cffd-4&from=paste&height=221&id=u3f466d63&originHeight=332&originWidth=415&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=68723&status=done&style=none&taskId=uf3634588-decb-447d-98d4-e11c2bc3e70&title=&width=276.6666666666667) |
-| rp-item-card | 最近播放-信息展示模板<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694053958188-7d6301ca-8850-40cc-a877-63ab3dda057f.png#averageHue=%23f5f4f1&clientId=u0a64b032-cffd-4&from=paste&height=444&id=ue02bed96&originHeight=666&originWidth=409&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=147832&status=done&style=none&taskId=u97b15d27-7ad6-4379-815b-00eb825ab05&title=&width=272.6666666666667)
----
-
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1694054004650-c0291530-19b9-49c3-afb8-c5b4340cb1b6.png#averageHue=%23f5f5f4&clientId=u0a64b032-cffd-4&from=paste&height=406&id=u5c9315f7&originHeight=609&originWidth=403&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=102031&status=done&style=none&taskId=u996c813d-346f-41da-9107-894c1d5ce0b&title=&width=268.6666666666667) |
 
 <a name="GB9UV"></a>
 ##### packges-sys: 系统分包，存放了登录相关的页面。
