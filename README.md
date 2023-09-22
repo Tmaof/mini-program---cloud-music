@@ -34,25 +34,8 @@
 
 <a name="A52jH"></a>
 ## 视频预览
-<a name="A3YU2"></a>
-### 登录
-https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819/mp4/1694152030703-e2f1906c-258e-40ac-aca8-fc6b7e39534f.mp4?OSSAccessKeyId=LTAI4GGhPJmQ4HWCmhDAn4F5&Expires=1694238003&Signature=aDEGtomQzfjdJsipDC3fCLlxUWk%3D
-<a name="ASgsS"></a>
-### 首页
-https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819/mp4/1694151744571-3d67653a-510c-41be-b4dd-e717fb2b9b03.mp4?OSSAccessKeyId=LTAI4GGhPJmQ4HWCmhDAn4F5&Expires=1694238003&Signature=qSRZj%2Fh7RAiZsg6PGCASTIvOYsE%3D
-<a name="UVvhX"></a>
-### 视频中心
-https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819/mp4/1694151456779-1a812bd8-39f4-4e7e-8da2-b54c44946107.mp4?OSSAccessKeyId=LTAI4GGhPJmQ4HWCmhDAn4F5&Expires=1694238003&Signature=rYJwibAyPxDIQ0SC0CKz1WW5MUg%3D
-<a name="h6csW"></a>
-### 个人中心
-https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819/mp4/1694151477145-9d40ac7b-d42d-41a6-952d-effc1c4a3898.mp4?OSSAccessKeyId=LTAI4GGhPJmQ4HWCmhDAn4F5&Expires=1694238003&Signature=6dw1FhyFzBKybYlIZkq3S3lXXT0%3D
-<a name="Aspr0"></a>
-### 音乐播放器
-https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819/mp4/1694151531400-bff35aef-7f8b-461f-a48a-c042d192b233.mp4?OSSAccessKeyId=LTAI4GGhPJmQ4HWCmhDAn4F5&Expires=1694238003&Signature=MTzntgiCDSojmI%2FAIFRgFTDD77M%3D
-<a name="EaZbB"></a>
-### 视频播放器
-https://lark-video.oss-cn-hangzhou.aliyuncs.com/outputs/prod/yuque/2023/34576819/mp4/1694151580916-9c80cdde-4d99-41ec-986b-3bb25a7c8401.mp4?OSSAccessKeyId=LTAI4GGhPJmQ4HWCmhDAn4F5&Expires=1694238003&Signature=VUZ0r1JjuiWQM4wA5ARpmK7eGAI%3D
-<a name="iISAo"></a>
+https://www.bilibili.com/video/BV1rK4y1w7m6
+
 ## 图片预览
 <a name="xvvJV"></a>
 ### 登录
