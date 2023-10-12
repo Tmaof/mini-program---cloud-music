@@ -30,7 +30,7 @@ export const userStore = observable({
       data
     } = await getUserInfo()
 
-    if (data && data.code == 200) {
+    if (data && (data.profile || data.account)) {
       this.userInfo = data.profile || data.account
       this.userId = this.userInfo.id || this.userInfo.userId
       this.isUserLogin = true

@@ -13,7 +13,8 @@ import {
 } from '@/api/common/common'
 import config from '@/config/config'
 import {
-  getLikeSongList
+  getLikeSongList,
+  getSongUrl
 } from '@/api/common/common'
 
 export const musicPlayerStore = observable({
@@ -165,9 +166,20 @@ export const musicPlayerStore = observable({
     }
 
     if (!songList) return
-    songList.forEach(item => {
-      item.url = `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`
-    })
+    //获取，设置歌曲的url
+    if (config.isGetSongUrlByRequest) {
+      const ids = songList.map(item => item.id).join(',')
+      const {
+        data
+      } = await getSongUrl(ids)
+      const map = new Map()
+      data.forEach(item => map.set(item.id, item.url))
+      songList.forEach(item => item.url = map.get(item.id))
+    } else {
+      songList.forEach(item => {
+        item.url = `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`
+      })
+    }
     this.lastSongList = this.songList
     this.songList = songList
   }),

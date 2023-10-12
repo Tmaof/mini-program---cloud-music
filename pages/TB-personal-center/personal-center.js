@@ -113,7 +113,7 @@ Page({
       data
     } = await getHeartbeatModeList(songInfo.id, userLikedPlaylist.id)
     const list = data.map(item => item.songInfo)
-    this.changeSongList(null, list)
+    await this.changeSongList(null, list)
     this.playTheSong(list[0].id)
   },
   /**

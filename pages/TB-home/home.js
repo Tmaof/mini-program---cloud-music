@@ -122,9 +122,9 @@ Page({
     // }, 1000)
   },
   // 播放歌曲
-  onPlayMusic(e) {
+  async onPlayMusic(e) {
     const song = e.currentTarget.dataset.song
-    this.changeSongList(null, [song])
+    await this.changeSongList(null, [song])
     this.playTheSong(song.id)
   },
   /**

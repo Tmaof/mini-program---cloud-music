@@ -42,9 +42,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onPlayMusic(e) {
+    async onPlayMusic(e) {
       // 切换歌单
-      this.changeSongList(null, this.data.songList)
+      await this.changeSongList(null, this.data.songList)
       // 播放音乐,先更新当前播放歌曲信息再显示播放器
       this.playTheSong(e.currentTarget.dataset.songid)
       // 显示音乐播放器

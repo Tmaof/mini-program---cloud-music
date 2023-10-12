@@ -96,11 +96,11 @@ Component({
       })
     },
     // 播放上次的音乐
-    onPlayLastMusic(e) {
+    async onPlayLastMusic(e) {
       // 隐藏播放列表
       this._hidePopup()
       //切换歌单
-      this.changeSongList(null, this.data.lastSongList)
+      await this.changeSongList(null, this.data.lastSongList)
       // 播放音乐
       this.playTheSong(e.currentTarget.dataset.songid)
     }

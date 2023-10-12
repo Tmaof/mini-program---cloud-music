@@ -75,9 +75,9 @@ Component({
      * 播放节目
      * @param {*} e 
      */
-    onPlayMusic(e) {
+    async onPlayMusic(e) {
       // 切换歌单
-      this.changeSongList(null, this.data.programsList)
+      await this.changeSongList(null, this.data.programsList)
       // 播放音乐,先更新当前播放歌曲信息再显示播放器
       this.playTheSong(e.currentTarget.dataset.songid)
       // 显示音乐播放器

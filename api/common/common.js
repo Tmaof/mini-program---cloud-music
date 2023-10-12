@@ -78,3 +78,16 @@ export function getHeartbeatModeList(id, pid) {
     }
   })
 }
+
+/**
+ * 传入的音乐 id(可多个, 用逗号隔开), 可以获取对应的音乐的 url
+ * @param {*} id 
+ */
+export function getSongUrl(id) {
+  return request({
+    url: '/song/url',
+    data: {
+      id
+    }
+  })
+}
