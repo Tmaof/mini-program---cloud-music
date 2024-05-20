@@ -22,7 +22,17 @@
 7. **视频播放器：**你可以观看歌曲MV等视频。
 8. 歌单中心，视频中心，电台中心，排行榜，搜索中心，用户收藏，用户观看记录...
 
+### 主要页面介绍：
 
+![](https://cdn.nlark.com/yuque/0/2024/jpeg/34576819/1716014673524-bbef7c1a-df22-47db-a63e-8ac44ede2fdc.jpeg)
+
+### 详情页面介绍：
+
+![](https://cdn.nlark.com/yuque/0/2024/jpeg/34576819/1716014792025-1d5bf450-5dfc-4d71-9a99-7ca07f62cab1.jpeg)
+
+### 播放器功能介绍：
+
+![](https://cdn.nlark.com/yuque/0/2024/jpeg/34576819/1716014896133-42d6ee8d-b7c9-48fe-8679-0061e271aa25.jpeg)
 
 ## 技术栈
 | **技术名** | **功能** | **官网** |
@@ -639,188 +649,3 @@ export default {
 | requestIntercept | 请求拦截器 |
 | responseIntercept | 响应拦截器 |
 | errIntercept | 错误拦截器 |
-
-
-
-<a name="Bptwx"></a>
-# 我的开发笔记
-<a name="SyKPl"></a>
-## 封装 wx.request 
-具体实现请查看项目文件下的 `utils/request.js`
-
-<a name="dXpTV"></a>
-## 样式相关
-<a name="Hkx2a"></a>
-### 使用 scss
-rpx问题：在scss中没有rpx这个单位
-
-<a name="Y5cVt"></a>
-### 使用 iconfont
-在小程序中不能使用本地字体
-
-<a name="WtetP"></a>
-## TabBar页面
-从其他页面跳转tabbar页面时,当前tabbar索引不会改变
-
-<a name="mYcIp"></a>
-## behaviors注入stroe
-<a name="wmO67"></a>
-### 需求
-每次使用 `mobx-miniprogram-bindings` 来为组件，页面绑定状态仓库都很麻烦，我们可以写一个 `behavior` 来实现代码的复用。
-
-<a name="IasOr"></a>
-### 创建一个`behavior` 
-```javascript
-import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-import {
-  appStore
-} from '@/store/app/app'
-
-
-export const injectAppStore = Behavior({
-  data: {
-
-  },
-  lifetimes: {
-    attached() {
-      this.storeBindings = createStoreBindings(this, {
-        store: appStore,
-        fields: ['tabBarIndexValue'],
-        actions: ['setTabBarIndexValue']
-      })
-    },
-
-    /**
-     * 监听页面卸载
-     */
-    detached() {
-      this.storeBindings.destroyStoreBindings()
-    }
-  }
-})
-```
-
-<a name="FRwEd"></a>
-### 使用 `behavior` 
-```javascript
-import {
-  injectAppStore
-} from '@/behaviors/injectAppStore'
-
-Component({
-  behaviors: [injectAppStore],
-  ...
-})
-```
-现在你可以在该组件/页面中使用 `tabBarIndexValue`变量，`setTabBarIndexValue`方法了，例如：`this.data.tabBarIndexValue`。<br />注意你最早只能在 `onReady`生命周期中访问到仓库中的数据。
-
-
-<a name="JrCfX"></a>
-## 上传图片
-可以封装wx.uploadFile<br />[UploadTask | 微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/api/network/upload/wx.uploadFile.html)
-
-<a name="sewst"></a>
-## 工具
-<a name="KUxBm"></a>
-### 获取相对时间
-dayjs<br />[Time from now · Day.js](https://dayjs.gitee.io/docs/zh-CN/display/from-now)<br />其他<br />[Java 实现时间戳显示格式为几天前、几分钟前、几秒前及其应用_时间用分钟展示是前端处理还是后端_Williams_ Z的博客-CSDN博客](https://blog.csdn.net/weixin_41474618/article/details/104702536)<br />[js 时间戳转换成几分钟前，几小时前，几天前（亲测有效）_js,时间戳往前3分钟_Adam——的博客-CSDN博客](https://blog.csdn.net/weixin_44963099/article/details/106357212#:~:text=1%EF%BC%9A%E5%B0%86%E5%BD%93%E5%89%8D%E7%9A%84%E6%97%B6%E9%97%B4%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%AF%AB%E7%A7%92%E6%95%B0%EF%BC%88nowNew%EF%BC%89%202%EF%BC%9A%E5%B0%86%E6%97%B6%E9%97%B4%E6%88%B3%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4%E5%86%8D%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%AF%AB%E7%A7%92%E6%95%B0,%EF%BC%88millisecond%EF%BC%89%203%EF%BC%9A%E5%B0%86%E4%B8%A4%E8%80%85%E7%9B%B8%E5%87%8F%E7%84%B6%E5%90%8E%E8%BF%9B%E8%A1%8C%E5%88%A4%E6%96%AD)
-
-
-<a name="TP4kE"></a>
-## 报错和解决
-<a name="Pdegy"></a>
-### Unexpected token `Date`
-[wxs中使用date创建实例报错_wxs不支持date_天心天地生的博客-CSDN博客](https://blog.csdn.net/tianxintiandisheng/article/details/82086283)
-```javascript
-[ WXML 文件编译错误] ./utils/filter-wxs/filter.wxs
-Unexpected token `Date`
-   9 |   },
-  10 |   formatMsgTime: function (timespan) {
-> 11 |     var dateTime = new Date(timespan) // 将传进来的字符串或者毫秒转为标准时间
-     |                           ^
-  12 |     var year = dateTime.getFullYear()
-  13 |     var month = dateTime.getMonth() + 1
-  14 |     var day = dateTime.getDate()
-```
-解决：<br />获取当前日期使用getDate()
-```javascript
-将
-var dateTime = new Date(timespan)
-替换为
-var dateTime = getDate(timespan)
-```
-
-<a name="cKVXB"></a>
-## 微信API接口
-<a name="bmHnm"></a>
-### 后台播放音频
-获取**全局唯一**的背景音频管理器。 小程序切入后台，如果音频处于播放状态，可以继续播放。但是后台状态不能通过调用API操纵音频的播放状态。<br />从微信客户端6.7.2版本开始，若需要在小程序切后台后继续播放音频，需要在 [app.json](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html) 中配置 requiredBackgroundModes 属性。开发版和体验版上可以直接生效，正式版还需通过审核。
-
-需要在app.json中添加如下字段：
-```javascript
-{
-  "requireBackgroundModes": ["audio"],
-}
-```
-[BackgroundAudioManager | 微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/wx.getBackgroundAudioManager.html)
-
-<a name="xnTrm"></a>
-## 注意事项
-<a name="GqZBX"></a>
-### 不能通过`this.data.userInfo`拿到数据
-使用mobx-miniprogram-bindings绑定`userStore`时,<br />`userInfo`确实会被添加在`this.data`中,但是在一些较早的生命周期中，不能通过`this.data.userInfo`拿到数据。
-
-
-方式一
-```javascript
-import {
-  userStore
-} from '@/store/user/user'
-import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-
-export const injectUserStore = Behavior({
-  lifetimes: {
-    attached() {
-      this.storeBindings = createStoreBindings(this, {
-        store: userStore,
-        fields: ['userInfo', 'isUserLogin', 'collectSongList', 'userLikeSongLIst'],
-        actions: ['setUserInfo', 'updateUserInfo', 'clearUserInfo']
-      })
-    },
-    detached() {
-      this.storeBindings.destroyStoreBindings()
-    }
-  }
-})
-```
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1686200110570-7d5921d3-9e7c-48be-8b9d-b614ebae97d0.png#averageHue=%23f8f8f7&clientId=u8d59efec-503a-4&from=paste&height=834&id=uaf988233&originHeight=1042&originWidth=1920&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=223607&status=done&style=none&taskId=u571817a1-65b1-4419-a77f-b0fa61ed569&title=&width=1536)<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1686200183080-1e409924-fadd-4338-a0c9-e336ec655814.png#averageHue=%23f6f5f3&clientId=u8d59efec-503a-4&from=paste&height=834&id=u7e85c02d&originHeight=1042&originWidth=1920&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=276572&status=done&style=none&taskId=u530f7af8-8109-40fd-9b6d-dfed24dfb35&title=&width=1536)<br />方式二<br />![](https://cdn.nlark.com/yuque/0/2023/png/34576819/1685264000427-3d4414d9-3179-4acb-af4a-c7514c747946.png#averageHue=%230c1021&from=url&id=Ozbtw&originHeight=650&originWidth=894&originalType=binary&ratio=1.25&rotation=0&showTitle=false&status=done&style=none&title=)<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1686200643004-9861cf40-41bc-4743-8b49-ace3220ccdb1.png#averageHue=%23f7f6f5&clientId=u8d59efec-503a-4&from=paste&height=834&id=ue89404f8&originHeight=1042&originWidth=1920&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=274927&status=done&style=none&taskId=u0565bb03-9270-4299-86dc-9dfad4457a6&title=&width=1536)<br />在一些其他生命的周期中的情况
-```javascript
-/**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-onReady() {
-  console.log(this.data.userInfo, '555')
-},
-
-/**
-   * 生命周期函数--监听页面显示
-   */
-onShow() {
-   console.log(this.data.userInfo,'jjj')
-},
-```
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/34576819/1686201605078-6bee6c20-1537-4d31-ade2-4221a00b75e2.png#averageHue=%23f7f6f4&clientId=u8d59efec-503a-4&from=paste&height=834&id=ua7555fc0&originHeight=1042&originWidth=1920&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=263167&status=done&style=none&taskId=uf62713e7-6f65-46bb-a9a0-4cb6b46a4eb&title=&width=1536)
-
-**注意：**<br />目前来看，不可以在onLoad,第一次onShow中通过`this.data.userInfo`来拿到数据；<br />最早可以在onReady中来拿到数据。
-
-<a name="lkXj6"></a>
-
-# 参考
-相关视频参考<br />[尚硅谷微信小程序开发（零基础小程序开发入门到精通）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV12K411A7A2)<br />网易云音乐api接口<br />[https://github.com/Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
-
-
-
