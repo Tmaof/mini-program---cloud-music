@@ -157,15 +157,14 @@ Page({
     const timeInterval = new Date().getTime() - this.data.lastDragTime
     const fastChange = timeInterval < this.data.timeThreshold ? true : false
     // console.log(timeInterval, 'timeInterval')
-    // 快速滚动切换
-    // 滑动切换
-    // 向下滑动
+    // 快速滑动和普通滑动有不同的滑动距离阈值
+    // 手指向上滑动，切换下一个视频
     if (distance > (fastChange ? this.data.firstChangeDragThreshold : this.data.dragThreshold)) {
       this.setData({
         playingIndex: this.data.playingIndex + 1
       })
     }
-    // 向上滑动
+    // 手指向下滑动，切换上一个视频
     else if (distance < (fastChange ? -this.data.firstChangeDragThreshold : -this.data.dragThreshold)) {
       if (this.data.playingIndex == 0) {
         wx.showToast({

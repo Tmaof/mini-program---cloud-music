@@ -5,9 +5,11 @@
 
   // 视频
   .video-container-portrait-screen {
+    // 竖屏样式
     top: 0 !important;
     left: 50%;
     transform: translate(-50%, 0) !important;
+    height: 100% !important;
   }
   .video-container {
     position: absolute;
@@ -103,7 +105,7 @@
           }
         }
 
-        .collapse-content{
+        .collapse-content {
           max-height: 50vh;
         }
       }

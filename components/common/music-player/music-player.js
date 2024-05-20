@@ -146,7 +146,7 @@ Component({
       }
     },
     // 页面上滑动结束
-    noPageTouchEnd(e) {
+    onPageTouchEnd(e) {
       // console.log(e)
       /**
       detail:
@@ -205,7 +205,7 @@ Component({
       }
     },
     // 唱片上滑动结束
-    noDiscTouchEnd(e) {
+    onDiscTouchEnd(e) {
       const info = e.detail
       // console.log(info, 'end')
       const isToRight = info.distanceX >= 60 // 向右/上一首
