@@ -52,6 +52,9 @@
             <view class="comment iconfont icon-pinglun" catchtap="onShowCommentArea">
               <text class="nums">{{filter.getPlaybackVolume(commentCount) }}</text>
             </view>
+            <!-- 歌词 -->
+            <view class="lyric iconfont icon-geciweidianji" bindtap="onChangeLyricVisibility" data-visibility="{{true}}">
+            </view>
           </view>
         </view>
         <!-- 歌词区 -->

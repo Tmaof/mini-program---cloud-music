@@ -127,15 +127,6 @@ Component({
       left: false
       right: true
       up: false
-      elementInfo: {
-        id: "",
-        dataset: {
-          …},
-        left: 0,
-        right: 375.20001220703125,
-        top: 200,
-        …
-      }
        */
       const info = e.detail
       // console.log('moveInfo', info)
@@ -151,15 +142,6 @@ Component({
       /**
       detail:
         down: true
-      elementInfo: {
-        id: "",
-        dataset: {
-          …},
-        left: 0,
-        right: 375.20001220703125,
-        top: 200,
-        …
-      }
       left: false
       right: true
       touchInfo: {
@@ -172,9 +154,8 @@ Component({
       }
       up: false
        */
-      const info = e.detail
       //  pageTranslateY不需要时设置为空串很重要
-      if (info.elementInfo.top >= 70) {
+      if (this.data.pageTranslateY >= 70) {
         this.setData({
           popupVisible: false,
           pageTouchMoving: false,
