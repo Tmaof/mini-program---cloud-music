@@ -47,7 +47,7 @@ Page({
     this._getBanner()
     this._getRecommendedPlaylists()
     this._getTheList()
-    this._getRefHotSearcheList(this._setSearchText)
+    this._getRefHotSearcheList(this._setSearchText.bind(this))
   },
   //判断轮播图类型
   _getBannerType(banner) {
@@ -58,7 +58,7 @@ Page({
       other: false
     }
     const unknown = ['热碟推荐', '新碟首发', ]
-    const playlistType = [ '歌单']
+    const playlistType = ['歌单']
     const songType = ['新歌首发', '热歌推荐']
     const activityType = ['活动', '独家策划', '演出']
     const mvType = ['MV首发']
@@ -108,7 +108,7 @@ Page({
    */
   async _getTheList() {
     // 为了减少首页加载时间,先请求一个榜单的数据
-    const res = await getTheList(0, 3, 10)
+    const res = await getTheList(0, 2, 5)
     this.setData({
       theList: res
     })
