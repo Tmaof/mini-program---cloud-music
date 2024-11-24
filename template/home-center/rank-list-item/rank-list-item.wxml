@@ -3,7 +3,7 @@
   </wxs>
   <view class="rank-list-item-container">
     <view class="cover">
-      <image class="image" src="{{al.picUrl}}" mode="aspectFill" />
+      <image lazy-load class="image" src="{{al.picUrl}}" mode="aspectFill" />
     </view>
     <view class="rank">
       <view class="rank-{{index+1}}">

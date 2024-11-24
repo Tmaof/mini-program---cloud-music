@@ -7,7 +7,7 @@
     <touch-panel bind:start-touch="onMoveInfoPanelStart" bind:move="onMoveInfoPanel" bind:touch="onMoveInfoPanelEnd">
       <!-- 背景图 -->
       <view class="user-bg">
-        <image class="bg" src="{{userInfo.backgroundUrl}}" mode="aspectFill" />
+        <image lazy-load class="bg" src="{{userInfo.backgroundUrl}}" mode="aspectFill" />
       </view>
       <!-- 信息 -->
       <view class="info-card my-card {{infoCardTs?'info-card-trans':''}}" style="transform: translate(0,{{ 50 + infoCardTop}}px);">
@@ -93,7 +93,7 @@
 
   <!-- 我喜欢的音乐 -->
   <view class="mylove my-card" bindtap="onToMyLikedPlaylist">
-    <image class="cover" src="{{userLikedPlaylist.coverImgUrl}}" mode="aspectFill" />
+    <image lazy-load class="cover" src="{{userLikedPlaylist.coverImgUrl}}" mode="aspectFill" />
     <view class="info">
       <view class="title">
         我喜欢的音乐

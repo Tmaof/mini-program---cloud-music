@@ -1,7 +1,7 @@
 <template name="rp-item-card">
   <view class="rp-item-card-container">
     <view class="left-cover">
-      <image class="image" src="{{cover}}" style="width: {{w||'120rpx'}};height:{{h||'120rpx'}} ;" mode="aspectFill" />
+      <image lazy-load class="image" src="{{cover}}" style="width: {{w||'120rpx'}};height:{{h||'120rpx'}} ;" mode="aspectFill" />
     </view>
     <view class="right-info">
       <view class="name single-line-overflow ">

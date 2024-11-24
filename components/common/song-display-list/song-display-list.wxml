@@ -30,7 +30,7 @@
           <view class="iconfont icon-yinle zoom-animation"></view>
         </view>
         <!-- 封面 -->
-        <image hidden="{{songInfo.id == item.id}}" wx:if="{{isShowCover}}" class="cover" src="{{item.al.picUrl||item.album.picUrl}}" mode="aspectFill" />
+        <image lazy-load hidden="{{songInfo.id == item.id}}" wx:if="{{isShowCover}}" class="cover" src="{{item.al.picUrl||item.album.picUrl}}" mode="aspectFill" />
         <!-- 序号 -->
         <view hidden="{{songInfo.id == item.id}}" wx:if="{{isShowIndex}}" class="index">{{index+1}}</view>
       </view>

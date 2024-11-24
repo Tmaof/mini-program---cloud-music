@@ -2,7 +2,7 @@
   <view class="info-display-card-container">
     <!-- 封面 -->
     <view class="left-cover">
-      <image class="image" src="{{cover}}" style="width: {{w||'120rpx'}};height:{{h||'120rpx'}} ;" mode="aspectFill" />
+      <image lazy-load class="image" src="{{cover}}" style="width: {{w||'120rpx'}};height:{{h||'120rpx'}} ;" mode="aspectFill" />
       <view class="duration-time">
         {{duration}}
         <!-- '03:07' -->

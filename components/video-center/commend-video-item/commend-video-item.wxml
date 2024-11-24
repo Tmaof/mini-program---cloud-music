@@ -20,7 +20,7 @@
       <view class="duration">
         {{filter.formatTime(videoInfo.data.durationms)}}
       </view>
-      <image class="img" src="{{videoInfo.data.coverUrl}}" />
+      <image lazy-load class="img" src="{{videoInfo.data.coverUrl}}" />
     </view>
   </view>
 

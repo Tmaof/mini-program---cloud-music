@@ -2,8 +2,8 @@
 <view class="playback-controll-container">
   <!-- 封面 -->
   <view class="cover rotate-animation" style="animation-play-state: {{isPlaying?'running':'paused'}};" bindtap="onShowMusicPlayer">
-    <image class="disc" src="/assets/img/唱片盘.png" mode="aspectFill" />
-    <image class="img" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill" />
+    <image lazy-load class="disc" src="/assets/img/唱片盘.png" mode="aspectFill" />
+    <image lazy-load class="img" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill" />
   </view>
   <!-- 歌名 -->
   <view bindtap="onShowMusicPlayer" class="name single-line-overflow">{{songInfo.name||'当前无播放歌曲'}}</view>

@@ -1,7 +1,7 @@
 <view class="comment-item-container">
   <!-- 左侧 -->
   <view class="left">
-    <image src="{{comment.user.avatarUrl}}" mode="aspectFill" class="head-portrait" />
+    <image lazy-load src="{{comment.user.avatarUrl}}" mode="aspectFill" class="head-portrait" />
   </view>
   <!-- 右侧 -->
   <view class="right">
@@ -41,7 +41,7 @@
           <view class="landlord-comment">
             <!-- 楼主信息 -->
             <view class="landlord">
-              <image src="{{comment.user.avatarUrl}}" mode="aspectFill" class="head-portrait" />
+              <image lazy-load src="{{comment.user.avatarUrl}}" mode="aspectFill" class="head-portrait" />
               <view class="info">
                 <view class="name">{{comment.user.nickname}}</view>
                 <view class="other-info">

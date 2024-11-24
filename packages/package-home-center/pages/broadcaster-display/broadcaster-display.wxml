@@ -14,7 +14,7 @@
             {{filter.getPlaybackVolume(djInfo.playCount)}}
           </view> -->
           <view class="negative"></view>
-          <image class="img" src="{{djInfo.picUrl}}" mode="aspectFill" />
+          <image lazy-load class="img" src="{{djInfo.picUrl}}" mode="aspectFill" />
         </view>
         <!-- 文本信息 -->
         <view class="right">

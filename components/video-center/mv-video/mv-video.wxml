@@ -4,7 +4,7 @@
     <navigator hover-class="none" url="/packages/package-video-center/pages/video-player/video-player?isMv={{true}}&id={{item.id}}" wx:for="{{mvVideoList}}" wx:key="id" class="mv-video-item-card">
       <!-- 封面 -->
       <view class="cover">
-        <image class="img" src="{{item.cover}}" mode="aspectFill" />
+        <image lazy-load class="img" src="{{item.cover}}" mode="aspectFill" />
       </view>
       <!-- 标题 -->
       <view class="title single-line-overflow">
@@ -14,7 +14,7 @@
       <view class="footer">
         <view class="left">
           <!-- 头像 -->
-          <!-- <image class="profile-photo" src="/assets/img/唱片盘.png" alt="aspectFill" /> -->
+          <!-- <image lazy-load class="profile-photo" src="/assets/img/唱片盘.png" alt="aspectFill" /> -->
           <!-- 名字 -->
           <text class="author-name single-line-overflow">{{item.artistName}}</text>
         </view>

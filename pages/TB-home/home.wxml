@@ -17,23 +17,23 @@
           </view>
           <!-- 跳转歌单详情页 -->
           <navigator hover-class="none" wx:if="{{item.type.playlist}}" url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.targetId}}">
-            <image src="{{item.pic}}" mode="aspectFill" />
+            <image lazy-load src="{{item.pic}}" mode="aspectFill" />
           </navigator>
           <!-- 跳转音乐播放器页 -->
           <view wx:if="{{item.type.song}}" bindtap="onPlayMusic" data-song="{{item.song}}">
-            <image src="{{item.pic}}" mode="aspectFill" />
+            <image lazy-load src="{{item.pic}}" mode="aspectFill" />
           </view>
           <!-- 活动 -->
           <view wx:if="{{item.type.activity}}">
-            <image src="{{item.pic}}" mode="aspectFill" />
+            <image lazy-load src="{{item.pic}}" mode="aspectFill" />
             <!-- <web-view src="{{item.url}}"></web-view> -->
           </view>
           <!--mv 跳转视频播放器页面 -->
           <navigator wx:if="{{item.type.mv}}" hover-class="none" url="/packages/package-video-center/pages/video-player/video-player?isMv=true&id={{item.targetId}}">
-            <image src="{{item.pic}}" mode="aspectFill" />
+            <image lazy-load src="{{item.pic}}" mode="aspectFill" />
           </navigator>
           <!-- 其他 -->
-          <image wx:if="{{item.type.other||item.type.album}}" src="{{item.pic}}" mode="aspectFill" />
+          <image lazy-load wx:if="{{item.type.other||item.type.album}}" src="{{item.pic}}" mode="aspectFill" />
         </swiper-item>
       </swiper>
     </view>
@@ -74,7 +74,7 @@
         <view class="recommended-songs-item" wx:for="{{recommendedPlaylists}}" wx:key="id">
           <navigator url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}" hover-class="none">
             <view class="cover">
-              <image src="{{item.picUrl}}" mode="aspectFill" />
+              <image lazy-load src="{{item.picUrl}}" mode="aspectFill" />
             </view>
             <text class="single-line-overflow">{{item.name}}</text>
           </navigator>

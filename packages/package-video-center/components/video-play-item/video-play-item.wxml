@@ -13,7 +13,7 @@
     <view class="iconfont icon-bofangqi-bofang" hidden="{{isPlayVideo}}"></view>
     <!-- 前1个和后1个video不销毁 -->
     <video wx:if="{{isPlayVideo||(currentIndex>=playingIndex-1&&currentIndex<=playingIndex+1)}}" id="{{videoInfo.id}}" class="video" src="{{videoUrl}}" show-fullscreen-btn="{{isShowVideoControls}}" show-center-play-btn="{{isShowVideoControls}}" show-play-btn="{{isShowVideoControls}}" show-progress="{{isShowVideoControls}}" object-fit="contain" title="{{videoDetail.name}}" bindtimeupdate="onTimeUpdate" bindfullscreenchange="onFullScreenChange" show-center-play-btn="{{false}}" show-snapshot-button bindloadedmetadata="onLoadedmetadata" style="height: {{videoHeight}}px;" object-fit="contain" />
-    <image wx:else src="{{videoDetail.cover}}" mode="aspectFill" class="cover" />
+    <image lazy-load wx:else src="{{videoDetail.cover}}" mode="aspectFill" class="cover" />
   </view>
   <view class="bottom" catchtap="onBlockingEvent">
     <!-- 视频信息 -->
@@ -22,8 +22,8 @@
       <view class="author">
         <!-- 头像 -->
         <scroll-view id="profile-photo-scroll-view" class="profile-photo-container" scroll-x enhanced>
-          <image wx:if="{{videoDetail.artists}}" wx:for="{{videoDetail.artists}}" src="{{item.img1v1Url}}" mode="aspectFill" class="profile-photo" wx:key="index" />
-          <image wx:if="{{videoDetail.creator}}" src="{{videoDetail.creator.avatarUrl}}" mode="aspectFill" class="profile-photo" />
+          <image lazy-load wx:if="{{videoDetail.artists}}" wx:for="{{videoDetail.artists}}" src="{{item.img1v1Url}}" mode="aspectFill" class="profile-photo" wx:key="index" />
+          <image lazy-load wx:if="{{videoDetail.creator}}" src="{{videoDetail.creator.avatarUrl}}" mode="aspectFill" class="profile-photo" />
         </scroll-view>
         <!-- 昵称 -->
         <view wx:if="{{videoDetail.artists}}" class="name single-line-overflow">{{filter.getAuthorName(videoDetail.artists)}}</view>

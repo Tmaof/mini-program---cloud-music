@@ -15,7 +15,7 @@
       <scroll-view class="scroll-x" scroll-x="true">
         <navigator hover-class="none" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}" wx:for="{{todayPerferedDj}}" wx:key="id" class="today-perfered-item">
           <view>
-            <image class="img" src="{{item.picUrl}}" mode="aspectFill" />
+            <image lazy-load class="img" src="{{item.picUrl}}" mode="aspectFill" />
             <view class="name single-line-overflow">{{item.name}}</view>
           </view>
         </navigator>
@@ -27,7 +27,7 @@
       <scroll-view class="scroll-x" scroll-x="true">
         <navigator wx:for="{{recommendDj}}" wx:key="id" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}" hover-class="none" class="recommend-item">
           <view>
-            <image class="img" src="{{item.picUrl}}" mode="aspectFill" />
+            <image lazy-load class="img" src="{{item.picUrl}}" mode="aspectFill" />
             <view class="name single-line-overflow">{{item.name}}</view>
           </view>
         </navigator>
@@ -40,7 +40,7 @@
       <scroll-view class="scroll-view-y" scroll-y bindscrolltolower="_getHotDj">
         <navigator wx:for="{{hotDj}}" wx:key="id" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}" hover-class="none" class="hot-item">
           <!-- 封面 -->
-          <image class="cover" src="{{item.picUrl}}" mode="aspectFill" />
+          <image lazy-load class="cover" src="{{item.picUrl}}" mode="aspectFill" />
           <view class="right">
             <view class="author single-line-overflow">{{item.dj.nickname}}</view>
             <view class="name single-line-overflow">{{item.name}}</view>

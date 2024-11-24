@@ -1,7 +1,7 @@
 <navigator url="{{props.url}}" data-params="{{props.params}}">
   <view class="info-item-card-container">
     <view class="left-cover">
-      <image class="image" src="{{props.cover}}" style="width: {{props.w||'120rpx'}};height:{{props.h||'120rpx'}} ;" mode="aspectFill" />
+      <image lazy-load class="image" src="{{props.cover}}" style="width: {{props.w||'120rpx'}};height:{{props.h||'120rpx'}} ;" mode="aspectFill" />
     </view>
     <view class="right-info">
       <view class="name single-line-overflow ">

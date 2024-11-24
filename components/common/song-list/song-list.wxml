@@ -1,7 +1,7 @@
-<wxs src="/utils/filter-wxs/filter.wxs" module="filter"/>
+<wxs src="/utils/filter-wxs/filter.wxs" module="filter" />
 <view class="song-list-container">
-  <t-popup  visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement="bottom">
-    <swiper class="swiper" 	current='{{swiperCurrent||0}}' next-margin='50rpx'>
+  <t-popup visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <swiper class="swiper" current='{{swiperCurrent||0}}' next-margin='50rpx'>
       <!-- 当前播放 -->
       <swiper-item class="swiper-item">
         <view class="playlist-card current-playlist">
@@ -39,8 +39,8 @@
               <view class="left" bindtap="onPlayMusic" data-songid="{{item.id}}">
                 <!-- 正在播放图标 -->
                 <view class="active" hidden="{{songInfo.id!=item.id}}">
-                  <image hidden="{{!isPlaying}}" class="img" src="/assets/img/正在播放.gif" mode="aspectFill" />
-                  <image hidden="{{isPlaying}}" class="img" src="/assets/img/播放暂停中.jpg" mode="aspectFill" />
+                  <image lazy-load hidden="{{!isPlaying}}" class="img" src="/assets/img/正在播放.gif" mode="aspectFill" />
+                  <image lazy-load hidden="{{isPlaying}}" class="img" src="/assets/img/播放暂停中.jpg" mode="aspectFill" />
                 </view>
                 <!-- 其他图标 -->
                 <view class="other">
@@ -48,7 +48,7 @@
                 </view>
                 <!-- 歌名 -->
                 <text class="song-name single-line-overflow">{{item.name}}
-                <text class="author">{{filter.getAuthorName(item.ar)}}</text>
+                  <text class="author">{{filter.getAuthorName(item.ar)}}</text>
                 </text>
               </view>
               <view class="right">
@@ -66,16 +66,14 @@
           </view>
           <!-- 歌曲 -->
           <view class="song-list">
-            <view class="song-item" wx:for="{{lastSongList}}" wx:key="id"
-            bindtap="onPlayLastMusic" data-songid="{{item.id}}"
-            >
+            <view class="song-item" wx:for="{{lastSongList}}" wx:key="id" bindtap="onPlayLastMusic" data-songid="{{item.id}}">
               <view class="left">
                 <!-- 其他图标 -->
                 <view class="other">
                   <view wx:if="{{item.fee==1}}" class="iconfont icon-vip"></view>
                 </view>
                 <text class="song-name single-line-overflow">{{item.name}}
-                <text class="author">{{filter.getAuthorName(item.ar)}}</text>
+                  <text class="author">{{filter.getAuthorName(item.ar)}}</text>
                 </text>
               </view>
               <view class="right">

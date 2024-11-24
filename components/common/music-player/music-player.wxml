@@ -2,7 +2,7 @@
 <view class="music-player-container">
   <t-popup style="transform: translate(0 ,{{pageTranslateY}}px);transition: {{pageTouchMoving?'none':''}};" z-index='11000' show-overlay='{{false}}' visible="{{popupVisible}}" bind:visible-change="onVisibleChange" placement='bottom'>
     <!-- 底片层 -->
-    <image class="negative-layer" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill"></image>
+    <image lazy-load class="negative-layer" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill"></image>
     <!-- 顶层 -->
     <touch-panel bind:start-touch='onPageTouchStart' bind:move='onPageTouchMove' bind:touch='onPageTouchEnd'>
       <view class="music-player-page">
@@ -25,16 +25,16 @@
             </view>
             <!-- 指针 -->
             <view class="indicator {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'indicator-active':''}}">
-              <image class="img" src="/assets/img/唱片机指针.png" mode="heightFix" />
+              <image lazy-load class="img" src="/assets/img/唱片机指针.png" mode="heightFix" />
             </view>
             <!-- 碟片盘 -->
             <view class="plate">
               <!-- 胶片 -->
-              <image style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="img rotate-animation-delay" src="/assets/img/唱片盘.png" mode="aspectFit" />
+              <image lazy-load style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="img rotate-animation-delay" src="/assets/img/唱片盘.png" mode="aspectFit" />
               <!-- 封面 -->
               <view class="cover-container {{(discLeftIn?'cover-container-left-in ':'')}} {{(discRightIn?'cover-container-right-in':'')}}" style="transition: {{discTouchMoving?'none':''}}; transform: translate({{discTranslateX?(discTranslateX*2-265):''}}rpx,-50%);">
                 <touch-panel class="cover-touch-panel" bind:start-touch='onDiscTouchStart' bind:move='onDiscTouchMove' bind:touch='onDiscTouchEnd'>
-                  <image style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="cover rotate-animation-delay" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill" />
+                  <image lazy-load style="animation-play-state: {{(isPlaying&&!discTouchMoving&&isToCenterOk)?'running':'paused'}};" class="cover rotate-animation-delay" src="{{songInfo.coverUrl || songInfo.al.picUrl||songInfo.album.picUrl}}" mode="aspectFill" />
                 </touch-panel>
               </view>
             </view>

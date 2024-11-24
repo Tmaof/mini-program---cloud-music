@@ -2,11 +2,11 @@
 <view class="playlist-item-display-container">
   <scroll-view class="scroll-view" scroll-y="{{true}}" bindscrolltolower='onCrolltolower'>
     <view class="playlist-item-container">
-      <navigator url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}" hover-class="none"  wx:for="{{playlists}}" wx:key="id">
+      <navigator url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}" hover-class="none" wx:for="{{playlists}}" wx:key="id">
         <view class="playlist-item">
           <!-- 封面 -->
           <view class="cover">
-            <image class="img" src="{{item.coverImgUrl}}" mode="aspectFill" />
+            <image lazy-load class="img" src="{{item.coverImgUrl}}" mode="aspectFill" />
             <!--  播放量 -->
             <view class="nums">
               <view class="iconfont icon-bofangqi-bofang"></view>

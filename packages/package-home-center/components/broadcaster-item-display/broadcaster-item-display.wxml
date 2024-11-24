@@ -2,7 +2,7 @@
   <scroll-view scroll-y class="item-card-container" bindscrolltolower="_getDjList">
     <navigator hover-class="none" url="/packages/package-home-center/pages/broadcaster-display/broadcaster-display?djId={{item.id}}" class="item-card" wx:for="{{djList}}" wx:key="id">
       <!-- 封面 -->
-      <image src="{{item.picUrl}}" mode="aspectFill" class="cover" />
+      <image lazy-load src="{{item.picUrl}}" mode="aspectFill" class="cover" />
       <!-- 右侧信息 -->
       <view class="right">
         <view class="name">{{item.name}}</view>

@@ -5,7 +5,7 @@
   <scroll-view class="scroll-view" scroll-y="{{true}}" bindscrolltolower="_getRecommendedPlaylists">
     <view class="recommended-songs-container">
       <navigator url="/packages/package-home-center/pages/playlist-display/playlist-display?playlistId={{item.id}}" hover-class="none" class="recommended-songs-item" wx:for="{{recommendedPlaylists}}" wx:key="id">
-        <image class="cover" src="{{item.picUrl}}" mode="aspectFill" />
+        <image lazy-load class="cover" src="{{item.picUrl}}" mode="aspectFill" />
         <text class="single-line-overflow">{{item.name}}</text>
       </navigator>
     </view>

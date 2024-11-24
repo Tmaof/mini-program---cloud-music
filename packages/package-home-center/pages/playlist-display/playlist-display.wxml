@@ -14,7 +14,7 @@
             {{filter.getPlaybackVolume(playlistInfo.playCount)}}
           </view>
           <view class="negative"></view>
-          <image class="img" src="{{playlistInfo.coverImgUrl}}" mode="aspectFill" />
+          <image lazy-load class="img" src="{{playlistInfo.coverImgUrl}}" mode="aspectFill" />
         </view>
         <!-- 文本信息 -->
         <view class="right">

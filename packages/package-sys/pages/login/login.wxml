@@ -3,7 +3,7 @@
 <view class="login-container">
   <!-- 背景图 -->
   <view class="bg">
-    <image class="image" src="/packages/package-sys/assets/img/login-bg1.jpg" mode="aspectFill" />
+    <image lazy-load class="image" src="/packages/package-sys/assets/img/login-bg1.jpg" mode="aspectFill" />
   </view>
   <!-- 登录按钮 -->
   <view class="btn-container">
@@ -14,14 +14,14 @@
   <t-popup visible="{{popupVisible}}" class="popup" bind:visible-change="onVisibleChange" placement="top">
     <view class="popup-content">
       <view class="scan-demo">
-        <image src="/packages/package-sys/assets/img/login-scan-demo.png" mode="aspectFit" />
+        <image lazy-load src="/packages/package-sys/assets/img/login-scan-demo.png" mode="aspectFit" />
       </view>
       <view class="qr">
         <view class="tips">
           使用 <text class="bold">网易云音乐APP</text> 扫码登录
         </view>
         <view class="qrimg-container">
-          <image class="image" src="{{qrImg}}" mode="aspectFit" />
+          <image lazy-load class="image" src="{{qrImg}}" mode="aspectFit" />
           <view class="refresh" style="display: {{isRefreshQr?'':'none'}};">
             <t-button bindtap="onClickQrLoginBtn" size="small">刷新</t-button>
           </view>
