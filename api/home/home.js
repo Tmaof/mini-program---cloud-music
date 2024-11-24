@@ -39,19 +39,25 @@ export async function getTheList(start, end, itemLimit) {
     url: '/toplist',
   })
   // 取前n个榜单
-  list = list.slice(start || 0, end || list.length)
-  // 根据id 获取榜单详细数据
-  const retList = []
-  for (const item of list) {
+  list = list.slice(start || 0, end || list.length);
+  // 根据id 获取榜单详细数据，并发请求
+  const retList = [];
+  /** @type { Promise[] } */
+  const promiseList = list.map((item) => {
+    return getSongListByPlaylistId(item.id);
+  });
+  const reslist = await Promise.allSettled(promiseList);
+  reslist.forEach((item, index) => {
+    if (item.status === 'rejected') return; // 如果有的排行榜歌曲请求失败就不添加到最终的列表中
     const {
       songs
-    } = await getSongListByPlaylistId(item.id)
+    } = item.value;
     retList.push({
-      id: item.id,
-      name: item.name,
-      tracks: songs.slice(0, itemLimit || songs.length) //取前n个
-    })
-  }
+      id: list[index].id, // 排行榜id
+      name: list[index].name, // 排行榜名称
+      tracks: songs.slice(0, itemLimit || songs.length), // 取前n个歌曲
+    });
+  });
   return retList;
 }
 

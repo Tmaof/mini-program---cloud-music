@@ -107,19 +107,10 @@ Page({
    * 获取排行榜
    */
   async _getTheList() {
-    // 为了减少首页加载时间,先请求一个榜单的数据
-    const res = await getTheList(0, 2, 5)
+    const res = await getTheList(0, 5, 5)
     this.setData({
       theList: res
     })
-    // 请求其他榜单数据
-    // const tid = setTimeout(async () => {
-    //   const res = await getTheList(3, 6, 30)
-    //   this.setData({
-    //     theList: [...this.data.theList, ...res]
-    //   })
-    //   clearTimeout(tid)
-    // }, 1000)
   },
   // 播放歌曲
   async onPlayMusic(e) {
