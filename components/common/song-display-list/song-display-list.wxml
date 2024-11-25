@@ -22,7 +22,7 @@
   </view>
   <!-- 歌曲列表 -->
   <scroll-view style="height: {{songListHeigth}};" scroll-y class="list ">
-    <view class="list-item {{songInfo.id == item.id?'active-song':''}}" wx:for="{{songList}}" wx:key="id">
+    <view class="list-item {{songInfo.id == item.id?'active-song':''}}" wx:for="{{ needDeferRenderList.length ? deferRenderList : songList}}" wx:key="id">
       <!-- 左 -->
       <view class="left">
         <!-- 正在播放歌曲标识图标 -->

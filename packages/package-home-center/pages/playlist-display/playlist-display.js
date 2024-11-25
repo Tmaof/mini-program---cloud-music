@@ -40,25 +40,28 @@ Page({
   /**
    * 获取歌单信息
    */
-  async _getPlaylistInfo() {
-    const {
+  _getPlaylistInfo() {
+    getPlaylistDetail(this.data.playlistId).then(({
       playlist
-    } = await getPlaylistDetail(this.data.playlistId)
-
-    const dynamic = await getPlaylistDynamic(this.data.playlistId)
-    this.setData({
-      playlistInfo: playlist,
-      dynamic
+    }) => {
+      this.setData({
+        playlistInfo: playlist,
+      })
     })
-    const tid = setTimeout(async () => {
-      const {
-        songs
-      } = await getSongListByPlaylistId(this.data.playlistId)
+
+    getPlaylistDynamic(this.data.playlistId).then((dynamic) => {
+      this.setData({
+        dynamic
+      })
+    })
+
+    getSongListByPlaylistId(this.data.playlistId).then(({
+      songs
+    }) => {
       this.setData({
         songList: songs || [],
       })
-      clearTimeout(tid)
-    }, 50);
+    })
   },
 
   /**

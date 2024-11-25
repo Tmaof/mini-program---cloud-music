@@ -1,9 +1,12 @@
 import {
   injectMusicPlayerStore
 } from '@/behaviors/injectMusicPlayerStore'
+import {
+  injectDeferRender
+} from '@/behaviors/injectDeferRender'
 
 Component({
-  behaviors: [injectMusicPlayerStore],
+  behaviors: [injectMusicPlayerStore, injectDeferRender],
   options: {
     styleIsolation: 'apply-shared'
   },
@@ -12,6 +15,11 @@ Component({
    */
   properties: {
     songList: {
+      type: Array,
+      value: []
+    },
+    /** 需要分片加载的歌曲列表 */
+    needDeferRenderList: {
       type: Array,
       value: []
     },

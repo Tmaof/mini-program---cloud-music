@@ -53,5 +53,5 @@
     </view>
   </view>
   <!-- 歌曲展示列表 -->
-  <song-display-list isShowCover="{{false}}" isShowIndex="{{true}}" class="song-display-list" songList="{{songList}}"></song-display-list>
+  <song-display-list isShowCover="{{false}}" isShowIndex="{{true}}" class="song-display-list" needDeferRenderList="{{songList}}" songList="{{songList}}"></song-display-list>
 </view>
