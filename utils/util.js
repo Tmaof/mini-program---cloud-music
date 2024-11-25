@@ -70,3 +70,75 @@ export function throttledPrecise(fn, delay) {
 //     }
 //   })
 // }
+
+/** 并发请求任务 控制器 */
+export class SuperTask {
+  /**
+   * @param {number} maxCount 最大并发数
+   */
+  constructor(maxCount = 5) {
+    this.maxCount = maxCount;
+    this.runningCount = 0;
+    this.taskList = [];
+  }
+
+  /**
+   * 添加异步任务
+   * @param {()=>Promise} task
+   * @returns
+   */
+  addTask(task) {
+    return new Promise((resolve, reject) => {
+      this.taskList.push({
+        task,
+        resolve,
+        reject,
+      });
+      this._run();
+    });
+  }
+
+  /** 运行任务队列中的任务 */
+  _run() {
+    // 循环执行任务，如果 当前运行任务数 小于 最大并发数，且任务列表有任务，就执行任务
+    while (this.runningCount < this.maxCount && this.taskList.length) {
+      const {
+        task,
+        resolve,
+        reject
+      } = this.taskList.shift();
+      this.runningCount++;
+      task().then(resolve)
+        .catch(reject)
+        .finally(() => {
+          this.runningCount--;
+          this._run(); // 该任务结束了，空出位置，尝试执行下一个任务
+        });
+    }
+  }
+}
+
+/**
+ *  并发请求资源，当所有资源都完成，就返回结果列表，结果列表的顺序与参数列表的顺序相同
+ * @param { any[] } argList
+ * @param { (arg) => Promise } requestFn
+ * @param { number } limitCount
+ */
+export const requestForResources = (argList, requestFn, limitCount = 5) => {
+  return new Promise((resolve, reject) => {
+    const superTask = new SuperTask(limitCount);
+    const resList = new Array(argList.length);
+    let currentCount = 0;
+    for (let i = 0; i < argList.length; i++) {
+      const promise = superTask.addTask(() => requestFn(argList[i]));
+      promise.then(res => {
+        resList[i] = res;
+        currentCount++;
+        // 所有的 任务都完成了，返回结果列表
+        if (currentCount === argList.length) {
+          resolve(resList);
+        }
+      }).catch(reject);
+    }
+  });
+};

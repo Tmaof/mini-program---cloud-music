@@ -16,6 +16,7 @@ import {
   getLikeSongList,
   getSongUrl
 } from '@/api/common/common'
+import { setSongUrl } from './utils/index'
 
 export const musicPlayerStore = observable({
   songList: [], // 歌曲列表\歌单的歌曲
@@ -167,19 +168,7 @@ export const musicPlayerStore = observable({
 
     if (!songList) return
     //获取，设置歌曲的url
-    if (config.isGetSongUrlByRequest) {
-      const ids = songList.map(item => item.id).join(',')
-      const {
-        data
-      } = await getSongUrl(ids)
-      const map = new Map()
-      data.forEach(item => map.set(item.id, item.url))
-      songList.forEach(item => item.url = map.get(item.id))
-    } else {
-      songList.forEach(item => {
-        item.url = `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`
-      })
-    }
+    songList = await setSongUrl(songList)
     this.lastSongList = this.songList
     this.songList = songList
   }),
