@@ -8,6 +8,10 @@ import {
   setItem
 } from '@/utils/localStorage'
 
+import {
+  basicDebounce
+} from '@/utils/util'
+
 import config from '@/config/config'
 
 Page({
@@ -84,7 +88,7 @@ Page({
       result
     } = await getSearchSuggestion(keyword)
     this.setData({
-      searchSuggestion: result.allMatch.map(item => {
+      searchSuggestion: (result.allMatch || []).map(item => {
         return {
           keyword: item.keyword,
           list: item.keyword.split('')
@@ -96,7 +100,7 @@ Page({
    * 输入框输入改变
    * 
    */
-  async onInputChange(e) {
+  onInputChange: basicDebounce(async function (e) {
     let keyword = e.detail.value
     keyword = keyword.trim()
     this.setData({
@@ -113,7 +117,7 @@ Page({
       isShowSearchResult: false,
       isShowSearchSuggestion: true
     })
-  },
+  }),
   /**
    * 点击搜索按钮
    */

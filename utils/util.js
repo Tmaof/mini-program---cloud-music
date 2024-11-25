@@ -142,3 +142,16 @@ export const requestForResources = (argList, requestFn, limitCount = 5) => {
     }
   });
 };
+
+/**
+ * 基础防抖函数
+ * @param {Function} func 需要防抖的函数
+ * @param {number} wait 防抖时间间隔
+ */
+export function basicDebounce(func, wait = 500) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(func.bind(this, ...args), wait);
+  };
+}
