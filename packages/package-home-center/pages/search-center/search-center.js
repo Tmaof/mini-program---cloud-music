@@ -84,16 +84,29 @@ Page({
    * 获取搜索建议
    */
   async _getSearchSuggestion(keyword) {
+    /**
+     * 解决搜索时的联想提示词 的竞态问题:
+     * 为每个请求生成一个唯一的标识符， 并在请求返回时检查标识符是否是最新的。
+     */
+    const requestId = (this.getSearchSuggestionId || 0) + 1
+    this.getSearchSuggestionId = requestId
     const {
       result
     } = await getSearchSuggestion(keyword)
+    // 如果 本次请求 不是最新的请求就忽略掉；闭包变量 requestId
+    if (requestId !== this.getSearchSuggestionId) return;
+
+    const searchSuggestion = (result.allMatch || []).map(item => {
+      return {
+        keyword: item.keyword,
+        list: item.keyword.split('')
+      }
+    })
+
     this.setData({
-      searchSuggestion: (result.allMatch || []).map(item => {
-        return {
-          keyword: item.keyword,
-          list: item.keyword.split('')
-        }
-      })
+      isShowSearchResult: false,
+      isShowSearchSuggestion: true,
+      searchSuggestion,
     })
   },
   /**
@@ -112,12 +125,8 @@ Page({
       })
       return
     }
-    await this._getSearchSuggestion(keyword)
-    this.setData({
-      isShowSearchResult: false,
-      isShowSearchSuggestion: true
-    })
-  }),
+    this._getSearchSuggestion(keyword)
+  }, 200),
   /**
    * 点击搜索按钮
    */
